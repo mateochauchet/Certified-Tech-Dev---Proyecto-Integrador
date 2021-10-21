@@ -22,17 +22,26 @@ public class CategoriaServiceImpl implements ICategoriaService {
     private ICategoriaRepository categoriaRepository;
 
     @Override
-    public Optional<Categoria> readOne(Long id) throws ResourcesNotFoundException{
+    public Optional<Categoria> readOne(Long id) throws ResourcesNotFoundException, IOException {
         Optional<Categoria> respuesta = categoriaRepository.findById(id);
         if(!respuesta.isPresent())
             throw new ResourcesNotFoundException("la categoria con Id "+ id+ " no existe");
+
+        if(respuesta.get().getImagen() != null || respuesta.get().getImagen() != "")
+            respuesta.get().setImagen(StringBase64.imageToBase64(respuesta.get().getImagen()));
 
         return respuesta;
     }
 
     @Override
-    public List<Categoria> readAll() {
-        return categoriaRepository.findAll();
+    public List<Categoria> readAll() throws IOException {
+
+        List<Categoria> categorias = categoriaRepository.findAll();
+        for (Categoria categoria: categorias) {
+            if(categoria.getImagen() != null || categoria.getImagen() != "")
+                categoria.setImagen(StringBase64.imageToBase64(categoria.getImagen()));
+        }
+        return categorias;
     }
 
     @Override
@@ -58,17 +67,20 @@ public class CategoriaServiceImpl implements ICategoriaService {
     }
 
     @Override
-    public Boolean update(Categoria categoria) throws InvalidDataException, NotExistDataException, NotValidImage, IOException {
+    public Boolean update(Categoria categoria) throws InvalidDataException, NotExistDataException, NotValidImage, IOException, ResourcesNotFoundException {
 
-        if(categoria.getId() == null||categoria.getDescripcion() == null || categoria.getTitulo() ==null)
+        if(categoria.getId() == null||categoria.getDescripcion() == null || categoria.getTitulo() ==null || categoria.getDescripcion() == "" || categoria.getTitulo() =="" )
             throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
         else if(categoria.getDescripcion().length()>100 || categoria.getTitulo().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
+        if(readOne(categoria.getId()).isPresent()){
+            if(categoria.getImagen() != null && categoria.getImagen() != "")
+                categoria.setImagen(StringBase64.saveImagen(categoria.getImagen()));
+            categoriaRepository.save(categoria);
+            return true;
+        }else
+            throw new ResourcesNotFoundException("la categoria a modificar no existe");
 
-        if(categoria.getImagen() != null && categoria.getImagen() != "")
-            categoria.setImagen(StringBase64.saveImagen(categoria.getImagen()));
 
-        categoriaRepository.save(categoria);
-        return true;
     }
 }

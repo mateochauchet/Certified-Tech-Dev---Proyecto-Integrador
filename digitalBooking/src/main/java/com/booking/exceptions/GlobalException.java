@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @ControllerAdvice
@@ -32,6 +33,11 @@ public class GlobalException {
 
     @ExceptionHandler({IOException.class})
     public ResponseEntity<String> procesarIOException(IOException exception){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("la imagen no se pudo guardar");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("la imagen no se pudo guardar o leer la imagen");
+    }
+
+    @ExceptionHandler({FileNotFoundException.class})
+    public ResponseEntity<String> procesarFileNotFoundException(FileNotFoundException exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("no se pudo leer la imagen");
     }
 }

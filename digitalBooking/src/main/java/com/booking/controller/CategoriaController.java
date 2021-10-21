@@ -5,14 +5,11 @@ import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.NotValidImage;
 import com.booking.exceptions.ResourcesNotFoundException;
-import com.booking.repository.ICategoriaRepository;
 import com.booking.service.ICategoriaService;
-import com.booking.util.StringBase64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,12 +28,12 @@ public class CategoriaController {
     private ICategoriaService categoriaService;
 
     @GetMapping("/")
-    public ResponseEntity<List<Categoria>>  readAll(){
+    public ResponseEntity<List<Categoria>>  readAll() throws IOException {
         return new ResponseEntity<>(categoriaService.readAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categoria> readOne(@PathVariable("id") Long id) throws ResourcesNotFoundException {
+    public ResponseEntity<Categoria> readOne(@PathVariable("id") Long id) throws ResourcesNotFoundException, IOException {
         return new ResponseEntity<>(categoriaService.readOne(id).get(),HttpStatus.OK);
     }
 
@@ -51,7 +48,7 @@ public class CategoriaController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<Boolean> update(@RequestBody Categoria categoria) throws NotExistDataException, InvalidDataException, NotValidImage, IOException {
+    public ResponseEntity<Boolean> update(@RequestBody Categoria categoria) throws NotExistDataException, InvalidDataException, NotValidImage, IOException, ResourcesNotFoundException {
         return new ResponseEntity<>(categoriaService.update(categoria),HttpStatus.OK);
     }
 

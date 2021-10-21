@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="categoria")
@@ -12,18 +14,24 @@ import javax.persistence.*;
 public class Categoria {
 
     @Id
+    @NotNull
     @Column(name="id_categoria")
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private Long id;
 
     @Getter
     @Setter
+    @NotNull
+    @Size(max = 50)
     @Column(name="titulo", length = 50)
     private String titulo;
 
     @Getter
     @Setter
+    @Size(max = 100)
+    @NotNull
     @Column(name="descripcion",length = 100)
     private String descripcion;
 
