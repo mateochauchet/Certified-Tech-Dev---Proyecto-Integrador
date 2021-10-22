@@ -1,0 +1,18 @@
+ :root{
+    --main-bg-color: #1DBEB4;
+    --secondary-bg-color: #545776;
+    --terceary-bg-color: #31363F;
+    --body-bg-color: #F3F1ED; 
+} 
+
+.navBar{
+    text-align: center;
+    margin-right: 20px; 
+}
+
+.icon{
+    color: #545776;
+    height: 15vh;
+    font-size: 20px;
+    
+}

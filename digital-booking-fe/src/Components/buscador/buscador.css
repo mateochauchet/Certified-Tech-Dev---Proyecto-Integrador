@@ -32,11 +32,13 @@ option{
     width: 100%;
     background-color: #545776;
     color: white;
-    height: 270px;
+    height: 250px;
   }
 
 .titleBusc{
     text-align: center;
+    margin-top:10px;
+    margin-bottom: 15px;
     font-size: 30px;
 }
   
@@ -69,6 +71,7 @@ option{
         display: flex;
         flex-direction: row;
         justify-content: center;
+        
         margin-left: 35px;
         margin-right: 35px;
     }
@@ -85,6 +88,7 @@ option{
     }
     .titleBusc{
         margin-bottom: 15px;
+        
     }
   
  }

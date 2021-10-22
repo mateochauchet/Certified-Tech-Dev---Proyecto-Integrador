@@ -1,14 +1,15 @@
 
-import './App.css';
-import ContenedorCard from './Components/cards/ContenedorCard.jsx'
-import ContenedorBuscador from './Components/buscador/ContenedorBuscador'
+import Home from './Components/home/Home';
+import React, { useState } from 'react';
 
 function App() {
+
+  
   return (
     
     <>
-    <ContenedorBuscador />
-    <ContenedorCard />
+    <Home />
+    
     </>
   );
 }

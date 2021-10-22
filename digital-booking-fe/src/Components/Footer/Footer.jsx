@@ -7,9 +7,9 @@ import {faFacebook, faLinkedinIn, faTwitter, faInstagram} from "@fortawesome/fre
 function Footer(){
     return(
         <div className="footer">
-            <p> © 2021 Digital Booking</p>
+            <p className="digital_footer"> © 2021 Digital Booking</p>
             <div className="icons">
-            <FontAwesomeIcon className="icon" icon={faFacebook}/>
+            <FontAwesomeIcon icon={faFacebook}/>
             <FontAwesomeIcon icon={faLinkedinIn}/>
             <FontAwesomeIcon icon={faTwitter}/>
             <FontAwesomeIcon icon={faInstagram}/>
