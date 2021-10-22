@@ -59,15 +59,28 @@
       width: 100%;
       flex-direction: row;
       flex-wrap: wrap;
+      gap:30px;
       justify-content: center;
     }
   
  }
+ @media screen and (min-width: 1040px){
+  .contenedorCard {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap:10px;
+    justify-content: center;
+  }
+
+}
+
 
   /* desktop */
   @media screen and (min-width: 1200px){
     .contenedorCard {
       width: 100%;
+      gap: 5px;
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: center;

@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+:root{
+    --main-bg-color: #1DBEB4;
+    --secondary-bg-color: #383B58;
+  } 
+
+select:invalid{
+    color: gray;
+}
+option{
+    color: black;
+}
+
+.city{
+    padding-left: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+.country{
+    color: var(--secondary-bg-color);
+    padding-left: 20px;
+    font-weight: 500;
+}
+  
+.contenedorBusc {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #545776;
+    color: white;
+    height: 270px;
+  }
+
+.titleBusc{
+    text-align: center;
+    font-size: 30px;
+}
+  
+.barSearch{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    gap: 7px;
+}
+.searchCity{
+    width: 95%;
+    margin: auto;
+}
+
+.primary{
+    background-color: var(--main-bg-color);
+    color: white;
+    width: 95%;
+    height: 40px;
+    margin: auto;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+ /* tablet */
+ @media screen and (min-width: 768px){
+    .barSearch{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-left: 35px;
+        margin-right: 35px;
+    }
+    .primary {
+        width: 200px;
+        margin: 0;
+    }
+    .searchCity{
+        width: 44%;
+        margin: 0;
+    }
+    .contenedorBusc {
+        height: 140px;
+    }
+    .titleBusc{
+        margin-bottom: 15px;
+    }
+  
+ }
+  /* desktop */
+  @media screen and (min-width: 1200px){
+    .searchCity{
+        width: 30%;
+        margin: 0;
+    }
+
+  }

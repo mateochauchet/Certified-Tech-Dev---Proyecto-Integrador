@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+:root{
+    --main-bg-color: #1DBEB4;
+    --secondary-bg-color: #383B58;
+  }
+.CalendarDay__selected_span {
+    background: #1dbeb35b;
+    color: white; 
+  }
+
+ 
+  .DateRangePickerInput_arrow_svg {
+    vertical-align: middle;
+    fill: none;
+    align-items: center;
+  }  
+
+  .DateRangePickerInput__withBorder {
+    border-radius: 2px;
+    border: 0px solid #dbdbdb;
+    margin: auto auto;
+  } 
+
+  .DateInput {
+    padding: 3px 6px 2px 0px;
+   border-radius: 6px;
+    background: #fff;
+    position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: start;
+  vertical-align: middle
+   
+  }
+ 
+  .DateRangePickerInput {
+    background-color: #fff;
+    display: flex;
+    border-radius: 4px;
+    width: 95%;
+    margin: auto;
+  }
+  .DateInput_input {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 2px;
+    color:rgb(143, 143, 143);
+    background-color: #fff;
+    padding: 6px 0px 9px 10px;
+    border: 0;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    text-align: start;
+    margin: 0;
+    
+  }
+  .DateRangePickerInput__withBorder {
+    border: 1px solid #dbdbdb
+  }
+
