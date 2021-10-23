@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,100&display=swap');
+:root{
+    --main-bg-color: #1DBEB4;
+    --secondary-bg-color: #545776;
+    --terceary-bg-color: #31363F;
+    --body-bg-color: #F3F1ED; 
+} 
+
+.container-Drawer{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 100%;
+    
+    font-family: roboto;
+    z-index: 8;
+    
+    background-color: rgb(255, 255, 255);
+    box-shadow: -2px 4px 7px rgb(0 0 0 / 50%);
+}
+
+.header-drawer{
+    height: 170px;
+    background-color: #1DBEB4;
+}
+.text-menu{
+    color: white;
+    margin-left: 75%;
+    font-size: 20px;
+    margin-top: 25%;
+}
+.container-parrafos{
+    text-align: left;
+    color: var(--secondary-bg-color);
+    margin-top: 10%;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.container-parrafos p{
+    text-align: end;
+
+}
+/* p{
+    text-align: end;
+} */
+
+
+.icon-drawer{
+    color: white;
+    margin-top: 5%;
+    margin-left: 5%;
+    height: 6vh;
+    font-size: 20px;
+}
+
+.container-body-drawer{
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-between;
+    
+}
+.icons-drawer{
+    color: #545776;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 18px;
+    margin-right: 12px;
+    justify-content: end;
+    
+}
+
+
+

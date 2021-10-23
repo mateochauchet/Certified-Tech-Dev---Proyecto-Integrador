@@ -3,10 +3,15 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 
-export default function Navbar(){
+export default function Navbar(props){
+
     return(
+        <>
         <div className="navBar">
-            <FontAwesomeIcon  className="icon" icon={faBars}/>
+            <FontAwesomeIcon onClick={props.e}  className="icon" icon={faBars}/>
         </div>
+  
+        </>
+
     )
 }
