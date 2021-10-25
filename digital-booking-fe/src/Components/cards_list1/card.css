@@ -3,24 +3,31 @@
     border: 1px solid #C4C4C4;
     margin: 10px;
     border-radius: 8px;
-    box-shadow: 0px 2px 5px #C4C4C4;
-    width: 393px;
+    box-shadow: 0px 2px 5px #101010;
+    width: 90%;
     height: 491px;
     font-family: 'Roboto', sans-serif;
-    
+    background-color: white;
 }
 
-
 .cardsImg{
-    width: 393px;
+    width: 100%;
     height: 231px;
     border-radius: 8px;
 
+}
+.cardsRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+    width: 324px;
 }
 
 .cardsInfo {
     padding-left: 16px;
     color: #383B58;
+    margin-top: 20px
 }
 
 div.cardsInfo .categoria {
@@ -54,7 +61,7 @@ div.cardsInfo p{
     background-color: #1DBEB4;
     color: white;
     border: none;
-    width: 362px;
+    width: 95%;
     height: 40px;
     border-radius: 5px;
     margin-left: 15.5px;
@@ -63,7 +70,9 @@ div.cardsInfo p{
     font-size: 16px;
     line-height: 19px;
     text-align: center;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -73,39 +82,38 @@ div.cardsInfo p{
     transition: all 0.3s ease;
 }
 
-@media (min-width: 700px ) {
+@media screen and (min-width: 768px ) {
     
     .card{
         display: flex;
-        width: 635px;
+        width: 95%;
         height: 283px;
+        box-shadow: 0px 2px 5px #C4C4C4;
     }
 
     .cardsImg{
         width: 311px;
         height: 283px;
     }
+   
 
-    .cardsInfo{
-        
-    }
-
-    div.cardsInfo p{
-        width: 295px;
-        height: 52px;
-    }
+    
 
     div.cardsInfo .categoria {
         height: 25px; ;
     }
 
+    .cardsInfo{
+        width: 90%;
+    }
+
     .cardsRight {
         height: 283px;
-        width: 324px;
+        width: 80%;
     }
 
     .cardBtn{
-        width: 296px;
+        width: 90%;
         height: 40px;
         margin-bottom: 11px;
         margin-top: 10px;
@@ -116,9 +124,27 @@ div.cardsInfo p{
         margin-top: 28px;
     }
 
-
-
 }
 
+ /* desktop */
+ @media screen and (min-width: 1200px){
+    .card{
+        display: flex;
+        width: 605px;
+        flex-wrap: nowrap;
+    }    
+    div.cardsInfo{
+        margin-top: 20px;
+    }
+    div.cardsInfo p{
+        width: 90%;
+        
+    }
+    .cardBtn{
+        width: 90%;
+        height: 40px;
+        margin-bottom: 11px;
+        margin-top: 10px;
+    }
 
-
+ }

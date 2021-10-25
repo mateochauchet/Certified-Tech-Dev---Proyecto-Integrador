@@ -1,0 +1,31 @@
+.Container-Recomendaciones{
+   background-color: #383B58;
+   padding-top: 20px;
+}
+.cardsContainer {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin-bottom: 60px;
+   
+}
+.titleRecomendaciones{
+   text-align: start;
+   color: white;
+   margin-left: 5%;
+   margin-top: 25px;
+   margin-bottom: 10px
+ }
+
+@media screen and (min-width: 768px ) {
+   
+   .Container-Recomendaciones{
+      background-color: #383b5818;
+   }
+   .titleRecomendaciones{
+
+      color: #383B58;
+      text-align: start;
+   }   
+   
+}
