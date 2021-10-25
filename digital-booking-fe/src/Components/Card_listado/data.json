@@ -1,0 +1,38 @@
+[
+    
+    {
+      "id": "1",
+      "img": "https://static.wixstatic.com/media/ec3017_b550c23b3cee49db805847dc4da2612d~mv2_d_4288_2848_s_4_2.jpg/v1/fill/w_600,h_458,al_c,q_80,usm_0.66_1.00_0.01/ec3017_b550c23b3cee49db805847dc4da2612d~mv2_d_4288_2848_s_4_2.webp",
+      "categoria": "HOTEL",
+      "title": "Hermitage Hotel",
+      "location":"San Telmo",
+      "description":"En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+      "id": "2",
+      "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/51/cc/58/photo0jpg.jpg?w=900&h=-1&s=1",
+      "categoria": "HOTEL",
+      "title": "Hotel Transylvania",
+      "location":"San Telmo",
+      "description":"En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+      "id": "3",
+      "img": "https://imgar.zonapropcdn.com/avisos/1/00/48/40/08/60/1200x1200/1778985548.jpg",
+      "categoria": "CASA",
+      "title": "Casa - Los Castores",
+      "location":"Los Castores, Nordelta",
+      "description":"Excelente casa en alquiler anual con calidad PREMIUM. "
+    },
+    {
+      "id": "4",
+      "img": "https://www.elliberal.com.ar/fotos/notas_bk/2013/10/524d7b6b90xx_messi3.jpg",
+      "categoria": "CASA",
+      "title": "Casa de Messi",
+      "location":"Barcelona",
+      "description":"Excelente casa en alquiler anual con calidad PREMIUM. "
+    }
+
+
+  
+]
