@@ -23,6 +23,7 @@
 .header-drawer{
     height: 170px;
     background-color: #1DBEB4;
+    position: relative;
 }
 .text-menu{
     color: white;
@@ -44,10 +45,10 @@
     text-align: end;
 
 }
-/* p{
-    text-align: end;
-} */
-
+.link-parrafos{
+    text-decoration: none;
+    color: #545776;
+}
 
 .icon-drawer{
     color: white;
@@ -72,8 +73,23 @@
     font-size: 18px;
     margin-right: 12px;
     justify-content: end;
-    
+    margin-bottom: 5%;
 }
 
+.container-cerrarSesion{
+    margin-top: 60%;
+    
+}
+.parrafo-cerrarSesion{
+    font-size: 12px;
+    color: #31363F;
+    text-align: end;
+    margin-right: 2%;
+    margin-top: 35%;
+}
+
+.cerrarSesion{
+    color:#1DBEB4;
+}
 
 

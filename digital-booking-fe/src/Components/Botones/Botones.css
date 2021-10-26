@@ -1,34 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,100&display=swap');
 
-.button{
-    display: flex;
-    justify-content: flex-end;
-    width: 60%;
-    margin-right: 5%;
-    margin-top: 2%;
-    margin-left: 40%;
-}
-    
 .btn{
-    width: 220px;
-    height: 40px;
+    width: 25%;
+    height: 6vh;
     background-color: white;
     color:#1DBEB4;
     font-family: roboto;
     font-size: 13px;
     font-weight: bold;
     border: #1DBEB4 solid 1px;
-    margin-right: 10px;
     border-radius: 5px;
     text-align: center;
+    /* margin-right: 0%; */
+}
+.btn-link{
+    text-decoration: none;
+    color:#1DBEB4;
 }
 
 @media screen and (min-width: 1366px){
-     
+
     .btn{
-        
+        width: 15%;
+        margin-right: 2%;
         height: 5vh;
         font-size: 15px;
-        
     }
+   
 }

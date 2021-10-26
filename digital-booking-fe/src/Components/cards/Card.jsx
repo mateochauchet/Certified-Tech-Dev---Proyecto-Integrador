@@ -2,7 +2,7 @@
 
 function Card({titulo, cantidad, img}) {
     return ( 
-        <div class="card1">
+        <div class="card">
           <div class="card-header">
             <img src={img} alt={titulo} />
           </div>
