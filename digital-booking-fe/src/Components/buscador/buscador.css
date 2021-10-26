@@ -26,6 +26,9 @@ option{
     font-weight: 500;
 }
   
+.containerDatePicker{
+    width: 80%;
+}
 .contenedorBusc {
     display: flex;
     flex-direction: column;
