@@ -26,9 +26,6 @@ option{
     font-weight: 500;
 }
   
-.containerDatePicker{
-    width: 80%;
-}
 .contenedorBusc {
     display: flex;
     flex-direction: column;
@@ -36,6 +33,7 @@ option{
     background-color: #545776;
     color: white;
     height: 250px;
+    position: relative;
   }
 
 .titleBusc{

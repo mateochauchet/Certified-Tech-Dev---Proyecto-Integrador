@@ -1,4 +1,4 @@
-import './card1.css'
+import './card.css'
 import Card from './Card.jsx'
 import categorias from './categorias.json'
 
