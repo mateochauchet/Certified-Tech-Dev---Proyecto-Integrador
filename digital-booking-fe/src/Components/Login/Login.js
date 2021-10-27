@@ -1,7 +1,7 @@
 import './Login.scoped.css'
-import useForm from '../Hooks/useForm';
+import useForm from '../hooks/useForm';
 import validate from './loginFormValidationRules'
-import useAuthentication from '../Hooks/useAuthentication';
+import useAuthentication from '../hooks/useAuthentication';
 
 
 const Login = () => {
