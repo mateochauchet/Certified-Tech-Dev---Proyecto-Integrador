@@ -8,13 +8,14 @@ import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer"
+import './App.css'
 
  export default function App() {
 
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
 
   return (
-    <div>
+    <div id="app">
        <ContextLoginRegistro.Provider value={{contextLoginRegistro, setContextLoginRegistro }}>
         <BrowserRouter>
            <Switch>
