@@ -14,7 +14,25 @@
     width: 100%;
     height: 231px;
     border-radius: 8px;
+    position: relative;
 
+}
+.cardsImgContainer {
+    width: 100%;
+    height: 231px;
+    position: relative;
+}
+
+div .corazon {
+    position: absolute;
+    
+    width: 15px;
+    height: 15px;
+    color: white;
+    
+    top: 14px;
+    right: 14px;
+    
 }
 .cardsRight {
     display: flex;
@@ -28,6 +46,20 @@
     padding-left: 16px;
     color: #383B58;
     margin-top: 20px
+}
+
+
+.cardsInfoParteDeArriba {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+    
+
+}
+
+div .cardsTitleCategoria {
+    width: 220px;
 }
 
 div.cardsInfo .categoria {
@@ -49,14 +81,41 @@ div.cardsInfo h2 {
 
 div.cardsInfo p{
     font-weight: 500;
+    
     font-size: 14px;
     line-height: 16px;
 }
 
 
+.cardsIcons{
+    margin-top: 11px;
+    visibility: visible;
+    height: 0;  
+}
 
+.cardsLocation{
+    margin-top: 8px;
+    display: flex;
+    justify-items: center;
+    gap: 5px;
+}
+.cardsLocation span{
+    color: #1DBEB4;
+}
+.cardsDescription span{
+    color: #1DBEB4;
+}
+.cardsDescription p{
+    margin-top: 15px;
+}
 
+.cardsDescription {
 
+    height: 64px;
+    margin-top: 15px;
+    overflow: hidden;
+ 
+}
 .cardBtn {
     background-color: #1DBEB4;
     color: white;
@@ -65,6 +124,7 @@ div.cardsInfo p{
     height: 40px;
     border-radius: 5px;
     margin-left: 15.5px;
+    margin-top: 5px;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -90,10 +150,19 @@ div.cardsInfo p{
         height: 283px;
         box-shadow: 0px 2px 5px #C4C4C4;
     }
+    
+    
+    .cardsImgContainer {
+        width: 393px;
+        height: 231px;
+        position: relative;
+    }
 
     .cardsImg{
-        width: 311px;
+        width: 300px;
         height: 283px;
+        border-radius: 8px;
+        position: relative;
     }
    
 
@@ -104,7 +173,7 @@ div.cardsInfo p{
     }
 
     .cardsInfo{
-        width: 90%;
+        width: 95%;
     }
 
     .cardsRight {
@@ -145,6 +214,10 @@ div.cardsInfo p{
         height: 40px;
         margin-bottom: 11px;
         margin-top: 10px;
+    }
+
+    .btnContainer{
+        width: 285px;
     }
 
  }

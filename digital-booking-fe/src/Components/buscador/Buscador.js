@@ -4,7 +4,7 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import Select from 'react-select'
 import cityList from './city.json'
 import Button from "./Button";
-import DateBuscador from "./dateBuscador";
+import DateBuscador from "./DateBuscador";
 
 
 

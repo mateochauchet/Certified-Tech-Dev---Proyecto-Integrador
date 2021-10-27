@@ -1,0 +1,47 @@
+.cardsPuntaje {
+    width: 80px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+    
+}
+
+.cardsPuntajeNum {
+    width: 34px;
+    height: 27px;
+    margin-right: 10px;
+    margin-top: 12px;
+    background: #383B58;
+    border: 1px solid #383B58;
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: #F3F1ED;
+}
+
+
+div.cardsPuntaje p.cardsPuntajeText {
+    font-style: normal;
+    font-weight:bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: right;
+    color: #383B58;
+    width: 100%;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+@media (min-width: 414px ) {
+
+    .cardsPuntaje{
+        margin-top: 5px;
+        margin-right: 2px;
+    }
+
+}
