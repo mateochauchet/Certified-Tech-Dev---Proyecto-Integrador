@@ -1,7 +1,7 @@
 import './login.css'
-import useForm from '../hooks/useForm';
-import validate from './loginFormValidationRules'
-import useAuthentication from '../hooks/useAuthentication';
+import useForm from '../hooks/useForm.js';
+import validate from './loginFormValidationRules.js'
+import useAuthentication from '../hooks/useAuthentication.js';
 
 
 const Login = () => {
