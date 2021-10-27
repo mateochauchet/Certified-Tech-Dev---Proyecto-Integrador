@@ -1,10 +1,11 @@
-import './login.css'
-import useForm from '../hooks/useForm.js';
-import validate from './loginFormValidationRules.js'
-import useAuthentication from '../hooks/useAuthentication.js';
+import styles from './Login.module.css'
+import useForm from '../hooks/useForm';
+import validate from './loginFormValidationRules'
+import useAuthentication from '../hooks/useAuthentication';
 
 
 const Login = () => {
+
 
     const { values, handleChange, handleSubmit, isSubmitting, selectedFields, errors } = useForm(login, validate);
 
@@ -16,7 +17,7 @@ const Login = () => {
 
     return (
 
-        <div className="container">
+        <div className={styles.container}>
             <h1>Iniciar sesión</h1>
             <form onSubmit={handleSubmit} noValidate>
             <label htmlFor="email">Email</label>

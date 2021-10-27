@@ -84,7 +84,7 @@ p{
     .container{
         margin-left:27.5%;
         margin-right: 27.5%;
-        margin-top: 22.2vh;
+        margin-top: 9.3vh;
         background-color: rgb(196,196,196,0.1)
     }
 
@@ -109,12 +109,12 @@ p{
     .container{
         margin-left:33.6%;
         margin-right: 33.6%;
-        margin-top: 19.4vh;
+        margin-top: 10.2vh;
         background-color: rgb(196,196,196,0.1)
     }
 
     h1{
-        margin-bottom: 5.2vh;
+        margin-bottom: 3.1vh;
     }
 
     input {
@@ -126,6 +126,15 @@ p{
         margin-top:4.5vh;
         width:54%;
         margin-left:23%;
+    }
+
+    .nameFragment{
+        width:48.7%
+    }
+
+    .fullName{
+        display:flex;
+        justify-content: space-between;
     }
     
 }
