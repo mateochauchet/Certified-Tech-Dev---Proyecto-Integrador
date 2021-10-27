@@ -1,4 +1,4 @@
-import Buscador from "./Buscador";
+import Buscador from "./Buscador.js";
 
 function ContenedorBuscador(props) {
     return ( 
