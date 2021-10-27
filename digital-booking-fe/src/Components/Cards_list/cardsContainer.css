@@ -6,7 +6,7 @@
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   margin-bottom: 60px;
+   padding-bottom: 10px;
    
 }
 .titleRecomendaciones{
@@ -21,6 +21,7 @@
    
    .Container-Recomendaciones{
       background-color: #383b5818;
+      height: max-content;
    }
    .titleRecomendaciones{
 

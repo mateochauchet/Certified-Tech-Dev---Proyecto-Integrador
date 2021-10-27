@@ -3,10 +3,11 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Template from "./Components/Template/TemplateGeneral.js";
 import { useState } from "react";
 import ContextLoginRegistro from "./Components/Contexts/ContextLoginRegistro.js";
-import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.jsx";
-import ContenedorCard from "./Components/Cards/ContenedorCard.jsx";
+import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
+import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
 import Registro from "./Components/Register/Register.js";
+import CardsContainer from "./Components/Cards_list/CardsContainer"
 
  export default function App() {
 
@@ -24,6 +25,7 @@ import Registro from "./Components/Register/Register.js";
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                    <ContenedorBuscador />
                    <ContenedorCard />
+                   <CardsContainer />
                 </Template>
               )}
             ></Route>
