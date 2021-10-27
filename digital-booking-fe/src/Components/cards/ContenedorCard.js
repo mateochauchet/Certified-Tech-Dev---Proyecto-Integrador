@@ -1,5 +1,5 @@
 import './card.css'
-import Card from './Card.jsx'
+import Card from './Card.js'
 import categorias from './categorias.json'
 
 function ContenedorCard() {

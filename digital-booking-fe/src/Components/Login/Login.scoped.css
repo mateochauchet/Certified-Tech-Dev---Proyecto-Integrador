@@ -12,11 +12,19 @@
     font-weight: 500;
 }
 
+.background{
+    margin-top:0;
+    background-color: rgb(196,196,196,0.1);
+    text-align: center;
+    padding-top: 4.3vh
+}
+
+
 .container{
+    text-align: center;
     margin-left:13.5%;
     margin-right: 13.5%;
-    margin-top: 4.3vh;
-    background-color: rgb(196,196,196,0.1)
+    /* margin-top: 4.3vh; */
 }
 
 
@@ -64,13 +72,34 @@ p{
     font-size: 12px;
 }
 
+.errorBox{
+    text-align : right;
+}
+
+.errorDesc{
+    color:#FF0000;
+}
+
+.inputError{
+
+    background-color: #FFE1E1;
+    border: 1px solid #FF0000;
+    
+}
+
 @media (min-width:768px){
+
+    .background{
+        margin-top:0;
+        background-color: rgb(196,196,196,0.1);
+        text-align: center;
+        padding-top: 22.2vh
+    }
 
     .container{
         margin-left:27.5%;
         margin-right: 27.5%;
-        margin-top: 22.2vh;
-        background-color: rgb(196,196,196,0.1)
+        /* margin-top: 22.2vh; */
     }
 
     h1{
@@ -91,11 +120,17 @@ p{
 
 @media (min-width:1366px){
 
+    .background{
+        margin-top:0;
+        background-color: rgb(196,196,196,0.1);
+        text-align: center;
+        padding-top: 19.4vh
+    }
+
     .container{
         margin-left:33.6%;
         margin-right: 33.6%;
-        margin-top: 19.4vh;
-        background-color: rgb(196,196,196,0.1)
+        /* margin-top: 19.4vh; */
     }
 
     h1{
