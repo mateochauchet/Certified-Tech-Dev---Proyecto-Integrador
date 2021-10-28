@@ -1,7 +1,8 @@
 import './Login.scoped.css'
-import useForm from '../hooks/useForm';
+import useForm from '../Hooks/useForm';
 import validate from './loginFormValidationRules'
-import useAuthentication from '../hooks/useAuthentication';
+import useAuthentication from '../Hooks/useAuthentication';
+import {Link} from 'react-router-dom';
 
 
 const Login = () => {
@@ -38,7 +39,7 @@ const Login = () => {
                     {(validCredentials === false && (<div className="errorBox"><p className="errorDesc">Por favor, vuelva a intentarlo sus credenciales son inválidas</p></div>))}
 
                 </form>
-                <p>¿Aún no tenes cuenta? Registrate</p>
+                <p>¿Aún no tenes cuenta? <Link to='/registro'>Registrate</Link></p>
             </div>
         </div>
 

@@ -1,6 +1,7 @@
 import './Register.scoped.css'
-import useForm from "../hooks/useForm";
+import useForm from "../Hooks/useForm";
 import validate from './registerFormValidationRules';
+import {Link} from 'react-router-dom'
 
 const Register = () => {
 
@@ -51,7 +52,7 @@ const Register = () => {
 
                     <input type="submit" value="Crear cuenta"></input>
                 </form>
-                <p>¿Ya tienes una cuenta? Iniciar sesión</p>
+                <p>¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link></p>
             </div>
         </div>
     );
