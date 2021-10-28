@@ -88,6 +88,7 @@ p{
 }
 .link{
     color:#4285F4;
+    text-decoration: none;
 }
 
 @media (min-width:768px){

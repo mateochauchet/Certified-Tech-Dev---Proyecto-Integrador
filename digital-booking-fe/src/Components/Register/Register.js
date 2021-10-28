@@ -52,7 +52,7 @@ const Register = () => {
 
                     <input type="submit" value="Crear cuenta"></input>
                 </form>
-                <p>¿Ya tienes una cuenta? <span className="link"><Link to='/login'>Iniciar sesión</Link></span></p>
+                <p>¿Ya tienes una cuenta? <Link className="link" to='/login'>Iniciar sesión</Link></p>
             </div>
         </div>
     );

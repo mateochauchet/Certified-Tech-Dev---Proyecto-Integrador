@@ -15,8 +15,11 @@ import Avatar from "../Avatar/Avatar.js"
 
 
 export default function MenuDrawer(props) {
+  const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextoLoginRegistro);
 
-  const {contextLoginRegistro} = useContext(ContextoLoginRegistro);
+  function handleClick(){
+    setContextLoginRegistro("")
+  }
 
   
   let componente =
@@ -85,12 +88,12 @@ else if (contextLoginRegistro !== ""){
             className="icon-drawer"
             icon={faTimes}
           />
-         <Avatar/>
+         <Avatar payload={contextLoginRegistro}/>
       
         </div>
         <div className="container-body-drawer">
           <div className="container-cerrarSesion">
-            <p className="parrafo-cerrarSesion">¿Desea <spna className="cerrarSesion">cerrar sesión</spna>?</p>
+            <p className="parrafo-cerrarSesion">¿Desea <span className="cerrarSesion" onClick={handleClick} >cerrar sesión</span>?</p>
         <hr/>
           </div>
           <div className="icons-drawer">
