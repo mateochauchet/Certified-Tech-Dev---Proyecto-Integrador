@@ -1,0 +1,281 @@
+{
+	"id": "6fbdccfa-aab5-44f2-873b-783aa271b97b",
+	"name": "ApiCategoriasPruebas",
+	"timestamp": "2021-10-28T13:58:35.882Z",
+	"collection_id": "0-abce441a-c797-42e1-af1d-6775f15cd62b",
+	"folder_id": 0,
+	"environment_id": "9cc4f566-c637-4b10-bec1-16d88ac6a3a8",
+	"totalPass": 9,
+	"totalFail": 14,
+	"results": [
+		{
+			"id": "d1e27327-947a-4943-9a23-6f9edb0b5293",
+			"name": "readAll",
+			"url": "http://localhost:8080/categorias/",
+			"time": 112,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"verificar el nombre de la segunda categoria": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar el nombre de la segunda categoria": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				112
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"verificar el nombre de la segunda categoria": false
+				}
+			]
+		},
+		{
+			"id": "b48eaf17-88c2-466b-aa6f-da5609d6f6a2",
+			"name": "insert",
+			"url": "http://localhost:8080/categorias/",
+			"time": 498,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"verificar los datos que quedaron guardados": true,
+				"Status code is 400, en caso de que el json tengan datos erroneos": false,
+				"Verificar en caso de que el titulo o descripcion este vacios muestre el error": false,
+				"Verificar en caso de que los caracteres de la descripcion o del titulo superen los permitidos, muestre el error": false,
+				"Verificar en caso el formato de la imegen no sea le permitido": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar los datos que quedaron guardados": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400, en caso de que el json tengan datos erroneos": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que el titulo o descripcion este vacios muestre el error": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que los caracteres de la descripcion o del titulo superen los permitidos, muestre el error": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso el formato de la imegen no sea le permitido": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				498
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"verificar los datos que quedaron guardados": true,
+					"Status code is 400, en caso de que el json tengan datos erroneos": false,
+					"Verificar en caso de que el titulo o descripcion este vacios muestre el error": false,
+					"Verificar en caso de que los caracteres de la descripcion o del titulo superen los permitidos, muestre el error": false,
+					"Verificar en caso el formato de la imegen no sea le permitido": false
+				}
+			]
+		},
+		{
+			"id": "fca0bf36-b568-43c3-ba77-8695f0f39406",
+			"name": "update",
+			"url": "http://localhost:8080/categorias/",
+			"time": 254,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Verificar la categoria actualizada": true,
+				"Status code is 400, en caso de que el json tengan datos erroneos": false,
+				"Verificar en caso de que el titulo o descripcion este vacios muestre el error": false,
+				"Verificar en caso de que los caracteres de la descripcion o del titulo superen los permitidos, muestre el error": false,
+				"Verificar en caso de que el id no este presente en la base de datos o no se alla colocado id para poder modificar esa categoria": false,
+				"Verificar en caso el formato de la imegen no sea le permitido": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verificar la categoria actualizada": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400, en caso de que el json tengan datos erroneos": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que el titulo o descripcion este vacios muestre el error": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que los caracteres de la descripcion o del titulo superen los permitidos, muestre el error": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que el id no este presente en la base de datos o no se alla colocado id para poder modificar esa categoria": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso el formato de la imegen no sea le permitido": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				254
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Verificar la categoria actualizada": true,
+					"Status code is 400, en caso de que el json tengan datos erroneos": false,
+					"Verificar en caso de que el titulo o descripcion este vacios muestre el error": false,
+					"Verificar en caso de que los caracteres de la descripcion o del titulo superen los permitidos, muestre el error": false,
+					"Verificar en caso de que el id no este presente en la base de datos o no se alla colocado id para poder modificar esa categoria": false,
+					"Verificar en caso el formato de la imegen no sea le permitido": false
+				}
+			]
+		},
+		{
+			"id": "b8ed9677-cb12-4ee4-8d2a-9017ca3f0723",
+			"name": "delete",
+			"url": "http://localhost:8080/categorias//5",
+			"time": 151,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"codigo del status 200": true,
+				"Codigo del status 404, en caos de que no exista la categoria a leminar": false,
+				"verificar en caso de que no exista la categoria a eliminar": false,
+				"verificar en caso de que se elimine de forma correcta la categoria": true
+			},
+			"testPassFailCounts": {
+				"codigo del status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Codigo del status 404, en caos de que no exista la categoria a leminar": {
+					"pass": 0,
+					"fail": 1
+				},
+				"verificar en caso de que no exista la categoria a eliminar": {
+					"pass": 0,
+					"fail": 1
+				},
+				"verificar en caso de que se elimine de forma correcta la categoria": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				151
+			],
+			"allTests": [
+				{
+					"codigo del status 200": true,
+					"Codigo del status 404, en caos de que no exista la categoria a leminar": false,
+					"verificar en caso de que no exista la categoria a eliminar": false,
+					"verificar en caso de que se elimine de forma correcta la categoria": true
+				}
+			]
+		},
+		{
+			"id": "1f09abbd-9571-4287-8a6b-5f6472a04136",
+			"name": "readOne",
+			"url": "http://localhost:8080/categorias//5",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"codigo del status 200 si fue exitosa la busqueda": false,
+				"Verificar el nombre de la categoria con ID 3": false,
+				"Codigo del status 404, en caos de que no exista la categoria a buscar": true,
+				"Verificar en caso de que no exista la categoria a buscar": true
+			},
+			"testPassFailCounts": {
+				"codigo del status 200 si fue exitosa la busqueda": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar el nombre de la categoria con ID 3": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Codigo del status 404, en caos de que no exista la categoria a buscar": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verificar en caso de que no exista la categoria a buscar": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"codigo del status 200 si fue exitosa la busqueda": false,
+					"Verificar el nombre de la categoria con ID 3": false,
+					"Codigo del status 404, en caos de que no exista la categoria a buscar": true,
+					"Verificar en caso de que no exista la categoria a buscar": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1021,
+	"collection": {
+		"requests": [
+			{
+				"id": "d1e27327-947a-4943-9a23-6f9edb0b5293",
+				"method": "GET"
+			},
+			{
+				"id": "b48eaf17-88c2-466b-aa6f-da5609d6f6a2",
+				"method": "POST"
+			},
+			{
+				"id": "fca0bf36-b568-43c3-ba77-8695f0f39406",
+				"method": "PUT"
+			},
+			{
+				"id": "b8ed9677-cb12-4ee4-8d2a-9017ca3f0723",
+				"method": "DELETE"
+			},
+			{
+				"id": "1f09abbd-9571-4287-8a6b-5f6472a04136",
+				"method": "GET"
+			}
+		]
+	}
+}
