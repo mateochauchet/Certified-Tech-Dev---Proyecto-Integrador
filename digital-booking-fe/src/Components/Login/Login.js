@@ -39,7 +39,7 @@ const Login = () => {
                     {(validCredentials === false && (<div className="errorBox"><p className="errorDesc">Por favor, vuelva a intentarlo sus credenciales son inválidas</p></div>))}
 
                 </form>
-                <p>¿Aún no tenes cuenta? <Link to='/registro'>Registrate</Link></p>
+                <p>¿Aún no tenes cuenta? <span className="link"><Link to='/registro'>Registrate</Link></span></p>
             </div>
         </div>
 

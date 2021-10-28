@@ -26,16 +26,16 @@ export default function TemplateGeneral(props) {
         />
       </div>);
      
-    } else if (contextLoginRegistro === "" && !props.home) {
+    } else if (contextLoginRegistro==="" && !props.home) {
      return (
      <div className="container-butons">
      <Botones direccion={props.direccion} nombreBoton={props.nombreBoton} />
      </div>)
     
-    } else if(contextLoginRegistro !== "" && props.home){
+    } else if(contextLoginRegistro!=="" && props.home){
      return(  
      <div className="container-avatar2">
-     <Avatar />
+     <Avatar payload={contextLoginRegistro} />
       </div>)
    
      

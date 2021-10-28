@@ -86,6 +86,9 @@ p{
     border: 1px solid #FF0000;
     
 }
+.link{
+    color:#4285F4;
+}
 
 @media (min-width:768px){
 

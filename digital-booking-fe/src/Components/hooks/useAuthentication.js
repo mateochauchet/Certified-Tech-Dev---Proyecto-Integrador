@@ -1,6 +1,7 @@
 import {useState } from 'react';
 import ContextLoginRegistro from '../Contexts/ContextLoginRegistro';
 import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -10,6 +11,7 @@ const useAuthentication = (username, password)=>{
 
     const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
 
+    const history = useHistory();
 
     const objetoPrueba = [{
         nombre: 'Ever',
@@ -26,7 +28,7 @@ const useAuthentication = (username, password)=>{
         if(usuario && usuario.password===password){
             console.log("you're in")
             setContextLoginRegistro(usuario)
-            window.location.href='http://localhost:3000/home'
+            history.push('/home')
 
         }else{
             console.log('wrong credentials')
