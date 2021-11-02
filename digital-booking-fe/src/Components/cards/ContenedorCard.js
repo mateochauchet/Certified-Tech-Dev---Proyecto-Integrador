@@ -11,7 +11,7 @@ function ContenedorCard() {
           {categorias.map( (c, i) =>
           < Card
           key={i}
-          titulo={c.titulo}
+          tituloCategoria={c.categoria}
           img={c.img}
           cantidad={c.cantidad}
          />

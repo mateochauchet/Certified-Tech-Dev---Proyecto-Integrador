@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+.heading{
+    background-color: #383B58;
+    color: #f0f0f0;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-shadow: inset 0px 20px 13px -10px rgba(0,0,0,0.24); 
+    box-shadow: inset 0px 20px 13px -10px rgba(0, 0, 0, 0.201); 
+    
+}
+.heading h1{
+    margin-top: 0;
+}
+.arrow{
+    margin-right: 10px;
+}
+
+.text-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.heading2{
+    background-color: #383b581e;
+    height: 80px;
+    -webkit-box-shadow: inset 0px 20px 7px -10px rgba(0,0,0,0.24); 
+    box-shadow: inset 0px 20px 7px -10px rgba(0, 0, 0, 0.201);
+    color: #383B58;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.text-heading2{
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+    margin-top: 14px;
+    width: 200px;
+    
+}
+.text-heading2 p{
+    font-weight: 500;
+    font-size: 14px;
+}

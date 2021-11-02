@@ -10,6 +10,8 @@ import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer"
 import './App.css'
 
+import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
+
  export default function App() {
 
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
@@ -48,6 +50,18 @@ import './App.css'
                 </Template>
               )}
             ></Route>
+
+            <Route
+              exact
+              path="/detail"
+              component={() => (
+                <Template >
+                   <ContainerDetalle />
+                </Template>
+              )}
+            ></Route>
+
+
           </Switch>
         </BrowserRouter>
       </ContextLoginRegistro.Provider>

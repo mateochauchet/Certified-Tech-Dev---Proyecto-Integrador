@@ -52,7 +52,7 @@ div .corazon {
 .cardsInfoParteDeArriba {
     display: flex;
     width: 100%;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     
 
