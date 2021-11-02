@@ -53,9 +53,9 @@ import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 
             <Route
               exact
-              path="/detail"
+              path="/detail/:idLink"
               component={() => (
-                <Template >
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                    <ContainerDetalle />
                 </Template>
               )}

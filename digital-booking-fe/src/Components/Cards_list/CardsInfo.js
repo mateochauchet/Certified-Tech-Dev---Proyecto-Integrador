@@ -5,8 +5,11 @@ import {Link} from 'react-router-dom';
 
 function CardsInfo(props) {
 
+  let verdetalle = (props.house.title).replace(/\s+/g, '')
+  let id = (props.house.id)
+
   let handleClick = () => {
-    console.log(props.house.title)
+    console.log((props.house.title).replace(/\s+/g, ''))
     
   }
   
@@ -45,7 +48,7 @@ function CardsInfo(props) {
 
 
       <div className="btnContainer">
-        <button className="cardBtn" onClick={handleClick}>Ver detalle</button>
+        <Link to={`/detail/${id}`}><button className="cardBtn" onClick={handleClick}>Ver detalle</button></ Link>
       </div>
 
     </div>
