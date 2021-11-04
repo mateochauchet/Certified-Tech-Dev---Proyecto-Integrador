@@ -41,7 +41,7 @@ function CardsInfo(props) {
           <FontAwesomeIcon icon={faWifi} />
         </div>
         <div className="cardsDescription">
-          <p>{props.house.description}<span>más... </span></p>
+          <p>{props.house.description.text1}</p>
         </div>
 
       </div>

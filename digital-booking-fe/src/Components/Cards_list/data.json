@@ -1,46 +1,271 @@
 [
+  {
+    "id": "1",
+    "img": "https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1460&q=80",
+    "categoria": "LOFT",
+    "title": "Hermitage Loft",
+    "puntaje": 9,
     
-    {
-      "id": "1",
-      "img": "https://static.wixstatic.com/media/ec3017_b550c23b3cee49db805847dc4da2612d~mv2_d_4288_2848_s_4_2.jpg/v1/fill/w_600,h_458,al_c,q_80,usm_0.66_1.00_0.01/ec3017_b550c23b3cee49db805847dc4da2612d~mv2_d_4288_2848_s_4_2.webp",
-      "categoria": "LOFT",
-      "title": "Hermitage Loft",
-      "puntaje": 9,
-      "location":"A 940m del centro",
-      "locationFull": "San Telmo, Ciudad Autónoma de Buenos Aires, Argentina",
-      "description":"En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires."
+    "description": {
+      "titulo": "Alójate en el corazón de Buenos Aires",
+      "text1": "En el corazón de San Telmo, disfruta de una estadía inspirada en las pasiones de Buenos Aires. Una ciudad asombrosa que combina la grandeza europea con la pasión latina. Puedes tenerlo todo! vive la experiencia en un amplio y confortable loft situado a solo unas calles de la avenida Alvear, de la avenida Quintana, del parque San Martín y del distito de Recoleta.",
+      "text2": "Hermitage Loft está completamente equipado con un area de trabajo para permitir el amplio disfrute de su estadia. Moderno y minimalista, con muchos detalles de comfort. Disfruta de un buffet de desayuno variado de 07:00 am a 10:00 am."
     },
-    {
-      "id": "2",
-      "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/51/cc/58/photo0jpg.jpg?w=900&h=-1&s=1",
-      "categoria": "LOFT",
-      "title": "Transylvania Loft",
-      "puntaje": 7,
-      "location":"A 940m del centro",
-      "locationFull": "San Telmo, Ciudad Autónoma de Buenos Aires, Argentina",
-      "description":"En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. "
-    },
-    {
-      "id": "3",
-      "img": "https://imgar.zonapropcdn.com/avisos/1/00/48/40/08/60/1200x1200/1778985548.jpg",
-      "categoria": "CASA",
-      "title": "Casa - Los Castores",
-      "puntaje": 9,
-      "location":"A 940m del centro",
-      "locationFull": "Los Castores, Nordelta",
-      "description":"Excelente casa en alquiler anual con calidad PREMIUM. "
-    },
-    {
-      "id": "4",
-      "img": "https://www.elliberal.com.ar/fotos/notas_bk/2013/10/524d7b6b90xx_messi3.jpg",
-      "categoria": "CASA",
-      "title": "Casa de Messi",
-      "puntaje": 6,
-      "location":"A 30m del centro",
-      "locationFull": "Barcelona, Ciudad Autónoma de Buenos Aires, Argentina",
-      "description":"Excelente casa en alquiler anual con calidad PREMIUM. "
-    }
+    "location": "A 940m del centro",
+    "locationFull": "San Telmo, Ciudad Autónoma de Buenos Aires, Argentina",
+    "imagenes": [
+      {
+        "original": "https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1495544515279-434b8d991640?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1495544515279-434b8d991640?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1602872029796-f4ab2010b10b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1602872029796-f4ab2010b10b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+       
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1600184669397-d1dcc83c7275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1600184669397-d1dcc83c7275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80"
+      }
+    ],
+    
+    "caracteristicas": [
+      {
+        "nombre": "Televisor",
+        "icono": ""
+      },
+      {
+        "nombre": "Estacionamiento",
+        "icono": ""
+      },
+      {
+        "nombre": "Aire Acondicionado",
+        "icono": ""
+      },
+      {
+        "nombre": "Pileta",
+        "icono": ""
+      },
+      {
+        "nombre": "Wifi",
+        "icono": ""
+      },
+      {
+        "nombre": "Apto mascotas",
+        "icono": ""
+      },
+      {
+        "nombre": "Baño",
+        "icono": ""
+      }
+    ]
+    
+  },
 
 
-  
+  {
+    "id": "2",
+    "img": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "categoria": "LOFT",
+    "title": "Transylvania",
+    "puntaje": 7,
+    "description": {
+      "titulo": "Gran Loft dentro del corazón de Mendoza",
+      "text1": "Ubicada en un barrio excepcional, a 5 minutos del Parque, muy cerca de la Calle Arístides (zona de bares y restaurantes) y a 10 minutos del centro de la ciudad. A una cuadra hay parada de bus turístico con el que podrás también recorrer toda la ciudad y alrededores",
+      "text2": "Transylvania, un espacio confortable tipo loft de techos altos y muy iluminada. Todo para el amplio disfrute de su estadia en este gran ambiente mendocino."
+    },
+    "location": "A 560m del parque",
+    "locationFull": "Mendoza, Ciudad y Capital provincial, Argentina",
+    
+    "imagenes": [
+      {
+        "original": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1591825381767-c7137b8eda0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1591825381767-c7137b8eda0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      },
+      {
+       "original": "https://images.unsplash.com/photo-1604629761628-5640ee399e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+       "thumbnail": "https://images.unsplash.com/photo-1604629761628-5640ee399e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1557127275-f8b5ba93e24e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1557127275-f8b5ba93e24e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1631684113153-15c584212053?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1631684113153-15c584212053?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+      }
+      
+    ],
+    "caracteristicas": [
+      {
+        "nombre": "Televisor",
+        "icono": ""
+      },
+      {
+        "nombre": "Estacionamiento",
+        "icono": ""
+      },
+      {
+        "nombre": "Aire Acondicionado",
+        "icono": ""
+      },
+      {
+        "nombre": "Pileta",
+        "icono": ""
+      },
+      {
+        "nombre": "Wifi",
+        "icono": ""
+      },
+      {
+        "nombre": "Cocina",
+        "icono": ""
+      }
+    ]
+  }
+  ,
+  {
+    "id": "3",
+    "img": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80",
+    "categoria": "VILLA",
+    "title": "Los Castores",
+    "puntaje": 9,
+    "description": {
+      "titulo": "Villa completa en la exclusiva Nordelta",
+      "text1": "Ubicada en un barrio excepcional, a 5 minutos del Parque, muy cerca de la Calle Arístides (zona de bares y restaurantes) y a 10 minutos del centro de la ciudad. A una cuadra hay parada de bus turístico con el que podrás también recorrer toda la ciudad y alrededores",
+      "text2": "Villa los Castores, un espacio confortable con un gran diseño moderno, muy iluminado y con detalles de lujo. Todo para el amplio disfrute de su estadia en este gran ambiente de Nordelta."
+    },
+    "location": "A 940m del centro",
+    "locationFull": "Los Castores, Nordelta, Ciudad Autónoma de Buenos Aires, Argentina",
+    "imagenes": [
+      {
+        "original": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1601002257790-ebe0966a85ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1476&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1601002257790-ebe0966a85ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1476&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1621626802138-544f167e2c7f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1621626802138-544f167e2c7f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1630427999287-692ff825c9d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1630427999287-692ff825c9d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1472&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1472&q=80"
+      }
+
+    ],
+    "caracteristicas": [
+      {
+        "nombre": "Televisor",
+        "icono": ""
+      },
+      {
+        "nombre": "Estacionamiento",
+        "icono": ""
+      },
+      {
+        "nombre": "Aire Acondicionado",
+        "icono": ""
+      },
+      {
+        "nombre": "Pileta",
+        "icono": ""
+      },
+      {
+        "nombre": "Wifi",
+        "icono": ""
+      },
+      {
+        "nombre": "Cocina",
+        "icono": ""
+      }
+    ]
+    
+  },
+  {
+    "id": "4",
+    "img": "https://www.elliberal.com.ar/fotos/notas_bk/2013/10/524d7b6b90xx_messi3.jpg",
+    "categoria": "CASA",
+    "title": "Casa de Messi",
+    "puntaje": 6,
+    "description": {
+      "titulo": "Alójate en la exclusiva One-Zero-Eco de Messi",
+      "text1": "Ubicada en un barrio excepcional, a 5 minutos del Parque, muy cerca de la Calle Arístides (zona de bares y restaurantes) y a 10 minutos del centro de la ciudad. A una cuadra hay parada de bus turístico con el que podrás también recorrer toda la ciudad y alrededores",
+      "text2": "Transylvania, un espacio confortable tipo loft de techos altos y muy iluminada. Todo para el amplio disfrute de su estadia en este gran ambiente mendocino."
+    },
+    "location": "A 30m del centro",
+    "locationFull": "Barcelona, Capital de la Comunidad Autónoma de Cataluña, España",
+    "imagenes": [
+      {
+        "original": "https://luisdegarrido.com/wp-content/uploads/2015/11/00_MESSI-ECO-HOUSE.jpg",
+        "thumbnail": "https://luisdegarrido.com/wp-content/uploads/2015/11/00_MESSI-ECO-HOUSE.jpg"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1541604193435-22287d32c2c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1541604193435-22287d32c2c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+      },
+      {
+        "original": "https://i.pinimg.com/originals/e0/73/ae/e073ae2a390c2cc9c4ae3d61e23f3ea8.jpg",
+        "thumbnail": "https://i.pinimg.com/originals/e0/73/ae/e073ae2a390c2cc9c4ae3d61e23f3ea8.jpg"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1623625434531-d130448273c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1623625434531-d130448273c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80"
+      }
+
+    ],
+    "caracteristicas": [
+      {
+        "nombre": "Televisor",
+        "icono": ""
+      },
+      {
+        "nombre": "Estacionamiento",
+        "icono": ""
+      },
+      {
+        "nombre": "Aire Acondicionado",
+        "icono": ""
+      },
+      {
+        "nombre": "Apto mascotas",
+        "icono": ""
+      },
+      {
+        "nombre": "Pileta",
+        "icono": ""
+      },
+      {
+        "nombre": "Wifi",
+        "icono": ""
+      },
+      {
+        "nombre": "Cocina",
+        "icono": ""
+      }
+    ]
+    
+  }
 ]
