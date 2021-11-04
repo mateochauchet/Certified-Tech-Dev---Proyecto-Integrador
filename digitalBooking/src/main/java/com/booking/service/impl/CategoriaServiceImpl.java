@@ -46,14 +46,15 @@ public class CategoriaServiceImpl implements ICategoriaService {
 
     @Override
     public Categoria insert(Categoria categoria) throws InvalidDataException, NotExistDataException, NotValidImage, IOException {
-        if(categoria.getDescripcion() == null || categoria.getTitulo() ==null)
+        if(categoria.getDescripcion() == null || categoria.getTitulo() ==null || categoria.getTitulo().trim() == "" || categoria.getDescripcion().trim() == "")
              throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
-        else if(categoria.getDescripcion().length()>100 || categoria.getTitulo().length()>50)
+        else if(categoria.getDescripcion().trim().length()>100 || categoria.getTitulo().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
-
         if(categoria.getImagen() != null && categoria.getImagen() != "")
             categoria.setImagen(StringBase64.saveImagen(categoria.getImagen()));
 
+        categoria.setDescripcion(categoria.getDescripcion().trim());
+        categoria.setTitulo(categoria.getTitulo().trim());
         return categoriaRepository.save(categoria);
     }
 
@@ -68,13 +69,16 @@ public class CategoriaServiceImpl implements ICategoriaService {
 
     @Override
     public Boolean update(Categoria categoria) throws InvalidDataException, NotExistDataException, NotValidImage, IOException, ResourcesNotFoundException {
-        if(categoria.getId() == null||categoria.getDescripcion() == null || categoria.getTitulo() ==null || categoria.getDescripcion() == "" || categoria.getTitulo() =="" )
+        if(categoria.getId() == null||categoria.getDescripcion() == null || categoria.getTitulo() ==null || categoria.getTitulo().trim() == "" || categoria.getDescripcion().trim() == "" )
             throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
-        else if(categoria.getDescripcion().length()>100 || categoria.getTitulo().length()>50)
+        else if(categoria.getDescripcion().trim().length()>100 || categoria.getTitulo().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
         if(readOne(categoria.getId()).isPresent()){
             if(categoria.getImagen() != null && categoria.getImagen() != "")
                 categoria.setImagen(StringBase64.saveImagen(categoria.getImagen()));
+
+            categoria.setDescripcion(categoria.getDescripcion().trim());
+            categoria.setTitulo(categoria.getTitulo().trim());
             categoriaRepository.save(categoria);
             return true;
         }else
