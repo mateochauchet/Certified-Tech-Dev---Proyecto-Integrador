@@ -13,6 +13,12 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class Categoria {
 
+    public Categoria(String titulo, String descripcion, String imagen) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+    }
+
     @Id
     @NotNull
     @Column(name="id_categoria")

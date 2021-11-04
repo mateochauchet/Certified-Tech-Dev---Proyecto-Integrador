@@ -55,7 +55,7 @@ public class CategoriaServiceImpl implements ICategoriaService {
 
         categoria.setDescripcion(categoria.getDescripcion().trim());
         categoria.setTitulo(categoria.getTitulo().trim());
-        return categoriaRepository.save(categoria);
+        return categoriaRepository.save(new Categoria(categoria.getTitulo(),categoria.getDescripcion(),categoria.getImagen()));
     }
 
     @Override

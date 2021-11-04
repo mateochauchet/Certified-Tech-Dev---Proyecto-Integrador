@@ -29,7 +29,7 @@ public class CiudadServiceImpl implements ICiudadService {
         else{
             ciudad.setNombre(ciudad.getNombre().trim());
             ciudad.setPais(ciudad.getPais().trim());
-            return ciudadRepository.save(ciudad);
+            return ciudadRepository.save(new Ciudad(ciudad.getNombre(), ciudad.getPais()));
         }
     }
 }

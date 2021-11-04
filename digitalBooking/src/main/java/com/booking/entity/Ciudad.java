@@ -16,6 +16,11 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class Ciudad {
 
+    public Ciudad(String nombre, String pais) {
+        this.nombre = nombre;
+        this.pais = pais;
+    }
+
     @Id
     @Column(name="id_ciudad")
     @Getter
