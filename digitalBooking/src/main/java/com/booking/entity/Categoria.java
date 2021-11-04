@@ -1,5 +1,6 @@
 package com.booking.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name="categoria")
@@ -45,4 +47,9 @@ public class Categoria {
     @Setter
     @Column(name="url_imagen", length = 100)
     private String imagen;
+
+    @Getter
+    @JsonIgnore
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private Set<Producto> productos;
 }

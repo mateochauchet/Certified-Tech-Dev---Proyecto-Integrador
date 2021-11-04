@@ -1,15 +1,14 @@
 package com.booking.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name= "imagen")
@@ -39,5 +38,10 @@ public class Ciudad {
     @NotNull
     @Size(max = 100)
     private String pais;
+
+    @Getter
+    @JsonIgnore
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    private Set<Producto> productos;
 
 }
