@@ -16,7 +16,7 @@
 }
 
 .impInfoContainer > div > h1{
-    
+    font-size: 28px;
     color: var(--secondary-bg-color);
     margin-top: 20px;
     margin-bottom: 10px;

@@ -25,7 +25,7 @@ function Buscador() {
     <div className="barSearch">
       <Select className="searchCity" placeholder={<div>A dónde vamos?</div>} options= {options} />
       <DateBuscador />
-      <Button name="Buscar"></Button>
+      <Button classN="primary" name="Buscar"></Button>
     </div>
   );
 }

@@ -1,0 +1,92 @@
+
+.fechas{
+    color: var(--secondary-bg-color);
+    margin-left: 10px;
+    font-size: 28px;
+}
+.cont-fechas{
+    background-color: #383b581e;
+    padding-top: 22px;
+    height: 540px;
+
+}
+
+.fechas-text{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   
+}
+.fechas-text p{
+    margin-left: 15px;
+    margin-right: 10px;
+
+}
+.calendar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    height: 350px;
+   
+    justify-content: space-around;
+}
+
+/* tablet */
+@media screen and (min-width: 768px){
+.fechas-text{
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    }
+    .fechas-text p{
+        width: 350px;
+    }
+    .cont-fechas{
+       
+        height: 500px;
+    }
+    .cont-calendar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .fechas-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+    }
+
+}    
+
+/* desktop */
+@media screen and (min-width: 1200px){
+    .cont-calendar{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .calendar{
+        margin-top: 20px;
+    }
+    .fechas-text{
+        background-color: white;
+        height: 135px;
+        width: 440px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.166);
+    }
+    
+    button.cal-btn{
+        width: 75%;
+    }
+    .cont-fechas{
+        height: 460px;
+    }
+}

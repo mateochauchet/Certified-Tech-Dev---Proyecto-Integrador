@@ -34,6 +34,7 @@ option{
     color: white;
     height: 250px;
     position: relative;
+    align-items: center;
   }
 
 .titleBusc{
@@ -56,15 +57,47 @@ option{
 
 .primary{
     background-color: var(--main-bg-color);
-    color: white;
-    width: 95%;
-    height: 40px;
-    margin: auto;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-    font-weight: 500;
-}
+    
+        color: white;
+        border: none;
+        
+        height: 40px;
+        border-radius: 5px;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+.secondary{
+    background-color: var(--main-bg-color);
+    
+        color: white;
+        border: none;
+        
+        height: 40px;
+        border-radius: 5px;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+}    
+
 
  /* tablet */
  @media screen and (min-width: 768px){
@@ -79,6 +112,9 @@ option{
     .primary {
         width: 200px;
         margin: 0;
+    }
+    .secondary{
+        width: 80%;
     }
     .searchCity{
         width: 44%;

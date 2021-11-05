@@ -6,7 +6,7 @@ function Caracteristicas({list}) {
         <>
         <div className="containerCaracteristicas">
             <h1>Qué ofrece este lugar?</h1>
-            <br /><hr />
+            <hr />
             <div className="items">
                 <ul type="none">
                     {list.map((c, i) => <li key={i} >{c.nombre}</li>)}

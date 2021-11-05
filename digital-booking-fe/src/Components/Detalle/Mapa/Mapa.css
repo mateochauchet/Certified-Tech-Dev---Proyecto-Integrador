@@ -1,0 +1,20 @@
+
+.mapa{
+    color: var(--secondary-bg-color);
+    margin-left: 10px;
+    font-size: 28px;
+}
+.cont-mapa{
+    background-color: #383b581e;
+    padding-top: 22px;
+    height: 540px;
+
+}
+hr{
+    margin-top: 10px;
+    height:1px;
+    border-width:0;
+    color:var(--main-bg-color);
+    background-color:var(--main-bg-color);
+    
+}

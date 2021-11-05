@@ -158,14 +158,16 @@ div.cardsInfo p{
     .cardsImgContainer {
         width: 100%;
         height: 231px;
-        position: relative;
+        
+        object-fit: cover;
     }
 
     .cardsImg{
-        width: 100%;
-        height: 283px;
+       
+        height: 120%;
         border-radius: 8px;
-        position: relative;
+        object-fit: cover;
+
     }
    
     div.cardsInfo .categoria {

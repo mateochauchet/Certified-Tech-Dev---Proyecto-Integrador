@@ -4,9 +4,13 @@ import { useParams } from 'react-router';
 import Galeria from './Galeria';
 import Descripcion from './Descripcion';
 import Caracteristicas from './Caracteristicas';
+import ContainerFechas from './Fechas/ContainerFechas';
 import PoliticsContainer from '../Politicas/PoliticsContainer';
+import ContainerMapa from "./Mapa/ContainerMapa"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTv } from "@fortawesome/free-solid-svg-icons";
+import DateBuscador from '../Buscador/DateBuscador';
+import Fecha from './Fechas/Fecha';
 
 
 
@@ -34,6 +38,12 @@ function ContainerDetalle() {
             line2={product.description.text2}/>
 
             <Caracteristicas list={product.caracteristicas}/>
+
+            <ContainerFechas />
+
+            <ContainerMapa />
+
+
             <PoliticsContainer 
             normas={product.politicas.normas}
             saludSeguridad= {product.politicas.saludSeguridad}
