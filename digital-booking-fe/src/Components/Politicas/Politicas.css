@@ -1,0 +1,54 @@
+
+
+.impInfoContainer{
+    width: 100vw;
+    text-align: left;
+    margin: 20px 0px;
+    padding: 0px 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.impInfoContainer > div > hr{
+    background-color: var(--main-bg-color);
+    color: var(--main-bg-color);
+    margin-bottom: 35px;
+}
+
+.impInfoContainer > div > h1{
+    
+    color: var(--secondary-bg-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.componentContainer > div > h3{
+    font-size: 1.3rem;
+    color: var(--secondary-bg-color);
+}
+
+.componentContainer > div > div > p{
+    color: black;
+    margin: 35px 0px;
+}
+
+@media screen and (min-width: 768px){
+    .componentContainer{
+        width: 100%;
+        display: flex;
+        flex: row;
+        flex-wrap: wrap;
+    }
+    .section1, .section2, .section3{
+        width: 50%;
+        margin: 10px 0px;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .section1, .section2, .section3{
+        width: 32%;
+    }
+}

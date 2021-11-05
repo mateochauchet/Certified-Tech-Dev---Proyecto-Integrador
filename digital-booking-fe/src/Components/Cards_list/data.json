@@ -5,7 +5,6 @@
     "categoria": "LOFT",
     "title": "Hermitage Loft",
     "puntaje": 9,
-    
     "description": {
       "titulo": "Alójate en el corazón de Buenos Aires",
       "text1": "En el corazón de San Telmo, disfruta de una estadía inspirada en las pasiones de Buenos Aires. Una ciudad asombrosa que combina la grandeza europea con la pasión latina. Puedes tenerlo todo! vive la experiencia en un amplio y confortable loft situado a solo unas calles de la avenida Alvear, de la avenida Quintana, del parque San Martín y del distito de Recoleta.",
@@ -25,7 +24,6 @@
       {
         "original": "https://images.unsplash.com/photo-1602872029796-f4ab2010b10b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
         "thumbnail": "https://images.unsplash.com/photo-1602872029796-f4ab2010b10b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-       
       },
       {
         "original": "https://images.unsplash.com/photo-1600184669397-d1dcc83c7275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
@@ -36,7 +34,6 @@
         "thumbnail": "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80"
       }
     ],
-    
     "caracteristicas": [
       {
         "nombre": "Televisor",
@@ -66,11 +63,24 @@
         "nombre": "Baño",
         "icono": ""
       }
-    ]
-    
+    ],
+    "politicas": {
+      "normas": {
+        "norma1": "Checkout 10:00",
+        "norma2": "No se permiten fiestas",
+        "norma3": "No fumar"
+      },
+      "saludSeguridad": {
+        "dato1": "Se aplican las pautas del distanciamiento social y otras normas relacionadas con el coronavirus",
+        "dato2": "Detector de humo",
+        "dato3": "Depósito de seguridad"
+      },
+      "cancelacion": {
+        "preSeleccionFecha": "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
+        "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
+      }
+    }
   },
-
-
   {
     "id": "2",
     "img": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -84,7 +94,6 @@
     },
     "location": "A 560m del parque",
     "locationFull": "Mendoza, Ciudad y Capital provincial, Argentina",
-    
     "imagenes": [
       {
         "original": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -95,8 +104,8 @@
         "thumbnail": "https://images.unsplash.com/photo-1591825381767-c7137b8eda0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
       },
       {
-       "original": "https://images.unsplash.com/photo-1604629761628-5640ee399e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-       "thumbnail": "https://images.unsplash.com/photo-1604629761628-5640ee399e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        "original": "https://images.unsplash.com/photo-1604629761628-5640ee399e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1604629761628-5640ee399e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
       },
       {
         "original": "https://images.unsplash.com/photo-1557127275-f8b5ba93e24e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
@@ -106,7 +115,6 @@
         "original": "https://images.unsplash.com/photo-1631684113153-15c584212053?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
         "thumbnail": "https://images.unsplash.com/photo-1631684113153-15c584212053?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
       }
-      
     ],
     "caracteristicas": [
       {
@@ -133,9 +141,24 @@
         "nombre": "Cocina",
         "icono": ""
       }
-    ]
-  }
-  ,
+    ],
+    "politicas": {
+      "normas": {
+        "norma1": "Checkout 10:00",
+        "norma2": "No se permiten fiestas",
+        "norma3": "No fumar"
+      },
+      "saludSeguridad": {
+        "dato1": "Se aplican las pautas del distanciamiento social y otras normas relacionadas con el coronavirus",
+        "dato2": "Detector de humo",
+        "dato3": "Depósito de seguridad"
+      },
+      "cancelacion": {
+        "preSeleccionFecha": "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
+        "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
+      }
+    }
+  },
   {
     "id": "3",
     "img": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80",
@@ -170,7 +193,6 @@
         "original": "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1472&q=80",
         "thumbnail": "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1472&q=80"
       }
-
     ],
     "caracteristicas": [
       {
@@ -197,8 +219,23 @@
         "nombre": "Cocina",
         "icono": ""
       }
-    ]
-    
+    ],
+    "politicas": {
+      "normas": {
+        "norma1": "Checkout 10:00",
+        "norma2": "No se permiten fiestas",
+        "norma3": "No fumar"
+      },
+      "saludSeguridad": {
+        "dato1": "Se aplican las pautas del distanciamiento social y otras normas relacionadas con el coronavirus",
+        "dato2": "Detector de humo",
+        "dato3": "Depósito de seguridad"
+      },
+      "cancelacion": {
+        "preSeleccionFecha": "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
+        "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
+      }
+    }
   },
   {
     "id": "4",
@@ -234,7 +271,6 @@
         "original": "https://images.unsplash.com/photo-1623625434531-d130448273c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80",
         "thumbnail": "https://images.unsplash.com/photo-1623625434531-d130448273c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80"
       }
-
     ],
     "caracteristicas": [
       {
@@ -265,7 +301,24 @@
         "nombre": "Cocina",
         "icono": ""
       }
-    ]
+    ],
+    "politicas": {
+      "normas": {
+        "norma1": "Checkout 10:00",
+        "norma2": "No se permiten fiestas",
+        "norma3": "No fumar"
+      },
+      "saludSeguridad": {
+        "dato1": "Se aplican las pautas del distanciamiento social y otras normas relacionadas con el coronavirus.",
+        "dato2": "Detector de humo",
+        "dato3": "Depósito premium de seguridad"
+      },
+      "cancelacion": {
+        "preSeleccionFecha": "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
+        "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
+      }
+    }
     
+
   }
 ]

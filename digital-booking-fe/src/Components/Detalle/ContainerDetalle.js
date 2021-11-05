@@ -4,8 +4,10 @@ import { useParams } from 'react-router';
 import Galeria from './Galeria';
 import Descripcion from './Descripcion';
 import Caracteristicas from './Caracteristicas';
+import PoliticsContainer from '../Politicas/PoliticsContainer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTv } from "@fortawesome/free-solid-svg-icons";
+
 
 
 
@@ -32,6 +34,10 @@ function ContainerDetalle() {
             line2={product.description.text2}/>
 
             <Caracteristicas list={product.caracteristicas}/>
+            <PoliticsContainer 
+            normas={product.politicas.normas}
+            saludSeguridad= {product.politicas.saludSeguridad}
+            cancelacion={product.politicas.cancelacion}/>
 
         </>
 
