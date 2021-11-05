@@ -38,11 +38,11 @@ class ProductoServiceImplTest {
 
     @Test
     public void insert() throws InvalidDataException, NotExistDataException {
-        Producto producto2 = new Producto();
-        producto2.setNombre("pp");
-        producto2.setDescripcion("descripcion");
-        Producto respuesta = productoService.insert(producto2);
-        Assertions.assertTrue(respuesta.getNombre() == producto2.getNombre());
+        Producto producto1 = new Producto();
+        producto1.setNombre("pp");
+        producto1.setDescripcion("descripcion1");
+        Producto respuesta = productoService.insert(producto1);
+        Assertions.assertTrue(respuesta.getNombre() == producto1.getNombre());
     }
 
 }

@@ -24,7 +24,6 @@ public class Categoria {
     @Id
     @NotNull
     @Column(name="id_categoria")
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private Long id;

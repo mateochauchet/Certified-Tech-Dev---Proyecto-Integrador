@@ -25,26 +25,22 @@ public class ProductoServiceImpl implements IProductoService {
         else if(producto.getDescripcion().trim().length()>250 || producto.getNombre().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 250 caracteres)\n o el nombre (no puede ser mayor a 50 caracteres) ");
 
-        producto.setDescripcion(producto.getDescripcion().trim());
-              producto.setNombre(producto.getNombre().trim());
-             return productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion()));
+             return productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getCategoria(),producto.getCiudad(),producto.getCaracteristicas()));
     }
 
     @Override
     public List<Producto> readAll(){
 
-        List<Producto> productos = productoRepository.findAll();
-
-        return productos;
+        return productoRepository.findAll();
     }
 
     @Override
     public Optional<Producto> readOne(Long id) throws ResourcesNotFoundException{
-        Optional<Producto> respuesta = productoRepository.findById(id);
-        if(!respuesta.isPresent())
+        Optional<Producto> productos = productoRepository.findById(id);
+        if(!productos.isPresent())
             throw new ResourcesNotFoundException("el producto con Id "+ id+ " no existe");
 
-        return respuesta;
+        return productos;
     }
 
     @Override

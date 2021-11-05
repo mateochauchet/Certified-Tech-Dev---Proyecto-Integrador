@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
-@Table(name= "imagen")
+@Table(name= "ciudad")
 @NoArgsConstructor
 public class Ciudad {
 
@@ -23,6 +23,7 @@ public class Ciudad {
     @Id
     @Column(name="id_ciudad")
     @Getter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="nombre",length = 50)

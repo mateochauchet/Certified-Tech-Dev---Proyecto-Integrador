@@ -1,24 +1,24 @@
 CREATE DATABASE digital_booking;
 USE digital_booking;
 
-CREATE TABLE categorias(
+CREATE TABLE categoria(
   id_categoria INT PRIMARY KEY AUTO_INCREMENT,
   titulo VARCHAR(50) NOT NULL,
   descripcion VARCHAR(100) NOT NULL,
   url_imagen VARCHAR(100) );
 
-  CREATE TABLE caracteristicas(
+  CREATE TABLE caracteristica(
  id_caracteristica INT PRIMARY KEY AUTO_INCREMENT,
  nombre VARCHAR(50) NOT NULL,
  icono VARCHAR(100));
  
- CREATE TABLE ciudades(
+ CREATE TABLE ciudad(
   id_ciudad INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
   pais VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE productos(
+CREATE TABLE producto(
  id_producto INT PRIMARY KEY AUTO_INCREMENT,
  nombre VARCHAR(50) NOT NULL,
  descripcion VARCHAR(250) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE productos(
  CONSTRAINT producto_categoria_fk FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria)
  );
  
- CREATE TABLE imagenes(
+ CREATE TABLE imagen(
   id_imagen INT PRIMARY KEY AUTO_INCREMENT,
   titulo VARCHAR(50) NOT NULL,
   url_imagen VARCHAR(200),
@@ -39,7 +39,7 @@ CREATE TABLE productos(
    CONSTRAINT imagen_producto_fk FOREIGN KEY (id_producto) REFERENCES producto (id_producto)
 );
  
- CREATE TABLE productos_caracteristicas(
+ CREATE TABLE productos_caracteristica(
 	id_producto_caracteristica INT PRIMARY KEY AUTO_INCREMENT,
 	id_caracteristica INT NOT NULL,
 	id_producto INT NOT NULL,

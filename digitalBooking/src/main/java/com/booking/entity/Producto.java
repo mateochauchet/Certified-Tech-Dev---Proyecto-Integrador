@@ -10,12 +10,10 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name="producto")
 public class Producto {
 
     @Id
-    @NotNull
     @Column(name="id_producto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
@@ -36,21 +34,21 @@ public class Producto {
     private String descripcion;
 
     @Getter
-    @ManyToOne
-    @JoinColumn(name="id_categoria", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="id_categoria",  nullable = false)
     private Categoria categoria;
 
     @Getter
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_ciudad", nullable = false)
     private Ciudad ciudad;
 
-    @Getter
-    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
+   @Getter
+   @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<Imagen> imagenes = new HashSet<>();
 
     @Getter
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "id_producto"),
@@ -58,8 +56,12 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas;
 
-    public Producto(String nombre, String descripcion) {
+    public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Caracteristica> caracteristicas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+       this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
     }
 }

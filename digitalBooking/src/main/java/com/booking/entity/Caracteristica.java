@@ -15,7 +15,6 @@ import java.util.Set;
 public class Caracteristica {
 
     @Id
-    @NotNull
     @Column(name = "id_caracteristica")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
