@@ -1,20 +1,18 @@
-
-.mapa{
-    color: var(--secondary-bg-color);
-    margin-left: 10px;
-    font-size: 28px;
+.map-container {
+  height: 300px;
+  width: 80%;
+  margin-top: 20px;
+  border-radius: 30px;
+  margin: auto;
 }
-.cont-mapa{
-    background-color: #383b581e;
-    padding-top: 22px;
-    height: 540px;
 
+.mapboxgl-ctrl {
+  display: none;
 }
-hr{
-    margin-top: 10px;
-    height:1px;
-    border-width:0;
-    color:var(--main-bg-color);
-    background-color:var(--main-bg-color);
-    
+/* desktop */
+@media screen and (min-width: 1200px){
+    .map-container {
+        height: 420px;
+
+    }
 }

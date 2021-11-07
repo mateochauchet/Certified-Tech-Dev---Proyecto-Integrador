@@ -7,6 +7,7 @@ import Caracteristicas from './Caracteristicas';
 import ContainerFechas from './Fechas/ContainerFechas';
 import PoliticsContainer from '../Politicas/PoliticsContainer';
 import ContainerMapa from "./Mapa/ContainerMapa"
+import Mapa from "./Mapa/Mapa"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTv } from "@fortawesome/free-solid-svg-icons";
 import DateBuscador from '../Buscador/DateBuscador';
@@ -41,8 +42,12 @@ function ContainerDetalle() {
 
             <ContainerFechas />
 
-            <ContainerMapa />
-
+            <ContainerMapa 
+            location={product.locationFull}
+            lng={product.coordenadas.lng} 
+            lat={product.coordenadas.lat} 
+            loc={product.description.titulo} />
+            
 
             <PoliticsContainer 
             normas={product.politicas.normas}

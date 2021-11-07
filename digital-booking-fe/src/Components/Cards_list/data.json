@@ -12,6 +12,10 @@
     },
     "location": "A 940m del centro",
     "locationFull": "San Telmo, Ciudad Autónoma de Buenos Aires, Argentina",
+    "coordenadas": {
+      "lng": -58.390,
+      "lat": -34.588512
+    },
     "imagenes": [
       {
         "original": "https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
@@ -94,6 +98,10 @@
     },
     "location": "A 560m del parque",
     "locationFull": "Mendoza, Ciudad y Capital provincial, Argentina",
+    "coordenadas": {
+      "lng": -68.849455,
+      "lat": -32.89196
+    },
     "imagenes": [
       {
         "original": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -168,10 +176,14 @@
     "description": {
       "titulo": "Villa completa en la exclusiva Nordelta",
       "text1": "Perfecta mezcla de lo encantador, moderno y natural. Una villa ubicada en un barrio excepcional, a 5 minutos del Parque, muy cerca de lugares imperdibles para cenar, beber y festejar. y a 10 minutos del centro de la ciudad. A una cuadra hay parada de bus turístico con el que podrás también recorrer toda la ciudad y alrededores",
-      "text2": "Villa los Castores, un espacio confortable con un gran diseño moderno, muy iluminado y con detalles de lujo. Todo para el amplio disfrute de su estadia en este gran ambiente de Nordelta. La villa está próxima al Golf de Nordelta, donde se podrá disfrutar de una de las mejoras canchas de Golf de la Argentina. También se encuentra cerca del Mercado del Puerto de Frutos del Tigre y del Parque de la Costa."
+      "text2": "Villa los Castores, un espacio confortable con un gran diseño moderno, muy iluminado y con detalles de lujo. Todo para el amplio disfrute de su estadia en este gran ambiente de Nordelta. La villa está a 4km al Club de Golf de Nordelta, donde se podrá disfrutar de una de las mejoras canchas de Golf de la Argentina. "
     },
-    "location": "A 940m del centro",
+    "location": "A 4km del Club de Golf",
     "locationFull": "Los Castores, Nordelta, Ciudad Autónoma de Buenos Aires, Argentina",
+    "coordenadas": {
+      "lng": -58.6612251,
+      "lat": -34.4074509
+    },
     "imagenes": [
       {
         "original": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80",
@@ -245,11 +257,15 @@
     "puntaje": 6,
     "description": {
       "titulo": "Alójate en la exclusiva One-Zero-Eco de Messi",
-      "text1": "Para los amantes del fútbol y del buen gusto!, una vivienda premium ubicada Situada a solo 20 kilómetros del Camp Nou, la casa de Messi cuenta con un pequeño campo de fútbol, ​​una piscina, un gimnasio cubierto y un parque completo. A una cuadra, la zona turística por la que podrás disfrutar de toda la ciudad y alrededores",
+      "text1": "Para los amantes del fútbol y del buen gusto!, una vivienda premium ubicada Situada a solo 18 kilómetros del Camp Nou, la casa de Messi cuenta con un pequeño campo de fútbol, ​​una piscina, un gimnasio cubierto y un parque completo. A una cuadra, la zona turística por la que podrás disfrutar de toda la ciudad y alrededores",
       "text2": "One-Zero-Eco es un espacio exclusivo de techos altos y muy iluminada, con vistas panorámicas a Bellamar. Todo un referente arquitectónico para las nuevas generaciones"
     },
     "location": "A 30m del centro",
-    "locationFull": "Barcelona, Capital de la Comunidad Autónoma de Cataluña, España",
+    "locationFull": "Castelldefels, Barcelona, Capital de la Comunidad Autónoma de Cataluña, España",
+    "coordenadas": {
+      "lng": 1.98770,
+      "lat": 41.2817138
+    },
     "imagenes": [
       {
         "original": "https://luisdegarrido.com/wp-content/uploads/2015/11/00_MESSI-ECO-HOUSE.jpg",
@@ -318,7 +334,5 @@
         "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
       }
     }
-    
-
   }
 ]

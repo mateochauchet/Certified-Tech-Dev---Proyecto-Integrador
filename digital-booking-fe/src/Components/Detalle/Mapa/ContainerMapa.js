@@ -1,11 +1,17 @@
-import './Mapa.css'
-function ContainerMapa() {
-    return ( 
+import './ContainerMapa.css'
+import Mapa from './Mapa';
+
+function ContainerMapa({ location, lng, lat }) {
+    return (
         <>
-        <div className="cont-mapa">
-                <h1 className="mapa">Dónde vas a estar?</h1>
+            <div className="cont-mapa">
+                <h1 className="title-map">Dónde vas a estar?</h1>
                 <hr />
-        </div>        
+                <h3>{location}</h3>
+                
+                <Mapa lng={lng} lat={lat} />
+                
+            </div>        
         </>
      );
 }

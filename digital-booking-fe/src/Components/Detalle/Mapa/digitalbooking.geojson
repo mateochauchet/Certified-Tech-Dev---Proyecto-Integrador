@@ -1,0 +1,49 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Hermitage Loft",
+        "description": "A beautiful Loft in Buenos Aires"
+      },
+      "geometry": {
+        "coordinates": [-58.390, -34.588512],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+          "title": "Transylvania",
+          "description": "Gran Loft dentro del corazón de Mendoza"
+      },
+      "geometry": {
+          "coordinates": [-68.849455, -32.89196],
+          "type": "Point"
+      }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+        "title": "Villa Los Castores",
+        "description": "Villa completa en la exclusiva Nordelta"
+    },
+    "geometry": {
+        "coordinates": [-58.6612251, -34.4074509],
+        "type": "Point"
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "title": "One-Zero-Eco de Messi",
+        "description": "Para los amantes del fútbol y del buen gusto!"
+    },
+    "geometry": {
+        "coordinates": [1.98770, 41.2817138],
+        "type": "Point"
+    }
+}
+  ],
+  "type": "FeatureCollection"
+}

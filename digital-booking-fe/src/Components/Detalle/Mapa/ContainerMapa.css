@@ -1,0 +1,29 @@
+.cont-mapa >h3{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+.title-map{
+    color: var(--secondary-bg-color);
+    margin-left: 10px;
+    font-size: 28px;
+}
+.cont-mapa{
+    padding-top: 22px;
+    height: 430px;
+}
+hr{
+    margin-top: 10px;
+    height:1px;
+    border-width:0;
+    color:var(--main-bg-color);
+    background-color:var(--main-bg-color);
+    
+}
+/* desktop */
+@media screen and (min-width: 1200px){
+    .cont-mapa {
+        height: 520px;
+
+    }
+}
