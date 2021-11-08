@@ -27,7 +27,7 @@ public class CategoriaServiceImpl implements ICategoriaService {
         if(!respuesta.isPresent())
             throw new ResourcesNotFoundException("la categoria con Id "+ id+ " no existe");
 
-        if(respuesta.get().getImagen() != null || respuesta.get().getImagen() != "")
+        if(respuesta.get().getImagen() != null && respuesta.get().getImagen() != "" && respuesta.get().getImagen().length()>0)
             respuesta.get().setImagen(StringBase64.imageToBase64(respuesta.get().getImagen()));
 
         return respuesta;
@@ -38,7 +38,7 @@ public class CategoriaServiceImpl implements ICategoriaService {
 
         List<Categoria> categorias = categoriaRepository.findAll();
         for (Categoria categoria: categorias) {
-            if(categoria.getImagen() != null || categoria.getImagen() != "")
+            if(categoria.getImagen() != null && categoria.getImagen() != ""  && categoria.getImagen().length()>0 )
                 categoria.setImagen(StringBase64.imageToBase64(categoria.getImagen()));
         }
         return categorias;
@@ -50,7 +50,7 @@ public class CategoriaServiceImpl implements ICategoriaService {
              throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
         else if(categoria.getDescripcion().trim().length()>100 || categoria.getTitulo().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
-        if(categoria.getImagen() != null && categoria.getImagen() != "")
+        if(categoria.getImagen() != null && categoria.getImagen() != "" && categoria.getImagen().length()>0)
             categoria.setImagen(StringBase64.saveImagen(categoria.getImagen()));
 
         categoria.setDescripcion(categoria.getDescripcion().trim());
@@ -74,7 +74,7 @@ public class CategoriaServiceImpl implements ICategoriaService {
         else if(categoria.getDescripcion().trim().length()>100 || categoria.getTitulo().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
         if(readOne(categoria.getId()).isPresent()){
-            if(categoria.getImagen() != null && categoria.getImagen() != "")
+            if(categoria.getImagen() != null && categoria.getImagen() != "" && categoria.getImagen().length()>0)
                 categoria.setImagen(StringBase64.saveImagen(categoria.getImagen()));
 
             categoria.setDescripcion(categoria.getDescripcion().trim());
