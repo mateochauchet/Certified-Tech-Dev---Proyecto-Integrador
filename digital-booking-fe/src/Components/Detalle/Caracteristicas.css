@@ -40,4 +40,8 @@ hr{
     .items ul{
         height: 90px;
     }
+        .containerCaracteristicas{
+            margin-left: 20px;
+      }
+    
 }

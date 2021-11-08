@@ -51,4 +51,5 @@
     .section1, .section2, .section3{
         width: 32%;
     }
+    .impInfoContainer>h1{margin-left: 20px;}
 }
