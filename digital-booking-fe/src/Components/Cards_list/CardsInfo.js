@@ -35,20 +35,17 @@ function CardsInfo(props) {
           <p>{props.house.location} <span>- VER EN MAPA </span> </p>
         </div>
 
-
-
         <div className="cardsIcons">
           <FontAwesomeIcon icon={faWifi} />
         </div>
         <div className="cardsDescription">
           <p>{props.house.description.text1}</p>
         </div>
-
       </div>
 
 
       <div className="btnContainer">
-        <Link to={`/detail/${id}`}><button className="cardBtn" onClick={handleClick}>Ver detalle</button></ Link>
+        <Link to={`/productos/${id}`}><button className="cardBtn" onClick={handleClick}>Ver detalle</button></ Link>
       </div>
 
     </div>

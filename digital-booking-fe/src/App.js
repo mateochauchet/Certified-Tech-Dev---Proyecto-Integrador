@@ -75,7 +75,7 @@ import { getProductos, getProductosByCategoria, getProductosByCiudad} from './se
 
             <Route
               exact
-              path="/detail/:idLink"
+              path="/productos/:idLink"
               component={() => (
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                    <ContainerDetalle />

@@ -38,7 +38,7 @@ function ContainerDetalle() {
             line1={product.description.text1}
             line2={product.description.text2}/>
 
-            <Caracteristicas list={product.caracteristicas}/>
+            <Caracteristicas list={product.caracteristicas} />
 
             <ContainerFechas />
 

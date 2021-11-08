@@ -41,31 +41,27 @@
     "caracteristicas": [
       {
         "nombre": "Televisor",
-        "icono": ""
+        "iconName": "tv"
       },
       {
         "nombre": "Estacionamiento",
-        "icono": ""
-      },
-      {
-        "nombre": "Aire Acondicionado",
-        "icono": ""
+        "iconName": "parking"
       },
       {
         "nombre": "Pileta",
-        "icono": ""
+        "iconName": "swimmer"
       },
       {
         "nombre": "Wifi",
-        "icono": ""
+        "iconName": "wifi"
       },
       {
         "nombre": "Apto mascotas",
-        "icono": ""
+        "iconName": "dog"
       },
       {
         "nombre": "Baño",
-        "icono": ""
+        "iconName": "toilet"
       }
     ],
     "politicas": {
@@ -126,29 +122,27 @@
     ],
     "caracteristicas": [
       {
-        "nombre": "Televisor",
-        "icono": ""
+        "nombre": "Apto mascotas",
+        "iconName": "dog"
+      },
+      {
+        "nombre": "Baño",
+        "iconName": "toilet"
       },
       {
         "nombre": "Estacionamiento",
-        "icono": ""
-      },
-      {
-        "nombre": "Aire Acondicionado",
-        "icono": ""
-      },
-      {
-        "nombre": "Pileta",
-        "icono": ""
+        "iconName": "parking"
       },
       {
         "nombre": "Wifi",
-        "icono": ""
+        "iconName": "wifi"
       },
       {
         "nombre": "Cocina",
-        "icono": ""
+        "iconName": "utensils"
       }
+
+      
     ],
     "politicas": {
       "normas": {
@@ -208,29 +202,30 @@
     ],
     "caracteristicas": [
       {
-        "nombre": "Televisor",
-        "icono": ""
-      },
-      {
         "nombre": "Estacionamiento",
-        "icono": ""
+        "iconName": "parking"
       },
       {
-        "nombre": "Aire Acondicionado",
-        "icono": ""
-      },
-      {
-        "nombre": "Pileta",
-        "icono": ""
-      },
-      {
-        "nombre": "Wifi",
-        "icono": ""
+        "nombre": "Baño",
+        "iconName": "toilet"
       },
       {
         "nombre": "Cocina",
-        "icono": ""
+        "iconName": "utensils"
+      },
+      {
+        "nombre": "Pileta",
+        "iconName": "swimmer"
+      },
+      {
+        "nombre": "Wifi",
+        "iconName": "wifi"
+      },
+      {
+        "nombre": "Apto mascotas",
+        "iconName": "dog"
       }
+      
     ],
     "politicas": {
       "normas": {
@@ -291,31 +286,31 @@
     "caracteristicas": [
       {
         "nombre": "Televisor",
-        "icono": ""
+        "iconName": "tv"
       },
       {
         "nombre": "Estacionamiento",
-        "icono": ""
-      },
-      {
-        "nombre": "Aire Acondicionado",
-        "icono": ""
-      },
-      {
-        "nombre": "Apto mascotas",
-        "icono": ""
+        "iconName": "parking"
       },
       {
         "nombre": "Pileta",
-        "icono": ""
+        "iconName": "swimmer"
       },
       {
         "nombre": "Wifi",
-        "icono": ""
+        "iconName": "wifi"
       },
       {
-        "nombre": "Cocina",
-        "icono": ""
+        "nombre": "Apto mascotas",
+        "iconName": "dog"
+      },
+      {
+        "nombre": "Baño",
+        "iconName": "toilet"
+      },
+      {
+        "nombre": "Seguridad Privada",
+        "iconName": "lock"
       }
     ],
     "politicas": {
