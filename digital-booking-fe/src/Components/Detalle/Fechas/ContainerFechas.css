@@ -88,5 +88,9 @@
     }
     .cont-fechas{
         height: 460px;
+        
+    }
+    .fechas{
+        margin-left: 20px;
     }
 }
