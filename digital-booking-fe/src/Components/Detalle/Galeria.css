@@ -9,7 +9,7 @@
   position: absolute;
   top: 0;
   height: 210px;
-  width: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
 }
@@ -21,7 +21,7 @@
   display: none;
 }
 .image-gallery-image {
-  max-width: 100%;
+  width: 100%;
   
 }
 .image-gallery-slides {
@@ -30,7 +30,7 @@
 }
 
 .image-gallery-content {
-  max-height: 100%;
+  max-height: 100vh;
   display: flex;
   align-items: center;
 }
@@ -55,7 +55,13 @@
 @media screen and (min-width: 768px) {
   .image-gallery-slide {
     height: 280px;
+    object-fit: none;
+    
   }
+  .image-gallery-image{
+    object-fit: cover !important;
+  }
+
 }
 
 /* desktop */
