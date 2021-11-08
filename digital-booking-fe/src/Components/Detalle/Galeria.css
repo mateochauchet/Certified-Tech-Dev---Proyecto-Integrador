@@ -8,7 +8,7 @@
   left: 0;
   position: absolute;
   top: 0;
-  height: 240px;
+  height: 210px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -22,6 +22,7 @@
 }
 .image-gallery-image {
   max-width: 100%;
+  
 }
 .image-gallery-slides {
   display: flex;
@@ -30,7 +31,6 @@
 
 .image-gallery-content {
   max-height: 100%;
-
   display: flex;
   align-items: center;
 }
@@ -206,7 +206,7 @@
     position: absolute;
     right: 10px;
     bottom: 20px;
-    z-index: 9;
+    z-index: 3;
     border-radius: 8px;
     color: white;
     font-weight: 600;
