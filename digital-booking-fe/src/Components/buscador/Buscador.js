@@ -5,10 +5,14 @@ import Select from 'react-select'
 import cityList from './city.json'
 import Button from "./Button";
 import DateBuscador from "./DateBuscador";
+import { useState} from "react";
 
 
 
-function Buscador() {
+function Buscador(props) {
+
+  const [ciudad,setCiudad] = useState([]);
+
   let options =
     cityList.map((c,i) => ({
       key:{i}, value: c.city, label: (
@@ -20,12 +24,16 @@ function Buscador() {
     )
     })
   );
+
+  const elegirCiudad = (value) => {
+    setCiudad(value.value)
+  }
  
   return (
     <div className="barSearch">
-      <Select className="searchCity" placeholder={<div>A dónde vamos?</div>} options= {options} />
+      <Select className="searchCity" placeholder={<div>A dónde vamos?</div>} options= {options} onChange={elegirCiudad} />
       <DateBuscador />
-      <Button classN="primary" name="Buscar"></Button>
+      <Button classN="primary" name="Buscar" cambiarCiudad={props.cambiarCiudad} ciudad={ciudad} ></Button>
     </div>
   );
 }

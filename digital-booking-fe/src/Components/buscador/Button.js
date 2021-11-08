@@ -1,6 +1,6 @@
-function Button({name, classN}) {
+function Button({name, classN, cambiarCiudad, ciudad}) {
     return ( 
-        <button className={classN}>{name}</button>
+        <button className={classN} onClick={() => cambiarCiudad(ciudad)} >{name}</button>
      );
 }
 

@@ -2,7 +2,7 @@ import './card1.css'
 import Card from './Card.js'
 import categorias from './categorias.json'
 
-function ContenedorCard() {
+function ContenedorCard(props) {
     return ( 
         <>
         <h2 className="titleCont">Buscar por tipo de Alojamiento</h2>
@@ -14,6 +14,7 @@ function ContenedorCard() {
           tituloCategoria={c.categoria}
           img={c.img}
           cantidad={c.cantidad}
+          cambiarCategoria={props.cambiarCategoria}
          />
         )}
         </section>
