@@ -25,14 +25,14 @@ import { getProductos, getProductosByCategoria, getProductosByCiudad} from './se
   } ,[]);
     
   const cambiarCiudad = async (value) => {
-    //const productJson = await getProductosByCiudad(value.replace(/ /g,""))
-    //setProductList(productJson)
+    // const productJson = await getProductosByCiudad(value.replace(/ /g,""))
+    // setProductList(productJson)
     console.log(value.replace(/ /g,""))
   }
 
   const cambiarCategoria = async (categoria) => {
-    //const productJson = await getProductosByCategoria(categoria.replace(/ /g,""))
-    //setProductList(productJson)
+    // const productJson = await getProductosByCategoria(categoria.replace(/ /g,""))
+    // setProductList(productJson)
     console.log(categoria.replace(/ /g,""))
   }
 

@@ -6,8 +6,6 @@ import {Link} from 'react-router-dom'
 
 
 function Heading({titulo, categoria, location, puntaje}) {
-
-    
     
     return ( 
         <>
@@ -20,8 +18,6 @@ function Heading({titulo, categoria, location, puntaje}) {
             <Link className="link-arrow" to="/home"><FontAwesomeIcon icon={faChevronLeft} /></Link>
             </div>
              
-            
-
         </div>
         <div className="heading2">
             <div className="text-heading2">
@@ -31,8 +27,6 @@ function Heading({titulo, categoria, location, puntaje}) {
             <CardsPuntaje style="cardsPuntajeRow" puntaje={puntaje} />
         </div>
         </>
-
-
      );
 }
 

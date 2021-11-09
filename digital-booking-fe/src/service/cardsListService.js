@@ -6,6 +6,12 @@ export async function getProductos () {
     return Array.isArray(resJson) ?  resJson :  [resJson]
 } 
 
+export async function getProductosById (id) {
+    const  response = await fetch(`${baseUrl}/categoria/${id}`);
+    const resJson = await response.json();
+    return Array.isArray(resJson) ?  resJson :  [resJson]
+}
+
 export async function getProductosByCategoria (q) {
     const  response = await fetch(`${baseUrl}/categoria/${q}`);
     const resJson = await response.json();
@@ -21,6 +27,7 @@ export async function getProductosByCiudad (q) {
 
 export default {
     getProductos,
+    getProductosById,
     getProductosByCategoria,
     getProductosByCiudad
 }
