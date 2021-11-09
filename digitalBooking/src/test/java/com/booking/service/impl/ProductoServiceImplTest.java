@@ -37,7 +37,7 @@ class ProductoServiceImplTest {
     }
 
     @Test
-    public void insert() throws InvalidDataException, NotExistDataException {
+    public void insert() throws InvalidDataException, NotExistDataException, ResourcesNotFoundException, IOException {
         Producto producto1 = new Producto();
         producto1.setNombre("pp");
         producto1.setDescripcion("descripcion1");

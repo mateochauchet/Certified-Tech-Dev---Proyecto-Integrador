@@ -47,8 +47,5 @@ public class Categoria {
     @Column(name="url_imagen", length = 100)
     private String imagen;
 
-    @Getter
-    @JsonIgnore
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-    private Set<Producto> productos;
+
 }

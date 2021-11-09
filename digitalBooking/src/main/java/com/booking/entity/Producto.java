@@ -1,5 +1,6 @@
 package com.booking.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,23 +35,27 @@ public class Producto {
     private String descripcion;
 
     @Getter
-    @ManyToOne(cascade = CascadeType.ALL)
+    @Setter
+    @ManyToOne
     @JoinColumn(name="id_categoria",  nullable = false)
     private Categoria categoria;
 
     @Getter
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_ciudad", nullable = false)
+    @Setter
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad", nullable = false)
     private Ciudad ciudad;
 
    @Getter
-   @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+   @Setter
+   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Imagen> imagenes = new HashSet<>();
 
     @Getter
+    @Setter
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "producto_caracteristica",
+            name = "productos_caracteristica",
             joinColumns = @JoinColumn(name = "id_producto"),
             inverseJoinColumns = @JoinColumn(name = "id_caracteristica")
     )

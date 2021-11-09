@@ -1,5 +1,6 @@
 package com.booking.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,8 +34,9 @@ public class Imagen {
     private String imagen;
 
     @Getter
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "producto_id")
+    @ManyToOne
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    @JsonIgnoreProperties({"imagenes"})
     private Producto producto;
 
 }

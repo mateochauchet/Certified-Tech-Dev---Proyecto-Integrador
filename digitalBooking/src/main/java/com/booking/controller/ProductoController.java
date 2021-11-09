@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -25,7 +26,7 @@ public class ProductoController {
     private IProductoService productoService;
 
     @PostMapping("/")
-    public ResponseEntity<Producto> insert(@RequestBody Producto producto) throws NotExistDataException, InvalidDataException{
+    public ResponseEntity<Producto> insert(@RequestBody Producto producto) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException, IOException {
         return new ResponseEntity<>(productoService.insert(producto), HttpStatus.OK);
     }
 

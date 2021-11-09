@@ -40,9 +40,6 @@ public class Ciudad {
     @Size(max = 100)
     private String pais;
 
-    @Getter
-    @JsonIgnore
-    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
-    private Set<Producto> productos;
+
 
 }
