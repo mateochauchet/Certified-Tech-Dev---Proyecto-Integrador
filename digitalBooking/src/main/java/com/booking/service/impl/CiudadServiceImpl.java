@@ -1,18 +1,30 @@
 package com.booking.service.impl;
+import com.booking.entity.Categoria;
 import com.booking.entity.Ciudad;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
+import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.ICiudadRepository;
 import com.booking.service.ICiudadService;
+import com.booking.util.StringBase64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service("CiudadServiceImpl")
 public class CiudadServiceImpl implements ICiudadService {
 
     @Autowired
     private ICiudadRepository ciudadRepository;
+
+    @Override
+    public Optional<Ciudad> readOne(Long id) throws ResourcesNotFoundException {
+        Optional<Ciudad> respuesta = ciudadRepository.findById(id);
+        if(!respuesta.isPresent())
+            throw new ResourcesNotFoundException("la ciudad con Id "+ id+ " no existe");
+        return respuesta;
+    }
 
     @Override
     public List<Ciudad> readAll() {

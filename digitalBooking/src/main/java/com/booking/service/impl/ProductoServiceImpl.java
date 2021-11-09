@@ -5,6 +5,7 @@ import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IProductoRepository;
 import com.booking.service.ICategoriaService;
+import com.booking.service.ICiudadService;
 import com.booking.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,8 @@ public class ProductoServiceImpl implements IProductoService {
     private IProductoRepository productoRepository;
     @Autowired
     private ICategoriaService categoriaService;
+    @Autowired
+    private ICiudadService ciudadService;
 
 
     @Override
@@ -28,8 +31,8 @@ public class ProductoServiceImpl implements IProductoService {
             throw  new NotExistDataException("el campo del nombre o el campo de la descripcion se encuentra vacio o la categoria seleccionada no existe");
         else if(producto.getDescripcion().trim().length()>250 || producto.getNombre().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 250 caracteres)\n o el nombre (no puede ser mayor a 50 caracteres) ");
-
         producto.setCategoria(categoriaService.readOne(producto.getCategoria().getId()).get());
+        producto.setCiudad(ciudadService.readOne(producto.getCiudad().getId()).get());
         return productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getCategoria(),producto.getCiudad(),producto.getCaracteristicas()));
     }
 

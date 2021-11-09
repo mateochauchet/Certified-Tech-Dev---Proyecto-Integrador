@@ -42,13 +42,13 @@ public class Producto {
 
     @Getter
     @Setter
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad", nullable = false)
     private Ciudad ciudad;
 
    @Getter
    @Setter
-   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+   @OneToMany(fetch = FetchType.EAGER)
     private Set<Imagen> imagenes = new HashSet<>();
 
     @Getter
