@@ -16,6 +16,7 @@ import { getProductos, getProductosByCategoria, getProductosByCiudad} from './se
 
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
   const [productList,setProductList] = useState([]);
+  const [filtro,setFiltro] = useState("todos");
 
   useEffect(() => {
     async function getData (){
@@ -25,15 +26,16 @@ import { getProductos, getProductosByCategoria, getProductosByCiudad} from './se
   } ,[]);
     
   const cambiarCiudad = async (value) => {
-    // const productJson = await getProductosByCiudad(value.replace(/ /g,""))
-    // setProductList(productJson)
+    
     console.log(value.replace(/ /g,""))
+    setFiltro(value)
+    
   }
 
   const cambiarCategoria = async (categoria) => {
-    // const productJson = await getProductosByCategoria(categoria.replace(/ /g,""))
-    // setProductList(productJson)
+    
     console.log(categoria.replace(/ /g,""))
+    setFiltro(categoria)
   }
 
   
@@ -50,7 +52,7 @@ import { getProductos, getProductosByCategoria, getProductosByCiudad} from './se
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                    <ContenedorBuscador cambiarCiudad={cambiarCiudad}  />
                    <ContenedorCard cambiarCategoria={cambiarCategoria} />
-                   <CardsContainer productList={productList} />
+                   <CardsContainer productList={productList} filtro={filtro} />
                 </Template>
               )}
             ></Route>
