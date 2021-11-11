@@ -20,7 +20,7 @@ import java.util.List;
 
 @Controller
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/api/categorias")
 @CrossOrigin(origins = "*")
 public class CategoriaController {
 

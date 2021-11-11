@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 @RestController
-@RequestMapping("/productos")
+@RequestMapping("/api/productos")
 @CrossOrigin(origins = "*")
 public class ProductoController {
 
