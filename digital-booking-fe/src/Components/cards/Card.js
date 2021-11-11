@@ -2,11 +2,11 @@
 
 function Card({tituloCategoria, cantidad, img, cambiarCategoria}) {
     return ( 
-        <div class="card1" onClick={() => cambiarCategoria(tituloCategoria)} >
-          <div class="card-header">
+        <div className="card1" onClick={() => cambiarCategoria(tituloCategoria)} >
+          <div className="card-header">
             <img src={img} alt={tituloCategoria} />
           </div>
-          <div class="card-text">
+          <div className ="card-text">
             <h3>{tituloCategoria}</h3>
             <p>{cantidad} {tituloCategoria}</p>
           </div>

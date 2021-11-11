@@ -30,10 +30,10 @@ function Buscador(props) {
   }
  
   return (
-    <div className="barSearch">
-      <Select className="searchCity" placeholder={<div>A dónde vamos?</div>} options= {options} onChange={elegirCiudad} />
+    <div  className="barSearch">
+      <Select data-testid="city-selector" className="searchCity" placeholder='A dónde vamos?' options= {options} onChange={elegirCiudad} />
       <DateBuscador />
-      <Button classN="primary" name="Buscar" cambiarCiudad={props.cambiarCiudad} ciudad={ciudad} ></Button>
+      <Button data-testid="button" classN="primary" name="Buscar" cambiarCiudad={props.cambiarCiudad} ciudad={ciudad} ></Button>
     </div>
   );
 }

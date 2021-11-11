@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faShareAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Mobile, Default } from "./Responsive";
 import { useState, useEffect } from "react";
-import { classBody } from "@babel/types";
+
 
 
 function Galeria({ item }) {
@@ -82,8 +82,8 @@ function Galeria({ item }) {
                     </div>
                     <div className="grid-container">
                         {item.map((imagen, i) =>
-                            <div className={`imagen` + (i + 1)}>
-                                <img src={imagen.original} alt=""></img>
+                            <div  className={`imagen` + (i + 1)}>
+                                <img key={i} src={imagen.original} alt=""></img>
                             </div>)}
                         <div className="verMas">
                             <p onClick={handleClick}>Ver más</p>

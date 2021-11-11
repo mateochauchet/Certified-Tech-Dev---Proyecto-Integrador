@@ -7,7 +7,7 @@ import moment from 'moment';
 import {
     HORIZONTAL_ORIENTATION,
     VERTICAL_ORIENTATION,
-} from "react-dates/src/constants";
+} from "react-dates/lib/constants.js";
 import { Mobile, Tablet } from "./Responsive";
 
 
