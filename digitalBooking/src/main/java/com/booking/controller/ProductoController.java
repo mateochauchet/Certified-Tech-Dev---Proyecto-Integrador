@@ -41,12 +41,12 @@ public class ProductoController {
     }
 
     @GetMapping("categoria/{titulo}")
-    public ResponseEntity <List<Producto>> getProductsByCategory(@PathVariable("titulo")String titulo) throws ResourcesNotFoundException{
+    public ResponseEntity <List<Producto>> getProductsByCategory(@PathVariable("titulo") String titulo) throws ResourcesNotFoundException{
         return  new ResponseEntity<>(productoService.getProductsByCategory(titulo),HttpStatus.OK);
     }
 
     @GetMapping("ciudad/{nombre}")
-    public ResponseEntity <List<Producto>> getProductsByCity(@PathVariable("nombre")String nombre)throws ResourcesNotFoundException{
+    public ResponseEntity <List<Producto>> getProductsByCity(@PathVariable("nombre") String nombre)throws ResourcesNotFoundException{
         return  new ResponseEntity<>(productoService.getProductsByCity(nombre),HttpStatus.OK);
     }
 }

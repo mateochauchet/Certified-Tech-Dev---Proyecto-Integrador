@@ -1,19 +1,44 @@
-package com.booking.util;
+package com.booking.service.impl;
+
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.booking.exceptions.NotValidImage;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
 
 import java.io.*;
 import java.util.Base64;
 import java.util.UUID;
 
-public class StringBase64 {
+@Service
+public class StorageService {
 
-    public StringBase64() {
+    @Value("${application.bucket.name}")
+    private String bucketName;
+
+    @Autowired
+    private AmazonS3 s3Client;
+
+    public String uploadFile(File file){
+        s3Client.putObject(new PutObjectRequest(bucketName, "categorias/" + file.getName(), file));
+        String  fileName = s3Client.getUrl(bucketName, "categorias/" + file.getName()).toExternalForm();
+        file.delete();
+        return fileName;
     }
 
-    public static String saveImagen(String stringBase64) throws NotValidImage,IOException  {
+
+    public void deleteFile(String filename){
+        s3Client.deleteObject(bucketName,filename);
+    }
+
+    public  File imageToFile(String stringBase64) throws NotValidImage, IOException {
         StringBuffer fileName = new StringBuffer();
         fileName.append(UUID.randomUUID().toString().replaceAll("-", ""));
         if (StringUtils.isBlank(stringBase64) || stringBase64 == null)
@@ -28,17 +53,12 @@ public class StringBase64 {
             throw new NotValidImage("Seleccione una imagen con formato .png o .jpg");;
 
         String fileName2 = fileName.toString();
-        File file = new File("./src/main/resources/static/images/", fileName2);
+        File file = new File(fileName2);
         byte[] fileBytes = Base64.getDecoder().decode(stringBase64);
         FileUtils.writeByteArrayToFile(file, fileBytes);
-        return "./src/main/resources/static/images/" + fileName2;
+        return file;
     }
 
-    public static String imageToBase64(String ubicacion) throws FileNotFoundException, IOException {
-        String base64Imagen;
-        InputStream imagen = new FileInputStream(ubicacion);
-        byte[] imageBytes = IOUtils.toByteArray(imagen);
-        base64Imagen = Base64.getEncoder().encodeToString(imageBytes);
-        return "data:image/jpeg;base64,"+base64Imagen;
-    }
+
+
 }

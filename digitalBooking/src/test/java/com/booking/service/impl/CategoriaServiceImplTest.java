@@ -62,7 +62,7 @@ class CategoriaServiceImplTest {
     }
 
     @Test
-    public void delete()throws ResourcesNotFoundException {
+    public void delete() throws ResourcesNotFoundException, IOException {
         Long id = 1L;
         Boolean respuesta = categoriaService.delete(id);
         Assertions.assertTrue(respuesta);

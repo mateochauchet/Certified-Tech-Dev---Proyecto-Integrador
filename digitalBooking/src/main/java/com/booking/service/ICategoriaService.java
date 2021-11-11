@@ -14,6 +14,6 @@ public interface ICategoriaService {
     public abstract Optional<Categoria> readOne(Long id) throws ResourcesNotFoundException, IOException;
     public abstract List<Categoria> readAll() throws IOException;
     public abstract Categoria insert(Categoria categoria) throws InvalidDataException, NotExistDataException, NotValidImage, IOException;
-    public abstract Boolean delete(Long id )throws ResourcesNotFoundException;
+    public abstract Boolean delete(Long id ) throws ResourcesNotFoundException, IOException;
     public abstract Boolean update(Categoria categoria) throws InvalidDataException, NotExistDataException, NotValidImage, IOException, ResourcesNotFoundException;
 }

@@ -33,7 +33,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categoria> readOne(@PathVariable("id") Long id) throws ResourcesNotFoundException, IOException {
+    public ResponseEntity<Categoria> readOne(@PathVariable("id") Long id) throws ResourcesNotFoundException,  IOException {
         return new ResponseEntity<>(categoriaService.readOne(id).get(),HttpStatus.OK);
     }
 
@@ -43,7 +43,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable("id") Long id) throws ResourcesNotFoundException {
+    public ResponseEntity<Boolean> delete(@PathVariable("id") Long id) throws ResourcesNotFoundException, IOException {
         return new ResponseEntity<>(categoriaService.delete(id),HttpStatus.OK);
     }
 

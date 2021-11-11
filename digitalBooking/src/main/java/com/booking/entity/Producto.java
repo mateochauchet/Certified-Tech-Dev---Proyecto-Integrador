@@ -46,9 +46,9 @@ public class Producto {
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad", nullable = false)
     private Ciudad ciudad;
 
-   @Getter
-   @Setter
-   @OneToMany(fetch = FetchType.EAGER)
+    @Getter
+    @Setter
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Imagen> imagenes = new HashSet<>();
 
     @Getter
