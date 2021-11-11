@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -38,8 +39,8 @@ public class CategoriaController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Categoria> insert(@RequestBody Categoria categoria) throws NotExistDataException, InvalidDataException, NotValidImage, IOException {
-        return new ResponseEntity<>(categoriaService.insert(categoria),HttpStatus.OK);
+    public ResponseEntity<Categoria> insert(@RequestParam(value="imagen") MultipartFile file, @RequestParam(value="titulo") String titulo, @RequestParam(value="descripcion") String descripcion) throws NotExistDataException, InvalidDataException, NotValidImage, IOException {
+        return new ResponseEntity<>(categoriaService.insert(titulo, descripcion, file),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -47,9 +48,9 @@ public class CategoriaController {
         return new ResponseEntity<>(categoriaService.delete(id),HttpStatus.OK);
     }
 
-    @PutMapping("/")
-    public ResponseEntity<Boolean> update(@RequestBody Categoria categoria) throws NotExistDataException, InvalidDataException, NotValidImage, IOException, ResourcesNotFoundException {
-        return new ResponseEntity<>(categoriaService.update(categoria),HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<Boolean> update(@PathVariable("id") Long id,@RequestParam(value="imagen") MultipartFile file, @RequestParam(value="titulo") String titulo, @RequestParam(value="descripcion") String descripcion) throws NotExistDataException, InvalidDataException, NotValidImage, IOException, ResourcesNotFoundException {
+        return new ResponseEntity<>(categoriaService.update(id, titulo, descripcion, file),HttpStatus.OK);
     }
 
 

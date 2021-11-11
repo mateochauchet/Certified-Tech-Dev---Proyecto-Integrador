@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.io.*;
@@ -26,11 +27,20 @@ public class StorageService {
     @Autowired
     private AmazonS3 s3Client;
 
-    public String uploadFile(File file){
-        s3Client.putObject(new PutObjectRequest(bucketName, "categorias/" + file.getName(), file));
-        String  fileName = s3Client.getUrl(bucketName, "categorias/" + file.getName()).toExternalForm();
-        file.delete();
-        return fileName;
+    public String uploadFile(MultipartFile file,String directorio) throws IOException {
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        File fileObj = convertMultipartFileToFile(file);
+        s3Client.putObject(new PutObjectRequest(bucketName, directorio +uuid+file.getName(), fileObj));
+        String  fileURL = s3Client.getUrl(bucketName, directorio +uuid+ file.getName()).toExternalForm();
+        fileObj.delete();
+        return fileURL;
+    }
+
+    public File convertMultipartFileToFile(MultipartFile file) throws IOException {
+        File convertedFile = new File(file.getOriginalFilename());
+        FileOutputStream fos = new FileOutputStream((convertedFile));
+        fos.write(file.getBytes());
+        return convertedFile;
     }
 
 

@@ -9,6 +9,7 @@ import com.booking.repository.ICategoriaRepository;
 import com.booking.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,17 +37,17 @@ public class CategoriaServiceImpl implements ICategoriaService {
     }
 
     @Override
-    public Categoria insert(Categoria categoria) throws InvalidDataException, NotExistDataException, NotValidImage, IOException {
-        if(categoria.getDescripcion() == null || categoria.getTitulo() ==null || categoria.getTitulo().trim() == "" || categoria.getDescripcion().trim() == "")
+    public Categoria insert(String titulo, String descripcion, MultipartFile file) throws InvalidDataException, NotExistDataException, NotValidImage, IOException {
+        if(descripcion == null || titulo ==null || titulo.trim() == "" || descripcion.trim() == "")
              throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
-        else if(categoria.getDescripcion().trim().length()>100 || categoria.getTitulo().trim().length()>50)
+        else if(descripcion.trim().length()>100 || titulo.trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
-        if(categoria.getImagen() != null && categoria.getImagen() != "" && categoria.getImagen().length()>0)
-            categoria.setImagen(storageService.uploadFile(storageService.imageToFile(categoria.getImagen())));
-
-        categoria.setDescripcion(categoria.getDescripcion().trim());
-        categoria.setTitulo(categoria.getTitulo().trim());
-        return categoriaRepository.save(new Categoria(categoria.getTitulo(),categoria.getDescripcion(),categoria.getImagen()));
+        String imagen = null;
+        if(file != null && !file.isEmpty()) {
+            imagen =  storageService.uploadFile(file,"/categorias");
+        }
+        Categoria categoria = new Categoria(titulo.trim(), descripcion.trim(), imagen);
+        return categoriaRepository.save(categoria);
     }
 
     @Override
@@ -60,22 +61,20 @@ public class CategoriaServiceImpl implements ICategoriaService {
     }
 
     @Override
-    public Boolean update(Categoria categoria) throws InvalidDataException, NotExistDataException, NotValidImage, IOException, ResourcesNotFoundException {
-        Optional<Categoria> categoria2 = readOne(categoria.getId());
-        if(categoria.getId() == null||categoria.getDescripcion() == null || categoria.getTitulo() ==null || categoria.getTitulo().trim() == "" || categoria.getDescripcion().trim() == "" )
+    public Boolean update(Long id, String titulo, String descripcion, MultipartFile file) throws InvalidDataException, NotExistDataException, NotValidImage, IOException, ResourcesNotFoundException {
+        Optional<Categoria> categoria2 = readOne(id);
+        if(id == null||descripcion == null || titulo ==null || titulo.trim() == "" || descripcion.trim() == "" )
             throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
-        else if(categoria.getDescripcion().trim().length()>100 || categoria.getTitulo().trim().length()>50)
+        else if(descripcion.trim().length()>100 || titulo.trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
-
-        if(categoria.getImagen() != null && categoria.getImagen() != "" && categoria.getImagen().length()>0) {
-            if (categoria.getImagen() != categoria2.get().getImagen()) {
-                storageService.deleteFile(categoria.getImagen());
-                categoria.setImagen(storageService.uploadFile(storageService.imageToFile(categoria.getImagen())));
-            }
+        if(file != null && !file.isEmpty()) {
+            storageService.deleteFile(categoria2.get().getImagen());
+            String imagen = storageService.uploadFile(file, "categorias/");
+            categoria2.get().setImagen(imagen);
         }
-        categoria.setDescripcion(categoria.getDescripcion().trim());
-        categoria.setTitulo(categoria.getTitulo().trim());
-        categoriaRepository.save(categoria);
+        categoria2.get().setTitulo(titulo);
+        categoria2.get().setDescripcion(descripcion);
+        categoriaRepository.save(categoria2.get());
         return true;
 
     }
