@@ -1,16 +1,20 @@
 package com.booking.controller;
 
+import com.booking.entity.Categoria;
 import com.booking.entity.Producto;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
+import com.booking.exceptions.NotValidImage;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.IProductoService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,8 +30,11 @@ public class ProductoController {
     private IProductoService productoService;
 
     @PostMapping("/")
-    public ResponseEntity<Producto> insert(@RequestBody Producto producto) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException, IOException {
-        return new ResponseEntity<>(productoService.insert(producto), HttpStatus.OK);
+    public ResponseEntity<Producto> insert(@RequestParam(value="imagenes") List<MultipartFile> files,@RequestParam(value="producto") String producto) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Producto producto2 = null;
+        producto2 = mapper.readValue(producto, Producto.class);
+        return new ResponseEntity<>(productoService.insert(producto2, files), HttpStatus.OK);
     }
 
     @GetMapping("/")
@@ -49,4 +56,9 @@ public class ProductoController {
     public ResponseEntity <List<Producto>> getProductsByCity(@PathVariable("nombre") String nombre)throws ResourcesNotFoundException{
         return  new ResponseEntity<>(productoService.getProductsByCity(nombre),HttpStatus.OK);
     }
+
+
+
+
+
 }

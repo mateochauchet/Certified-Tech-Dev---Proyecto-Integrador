@@ -1,12 +1,10 @@
 package com.booking.service.impl;
-import com.booking.entity.Categoria;
 import com.booking.entity.Ciudad;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.ICiudadRepository;
 import com.booking.service.ICiudadService;
-import com.booking.util.StringBase64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

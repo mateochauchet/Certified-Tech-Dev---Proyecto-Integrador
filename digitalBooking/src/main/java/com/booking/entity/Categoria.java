@@ -21,12 +21,6 @@ public class Categoria {
         this.imagen = imagen;
     }
 
-    public Categoria(Long id,String titulo, String descripcion, String imagen) {
-        this.id = id;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.imagen = imagen;
-    }
 
     @Id
     @NotNull

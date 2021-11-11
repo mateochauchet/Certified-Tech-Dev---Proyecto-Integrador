@@ -48,7 +48,7 @@ public class Producto {
 
     @Getter
     @Setter
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
     @Getter
@@ -61,12 +61,23 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas;
 
-    public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Caracteristica> caracteristicas) {
+    public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.ciudad = ciudad;
-       this.imagenes = imagenes;
+       this.imagenes = null;
+        this.caracteristicas = null;
+    }
+
+    public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Caracteristica> caracteristicas, Set<Imagen> imagenes) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
     }
+
+
 }

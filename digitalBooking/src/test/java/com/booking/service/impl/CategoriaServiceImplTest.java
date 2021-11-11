@@ -21,7 +21,7 @@ class CategoriaServiceImplTest {
     @Autowired
     private ICategoriaService categoriaService;
 
-
+/*
     @Test
     public void readOne() throws ResourcesNotFoundException, IOException {
         Long id = 1L;
@@ -102,4 +102,6 @@ class CategoriaServiceImplTest {
         Assertions.assertThrows(NotValidImage.class, ()->categoriaService.update(categoria.get()));
 
     }
+
+ */
 }

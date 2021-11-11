@@ -36,13 +36,7 @@ class ProductoServiceImplTest {
         Assertions.assertTrue(productos.size()>0);
     }
 
-    @Test
-    public void insert() throws InvalidDataException, NotExistDataException, ResourcesNotFoundException, IOException {
-        Producto producto1 = new Producto();
-        producto1.setNombre("pp");
-        producto1.setDescripcion("descripcion1");
-        Producto respuesta = productoService.insert(producto1);
-        Assertions.assertTrue(respuesta.getNombre() == producto1.getNombre());
-    }
+
+
 
 }

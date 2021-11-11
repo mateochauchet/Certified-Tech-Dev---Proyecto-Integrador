@@ -14,8 +14,15 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class Imagen {
 
+    public Imagen(String titulo, String imagen, Producto producto) {
+        this.titulo = titulo;
+        this.imagen = imagen;
+        this.producto = producto;
+    }
+
     @Id
     @Column(name="id_imagen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private Long id;
 
@@ -34,6 +41,7 @@ public class Imagen {
     private String imagen;
 
     @Getter
+    @Setter
     @ManyToOne
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
     @JsonIgnoreProperties({"imagenes"})

@@ -38,15 +38,17 @@ public class CategoriaServiceImpl implements ICategoriaService {
 
     @Override
     public Categoria insert(String titulo, String descripcion, MultipartFile file) throws InvalidDataException, NotExistDataException, NotValidImage, IOException {
+        Categoria categoria = new Categoria();
         if(descripcion == null || titulo ==null || titulo.trim() == "" || descripcion.trim() == "")
              throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
         else if(descripcion.trim().length()>100 || titulo.trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
-        String imagen = null;
         if(file != null && !file.isEmpty()) {
-            imagen =  storageService.uploadFile(file,"/categorias");
+            String imagen =  storageService.uploadFile(file,"/categorias");
+            categoria.setImagen(imagen);
         }
-        Categoria categoria = new Categoria(titulo.trim(), descripcion.trim(), imagen);
+        categoria.setTitulo(titulo.trim());
+        categoria.setDescripcion(descripcion.trim());
         return categoriaRepository.save(categoria);
     }
 
