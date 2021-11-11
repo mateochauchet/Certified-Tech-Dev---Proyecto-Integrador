@@ -1,0 +1,233 @@
+{
+	"id": "7c87d721-9d32-4137-abd5-8fdb212f49f1",
+	"name": "ApiProductos",
+	"timestamp": "2021-11-11T21:24:45.830Z",
+	"collection_id": "0-30b451de-51b0-41f0-be86-e5989db9e34c",
+	"folder_id": 0,
+	"environment_id": "9cc4f566-c637-4b10-bec1-16d88ac6a3a8",
+	"totalPass": 9,
+	"totalFail": 6,
+	"results": [
+		{
+			"id": "12bcd2dd-fd88-4de5-98ae-08af5002c026",
+			"name": "ReadAll",
+			"url": "http://localhost:8080/api/productos/",
+			"time": 90,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"verificar el nombre del primer producto": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar el nombre del primer producto": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				90
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"verificar el nombre del primer producto": true
+				}
+			]
+		},
+		{
+			"id": "650f9a69-0425-4776-975c-adce8bdbbb83",
+			"name": "ReadOne",
+			"url": "http://localhost:8080/api/productos/1",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"codigo del status 200 si fue exitosa la busqueda": true,
+				"Verificar el Producto con con ID 1": true,
+				"Codigo del status 404, en caso de que no exista el producto": false,
+				"Verificar en caso de que no exista  el producto a buscar": false
+			},
+			"testPassFailCounts": {
+				"codigo del status 200 si fue exitosa la busqueda": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verificar el Producto con con ID 1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Codigo del status 404, en caso de que no exista el producto": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que no exista  el producto a buscar": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"codigo del status 200 si fue exitosa la busqueda": true,
+					"Verificar el Producto con con ID 1": true,
+					"Codigo del status 404, en caso de que no exista el producto": false,
+					"Verificar en caso de que no exista  el producto a buscar": false
+				}
+			]
+		},
+		{
+			"id": "b84733ea-5f36-4cc1-a7a9-8c85c3c7b811",
+			"name": "ReadByCity",
+			"url": "http://localhost:8080/api/productos/ciudad/Bogota",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"verificar el nombre del primer producto con la ciudad Bogota": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar el nombre del primer producto con la ciudad Bogota": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"verificar el nombre del primer producto con la ciudad Bogota": true
+				}
+			]
+		},
+		{
+			"id": "d26a7f46-be9b-4f25-8057-cfe2dc93867b",
+			"name": "ReadByCategory",
+			"url": "http://localhost:8080/api/productos/categoria/Aparta-Estudios",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"verificar el nombre del primer producto con la categoria Categoria prueba": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar el nombre del primer producto con la categoria Categoria prueba": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"verificar el nombre del primer producto con la categoria Categoria prueba": false
+				}
+			]
+		},
+		{
+			"id": "d25f6890-5795-45a8-9e44-6d8f3e6038a4",
+			"name": "Insert",
+			"url": "http://localhost:8080/api/productos/",
+			"time": 154,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"verificar los datos que quedaron guardados": true,
+				"Status code is 400, en caso de que el json tengan datos erroneos": false,
+				"Verificar en caso de que el nombre o descripcion este vacios muestre el error": false,
+				"Verificar en caso de que los caracteres de la descripcion o del nombre superen los permitidos, muestre el error": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar los datos que quedaron guardados": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400, en caso de que el json tengan datos erroneos": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que el nombre o descripcion este vacios muestre el error": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que los caracteres de la descripcion o del nombre superen los permitidos, muestre el error": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				154
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"verificar los datos que quedaron guardados": true,
+					"Status code is 400, en caso de que el json tengan datos erroneos": false,
+					"Verificar en caso de que el nombre o descripcion este vacios muestre el error": false,
+					"Verificar en caso de que los caracteres de la descripcion o del nombre superen los permitidos, muestre el error": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 323,
+	"collection": {
+		"requests": [
+			{
+				"id": "12bcd2dd-fd88-4de5-98ae-08af5002c026",
+				"method": "GET"
+			},
+			{
+				"id": "650f9a69-0425-4776-975c-adce8bdbbb83",
+				"method": "GET"
+			},
+			{
+				"id": "b84733ea-5f36-4cc1-a7a9-8c85c3c7b811",
+				"method": "GET"
+			},
+			{
+				"id": "d26a7f46-be9b-4f25-8057-cfe2dc93867b",
+				"method": "GET"
+			},
+			{
+				"id": "d25f6890-5795-45a8-9e44-6d8f3e6038a4",
+				"method": "POST"
+			}
+		]
+	}
+}

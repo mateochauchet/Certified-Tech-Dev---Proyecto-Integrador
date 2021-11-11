@@ -1,0 +1,110 @@
+{
+	"id": "24a6336b-2df1-4bfa-8cf6-cb12b5a19840",
+	"name": "ApiCiudad",
+	"timestamp": "2021-11-11T21:24:21.167Z",
+	"collection_id": "0-f0fe296e-1fd3-4f16-8364-4ba8f56b1861",
+	"folder_id": 0,
+	"environment_id": "9cc4f566-c637-4b10-bec1-16d88ac6a3a8",
+	"totalPass": 3,
+	"totalFail": 4,
+	"results": [
+		{
+			"id": "d806c6cb-07d8-41f1-aefa-475187b4c431",
+			"name": "ReadAll",
+			"url": "http://localhost:8080/api/ciudad/",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"verificar la primera ciudad": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar la primera ciudad": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"verificar la primera ciudad": false
+				}
+			]
+		},
+		{
+			"id": "41b93fd7-7ccd-46dd-86d2-54e8e1169b02",
+			"name": "Insert",
+			"url": "http://localhost:8080/api/ciudad/",
+			"time": 594,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"verificar los datos que quedaron guardados": true,
+				"Status code is 400, en caso de que el json tengan datos erroneos": false,
+				"Verificar en caso de que lac ciudad o el pais esten vacios muestre el error": false,
+				"Verificar en caso de que los caracteres del nombre o ciudad superen los permitidos, muestre el error": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar los datos que quedaron guardados": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400, en caso de que el json tengan datos erroneos": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que lac ciudad o el pais esten vacios muestre el error": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que los caracteres del nombre o ciudad superen los permitidos, muestre el error": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				594
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"verificar los datos que quedaron guardados": true,
+					"Status code is 400, en caso de que el json tengan datos erroneos": false,
+					"Verificar en caso de que lac ciudad o el pais esten vacios muestre el error": false,
+					"Verificar en caso de que los caracteres del nombre o ciudad superen los permitidos, muestre el error": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 611,
+	"collection": {
+		"requests": [
+			{
+				"id": "d806c6cb-07d8-41f1-aefa-475187b4c431",
+				"method": "GET"
+			},
+			{
+				"id": "41b93fd7-7ccd-46dd-86d2-54e8e1169b02",
+				"method": "POST"
+			}
+		]
+	}
+}
