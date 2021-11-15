@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import {
     HORIZONTAL_ORIENTATION,
     VERTICAL_ORIENTATION,
-  } from "react-dates/src/constants";
+  } from "react-dates/lib/constants.js";
   import { Mobile, Default } from "./Responsive";
   
 

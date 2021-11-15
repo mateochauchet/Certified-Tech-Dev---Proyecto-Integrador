@@ -9,7 +9,10 @@
     font-family: 'Roboto', sans-serif;
     background-color: white;
 }
-
+.btnContainer{
+   
+    margin-top: 5px;
+}
 .cardsImg{
     width: 100%;
     height: 231px;
@@ -39,7 +42,7 @@ div .corazon {
     flex-direction: column;
     justify-content: space-between;
     height: 220px;
-    width: 324px;
+    width: 96%;
 }
 
 .cardsInfo {
@@ -48,14 +51,11 @@ div .corazon {
     margin-top: 20px
 }
 
-
 .cardsInfoParteDeArriba {
     display: flex;
     width: 100%;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    
-
 }
 
 div .cardsTitleCategoria {
@@ -86,7 +86,6 @@ div.cardsInfo p{
     line-height: 16px;
 }
 
-
 .cardsIcons{
     margin-top: 11px;
     visibility: visible;
@@ -111,9 +110,13 @@ div.cardsInfo p{
 
 .cardsDescription {
 
-    height: 64px;
+    max-height: 50px;
     margin-top: 15px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
  
 }
 .cardBtn {
@@ -153,31 +156,35 @@ div.cardsInfo p{
     
     
     .cardsImgContainer {
-        width: 393px;
+        width: 100%;
         height: 231px;
-        position: relative;
+        
+        object-fit: cover;
     }
 
     .cardsImg{
-        width: 300px;
-        height: 283px;
+       
+        height: 120%;
         border-radius: 8px;
-        position: relative;
+        object-fit: cover;
+
     }
    
-
-    
-
     div.cardsInfo .categoria {
         height: 25px; ;
     }
 
     .cardsInfo{
         width: 95%;
+        height: 190px;
     }
 
+    /* .cardsInfo p{
+        height: 40px;
+    } */
+
     .cardsRight {
-        height: 283px;
+        height: 250px;
         width: 80%;
     }
 
@@ -191,6 +198,12 @@ div.cardsInfo p{
     .cardsDescription{
         margin-bottom: 0px;
         margin-top: 28px;
+        display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    }
+    .cardsDescription p{
+        margin-top: 0px;
     }
 
 }
@@ -218,6 +231,7 @@ div.cardsInfo p{
 
     .btnContainer{
         width: 285px;
+        margin-top: 5px;
     }
 
  }

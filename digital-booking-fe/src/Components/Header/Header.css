@@ -10,13 +10,14 @@
 }
 .header1 {
   display: flex;
+  
   justify-content: space-between;
   height: 95px;
   width: 100%;
   position: sticky;
   top: 0;
   background-color: white;
-  z-index: 1;
+  z-index: 5;
 }
 .logo-eslogan {
   width: 30%;
@@ -80,10 +81,11 @@
 }
 
 /* desktop */
-@media screen and (min-width: 1366px){
+@media screen and (min-width: 1280px){
 
   .header1 {
     height: 13vh;
+    align-items: center;
   }
     .eslogan p {
         visibility: visible;

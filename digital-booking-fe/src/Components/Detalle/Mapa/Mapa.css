@@ -1,0 +1,19 @@
+
+.map-container {
+  height: 300px;
+  width: 80%;
+  margin-top: 20px;
+  border-radius: 30px;
+  margin: auto;
+}
+
+.mapboxgl-ctrl {
+  display: none;
+}
+/* desktop */
+@media screen and (min-width: 1200px){
+    .map-container {
+        height: 420px;
+
+    }
+}

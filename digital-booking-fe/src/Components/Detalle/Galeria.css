@@ -1,0 +1,238 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+/* .image-gallery-content .image-gallery-slide .image-gallery-image {
+    height: 240px;
+    width: 100%;
+} */
+.image-gallery-slide {
+  left: 0;
+  position: absolute;
+  top: 0;
+  height: 190px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+}
+/* .image-gallery-slide .image-gallery-image {
+    object-fit: none;
+
+} */
+.iconsalir{
+  display: none;
+}
+.image-gallery-image {
+  width: 100%;
+  
+}
+.image-gallery-slides {
+  display: flex;
+  align-items: center;
+}
+
+.image-gallery-content {
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.image-gallery-index {
+  bottom: 0;
+  right: 0;
+  top: inherit;
+  height: 20px;
+}
+
+.image-gallery-icon {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+}
+.iconsalir{
+  display: none;
+}
+/* tablet */
+@media screen and (min-width: 768px) {
+  .image-gallery-slide {
+    height: 280px;
+    object-fit: none;
+    
+  }
+  .image-gallery-image{
+    object-fit: cover !important;
+  }
+
+}
+
+/* desktop */
+@media screen and (min-width: 1280px) {
+  .image-gallery-slide {
+    left: 0;
+    position: absolute;
+    top: 0;
+    height: 240px;
+    width: 100%;
+    display: flex;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 450ms ease-out !important;
+  }
+  .image-gallery-content {
+    max-height: 100%;
+    display: block;
+  }
+  .image-gallery-icon {
+    margin-left: 10px;
+    margin-top: 10px;
+    display: flex;
+  }
+  .image-gallery-left-nav{
+    left: 150px;
+  }
+  .image-gallery-right-nav{
+    right: 150px;
+  }
+  .image-gallery {
+    width: 1300px;
+  }
+  .icono {
+    display: none;
+  }
+  .divIcon{
+    background-color: rgba(0, 0, 0, 0.356);
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15%;
+    position: relative;
+    left: 228px;
+    top: 130px;
+    z-index: 9;
+  }
+  .iconsalir{
+    display: flex;
+    color: white;
+    font-size: 20px;
+  }
+
+  .image-gallery-slides {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
+
+  .image-gallery-slide.center {
+    width: 65%;
+    height: 320px;
+  }
+  
+  .image-gallery-index {
+    height: 30px;
+    right: 225px;
+  }
+  .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg
+  {
+    width: 30px;
+  }
+  .image-gallery-slide-wrapper{
+    display: block;
+  }
+  .galleryOpen{
+    background-color: rgba(43, 63, 99, 0.877);
+    width: 100%;
+    height: 100vh;
+    position: fixed ;
+    top: 0;
+    touch-action: none;
+    z-index: 10;
+  }
+  
+}
+
+  .grid-container {
+    position: relative;
+    display: grid;
+    width: 94%;
+    margin: auto auto;
+    margin-top: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 10px;
+    grid-template-areas:
+      "imagen1 imagen1 imagen2 imagen3"
+      "imagen1 imagen1 imagen4 imagen5";
+  }
+
+  .imagen1 > img,
+  .imagen2 > img,
+  .imagen3 > img,
+  .imagen4 > img,
+  .imagen5 > img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  .imagen1 {
+    grid-area: imagen1;
+    display: flex;
+  }
+  .imagen2 {
+    grid-area: imagen2;
+    display: flex;
+  }
+  .imagen3 {
+    grid-area: imagen3;
+    display: flex;
+  }
+  .imagen4 {
+    display: flex;
+    grid-area: imagen4;
+  }
+  .imagen5 {
+    display: flex;
+    grid-area: imagen5;
+    position: relative;
+  }
+  .iconos-grid {
+    position: relative;
+    color: var(--secondary-bg-color);
+    top: 20px;
+    display: flex;
+    gap: 15px;
+    margin-left: 40px;
+  }
+  .iconogrid {
+    font-size: 20px;
+  }
+  .verMas{
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    z-index: 3;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    height: 35px;
+    width: 90px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: underline;
+    background-color: rgba(0, 0, 0, 0.516);
+  }
+  .verMas p{
+    font-size: 18px;
+    padding-top: 5px;
+    
+  }
+  .gallery{
+    z-index: 15;
+    position: fixed;
+    top: 10px;
+    width: 70%;
+  }
+  
+

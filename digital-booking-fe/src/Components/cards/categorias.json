@@ -1,21 +1,21 @@
 [
     {
-      "titulo": "Cabañas",
+      "categoria": "Cabañas",
       "cantidad": "805.000",
       "img": "/images/categorias/cabaña.jpeg"
     },
     {
-        "titulo": "Casas de Playa",
+        "categoria": "Casas",
         "cantidad": "700.450",
         "img": "/images/categorias/cplaya.jpeg"
       },
       {
-        "titulo": "Lofts",
+        "categoria": "Lofts",
         "cantidad": "400.000",
         "img": "/images/categorias/loft.jpeg"
       },
       {
-        "titulo": "Villas",
+        "categoria": "Villas",
         "cantidad": "125.000",
         "img": "/images/categorias/villa.jpeg"
       }
