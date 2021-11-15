@@ -3,6 +3,7 @@
     "id": "1",
     "img": "https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1460&q=80",
     "categoria": "LOFT",
+    "categoriaTitulo": "Lofts",
     "title": "Hermitage Loft",
     "puntaje": 9,
     "description": {
@@ -12,6 +13,7 @@
     },
     "location": "A 940m del centro",
     "locationFull": "San Telmo, Ciudad Autónoma de Buenos Aires, Argentina",
+    "city": "San Carlos de Bariloche",
     "coordenadas": {
       "lng": -58.390,
       "lat": -34.588512
@@ -85,6 +87,7 @@
     "id": "2",
     "img": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     "categoria": "LOFT",
+    "categoriaTitulo": "Lofts",
     "title": "Transylvania",
     "puntaje": 7,
     "description": {
@@ -94,6 +97,7 @@
     },
     "location": "A 560m del parque",
     "locationFull": "Mendoza, Ciudad y Capital provincial, Argentina",
+    "city": "Buenos Aires",
     "coordenadas": {
       "lng": -68.849455,
       "lat": -32.89196
@@ -165,6 +169,7 @@
     "id": "3",
     "img": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80",
     "categoria": "VILLA",
+    "categoriaTitulo": "Villas",
     "title": "Los Castores",
     "puntaje": 9,
     "description": {
@@ -174,6 +179,7 @@
     },
     "location": "A 4km del Club de Golf",
     "locationFull": "Los Castores, Nordelta, Ciudad Autónoma de Buenos Aires, Argentina",
+    "city": "Mendoza",
     "coordenadas": {
       "lng": -58.6612251,
       "lat": -34.4074509
@@ -248,6 +254,7 @@
     "id": "4",
     "img": "https://www.elliberal.com.ar/fotos/notas_bk/2013/10/524d7b6b90xx_messi3.jpg",
     "categoria": "CASA",
+    "categoriaTitulo": "Casas",
     "title": "Casa de Messi",
     "puntaje": 6,
     "description": {
@@ -257,6 +264,7 @@
     },
     "location": "A 30m del centro",
     "locationFull": "Castelldefels, Barcelona, Capital de la Comunidad Autónoma de Cataluña, España",
+    "city": "Cordoba",
     "coordenadas": {
       "lng": 1.98770,
       "lat": 41.2817138

@@ -29,6 +29,12 @@
     width: 310px;
     height: 246px;
   }
+.card-header {
+  display:flex; 
+  justify-content: center;
+  
+}
+
 
   .card-header img {
     width: 100%;

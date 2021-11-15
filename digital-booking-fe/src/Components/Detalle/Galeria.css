@@ -61,8 +61,8 @@
   .image-gallery-image{
     object-fit: cover !important;
   }
-
 }
+
 
 /* desktop */
 @media screen and (min-width: 1280px) {
