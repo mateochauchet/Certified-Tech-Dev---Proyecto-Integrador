@@ -1,0 +1,4 @@
+com/booking/main/DigitalBookingApplicationTests.class
+com/booking/service/impl/CiudadServiceImplTest.class
+com/booking/service/impl/ProductoServiceImplTest.class
+com/booking/service/impl/CategoriaServiceImplTest.class

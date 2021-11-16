@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.booking.service.impl.ProductoServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.143 s <<< FAILURE! - in com.booking.service.impl.ProductoServiceImplTest
+com.booking.service.impl.ProductoServiceImplTest.readAll  Time elapsed: 0.054 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.booking.service.IProductoService.readAll()" because "this.productoService" is null
+	at com.booking.service.impl.ProductoServiceImplTest.readAll(ProductoServiceImplTest.java:35)
+
+com.booking.service.impl.ProductoServiceImplTest.readOne  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.booking.service.IProductoService.readOne(java.lang.Long)" because "this.productoService" is null
+	at com.booking.service.impl.ProductoServiceImplTest.readOne(ProductoServiceImplTest.java:29)
+
