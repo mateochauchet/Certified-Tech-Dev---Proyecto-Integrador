@@ -1,13 +1,18 @@
-let baseUrl = "http://localhost:8080/productos";
+let baseUrl = "http://localhost:8080/api/productos/";
 
 export async function getProductos () {
-    const  response = await fetch(baseUrl);
+    const  response = await fetch(`${baseUrl}`);
     const resJson = await response.json();
     return Array.isArray(resJson) ?  resJson :  [resJson]
 } 
 
+export async function getCategorias () {
+    const  response = await fetch("http://localhost:8080/api/categorias/");
+    const resJson = await response.json();
+    return Array.isArray(resJson) ?  resJson :  [resJson]
+} 
 export async function getProductosById (id) {
-    const  response = await fetch(`${baseUrl}/categoria/${id}`);
+    const  response = await fetch(`http://localhost:8080/api/productos/${id}`);
     const resJson = await response.json();
     return Array.isArray(resJson) ?  resJson :  [resJson]
 }
@@ -27,6 +32,7 @@ export async function getProductosByCiudad (q) {
 
 export default {
     getProductos,
+    getCategorias,
     getProductosById,
     getProductosByCategoria,
     getProductosByCiudad

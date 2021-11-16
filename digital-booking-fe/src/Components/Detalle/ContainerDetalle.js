@@ -1,58 +1,87 @@
 import data from '../Cards_list/data.json'
 import Heading from './Heading';
-import { useParams } from 'react-router';
+import { useState, useEffect, useCallback } from "react";
+import { useParams } from 'react-router-dom';
 import Galeria from './Galeria';
 import Descripcion from './Descripcion';
 import Caracteristicas from './Caracteristicas';
 import ContainerFechas from './Fechas/ContainerFechas';
 import PoliticsContainer from '../Politicas/PoliticsContainer';
 import ContainerMapa from "./Mapa/ContainerMapa"
-import Mapa from "./Mapa/Mapa"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTv } from "@fortawesome/free-solid-svg-icons";
-import DateBuscador from '../Buscador/DateBuscador';
-import Fecha from './Fechas/Fecha';
-
-
+import { getProductosById } from '../../service/cardsListService';
 
 
 function ContainerDetalle() {
-    const { idLink } = useParams()
-    console.log(idLink)
-    let match = data.filter(producto => producto.id === idLink)
+    const [productIdList, setProductIdList] = useState(null);
+
+    const { id } = useParams()
+    console.log(id)
+    let match = data.filter(producto => producto.id === id)
     let product = match[0]
+
+
+    useEffect(() => {
+        let ismounted = true;
+        getProductosById(id)
+            .then((resJson) => {
+                if (ismounted) {
+                    console.log(resJson)
+                    const houseData = {
+                        titulo: resJson[0].nombre,
+                        categoria: resJson[0].categoria.titulo,
+                        ubicacion: resJson[0].ciudad.nombre,
+                        puntaje: resJson[0].puntaje,
+                        imagenes: resJson[0].imagenes,
+                        descripcion: resJson[0].descripcion,
+                        caracteristicas: resJson[0].caracteristicas
+
+                    }
+                    setProductIdList(houseData);
+                }
+            })
+        return () => ismounted = false;
+    }, []);
 
 
     return (
         <>
-            < Heading
-                titulo={product.title}
-                categoria={product.categoria}
-                location={product.locationFull}
-                puntaje={product.puntaje}/>
+            {console.log(productIdList)}
 
-            < Galeria item={product.imagenes} />
+            {productIdList ? (
+                <>
+                    < Heading
+                        titulo={productIdList.titulo}
+                        categoria={productIdList.categoria}
+                        location={productIdList.ubicacion}
+                        puntaje={productIdList.puntaje} />
 
-            < Descripcion 
-            titulo={product.description.titulo} 
-            line1={product.description.text1}
-            line2={product.description.text2}/>
+                    < Galeria item={product.imagenes} />
+                    {console.log(productIdList.imagenes)}
+                    < Descripcion
+                        titulo={product.description.titulo}
+                        line1={productIdList.descripcion}
+                    />
 
-            <Caracteristicas list={product.caracteristicas} />
+                    <Caracteristicas list={productIdList.caracteristicas} />
+                    <ContainerFechas />
 
-            <ContainerFechas />
+                    <ContainerMapa
+                        location={product.locationFull}
+                        lng={product.coordenadas.lng}
+                        lat={product.coordenadas.lat}
+                        loc={product.description.titulo} />
 
-            <ContainerMapa 
-            location={product.locationFull}
-            lng={product.coordenadas.lng} 
-            lat={product.coordenadas.lat} 
-            loc={product.description.titulo} />
-            
+                    <PoliticsContainer
+                        normas={product.politicas.normas}
+                        saludSeguridad={product.politicas.saludSeguridad}
+                        cancelacion={product.politicas.cancelacion} />
+                </>
 
-            <PoliticsContainer 
-            normas={product.politicas.normas}
-            saludSeguridad= {product.politicas.saludSeguridad}
-            cancelacion={product.politicas.cancelacion}/>
+            ) : null
+            }
+
+
+
 
         </>
 

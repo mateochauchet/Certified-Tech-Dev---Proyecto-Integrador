@@ -5,12 +5,11 @@ import {Link} from 'react-router-dom';
 
 function CardsInfo(props) {
 
-  let verdetalle = (props.house.title).replace(/\s+/g, '')
+  //let verdetalle = (props.house.title).replace(/\s+/g, '')
   let id = (props.house.id)
 
   let handleClick = () => {
-    console.log((props.house.title).replace(/\s+/g, ''))
-    
+    console.log((props.house.nombre).replace(/\s+/g, ''))
   }
   
 
@@ -21,8 +20,8 @@ function CardsInfo(props) {
 
         <div className="cardsInfoParteDeArriba">
           <div className="cardsTitleCategoria">
-            <p className="categoria" >{props.house.categoria}</p>
-            <h2>{props.house.title}</h2>
+            <p className="categoria" >{props.house.categoria.titulo}</p>
+            <h2>{props.house.nombre}</h2>
           </div>
           <div >
             <CardsPuntaje stars="false" style="cardsPuntaje" puntaje={props.house.puntaje}
@@ -39,7 +38,7 @@ function CardsInfo(props) {
           <FontAwesomeIcon icon={faWifi} />
         </div>
         <div className="cardsDescription">
-          <p>{props.house.description.text1}</p>
+          <p>{props.house.descripcion}</p>
         </div>
       </div>
 

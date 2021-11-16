@@ -4,8 +4,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faWifi, faDog, faTv, faParking, faAirFreshener, faToilet, faUtensils, faSwimmer, faLock } from "@fortawesome/free-solid-svg-icons";
 library.add(faWifi, faDog, faTv, faParking, faAirFreshener, faToilet, faSwimmer, faUtensils, faLock )
 function Caracteristicas({list}) {
-    console.log(list)
-    
     
 
     return ( 
@@ -16,7 +14,7 @@ function Caracteristicas({list}) {
             <div className="items">
                 <ul type="none">
                     {list.map((c, i) => <li key={i} >
-                        <div className="caractIcons"><FontAwesomeIcon icon={c.iconName} /></div>
+                        <div className="caractIcons"><FontAwesomeIcon icon={c.icono} /></div>
                         {c.nombre}</li>) }
                         
            
