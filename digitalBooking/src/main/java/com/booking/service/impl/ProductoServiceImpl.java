@@ -36,12 +36,12 @@ public class ProductoServiceImpl implements IProductoService {
         Set<Imagen> imagenes = new HashSet<>();
         categoriaService.readOne(producto.getCategoria().getId()).get();
         ciudadService.readOne(producto.getCiudad().getId()).get();
-        if(producto.getDescripcion() == null || producto.getNombre() ==null || producto.getNombre().trim() == "" || producto.getDescripcion().trim() == "")
+        if(producto.getDescripcion() == null || producto.getNombre() ==null || producto.getPuntaje() == null || producto.getNombre().trim() == "" || producto.getDescripcion().trim() == "")
             throw  new NotExistDataException("el campo del nombre o el campo de la descripcion se encuentra vacio o la categoria seleccionada no existe");
         else if(producto.getDescripcion().trim().length()>250 || producto.getNombre().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 250 caracteres)\n o el nombre (no puede ser mayor a 50 caracteres) ");
 
-        Producto producto2 = productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getCategoria(),producto.getCiudad()));
+        Producto producto2 = productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getPuntaje(), producto.getCategoria(),producto.getCiudad()));
         if(files != null && !files.isEmpty() && files.size() > 0) {
             for(int i = 0; i<files.size(); i++){
                 String imagen = storageService.uploadFile(files.get(i),"/categorias");

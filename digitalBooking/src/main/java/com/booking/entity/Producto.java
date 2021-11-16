@@ -36,6 +36,13 @@ public class Producto {
 
     @Getter
     @Setter
+    @NotNull
+    @Size(max = 10)
+    @Column(name="puntaje", length = 10)
+    private Integer puntaje;
+
+    @Getter
+    @Setter
     @ManyToOne
     @JoinColumn(name="id_categoria",  nullable = false)
     private Categoria categoria;
@@ -61,23 +68,16 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas;
 
-    public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad) {
+    public Producto(String nombre, String descripcion, Integer puntaje,  Categoria categoria, Ciudad ciudad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.ciudad = ciudad;
        this.imagenes = null;
         this.caracteristicas = null;
+        this.puntaje = puntaje;
     }
 
-    public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Caracteristica> caracteristicas, Set<Imagen> imagenes) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.ciudad = ciudad;
-        this.imagenes = imagenes;
-        this.caracteristicas = caracteristicas;
-    }
 
 
 }
