@@ -1,5 +1,6 @@
 import data from '../Cards_list/data.json'
 import Heading from './Heading';
+import Heading2 from './Heading2'
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from 'react-router-dom';
 import Galeria from './Galeria';
@@ -51,7 +52,8 @@ function ContainerDetalle() {
                 <>
                     < Heading
                         titulo={productIdList.titulo}
-                        categoria={productIdList.categoria}
+                        categoria={productIdList.categoria}/>
+                    <Heading2    
                         location={productIdList.ubicacion}
                         puntaje={productIdList.puntaje} />
 

@@ -5,21 +5,18 @@ import CardsPuntaje from "../Cards_list/CardsPuntaje";
 import {Link} from 'react-router-dom'
 
 
-function Heading({titulo, categoria}) {
+function Heading({location, puntaje}) {
     
     return ( 
         <>
-        <div className="heading">
-            <div className="text-heading">
-                <p>{categoria}</p>
-                <h1>{titulo}</h1> 
+          
+        <div className="heading2">
+            <div className="text-heading2">
+                <FontAwesomeIcon  icon={faMapMarkerAlt} />
+                <p>{location}</p> 
             </div>
-            <div className="arrow">
-            <Link className="link-arrow" to="/home"><FontAwesomeIcon icon={faChevronLeft} /></Link>
-            </div>
-             
+            <CardsPuntaje style="cardsPuntajeRow" puntaje={puntaje} />
         </div>
-        
         </>
      );
 }
