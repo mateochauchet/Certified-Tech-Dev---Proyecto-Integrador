@@ -10,7 +10,7 @@ import ContainerMapa from "./Mapa/ContainerMapa"
 import Mapa from "./Mapa/Mapa"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTv } from "@fortawesome/free-solid-svg-icons";
-import DateBuscador from '../Buscador/DateBuscador';
+import DateBuscador from '../buscador/DateBuscador';
 import Fecha from './Fechas/Fecha';
 
 

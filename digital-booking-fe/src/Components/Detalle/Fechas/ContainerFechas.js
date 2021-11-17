@@ -1,5 +1,5 @@
 import './ContainerFechas.css'
-import Button from '../../Buscador/Button';
+import Button from '../../buscador/Button';
 import Fecha from './Fecha';
 function ContainerFechas() {
     return (
