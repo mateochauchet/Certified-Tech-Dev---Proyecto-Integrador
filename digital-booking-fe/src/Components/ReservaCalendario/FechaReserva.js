@@ -1,6 +1,6 @@
 import 'react-dates/lib/css/_datepicker.css';
-import './react_dates_overrides.css'
-import { DateRangePicker, DayPickerRangeController } from 'react-dates';
+import '../Detalle/Fechas/react_dates_overrides.css'
+import { DayPickerRangeController, CalendarDay } from 'react-dates';
 import 'react-dates/initialize';
 import React, { Component } from "react";
 import moment from 'moment';
@@ -9,9 +9,11 @@ import {
     VERTICAL_ORIENTATION,
     START_DATE, END_DATE
 } from "react-dates/lib/constants.js";
-import { Mobile, Tablet } from "./Responsive";
+import { Mobile, Tablet } from "../Detalle/Fechas/Responsive";
 
-class Fecha extends Component {
+
+
+class FechaReserva extends Component {
 
     constructor(props) {
         super(props);
@@ -19,10 +21,21 @@ class Fecha extends Component {
         this.state = {
             startDate: null,
             endDate: null,
-            
+            focusedInput: 'startDate'
         }
     }
-    
+    handleDateChange = ({ startDate, endDate }) => {
+        this.setState({ startDate, endDate });
+    }
+
+    handleFocusChange = focusedInput => {
+        this.setState({ focusedInput: focusedInput || 'startDate' })
+    }
+
+    dayClick = date => {
+        console.log(date)
+    }
+
     isOutsideRange(day) {
         return (moment().diff(day) > 0);
     }
@@ -41,15 +54,22 @@ class Fecha extends Component {
             <>
                 <Mobile>
                     <DayPickerRangeController
+
                         numberOfMonths={1}
                         isOutsideRange={this.isOutsideRange}
                         isDayBlocked={this.isBlocked}
+                
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
-                        
+                        onDatesChange={this.handleDateChange}
+                        //onDatesChange={({ START_DATE, END_DATE }) => this.setState({ START_DATE, END_DATE })} // PropTypes.func.isRequired,
+                        focusedInput={this.state.focusedInput}
+                        //focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                        onFocusChange={this.handleFocusChange}
+                        //onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                     // initialVisibleMonth={() => moment().add(2, "M")} // PropTypes.func or null,
                     />
-                    
+                    {console.log(this.state.startDate)}{console.log(this.state.endDate)}
                 </Mobile>
                 <Tablet>
                     <DayPickerRangeController
@@ -59,7 +79,9 @@ class Fecha extends Component {
                         enableOutsideDays={false}
                         startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                         endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                        
+                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                     // initialVisibleMonth={() => moment().add(2, "M")} // PropTypes.func or null,
                     />
 
@@ -71,4 +93,4 @@ class Fecha extends Component {
     }
 }
 
-export default Fecha;
+export default FechaReserva;

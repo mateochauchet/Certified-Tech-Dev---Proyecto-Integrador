@@ -13,13 +13,13 @@ import CardsContainer from "./Components/Cards_list/CardsContainer"
 import './App.css'
 
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
-import { getCategorias, getProductos, getProductosByCategoria, getProductosByCiudad, getProductosById} from './service/cardsListService';
+import { getCategorias, getProductos, getCity, getProductosByCiudad, getProductosById} from './service/cardsListService';
 
  export default function App() {
 
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
   const [productList,setProductList] = useState([]);
-
+  const [cityList,setCityList] = useState([]);
   const [categoryList,setCategoryList] = useState([]);
   const [filtro,setFiltro] = useState("todos");
 
@@ -31,7 +31,14 @@ import { getCategorias, getProductos, getProductosByCategoria, getProductosByCiu
        setProductList(productJson)
     } getData() 
   } ,[]);
-    
+
+  useEffect(() => {
+    async function getDataCity (){
+       const productJson = await getCity()
+       setCityList(productJson)
+    } getDataCity() 
+  } ,[]);
+
   useEffect(() => {
     async function getDataCategoria (){
        const response = await getCategorias()
@@ -71,7 +78,7 @@ import { getCategorias, getProductos, getProductosByCategoria, getProductosByCiu
               path="/home"
               component={() => (
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
-                   <ContenedorBuscador cambiarCiudad={cambiarCiudad}  />
+                   <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad}  />
                    <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />
                    <CardsContainer list={productList} filtro={filtro} />
                 </Template>

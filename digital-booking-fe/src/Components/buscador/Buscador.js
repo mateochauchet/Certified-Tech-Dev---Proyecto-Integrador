@@ -1,8 +1,9 @@
 import "./buscador.css";
+import './Select.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import Select from 'react-select'
-import cityList from './city.json'
+
 import Button from "./Button";
 import DateBuscador from "./DateBuscador";
 import { useState} from "react";
@@ -12,14 +13,17 @@ import { useState} from "react";
 function Buscador(props) {
 
   const [ciudad,setCiudad] = useState([]);
+  
+  
+  
 
   let options =
-    cityList.map((c,i) => ({
+    props.list.map((c,i) => ({
       key:{i}, value: c.city, label: (
       <>
       <FontAwesomeIcon icon={faMapMarkerAlt}/>
-      <span className="city">{c.city}</span><br />
-      <span className="country">{c.country}</span>
+      <span className="city">{c.nombre}</span><br />
+      <span className="country">{c.pais}</span>
       </>
     )
     })
@@ -31,7 +35,25 @@ function Buscador(props) {
  
   return (
     <div  className="barSearch">
-      <Select data-testid="city-selector" className="searchCity" placeholder='A dónde vamos?' options= {options} onChange={elegirCiudad} />
+      <Select  
+        data-testid="city-selector" 
+        
+        className="searchCity" 
+        placeholder='A dónde vamos?' 
+        options= {options} 
+        onChange={elegirCiudad} 
+        
+    
+    theme={(theme) => ({
+      ...theme,
+      borderRadius: 0,
+      colors: {
+        ...theme.colors,
+        
+        primary: 'white'
+      },
+    })}
+    />
       <DateBuscador />
       <Button data-testid="button" classN="primary" name="Buscar" cambiarCiudad={props.cambiarCiudad} ciudad={ciudad} ></Button>
     </div>

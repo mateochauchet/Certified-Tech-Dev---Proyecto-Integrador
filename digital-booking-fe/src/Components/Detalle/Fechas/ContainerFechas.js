@@ -1,11 +1,11 @@
 import './ContainerFechas.css'
-import Button from '../../Buscador/Button';
+
+
 import Fecha from './Fecha';
 
-function ContainerFechas() {
-    function handleClick () {
+function ContainerFechas(props) {
+    function handler() {
         console.log('hola')
-            
     }
     return (
         
@@ -18,7 +18,7 @@ function ContainerFechas() {
                     </div>
                     <div className="fechas-text">
                         <p>Agregá tus fechas de viaje para obtener precios exactos</p>
-                        <Button classN="secondary" name="Iniciar Reserva" onclick={(()=>handleClick)} />
+                        <button className="principal" onClick={handler} >Inicia Reserva </button>
                     </div>
                 </div>
             </div>

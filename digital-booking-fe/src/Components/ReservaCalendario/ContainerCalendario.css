@@ -1,0 +1,9 @@
+.calendario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    height: 350px;
+   
+    justify-content: space-around;
+}

@@ -8,8 +8,10 @@ import Descripcion from './Descripcion';
 import Caracteristicas from './Caracteristicas';
 import ContainerFechas from './Fechas/ContainerFechas';
 import PoliticsContainer from '../Politicas/PoliticsContainer';
+
 import ContainerMapa from "./Mapa/ContainerMapa"
 import { getProductosById } from '../../service/cardsListService';
+import ContainerCalendario from '../ReservaCalendario/ContainerCalendario';
 
 
 function ContainerDetalle() {
@@ -77,9 +79,12 @@ function ContainerDetalle() {
                         normas={product.politicas.normas}
                         saludSeguridad={product.politicas.saludSeguridad}
                         cancelacion={product.politicas.cancelacion} />
-                </>
 
-            ) : null
+                <ContainerCalendario />        
+                </>
+                
+
+            ) : <h1>Loading...</h1>
             }
 
 

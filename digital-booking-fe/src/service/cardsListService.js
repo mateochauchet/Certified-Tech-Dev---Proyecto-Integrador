@@ -11,6 +11,13 @@ export async function getCategorias () {
     const resJson = await response.json();
     return Array.isArray(resJson) ?  resJson :  [resJson]
 } 
+
+export async function getCity () {
+    const  response = await fetch("http://localhost:8080/api/ciudad/");
+    const resJson = await response.json();
+    return Array.isArray(resJson) ?  resJson :  [resJson]
+} 
+
 export async function getProductosById (id) {
     const  response = await fetch(`http://localhost:8080/api/productos/${id}`);
     const resJson = await response.json();
@@ -33,6 +40,7 @@ export async function getProductosByCiudad (q) {
 export default {
     getProductos,
     getCategorias,
+    getCity,
     getProductosById,
     getProductosByCategoria,
     getProductosByCiudad
