@@ -13,38 +13,40 @@ import CardsContainer from "./Components/Cards_list/CardsContainer"
 import './App.css'
 
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
-import { getCategorias, getProductos, getCity, getProductosByCiudad, getProductosById} from './service/cardsListService';
+import { getCategorias, getProductos, getCity, getProductosByCiudad, getProductosById } from './service/cardsListService';
+import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 
- export default function App() {
+export default function App() {
 
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
-  const [productList,setProductList] = useState([]);
-  const [cityList,setCityList] = useState([]);
-  const [categoryList,setCategoryList] = useState([]);
-  const [filtro,setFiltro] = useState("todos");
+  const [productList, setProductList] = useState([]);
+  const [cityList, setCityList] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
+  const [filtro, setFiltro] = useState("todos");
 
-  
 
-  useEffect(() => {
-    async function getData (){
-       const productJson = await getProductos()
-       setProductList(productJson)
-    } getData() 
-  } ,[]);
 
   useEffect(() => {
-    async function getDataCity (){
-       const productJson = await getCity()
-       setCityList(productJson)
-    } getDataCity() 
-  } ,[]);
+    async function getData() {
+      const productJson = await getProductos()
+      setProductList(productJson)
+    } getData()
+  }, []);
 
   useEffect(() => {
-    async function getDataCategoria (){
-       const response = await getCategorias()
-       setCategoryList(response)
-    } getDataCategoria() 
-  } ,[]);
+    async function getDataCity() {
+      const productJson = await getCity()
+      setCityList(productJson)
+    } 
+    getDataCity()
+  }, []);
+
+  useEffect(() => {
+    async function getDataCategoria() {
+      const response = await getCategorias()
+      setCategoryList(response)
+    } getDataCategoria()
+  }, []);
 
   // useEffect(() => {
   //   async function getDataProductId (){
@@ -53,52 +55,49 @@ import { getCategorias, getProductos, getCity, getProductosByCiudad, getProducto
   //   } getDataProductId ()
   // } ,[]);
 
-
-
-
   const cambiarCiudad = async (value) => {
-    console.log(value.replace(/ /g,""))
+    console.log(value.replace(/ /g, ""))
     setFiltro(value)
   }
 
   const cambiarCategoria = async (categoria) => {
-    console.log(categoria.replace(/ /g,""))
+    console.log(categoria.replace(/ /g, ""))
     setFiltro(categoria)
   }
 
-  
+
 
   return (
     <div id="app">
-       <ContextLoginRegistro.Provider value={{contextLoginRegistro, setContextLoginRegistro }}>
+      <ContextLoginRegistro.Provider value={{ contextLoginRegistro, setContextLoginRegistro }}>
         <BrowserRouter>
-           <Switch>
-             <Route
+          <Switch>
+            <Route
               exact
               path="/home"
               component={() => (
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
-                   <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad}  />
-                   <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />
-                   <CardsContainer list={productList} filtro={filtro} />
+                  <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
+                  <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />
+                  <CardsContainer list={productList} filtro={filtro} />
                 </Template>
               )}
             ></Route>
-              <Route
+            <Route
               exact
               path="/login"
               component={() => (
                 <Template home={false} direccion="/registro" nombreBoton="Crear cuenta">
-                <Login/>
+                  <Login />
                 </Template>
               )}
             ></Route>
-              <Route
+            <Route
               exact
               path="/registro"
               component={() => (
                 <Template home={false} direccion="/login" nombreBoton="Iniciar sesión">
-                   <Registro/>
+                  <Registro />
                 </Template>
               )}
             ></Route>
@@ -108,14 +107,28 @@ import { getCategorias, getProductos, getCity, getProductosByCiudad, getProducto
               path="/productos/:id"
               component={() => (
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
-                   <ContainerDetalle  />
+                  <ContainerDetalle />
                 </Template>
               )}
             ></Route>
+
+            <Route
+              exact
+              path="/productos/:id/reserva"
+              component={() => (
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                  <TemplateReserva />
+                </Template>
+              )}
+            ></Route>
+
+
+
 
 
           </Switch>
         </BrowserRouter>
       </ContextLoginRegistro.Provider>
     </div>
-  )}
+  )
+}

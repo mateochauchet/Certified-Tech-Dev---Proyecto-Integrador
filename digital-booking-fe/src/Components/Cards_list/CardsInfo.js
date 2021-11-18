@@ -8,9 +8,9 @@ function CardsInfo(props) {
   //let verdetalle = (props.house.title).replace(/\s+/g, '')
   let id = (props.house.id)
 
-  let handleClick = () => {
-    console.log((props.house.nombre).replace(/\s+/g, ''))
-  }
+  // let handleClick = () => {
+  //   console.log((props.house.nombre).replace(/\s+/g, ''))
+  // }
   
 
   return (
@@ -44,7 +44,7 @@ function CardsInfo(props) {
 
 
       <div className="btnContainer">
-        <Link to={`/productos/${id}`}><button className="cardBtn" onClick={handleClick}>Ver detalle</button></ Link>
+        <Link to={`/productos/${id}`}><button className="cardBtn" >Ver detalle</button></ Link>
       </div>
 
     </div>

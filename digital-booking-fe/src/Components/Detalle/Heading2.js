@@ -5,7 +5,7 @@ import CardsPuntaje from "../Cards_list/CardsPuntaje";
 import {Link} from 'react-router-dom'
 
 
-function Heading({location, puntaje}) {
+function Heading2 ({location, puntaje}) {
     
     return ( 
         <>
@@ -21,4 +21,4 @@ function Heading({location, puntaje}) {
      );
 }
 
-export default Heading;
+export default Heading2;

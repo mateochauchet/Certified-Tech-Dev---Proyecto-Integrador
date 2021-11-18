@@ -79,11 +79,12 @@ class FechaReserva extends Component {
                         enableOutsideDays={false}
                         startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                         endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                    // initialVisibleMonth={() => moment().add(2, "M")} // PropTypes.func or null,
+                        onDatesChange={this.handleDateChange}
+                        focusedInput={this.state.focusedInput}
+                        onFocusChange={this.handleFocusChange}
+                         // initialVisibleMonth={() => moment().add(2, "M")} // PropTypes.func or null,
                     />
+                    {console.log(this.state.startDate)}{console.log(this.state.endDate)}
 
                 </Tablet>
 

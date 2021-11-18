@@ -30,6 +30,7 @@ function ContainerDetalle() {
                 if (ismounted) {
                     console.log(resJson)
                     const houseData = {
+                        id: resJson[0].id,
                         titulo: resJson[0].nombre,
                         categoria: resJson[0].categoria.titulo,
                         ubicacion: resJson[0].ciudad.nombre,
@@ -67,7 +68,7 @@ function ContainerDetalle() {
                     />
 
                     <Caracteristicas list={productIdList.caracteristicas} />
-                    <ContainerFechas />
+                    <ContainerFechas id={productIdList.id}/>
 
                     <ContainerMapa
                         location={product.locationFull}
