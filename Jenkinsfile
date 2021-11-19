@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         dir(path: 'digitalBooking') {
-          sh 'mvn clean install'
+          sh 'mvn clean install -Dmaven.test.failure.ignore=false'
         }
 
       }
