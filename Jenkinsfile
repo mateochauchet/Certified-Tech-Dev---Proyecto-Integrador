@@ -25,8 +25,8 @@ pipeline {
             includeBranchesSpec: "release/qat",
             excludeBranchesSpec: "",
         ]
+      ])
     ])
-  ])
   }
 
   stages {
