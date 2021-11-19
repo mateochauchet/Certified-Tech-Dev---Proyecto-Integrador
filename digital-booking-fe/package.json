@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco --openssl-legacy-provider --max-old-space-size=4096 build",
+    "build": "craco --openssl-legacy-provider --max-old-space-size=1000 build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
