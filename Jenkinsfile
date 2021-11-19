@@ -11,7 +11,6 @@ pipeline {
           pipelineTriggers([
               [
                   $class: 'GitLabPushTrigger',
-                  branchFilterType: 'All',
                   triggerOnPush: true,
                   triggerOnMergeRequest: false,
                   triggerOpenMergeRequestOnPush: "never",
