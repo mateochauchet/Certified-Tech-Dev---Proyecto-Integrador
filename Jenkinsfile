@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-  properties([
+  options([
     gitLabConnection('your-gitlab-connection-name'),
     pipelineTriggers([
         [
