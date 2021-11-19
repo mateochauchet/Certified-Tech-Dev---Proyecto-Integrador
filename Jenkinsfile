@@ -1,5 +1,32 @@
 pipeline {
   agent any
+
+  properties([
+    gitLabConnection('your-gitlab-connection-name'),
+    pipelineTriggers([
+        [
+            $class: 'GitLabPushTrigger',
+            branchFilterType: 'All',
+            triggerOnPush: true,
+            triggerOnMergeRequest: false,
+            triggerOpenMergeRequestOnPush: "never",
+            triggerOnNoteRequest: true,
+            noteRegex: "Jenkins please retry a build",
+            skipWorkInProgressMergeRequest: true,
+            secretToken: project_token,
+            ciSkip: false,
+            setBuildDescription: true,
+            addNoteOnMergeRequest: true,
+            addCiMessage: true,
+            addVoteOnMergeRequest: true,
+            acceptMergeRequestOnSuccess: false,
+            branchFilterType: "NameBasedFilter",
+            includeBranchesSpec: "back-end",
+            excludeBranchesSpec: "",
+        ]
+    ])
+  ])
+
   stages {
     stage('Build') {
       steps {
