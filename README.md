@@ -1,2 +1,1 @@
-# Certified Tech Dev - Proyecto Integrador - Grupo 6
-
+# Certified Tech Dev - Proyecto Integrador
