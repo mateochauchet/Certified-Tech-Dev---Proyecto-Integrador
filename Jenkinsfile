@@ -27,7 +27,7 @@ pipeline {
                   acceptMergeRequestOnSuccess: false,
                   branchFilterType: "NameBasedFilter",
                   includeBranchesSpec: "release/qat",
-                  excludeBranchesSpec: "",
+                  excludeBranchesSpec: "*",
               ]
             ])
           ])
