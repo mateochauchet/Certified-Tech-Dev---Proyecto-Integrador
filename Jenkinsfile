@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-  script{
+  script {
     properties([
     gitLabConnection('digitalbooking'),
     pipelineTriggers([
