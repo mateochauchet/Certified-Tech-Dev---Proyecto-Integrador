@@ -4,15 +4,15 @@ pipeline {
     stage('Build') {
       steps {
         dir(path: 'digitalBooking') {
-          sh 'mvn clean install -Dmaven.test.failure.ignore=false'
+          withMaven(maven: 'maven3') {
+            sh 'mvn clean install'
+          }
+
         }
 
       }
     }
 
-  }
-  tools {
-    maven 'maven3'
   }
   environment {
     JDBC_DATABASE_URL = 'jdbc:mysql://digitalbooking.clpoxqlbhqxm.us-east-1.rds.amazonaws.com:3306/digitalbooking'
