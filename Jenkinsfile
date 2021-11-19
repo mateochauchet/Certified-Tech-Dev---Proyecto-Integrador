@@ -13,7 +13,7 @@ pipeline {
             triggerOnNoteRequest: true,
             noteRegex: "Jenkins please retry a build",
             skipWorkInProgressMergeRequest: true,
-            secretToken: project_token,
+            secretToken: '5fbec3c6b4a1018ab960e542720958f8',
             ciSkip: false,
             setBuildDescription: true,
             addNoteOnMergeRequest: true,
