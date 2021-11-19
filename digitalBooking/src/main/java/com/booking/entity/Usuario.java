@@ -23,7 +23,7 @@ public class Usuario {
     private String email;
 
     @Column(name = "pass")
-    private String contrasena;
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "id_rol")
@@ -32,11 +32,11 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private Set<Reserva> reservas = new HashSet<>();
 
-    public Usuario(String nombre, String apellido, String email, String contrasena, Rol rol, Set<Reserva> reservas) {
+    public Usuario(String nombre, String apellido, String email, String password, Rol rol, Set<Reserva> reservas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.contrasena = contrasena;
+        this.password = password;
         this.rol = rol;
         this.reservas = reservas;
     }

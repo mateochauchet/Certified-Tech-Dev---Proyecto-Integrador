@@ -59,6 +59,14 @@
 		</dependency>
 		<!-- final de las dependencias-->
 
+        <!-- dependencia para usar el encoder-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.11</version>
+        </dependency>
+        <!-- final de las dependencias-->
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
