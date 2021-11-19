@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         dir(path: 'digitalBooking') {
-          sh 'mvn clean package'
+          sh 'mvn clean install'
         }
 
       }
