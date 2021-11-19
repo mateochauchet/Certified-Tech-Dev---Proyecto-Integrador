@@ -59,4 +59,7 @@ pipeline {
   tools {
     nodejs 'node17'
   }
+  environment {
+    CI = 'false'
+  }
 }
