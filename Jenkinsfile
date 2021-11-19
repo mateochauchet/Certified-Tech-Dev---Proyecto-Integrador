@@ -25,7 +25,7 @@ pipeline {
   }
 
 
-  properties([
+  options([
     gitLabConnection('your-gitlab-connection-name'),
     pipelineTriggers([
         [
