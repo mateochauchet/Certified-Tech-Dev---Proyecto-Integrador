@@ -41,7 +41,7 @@ pipeline {
       post {
         always {
           dir(path: 'digital-booking-fe') {
-            archiveArtifacts '**/build/**/*'
+            archiveArtifacts 'build/**/*'
           }
 
         }
