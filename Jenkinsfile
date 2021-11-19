@@ -25,8 +25,8 @@ pipeline {
                   addVoteOnMergeRequest: true,
                   acceptMergeRequestOnSuccess: false,
                   branchFilterType: "NameBasedFilter",
-                  includeBranchesSpec: "release/qat",
-                  excludeBranchesSpec: "*",
+                  includeBranchesSpec: "",
+                  excludeBranchesSpec: "",
               ]
             ])
           ])
