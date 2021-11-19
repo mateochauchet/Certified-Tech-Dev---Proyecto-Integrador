@@ -5,7 +5,7 @@ pipeline {
     gitLabConnection('your-gitlab-connection-name'),
     pipelineTriggers([
         [
-            $class: 'GitLabPushTrigger',
+            $class: 'digitalbooking',
             branchFilterType: 'All',
             triggerOnPush: true,
             triggerOnMergeRequest: false,
