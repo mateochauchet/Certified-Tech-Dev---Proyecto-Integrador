@@ -81,7 +81,7 @@ function ContainerDetalle() {
                         saludSeguridad={product.politicas.saludSeguridad}
                         cancelacion={product.politicas.cancelacion} />
 
-                <ContainerCalendario />        
+                      
                 </>
                 
 

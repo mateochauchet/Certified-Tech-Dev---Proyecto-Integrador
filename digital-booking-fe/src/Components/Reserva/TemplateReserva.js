@@ -12,15 +12,21 @@ import DetalleReserva from "./DetalleReserva";
 import { getProductosById } from '../../service/cardsListService';
 
 import ContainerCalendario from '../ReservaCalendario/ContainerCalendario';
+import FechaReserva from '../ReservaCalendario/FechaReserva';
 
 
-function TemplateReserva(props) {
+function TemplateReserva() {
 
     const [productIdList, setProductIdList] = useState(null);
+    const [dateIn, setDateIn] = useState(null);
 
     const { id } = useParams()
     console.log(id)
 
+    const handleChange = ( startDate) => {
+        setDateIn( startDate ) 
+        
+    } 
 
     useEffect(() => {
         let ismounted = true;
@@ -36,7 +42,6 @@ function TemplateReserva(props) {
                         ubicacion: resJson[0].ciudad.nombre + (' ') + resJson[0].ciudad.pais,
                         imagenes: resJson[0].imagenes[0].imagen,
                         descripcion: resJson[0].descripcion,
-
                     }
                     setProductIdList(houseData);
                 }
@@ -55,20 +60,27 @@ function TemplateReserva(props) {
                             <div className="formularioReserva">
                                 <FormularioReserva /></div>
                             <div className="calendarioReserva">
-                                <ContainerCalendario /></div>
+                                <FechaReserva handleChange={handleChange}  /></div>
                             <div className="horarioReserva">
                                 <HorarioReserva /></div>
                         </div>
                         <div className="divDerecha">
                             <div className="cardDetalleReserva">
-                                <DetalleReserva list={productIdList} /></div>
+                                <DetalleReserva data={dateIn} list={productIdList} /></div>
                         </div>
                     </div>
+                    {console.log(dateIn)}
+                    {(dateIn != null) ? 
+                  
+                  <h1>{(dateIn).format('MM/DD/YYYY')}</h1> 
+                  : null}
+
                 </>
 
             ) : <h1>Loading...</h1>
                 
             }
+            
         </div>
     );   
 }

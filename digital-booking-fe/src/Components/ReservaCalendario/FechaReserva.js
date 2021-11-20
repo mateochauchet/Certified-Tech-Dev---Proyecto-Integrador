@@ -11,29 +11,29 @@ import {
 } from "react-dates/lib/constants.js";
 import { Mobile, Tablet } from "../Detalle/Fechas/Responsive";
 
-
-
 class FechaReserva extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             startDate: null,
             endDate: null,
             focusedInput: 'startDate'
         }
     }
+    
     handleDateChange = ({ startDate, endDate }) => {
-        this.setState({ startDate, endDate });
-    }
 
+        this.setState({ startDate, endDate }) 
+        this.props.handleChange (startDate)
+    }
+     
     handleFocusChange = focusedInput => {
         this.setState({ focusedInput: focusedInput || 'startDate' })
     }
 
     dayClick = date => {
-        console.log(date)
+        console.log(date) 
     }
 
     isOutsideRange(day) {
@@ -58,7 +58,7 @@ class FechaReserva extends Component {
                         numberOfMonths={1}
                         isOutsideRange={this.isOutsideRange}
                         isDayBlocked={this.isBlocked}
-                
+                        hideKeyboardShortcutsPanel={true}
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
                         onDatesChange={this.handleDateChange}
@@ -67,9 +67,8 @@ class FechaReserva extends Component {
                         //focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                         onFocusChange={this.handleFocusChange}
                         //onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                    // initialVisibleMonth={() => moment().add(2, "M")} // PropTypes.func or null,
                     />
-                    {console.log(this.state.startDate)}{console.log(this.state.endDate)}
+                    
                 </Mobile>
                 <Tablet>
                     <DayPickerRangeController
@@ -77,6 +76,7 @@ class FechaReserva extends Component {
                         isOutsideRange={this.isOutsideRange}
                         isDayBlocked={this.isBlocked}
                         enableOutsideDays={false}
+                        hideKeyboardShortcutsPanel={true}
                         startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                         endDate={this.state.endDate} // momentPropTypes.momentObj or null,
                         onDatesChange={this.handleDateChange}
@@ -84,10 +84,15 @@ class FechaReserva extends Component {
                         onFocusChange={this.handleFocusChange}
                          // initialVisibleMonth={() => moment().add(2, "M")} // PropTypes.func or null,
                     />
-                    {console.log(this.state.startDate)}{console.log(this.state.endDate)}
+                    
 
                 </Tablet>
-
+                {(this.state.startDate != null) && (this.state.endDate != null) ? 
+                  
+                <p>{(this.state.startDate).format('MM/DD/YYYY')}
+                {(this.state.endDate).format('MM/DD/YYYY')}</p> 
+                : null}
+                {console.log(this.state.startDate)}{console.log(this.state.endDate)}
             </>
 
         );
