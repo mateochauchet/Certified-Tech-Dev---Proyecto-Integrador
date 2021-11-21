@@ -10,8 +10,6 @@ import FormularioReserva from "./FormularioReserva";
 import HorarioReserva from "./HorarioReserva";
 import DetalleReserva from "./DetalleReserva";
 import { getProductosById } from '../../service/cardsListService';
-
-import ContainerCalendario from '../ReservaCalendario/ContainerCalendario';
 import FechaReserva from '../ReservaCalendario/FechaReserva';
 
 
@@ -19,12 +17,14 @@ function TemplateReserva() {
 
     const [productIdList, setProductIdList] = useState(null);
     const [dateIn, setDateIn] = useState(null);
+    const [dateOut, setDateOut] = useState(null);
 
     const { id } = useParams()
     console.log(id)
 
-    const handleChange = ( startDate) => {
+    const handleChange = ( startDate, endDate) => {
         setDateIn( startDate ) 
+        setDateOut( endDate ) 
         
     } 
 
@@ -66,14 +66,12 @@ function TemplateReserva() {
                         </div>
                         <div className="divDerecha">
                             <div className="cardDetalleReserva">
-                                <DetalleReserva data={dateIn} list={productIdList} /></div>
+                                <DetalleReserva 
+                                    dataIn={dateIn} 
+                                    dataOut={dateOut}
+                                    list={productIdList} /></div>
                         </div>
                     </div>
-                    {console.log(dateIn)}
-                    {(dateIn != null) ? 
-                  
-                  <h1>{(dateIn).format('MM/DD/YYYY')}</h1> 
-                  : null}
 
                 </>
 

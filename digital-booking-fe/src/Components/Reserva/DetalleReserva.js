@@ -18,7 +18,7 @@ function DetalleReserva(props) {
 
     return (
         <>
-            
+
             <div className="divDetalleReserva">
                 <div className="divIzquierdaDetalleReserva">
                     <h3 className="h3DetalleReserva">Detalle de la reserva</h3>
@@ -42,20 +42,19 @@ function DetalleReserva(props) {
                     </div>
                     <div className="divHr"><hr className="primerHrReserva" /></div>
                     <div className="containerChecks">
-                    
+
                         <div className="divCheckInOut">
                             <h4 className="h4DetalleReserva">Check-in</h4>
-                            {(props.data != null) ? 
-                  
-                  <h4>{(props.data).format('MM/DD/YYYY')}</h4> 
-                  : null}
-                           
-                  
+                            {(props.dataIn != null) ?
+                                <h4>{(props.dataIn).format('DD/MM/YYYY')}</h4>
+                                : null}
                         </div>
                         <div className="divHr"><hr /></div>
                         <div className="divCheckInOut">
                             <h4 className="h4DetalleReserva">Check-out</h4>
-                            <h4>__/__/__</h4>
+                            {(props.dataOut != null) ?
+                                <h4>{(props.dataOut).format('DD/MM/YYYY')}</h4>
+                                : null}
                         </div>
                     </div>
 

@@ -25,7 +25,7 @@ class FechaReserva extends Component {
     handleDateChange = ({ startDate, endDate }) => {
 
         this.setState({ startDate, endDate }) 
-        this.props.handleChange (startDate)
+        this.props.handleChange (startDate, endDate)
     }
      
     handleFocusChange = focusedInput => {
@@ -87,12 +87,7 @@ class FechaReserva extends Component {
                     
 
                 </Tablet>
-                {(this.state.startDate != null) && (this.state.endDate != null) ? 
-                  
-                <p>{(this.state.startDate).format('MM/DD/YYYY')}
-                {(this.state.endDate).format('MM/DD/YYYY')}</p> 
-                : null}
-                {console.log(this.state.startDate)}{console.log(this.state.endDate)}
+                
             </>
 
         );
