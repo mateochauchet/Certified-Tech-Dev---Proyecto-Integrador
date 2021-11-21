@@ -1,6 +1,7 @@
 package com.booking.controller;
 
 import com.booking.entity.Usuario;
+import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
 import com.booking.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UsuarioController {
     IUsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<?> insert(@RequestBody Usuario usuario) throws NotExistDataException {
+    public ResponseEntity<?> insert(@RequestBody Usuario usuario) throws NotExistDataException, InvalidDataException {
         usuarioService.insert(usuario);
         return ResponseEntity.ok(HttpStatus.CREATED);
     }

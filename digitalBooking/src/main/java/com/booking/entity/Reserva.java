@@ -5,27 +5,35 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Time;
 import java.util.Date;
 
 @Entity
 @Table(name = "reserva")
-@Getter @Setter
+
 @NoArgsConstructor
 public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reserva")
+    @Getter
     private Long id;
 
     @Column(name = "hora_inicio")
+    @NotNull
+    @Getter @Setter
     private Time horaDeReserva;
 
     @Column(name = "fecha_inicio")
+    @NotNull
+    @Getter @Setter
     private Date fechaInicio;
 
     @Column(name = "fecha_fin")
+    @NotNull
+    @Getter @Setter
     private Date fechaFinal;
 
     @ManyToOne
