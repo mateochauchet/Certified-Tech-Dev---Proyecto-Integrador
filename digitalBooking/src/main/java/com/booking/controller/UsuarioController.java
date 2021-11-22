@@ -29,11 +29,9 @@ public class UsuarioController {
     }
 
 
-    @GetMapping("/")
-    public List<Usuario> readAll() {
-        return usuarioService.readAll();
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> readOne(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(usuarioService.readById(id).get(),HttpStatus.OK);
     }
-
-
 
 }
