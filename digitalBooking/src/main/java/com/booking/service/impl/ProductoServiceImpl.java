@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.*;
 
 @Service("ProductoServiceImpl")
@@ -93,7 +94,7 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
-    public List<Producto> getProductsOfReservaByDate(Date fecha_incio, Date fecha_fin ) throws ResourcesNotFoundException{
+    public List<Producto> getProductsOfReservaByDate(LocalDate fecha_incio, LocalDate fecha_fin ) throws ResourcesNotFoundException{
 
         List<Producto> productosPorCiudad =  productoRepository.getProductsOfReservaByDate(fecha_incio,fecha_fin);
         if (productosPorCiudad.size() == 0){

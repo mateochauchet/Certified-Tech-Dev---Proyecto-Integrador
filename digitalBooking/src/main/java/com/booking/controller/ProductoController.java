@@ -1,10 +1,8 @@
 package com.booking.controller;
 
-import com.booking.entity.Categoria;
 import com.booking.entity.Producto;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
-import com.booking.exceptions.NotValidImage;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.IProductoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -61,7 +59,7 @@ public class ProductoController {
     }
 
     @GetMapping("reserva/{fecha_inicio}/{fecha_fin}")
-    public ResponseEntity <List<Producto>> getProductsOfReservaByDate(@PathVariable("fecha_inicio") Date fecha_inicio,@PathVariable("fecha_fin") Date fecha_fin)throws ResourcesNotFoundException{
+    public ResponseEntity <List<Producto>> getProductsOfReservaByDate(@PathVariable("fecha_inicio") LocalDate fecha_inicio, @PathVariable("fecha_fin") LocalDate fecha_fin)throws ResourcesNotFoundException{
         return  new ResponseEntity<>(productoService.getProductsOfReservaByDate(fecha_inicio,fecha_fin),HttpStatus.OK);
     }
 

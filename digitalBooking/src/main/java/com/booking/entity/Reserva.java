@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "reserva")
@@ -29,12 +29,12 @@ public class Reserva {
     @Column(name = "fecha_inicio")
     @NotNull
     @Getter @Setter
-    private Date fechaInicio;
+    private LocalDate fechaInicio;
 
     @Column(name = "fecha_fin")
     @NotNull
     @Getter @Setter
-    private Date fechaFinal;
+    private LocalDate fechaFinal;
 
     @ManyToOne
     @Getter @Setter
@@ -46,7 +46,7 @@ public class Reserva {
     @JoinColumn(name = "id_usuario",referencedColumnName = "id_usuario",nullable = false)
     private Usuario usuario;
 
-    public Reserva(Time horaDeReserva, Date fechaInicio, Date fechaFinal, Producto producto, Usuario usuario) {
+    public Reserva(Time horaDeReserva, LocalDate fechaInicio, LocalDate fechaFinal, Producto producto, Usuario usuario) {
         this.horaDeReserva = horaDeReserva;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;

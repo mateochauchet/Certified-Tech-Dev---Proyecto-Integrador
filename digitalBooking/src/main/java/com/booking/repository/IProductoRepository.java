@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -25,6 +25,6 @@ public interface IProductoRepository extends JpaRepository<Producto, Long> {
 
     @Query(
             value = "SELECT P.* FROM producto p inner join reserva R on R.id_producto = P.id_producto  WHERE R.fecha_inicio = :fecha_inicio AND R.fecha_fin = :fecha_fin ", nativeQuery = true)
-    List<Producto> getProductsOfReservaByDate(@Param("fecha_inicio") Date fecha_incio, @Param("fecha_fin")  Date fecha_fin );
+    List<Producto> getProductsOfReservaByDate(@Param("fecha_inicio") LocalDate fecha_incio, @Param("fecha_fin")  LocalDate fecha_fin );
 
 }
