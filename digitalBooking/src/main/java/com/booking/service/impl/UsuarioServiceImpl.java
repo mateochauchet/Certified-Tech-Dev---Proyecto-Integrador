@@ -9,6 +9,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements IUsuarioService {
@@ -31,8 +32,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
         }
     }
 
-    @Override
-    public List<Usuario> readAll() {
-        return usuarioRepository.findAll();
+
+    public Optional<Usuario> readById(Long id) {
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        return usuario;
     }
 }

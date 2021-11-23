@@ -55,15 +55,13 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody Usuario usuario) throws NotExistDataException, InvalidDataException {
         usuarioService.insert(usuario);
-        return ResponseEntity.ok(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body("el usuario fue creado correctamente");
     }
 
 
-    @GetMapping("/")
-    public List<Usuario> readAll() {
-        return usuarioService.readAll();
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> readOne(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(usuarioService.readById(id).get(),HttpStatus.OK);
     }
-
-
 
 }
