@@ -11,7 +11,6 @@ import PoliticsContainer from '../Politicas/PoliticsContainer';
 
 import ContainerMapa from "./Mapa/ContainerMapa"
 import { getProductosById } from '../../service/cardsListService';
-import ContainerCalendario from '../ReservaCalendario/ContainerCalendario';
 
 
 function ContainerDetalle() {

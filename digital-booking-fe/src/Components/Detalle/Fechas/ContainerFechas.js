@@ -21,7 +21,7 @@ function ContainerFechas(props) {
                     </div>
                     <div className="fechas-text">
                         <p>Agregá tus fechas de viaje para obtener precios exactos</p>
-                        <Link to={`/productos/${id}/reserva`}>
+                        <Link style={{ textDecoration: 'none' }} to={`/productos/${id}/reserva`}>
                             <button className="principal" onClick={handler} >Inicia Reserva </button>
                         </Link>
                     </div>
