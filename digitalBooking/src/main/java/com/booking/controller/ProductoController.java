@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +31,7 @@ public class ProductoController {
     private IProductoService productoService;
 
     @PostMapping("/")
+    @PreAuthorize("hasRole('ROLE_CLIENTE')")
     public ResponseEntity<Producto> insert(@RequestParam(value="imagenes") List<MultipartFile> files,@RequestParam(value="producto") String producto) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         Producto producto2 = null;

@@ -20,9 +20,6 @@ public class UserSecurityService implements UserDetailsService {
 
     private final IUsuarioRepository usuarioRepository;
 
-
-
-
     @Autowired
     public UserSecurityService(IUsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
@@ -41,23 +38,19 @@ public class UserSecurityService implements UserDetailsService {
         autorizacionC.add(autorizacionCliente);
         autorizacionA.add(autorizacionAdmin);
 
-        Optional<Usuario> odontologo = odontologoRepository.findByEmail(s);
-        Optional<Paciente> paciente = pacienteRepository.findByEmail(s);
-        Optional<Administrador> administrador = administradorRepository.findByEmail(s);
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(s);
 
 
-        if(odontologo.isPresent()){
-            return new User(odontologo.get().getEmail(),odontologo.get().getPassword(),true,true,
-                    true,true,autorizacionO);
+        if(usuario.get().getRol().getId() == 1){
+            return new User(usuario.get().getEmail(),usuario.get().getPassword(),true,true,
+                    true,true,autorizacionA);
         }
-        else if(paciente.isPresent()){
-            return new User(paciente.get().getEmail(),paciente.get().getPassword(),true,true,
-                    true,true,autorizacionP);
-        }else if(administrador.isPresent()){
-            return new User(administrador.get().getEmail(),administrador.get().getPassword(),true,true,true,true,autorizacionA);
-
-        }else{
+        else if(usuario.get().getRol().getId() == 2){
+            return new User(usuario.get().getEmail(),usuario.get().getPassword(),true,true,
+                    true,true,autorizacionC);
+        }else
             throw new UsernameNotFoundException("no se encontro al usuario con email: ");
-        }
 
     }
+
+}

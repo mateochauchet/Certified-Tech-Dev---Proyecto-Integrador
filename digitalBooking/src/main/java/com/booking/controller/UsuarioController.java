@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -52,7 +53,7 @@ public class UsuarioController {
         return ResponseEntity.ok(new AuthenticationResponse((jwt)));
     };
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<?> insert(@RequestBody Usuario usuario) throws NotExistDataException, InvalidDataException {
         usuarioService.insert(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body("el usuario fue creado correctamente");

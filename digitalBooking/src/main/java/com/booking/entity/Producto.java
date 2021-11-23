@@ -56,6 +56,7 @@ public class Producto {
     @Getter
     @Setter
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "producto")
+    @JsonIgnoreProperties({"producto"})
     private Set<Imagen> imagenes = new HashSet<>();
 
     @Getter

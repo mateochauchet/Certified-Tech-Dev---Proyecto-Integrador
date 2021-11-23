@@ -4,6 +4,7 @@ import com.booking.service.impl.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -15,13 +16,10 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-public class AppSecurityConfigutration {
-
-    @Configuration
-    @EnableWebSecurity
-    @EnableGlobalMethodSecurity(prePostEnabled = true)
-    public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class AppSecurityConfigutration extends WebSecurityConfigurerAdapter{
 
         @Autowired
         private UserSecurityService userSecurityService;
@@ -41,16 +39,12 @@ public class AppSecurityConfigutration {
             http
                     .csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/odontologos/authenticate").permitAll()
-                    .antMatchers("/pacientes/authenticate").permitAll()
-                    .antMatchers("/administradores/authenticate").permitAll()
-                    .antMatchers("/login.html").permitAll()
-                    .antMatchers("/odontologo.html").hasRole("ADMIN")
-                    .antMatchers("/paciente.html").permitAll()
-                    .antMatchers("/registroOdontologo.html").hasRole("ADMIN")
-                    .antMatchers("/registroPaciente.html").hasRole("ADMIN")
-                    .antMatchers("/actualizacionOdontologo.html").hasRole("ADMIN")
-                    .antMatchers("/actualizacionPaciente.html").hasRole("ADMIN")
+                    .antMatchers("/api/categorias/{id}","/api/categorias/" ).permitAll()
+                    .antMatchers("/api/ciudad/").permitAll()
+                    .antMatchers("/api/productos/{id}","/api/productos/","/api/productos/categoria/{titulo}" , "/api/productos/ciudad/{**}" ).permitAll()
+                    .antMatchers("/api/productos/ciudad/{nombre}" ).permitAll()
+                    .antMatchers("/api/reserva/").permitAll()
+                    .antMatchers("/api/usuarios/authenticate","/api/usuarios/","/api/usuarios/{id}").permitAll()
                     .anyRequest()
                     .authenticated()
                     .and()
@@ -65,12 +59,13 @@ public class AppSecurityConfigutration {
         public AuthenticationManager authenticationManagerBean() throws Exception {
             return super.authenticationManagerBean();
         }
+
         @Bean
         public PasswordEncoder passwordEncoder() {
             return NoOpPasswordEncoder.getInstance();
         }
 
-
-
-
     }
+
+
+
