@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,5 +19,6 @@ public interface IProductoService {
     Optional<Producto> readOne(Long id) throws ResourcesNotFoundException;
     List<Producto> getProductsByCategory(String titulo) throws ResourcesNotFoundException;
     List<Producto> getProductsByCity(String nombre)throws ResourcesNotFoundException;
+    List<Producto> getProductsOfReservaByDate(Date fecha_incio, Date fecha_fin ) throws ResourcesNotFoundException;
 
 }

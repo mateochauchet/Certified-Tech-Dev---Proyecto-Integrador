@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service("ProductoServiceImpl")
 public class ProductoServiceImpl implements IProductoService {
@@ -94,5 +91,17 @@ public class ProductoServiceImpl implements IProductoService {
         }
         return productosPorCiudad;
     }
+
+    @Override
+    public List<Producto> getProductsOfReservaByDate(Date fecha_incio, Date fecha_fin ) throws ResourcesNotFoundException{
+
+        List<Producto> productosPorCiudad =  productoRepository.getProductsOfReservaByDate(fecha_incio,fecha_fin);
+        if (productosPorCiudad.size() == 0){
+            throw new ResourcesNotFoundException("No existen porductos con reserva en la fecha seleccionada");
+        }
+        return productosPorCiudad;
+    }
+
+
 }
 
