@@ -37,11 +37,13 @@ public class Reserva {
     private Date fechaFinal;
 
     @ManyToOne
-    @JoinColumn(name = "id_producto", nullable = false)
+    @Getter @Setter
+    @JoinColumn(name = "id_producto",referencedColumnName = "id_producto", nullable = false)
     private Producto producto;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario",nullable = false)
+    @Getter @Setter
+    @JoinColumn(name = "id_usuario",referencedColumnName = "id_usuario",nullable = false)
     private Usuario usuario;
 
     public Reserva(Time horaDeReserva, Date fechaInicio, Date fechaFinal, Producto producto, Usuario usuario) {

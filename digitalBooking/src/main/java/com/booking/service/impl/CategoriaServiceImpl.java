@@ -7,6 +7,7 @@ import com.booking.exceptions.NotValidImage;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.ICategoriaRepository;
 import com.booking.service.ICategoriaService;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,10 +44,13 @@ public class CategoriaServiceImpl implements ICategoriaService {
              throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
         else if(descripcion.trim().length()>100 || titulo.trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
-        if(file != null && !file.isEmpty()) {
-            String imagen =  storageService.uploadFile(file,"/categorias");
-            categoria.setImagen(imagen);
+        if(!file.isEmpty()){
+            if(!FilenameUtils.getExtension(file.getOriginalFilename()).equalsIgnoreCase("jpg") || !FilenameUtils.getExtension(file.getOriginalFilename()).equalsIgnoreCase("png"))
+                throw new InvalidDataException("no es valido la imagen a subir, debe ser en formato jpg o png ");
+            else
+                categoria.setImagen(storageService.uploadFile(file,"/categorias/"));
         }
+
         categoria.setTitulo(titulo.trim());
         categoria.setDescripcion(descripcion.trim());
         return categoriaRepository.save(categoria);
@@ -69,11 +73,15 @@ public class CategoriaServiceImpl implements ICategoriaService {
             throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
         else if(descripcion.trim().length()>100 || titulo.trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
-        if(file != null && !file.isEmpty()) {
-            storageService.deleteFile(categoria2.get().getImagen());
-            String imagen = storageService.uploadFile(file, "categorias/");
-            categoria2.get().setImagen(imagen);
+        if(!file.isEmpty()){
+            if(!FilenameUtils.getExtension(file.getOriginalFilename()).equalsIgnoreCase("jpg") || !FilenameUtils.getExtension(file.getOriginalFilename()).equalsIgnoreCase("png"))
+                throw new InvalidDataException("no es valido la imagen a subir, debe ser en formato jpg o png ");
+            else{
+                storageService.deleteFile(categoria2.get().getImagen());
+                categoria2.get().setImagen(storageService.uploadFile(file, "/categorias/"));
+            }
         }
+
         categoria2.get().setTitulo(titulo);
         categoria2.get().setDescripcion(descripcion);
         categoriaRepository.save(categoria2.get());

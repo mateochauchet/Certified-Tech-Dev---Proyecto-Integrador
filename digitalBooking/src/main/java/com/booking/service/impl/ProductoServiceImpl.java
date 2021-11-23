@@ -8,6 +8,7 @@ import com.booking.repository.IProductoRepository;
 import com.booking.service.ICategoriaService;
 import com.booking.service.ICiudadService;
 import com.booking.service.IProductoService;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,11 +45,16 @@ public class ProductoServiceImpl implements IProductoService {
         Producto producto2 = productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getPuntaje(), producto.getCategoria(),producto.getCiudad()));
         if(files != null && !files.isEmpty() && files.size() > 0) {
             for(int i = 0; i<files.size(); i++){
-                String imagen = storageService.uploadFile(files.get(i),"/categorias");
+                if(!FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("jpg") || !FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("png"))
+                    throw new InvalidDataException("no es valido la imagen a subir, debe ser en formato jpg o png ");
+            }
+
+            for(int i = 0; i<files.size(); i++){
+                String imagen = storageService.uploadFile(files.get(i),"/productos/");
                 Imagen imagen2 = new Imagen();
                 imagen2.setImagen(imagen);
                 imagen2.setProducto(producto2);
-                imagen2.setTitulo("pp");
+                imagen2.setTitulo("imagen " + i+1);
                 imagenes.add(imagen2);
             }
         }

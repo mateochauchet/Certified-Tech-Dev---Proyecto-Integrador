@@ -18,7 +18,7 @@
 	</properties>
 	<dependencies>
 
-<!-- esta dependencia se agregara cuando implemenmtemos la seguridad en la API
+<!-- esta dependencia se agregara cuando implemenmtemos la seguridad en la API-->
         <dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
@@ -29,7 +29,7 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
--->
+
 		<!-- dependencias para usar junit 5-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
