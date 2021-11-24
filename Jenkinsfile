@@ -55,6 +55,21 @@ pipeline {
       }
     }
 
+    stage('Approve') {
+      steps {
+        input 'Deploy build to S3 bucket'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        script {
+          ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '-b', installation: 'ansible', playbook: 'digitalBookingPlaybook.yml'
+        }
+
+      }
+    }
+
   }
   tools {
     nodejs 'node17'
