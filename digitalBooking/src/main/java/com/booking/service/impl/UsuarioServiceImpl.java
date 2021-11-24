@@ -3,6 +3,7 @@ package com.booking.service.impl;
 import com.booking.entity.Usuario;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
+import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IUsuarioRepository;
 import com.booking.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +29,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
             String codificadoPass = pass.encode(usuario.getPassword());
             usuario.setPassword(codificadoPass);
             usuarioRepository.save(usuario);
-            /*
-            String sha256 = DigestUtils.sha256Hex(usuario.getPassword());
-            usuario.setPassword(sha256);
-            usuarioRepository.save(usuario);
-             */
         }
     }
 
-    public Optional<Usuario> readById(Long id) {
+
+    public Optional<Usuario> readById(Long id) throws ResourcesNotFoundException {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if(!usuario.isPresent())
+            throw new ResourcesNotFoundException("el usuario con el Id"+ id +"no existe");
         return usuario;
     }
 
