@@ -94,9 +94,9 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
-    public List<Producto> getProductsOfReservaByDate(LocalDate fecha_incio, LocalDate fecha_fin ) throws ResourcesNotFoundException{
+    public List<Producto> getProductsOfReservaByDate(LocalDate fecha_inicio, LocalDate fecha_fin ) throws ResourcesNotFoundException{
 
-        List<Producto> productosPorCiudad =  productoRepository.getProductsOfReservaByDate(fecha_incio,fecha_fin);
+        List<Producto> productosPorCiudad =  productoRepository.getProductsOfReservaByDate(fecha_inicio,fecha_fin);
         if (productosPorCiudad.size() == 0){
             throw new ResourcesNotFoundException("No existen porductos con reserva en la fecha seleccionada");
         }

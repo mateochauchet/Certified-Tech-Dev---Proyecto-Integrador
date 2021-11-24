@@ -3,6 +3,7 @@ package com.booking.service.impl;
 import com.booking.entity.Usuario;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
+import com.booking.exceptions.NotPermissionException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IUsuarioRepository;
 import com.booking.service.IUsuarioService;
@@ -36,8 +37,24 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public Optional<Usuario> readById(Long id) throws ResourcesNotFoundException {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if(!usuario.isPresent())
-            throw new ResourcesNotFoundException("el usuario con el Id"+ id +"no existe");
+            throw new ResourcesNotFoundException("el usuario con el Id: "+ id +" no existe");
         return usuario;
+    }
+
+    @Override
+    public Usuario readByEmail(String email, String password) throws ResourcesNotFoundException, NotPermissionException {
+
+        BCryptPasswordEncoder pass = new BCryptPasswordEncoder(12);
+        String codificadoPass = pass.encode(password);
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+        if(!usuario.isPresent())
+            throw new ResourcesNotFoundException("el usuario con el email: " + email + " no existe");
+        else{
+            if(codificadoPass.equals(password))
+                throw new NotPermissionException("No tiene permiso a acceder al usuario con email: " + email + " ya que no coinciden las passwords");
+        }
+
+        return usuario.get();
     }
 
 

@@ -5,6 +5,7 @@ import com.booking.entity.AuthenticationResponse;
 import com.booking.entity.Usuario;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
+import com.booking.exceptions.NotPermissionException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.IUsuarioService;
 import com.booking.service.impl.UserSecurityService;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RestController
@@ -66,6 +68,11 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> readOne(@PathVariable("id") Long id) throws ResourcesNotFoundException {
         return new ResponseEntity<>(usuarioService.readById(id).get(),HttpStatus.OK);
+    }
+
+    @GetMapping("/{email}/{password}")
+    public ResponseEntity<Usuario> readByEmail(@PathVariable("email") String email, @PathVariable("password") String password) throws ResourcesNotFoundException, NotPermissionException {
+        return new ResponseEntity<>(usuarioService.readByEmail(email, password),HttpStatus.OK);
     }
 
 }

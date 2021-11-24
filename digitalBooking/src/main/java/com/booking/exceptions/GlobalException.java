@@ -30,6 +30,11 @@ public class GlobalException {
     public ResponseEntity<String> procesarNotValidImage(NotValidImage exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
+
+    @ExceptionHandler({NotValidImage.class})
+    public ResponseEntity<String> procesarNotPermission(NotPermissionException exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
 /*
     @ExceptionHandler({IOException.class})
     public ResponseEntity<String> procesarIOException(IOException exception){
