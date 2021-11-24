@@ -5,6 +5,7 @@ import com.booking.entity.AuthenticationResponse;
 import com.booking.entity.Usuario;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
+import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.IUsuarioService;
 import com.booking.service.impl.UserSecurityService;
 import com.booking.util.JwtUtil;
@@ -61,7 +62,7 @@ public class UsuarioController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> readOne(@PathVariable("id") Long id) {
+    public ResponseEntity<Usuario> readOne(@PathVariable("id") Long id) throws ResourcesNotFoundException {
         return new ResponseEntity<>(usuarioService.readById(id).get(),HttpStatus.OK);
     }
 

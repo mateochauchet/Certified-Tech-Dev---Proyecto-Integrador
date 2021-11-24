@@ -3,6 +3,7 @@ package com.booking.service.impl;
 import com.booking.entity.Usuario;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotExistDataException;
+import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IUsuarioRepository;
 import com.booking.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 
     @Override
-    public void insert(Usuario usuario) throws NotExistDataException, InvalidDataException {
+    public Usuario insert(Usuario usuario) throws NotExistDataException, InvalidDataException {
         BCryptPasswordEncoder pass = new BCryptPasswordEncoder(12);
         if(usuario.getNombre() == null || usuario.getApellido() == null || usuario.getEmail()==null || usuario.getPassword() == null || usuario.getNombre().trim() == "" || usuario.getApellido().trim() == "" || usuario.getEmail().trim() ==""|| usuario.getPassword().trim()=="")
             throw  new NotExistDataException("alguno de los campos se encuentra vacio");
@@ -37,11 +38,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
              */
         }
+        return usuario;
     }
 
 
-    public Optional<Usuario> readById(Long id) {
+    public Optional<Usuario> readById(Long id) throws ResourcesNotFoundException {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if(!usuario.isPresent())
+            throw new ResourcesNotFoundException("el usuario con el Id"+ id +"no existe");
         return usuario;
     }
 }
