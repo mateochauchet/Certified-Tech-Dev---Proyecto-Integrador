@@ -1,5 +1,6 @@
 package com.booking.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,16 +25,19 @@ public class Reserva {
     @Column(name = "hora_inicio")
     @NotNull
     @Getter @Setter
+    @JsonFormat(pattern="HH:mm:ss")
     private Time horaDeReserva;
 
     @Column(name = "fecha_inicio")
     @NotNull
     @Getter @Setter
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate fechaInicio;
 
     @Column(name = "fecha_fin")
     @NotNull
     @Getter @Setter
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate fechaFinal;
 
     @ManyToOne

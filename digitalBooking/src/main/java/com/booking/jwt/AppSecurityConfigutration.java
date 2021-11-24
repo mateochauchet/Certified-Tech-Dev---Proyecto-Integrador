@@ -35,18 +35,19 @@ public class AppSecurityConfigutration extends WebSecurityConfigurerAdapter{
             auth.userDetailsService(userSecurityService);
         }
 
-
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .csrf().disable()
                     .authorizeRequests()
                     .antMatchers(HttpMethod.POST,"/api/usuarios/authenticate").permitAll()
+                    .antMatchers(HttpMethod.GET,"/api/reserva/").permitAll()
                     .antMatchers("/api/categorias/{id}","/api/categorias/" ).permitAll()
                     .antMatchers("/api/ciudad/").permitAll()
-                    .antMatchers("/api/productos/{id}","/api/productos/","/api/productos/categoria/{titulo}" , "/api/productos/ciudad/{nombre}", "/api/productos/reserva/{fecha_inicio}/{fecha_fin}" ).permitAll()
+                    .antMatchers(HttpMethod.GET, "/api/productos/reserva/{fecha_inicio}/{fecha_fin}").permitAll()
+                    .antMatchers("/api/productos/{id}","/api/productos/","/api/productos/categoria/{titulo}" , "/api/productos/ciudad/{nombre}" ).permitAll()
                     .antMatchers("/api/productos/ciudad/{nombre}" ).permitAll()
-                    .antMatchers("/api/reserva/").permitAll()
+                    //.antMatchers("/api/reserva/").permitAll()
                     .antMatchers(HttpMethod.GET,"/api/usuarios/{id}").permitAll()
                     .antMatchers(HttpMethod.POST,"/api/usuarios/").permitAll()
                     .anyRequest()

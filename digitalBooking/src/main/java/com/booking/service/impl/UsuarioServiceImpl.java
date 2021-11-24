@@ -2,7 +2,6 @@ package com.booking.service.impl;
 
 import com.booking.entity.Usuario;
 import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.NotPermissionException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IUsuarioRepository;
@@ -20,10 +19,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
     IUsuarioRepository usuarioRepository;
 
     @Override
-    public void insert(Usuario usuario) throws NotExistDataException, InvalidDataException {
+    public void insert(Usuario usuario) throws ResourcesNotFoundException, InvalidDataException {
         BCryptPasswordEncoder pass = new BCryptPasswordEncoder(12);
         if(usuario.getNombre() == null || usuario.getApellido() == null || usuario.getEmail()==null || usuario.getPassword() == null || usuario.getNombre().trim() == "" || usuario.getApellido().trim() == "" || usuario.getEmail().trim() ==""|| usuario.getPassword().trim()=="")
-            throw  new NotExistDataException("alguno de los campos se encuentra vacio");
+            throw  new ResourcesNotFoundException("alguno de los campos se encuentra vacio");
         else if (usuario.getNombre().trim().length() > 50 || usuario.getApellido().trim().length() > 50 || usuario.getEmail().trim().length() > 50)
             throw new InvalidDataException("alguno de los campos supera los 50 caracteres permitidos");
         else {

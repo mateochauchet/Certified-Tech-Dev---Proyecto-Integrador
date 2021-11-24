@@ -1,18 +1,8 @@
 package com.booking.service.impl;
 
-import com.booking.entity.Categoria;
-import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
-import com.booking.exceptions.NotValidImage;
-import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.ICategoriaService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
 
 
 @SpringBootTest

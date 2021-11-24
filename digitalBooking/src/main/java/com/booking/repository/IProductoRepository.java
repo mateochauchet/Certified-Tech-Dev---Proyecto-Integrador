@@ -24,7 +24,7 @@ public interface IProductoRepository extends JpaRepository<Producto, Long> {
     List<Producto> getProductsByCity(@Param("ciudad_nombre") String ciudad_nombre);
 
     @Query(
-            value = "SELECT P.* FROM producto p inner join reserva R on R.id_producto = P.id_producto  WHERE R.fecha_inicio = :fecha_inicio AND R.fecha_fin = :fecha_fin ", nativeQuery = true)
+            value = "SELECT P.* FROM producto P inner join reserva R on R.id_producto = P.id_producto  WHERE R.fecha_inicio = ?1 AND R.fecha_fin = ?2 ", nativeQuery = true)
     List<Producto> getProductsOfReservaByDate(@Param("fecha_inicio") LocalDate fecha_incio, @Param("fecha_fin")  LocalDate fecha_fin );
 
 }

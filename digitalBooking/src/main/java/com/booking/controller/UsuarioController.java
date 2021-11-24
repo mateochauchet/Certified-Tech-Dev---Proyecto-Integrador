@@ -4,27 +4,20 @@ import com.booking.entity.AuthenticationRequest;
 import com.booking.entity.AuthenticationResponse;
 import com.booking.entity.Usuario;
 import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.NotPermissionException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.IUsuarioService;
 import com.booking.service.impl.UserSecurityService;
 import com.booking.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RestController
@@ -59,7 +52,7 @@ public class UsuarioController {
     };
 
     @PostMapping("/")
-    public ResponseEntity<?> insert(@RequestBody Usuario usuario) throws NotExistDataException, InvalidDataException {
+    public ResponseEntity<?> insert(@RequestBody Usuario usuario) throws ResourcesNotFoundException, InvalidDataException {
         usuarioService.insert(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body("el usuario fue creado correctamente");
     }

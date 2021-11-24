@@ -1,9 +1,6 @@
 package com.booking.service.impl;
 
-import com.booking.entity.Rol;
 import com.booking.entity.Usuario;
-import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.IUsuarioService;
 import org.junit.jupiter.api.Assertions;
@@ -12,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class UsuarioServiceImplTest {

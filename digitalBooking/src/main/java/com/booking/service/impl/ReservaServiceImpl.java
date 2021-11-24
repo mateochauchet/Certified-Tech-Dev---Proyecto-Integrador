@@ -2,7 +2,6 @@ package com.booking.service.impl;
 
 import com.booking.entity.Reserva;
 import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IReservaRepository;
 import com.booking.service.IProductoService;
@@ -23,10 +22,10 @@ public class ReservaServiceImpl implements IReservaService {
 
 
     @Override
-    public Reserva insert(Reserva reserva) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException {
+    public Reserva insert(Reserva reserva) throws  InvalidDataException, ResourcesNotFoundException {
         productoService.readOne(reserva.getProducto().getId());
         if(reserva.getFechaFinal() == null || reserva.getFechaInicio() == null || reserva.getHoraDeReserva() == null)
-            throw  new NotExistDataException("La fecha de inicio o fecha final o hora de inicio no se encuentran dentro del json");
+            throw  new ResourcesNotFoundException("La fecha de inicio o fecha final o hora de inicio no se encuentran dentro del json");
         return reservaRepository.save(reserva);
     }
 

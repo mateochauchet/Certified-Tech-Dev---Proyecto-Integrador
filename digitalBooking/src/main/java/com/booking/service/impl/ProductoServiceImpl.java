@@ -2,7 +2,6 @@ package com.booking.service.impl;
 import com.booking.entity.Imagen;
 import com.booking.entity.Producto;
 import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IProductoRepository;
 import com.booking.service.ICategoriaService;
@@ -31,12 +30,12 @@ public class ProductoServiceImpl implements IProductoService {
 
 
     @Override
-    public Producto insert(Producto producto, List<MultipartFile> files) throws InvalidDataException, NotExistDataException, ResourcesNotFoundException, IOException {
+    public Producto insert(Producto producto, List<MultipartFile> files) throws InvalidDataException, ResourcesNotFoundException, IOException {
         Set<Imagen> imagenes = new HashSet<>();
         categoriaService.readOne(producto.getCategoria().getId()).get();
         ciudadService.readOne(producto.getCiudad().getId()).get();
         if(producto.getDescripcion() == null || producto.getNombre() ==null || producto.getPuntaje() == null || producto.getNombre().trim() == "" || producto.getDescripcion().trim() == "")
-            throw  new NotExistDataException("el campo del nombre o el campo de la descripcion se encuentra vacio o la categoria seleccionada no existe");
+            throw  new ResourcesNotFoundException("el campo del nombre o el campo de la descripcion se encuentra vacio o la categoria seleccionada no existe");
         else if(producto.getDescripcion().trim().length()>250 || producto.getNombre().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 250 caracteres)\n o el nombre (no puede ser mayor a 50 caracteres) ");
 
@@ -46,7 +45,6 @@ public class ProductoServiceImpl implements IProductoService {
                 if(!FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("jpg") || !FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("png"))
                     throw new InvalidDataException("no es valido la imagen a subir, debe ser en formato jpg o png ");
             }
-
             for(int i = 0; i<files.size(); i++){
                 String imagen = storageService.uploadFile(files.get(i),"/productos/");
                 Imagen imagen2 = new Imagen();

@@ -2,8 +2,7 @@ package com.booking.service.impl;
 
 import com.booking.entity.Categoria;
 import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
-import com.booking.exceptions.NotValidImage;
+import com.booking.exceptions.NotValidImageException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.ICategoriaRepository;
 import com.booking.service.ICategoriaService;
@@ -38,10 +37,10 @@ public class CategoriaServiceImpl implements ICategoriaService {
     }
 
     @Override
-    public Categoria insert(String titulo, String descripcion, MultipartFile file) throws InvalidDataException, NotExistDataException, NotValidImage, IOException {
+    public Categoria insert(String titulo, String descripcion, MultipartFile file) throws InvalidDataException, ResourcesNotFoundException, NotValidImageException, IOException {
         Categoria categoria = new Categoria();
         if(descripcion == null || titulo ==null || titulo.trim() == "" || descripcion.trim() == "")
-             throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
+             throw  new ResourcesNotFoundException("el campo del titulo o el campo de la descripcion se encuentra vacio");
         else if(descripcion.trim().length()>100 || titulo.trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
         if(!file.isEmpty()){
@@ -67,10 +66,10 @@ public class CategoriaServiceImpl implements ICategoriaService {
     }
 
     @Override
-    public Boolean update(Long id, String titulo, String descripcion, MultipartFile file) throws InvalidDataException, NotExistDataException, NotValidImage, IOException, ResourcesNotFoundException {
+    public Boolean update(Long id, String titulo, String descripcion, MultipartFile file) throws InvalidDataException,  NotValidImageException, IOException, ResourcesNotFoundException {
         Optional<Categoria> categoria2 = readOne(id);
         if(id == null||descripcion == null || titulo ==null || titulo.trim() == "" || descripcion.trim() == "" )
-            throw  new NotExistDataException("el campo del titulo o el campo de la descripcion se encuentra vacio");
+            throw  new ResourcesNotFoundException("el campo del titulo o el campo de la descripcion se encuentra vacio");
         else if(descripcion.trim().length()>100 || titulo.trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
         if(!file.isEmpty()){

@@ -2,9 +2,10 @@ package com.booking.controller;
 
 import com.booking.entity.Producto;
 import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.IProductoService;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,9 +18,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.sql.Time;
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.zip.DataFormatException;
 
 @Controller
 @RestController
@@ -33,10 +37,9 @@ public class ProductoController {
 
     @PostMapping("/")
     @PreAuthorize("hasRole('ROLE_CLIENT')")
-    public ResponseEntity<Producto> insert(@RequestParam(value="imagenes") List<MultipartFile> files,@RequestParam(value="producto") String producto) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException, IOException {
+    public ResponseEntity<Producto> insert(@RequestParam(value="imagenes") List<MultipartFile> files,@RequestParam(value="producto") String producto) throws JsonProcessingException , InvalidDataException, ResourcesNotFoundException, IOException {
         ObjectMapper mapper = new ObjectMapper();
-        Producto producto2 = null;
-        producto2 = mapper.readValue(producto, Producto.class);
+        Producto producto2 = mapper.readValue(producto, Producto.class);
         return new ResponseEntity<>(productoService.insert(producto2, files), HttpStatus.OK);
     }
 
@@ -61,8 +64,10 @@ public class ProductoController {
     }
 
     @GetMapping("reserva/{fecha_inicio}/{fecha_fin}")
-    public ResponseEntity <List<Producto>> getProductsOfReservaByDate(@PathVariable("fecha_inicio")@DateTimeFormat(pattern = "yyyy-MM-dd")  LocalDate fecha_inicio, @PathVariable("fecha_fin") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha_fin)throws ResourcesNotFoundException{
-        return  new ResponseEntity<>(productoService.getProductsOfReservaByDate(fecha_inicio,fecha_fin),HttpStatus.OK);
+    public ResponseEntity <List<Producto>> getProductsOfReservaByDate(@PathVariable("fecha_inicio")  String fecha_inicio, @PathVariable("fecha_fin") String fecha_fin)throws ResourcesNotFoundException, DateTimeException {
+        LocalDate fecha_inicio2 = LocalDate.parse(fecha_inicio, DateTimeFormatter.ofPattern( "yyy-MM-dd"));
+        LocalDate fecha_fin2 = LocalDate.parse(fecha_fin, DateTimeFormatter.ofPattern( "yyy-MM-dd"));
+        return  new ResponseEntity<>(productoService.getProductsOfReservaByDate(fecha_inicio2,fecha_fin2),HttpStatus.OK);
     }
 
 

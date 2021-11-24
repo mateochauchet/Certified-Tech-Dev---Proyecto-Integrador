@@ -1,7 +1,7 @@
 package com.booking.controller;
 import com.booking.entity.Ciudad;
 import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
+import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.ICiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,7 +30,7 @@ public class CiudadController {
 
     @PostMapping("/")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<Ciudad> insert(@RequestBody Ciudad ciudad) throws NotExistDataException, InvalidDataException {
+    public ResponseEntity<Ciudad> insert(@RequestBody Ciudad ciudad) throws ResourcesNotFoundException, InvalidDataException {
         return new ResponseEntity<>(ciudadService.insert(ciudad),HttpStatus.OK);
     }
 }

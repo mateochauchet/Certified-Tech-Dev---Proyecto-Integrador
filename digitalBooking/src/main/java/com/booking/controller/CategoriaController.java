@@ -2,8 +2,7 @@ package com.booking.controller;
 
 import com.booking.entity.Categoria;
 import com.booking.exceptions.InvalidDataException;
-import com.booking.exceptions.NotExistDataException;
-import com.booking.exceptions.NotValidImage;
+import com.booking.exceptions.NotValidImageException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,7 @@ public class CategoriaController {
 
     @PostMapping("/")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<Categoria> insert(@RequestParam(value="imagen") MultipartFile file, @RequestParam(value="titulo") String titulo, @RequestParam(value="descripcion") String descripcion) throws NotExistDataException, InvalidDataException, NotValidImage, IOException {
+    public ResponseEntity<Categoria> insert(@RequestParam(value="imagen") MultipartFile file, @RequestParam(value="titulo") String titulo, @RequestParam(value="descripcion") String descripcion) throws  InvalidDataException, NotValidImageException, IOException, ResourcesNotFoundException {
         return new ResponseEntity<>(categoriaService.insert(titulo, descripcion, file),HttpStatus.OK);
     }
 
@@ -53,7 +52,7 @@ public class CategoriaController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<Boolean> update(@PathVariable("id") Long id,@RequestParam(value="imagen") MultipartFile file, @RequestParam(value="titulo") String titulo, @RequestParam(value="descripcion") String descripcion) throws NotExistDataException, InvalidDataException, NotValidImage, IOException, ResourcesNotFoundException {
+    public ResponseEntity<Boolean> update(@PathVariable("id") Long id,@RequestParam(value="imagen") MultipartFile file, @RequestParam(value="titulo") String titulo, @RequestParam(value="descripcion") String descripcion) throws InvalidDataException, NotValidImageException, IOException, ResourcesNotFoundException {
         return new ResponseEntity<>(categoriaService.update(id, titulo, descripcion, file),HttpStatus.OK);
     }
 
