@@ -30,11 +30,13 @@ public class GlobalException {
     public ResponseEntity<String> procesarNotValidImage(NotValidImage exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
-
+/*
     @ExceptionHandler({IOException.class})
     public ResponseEntity<String> procesarIOException(IOException exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("la imagen no se pudo guardar o leer la imagen");
     }
+
+ */
 
     @ExceptionHandler({FileNotFoundException.class})
     public ResponseEntity<String> procesarFileNotFoundException(FileNotFoundException exception){

@@ -32,7 +32,7 @@ public class UserSecurityService implements UserDetailsService {
         Set<GrantedAuthority> autorizacionC = new HashSet<>();
         Set<GrantedAuthority> autorizacionA = new HashSet<>();
 
-        GrantedAuthority autorizacionCliente = new SimpleGrantedAuthority("ROLE_CLIENTE");
+        GrantedAuthority autorizacionCliente = new SimpleGrantedAuthority("ROLE_CLIENT");
         GrantedAuthority autorizacionAdmin = new SimpleGrantedAuthority("ROLE_ADMIN");
 
         autorizacionC.add(autorizacionCliente);
@@ -43,11 +43,11 @@ public class UserSecurityService implements UserDetailsService {
 
         if(usuario.get().getRol().getId() == 1){
             return new User(usuario.get().getEmail(),usuario.get().getPassword(),true,true,
-                    true,true,autorizacionA);
+                    true,true,autorizacionC);
         }
         else if(usuario.get().getRol().getId() == 2){
             return new User(usuario.get().getEmail(),usuario.get().getPassword(),true,true,
-                    true,true,autorizacionC);
+                    true,true,autorizacionA);
         }else
             throw new UsernameNotFoundException("no se encontro al usuario con email: ");
 

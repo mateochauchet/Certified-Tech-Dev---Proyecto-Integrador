@@ -30,7 +30,7 @@ public class ProductoController {
     private IProductoService productoService;
 
     @PostMapping("/")
-    @PreAuthorize("hasRole('ROLE_CLIENTE')")
+    @PreAuthorize("hasRole('ROLE_CLIENT')")
     public ResponseEntity<Producto> insert(@RequestParam(value="imagenes") List<MultipartFile> files,@RequestParam(value="producto") String producto) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         Producto producto2 = null;

@@ -32,7 +32,7 @@ public class ReservaController {
     }
 
     @PostMapping("/")
-    @PreAuthorize("hasRole('ROLE_CLIENTE')")
+    @PreAuthorize("hasRole('ROLE_CLIENT')")
     public ResponseEntity<Reserva> insert(@RequestBody Reserva reserva) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException {
         return new ResponseEntity<>(reservaService.insert(reserva),HttpStatus.OK);
     }

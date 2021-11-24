@@ -17,7 +17,6 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     IUsuarioRepository usuarioRepository;
 
-
     @Override
     public void insert(Usuario usuario) throws NotExistDataException, InvalidDataException {
         BCryptPasswordEncoder pass = new BCryptPasswordEncoder(12);
@@ -29,19 +28,18 @@ public class UsuarioServiceImpl implements IUsuarioService {
             String codificadoPass = pass.encode(usuario.getPassword());
             usuario.setPassword(codificadoPass);
             usuarioRepository.save(usuario);
-
             /*
             String sha256 = DigestUtils.sha256Hex(usuario.getPassword());
             usuario.setPassword(sha256);
             usuarioRepository.save(usuario);
-
              */
         }
     }
-
 
     public Optional<Usuario> readById(Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         return usuario;
     }
+
+
 }
