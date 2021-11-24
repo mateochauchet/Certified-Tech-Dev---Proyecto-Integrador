@@ -49,7 +49,7 @@ pipeline {
     stage('Deploy') {
       steps {
         script {
-          ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml', sudo: true
+          ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '--become-user', installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml'
         }
 
       }
