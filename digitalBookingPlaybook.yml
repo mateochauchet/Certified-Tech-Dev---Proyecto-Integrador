@@ -7,5 +7,5 @@
     - name: Deploy build to s3
       community.aws.s3_sync:
         bucket: "www.digitalbooking.ga"
-        src: "{{ lookup('env','JENKINS_HOME') | default('/var/lib/jenkins',true)}}/jobs/digitalbooking/branches/front-end/builds/{{ lookup('env','BUILD_NUMBER') | default('23',true) }}/archive/build/"
+        file_root: "{{ lookup('env','JENKINS_HOME') | default('/var/lib/jenkins',true)}}/jobs/digitalbooking/branches/front-end/builds/{{ lookup('env','BUILD_NUMBER') | default('23',true) }}/archive/build/"
 ...
