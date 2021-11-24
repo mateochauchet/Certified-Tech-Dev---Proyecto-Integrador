@@ -36,7 +36,7 @@ public class ReservaController {
 
     @PostMapping("/")
     @PreAuthorize("hasRole('ROLE_CLIENT')")
-    public ResponseEntity<Reserva> insert(@RequestParam("hora_inicio") @DateTimeFormat(pattern = "HH:mm:ss") Time hora_inicio, @RequestParam("fecha_inicio") @DateTimeFormat(pattern = "yyyy-dd-MM")LocalDate fecha_inicio, @RequestParam("fecha_fin") LocalDate fecha_fin, @RequestParam("reserva") Reserva reserva) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException {
+    public ResponseEntity<Reserva> insert(@RequestParam("hora_inicio") @DateTimeFormat(pattern = "HH:mm:ss") Time hora_inicio, @RequestParam("fecha_inicio") @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate fecha_inicio, @RequestParam("fecha_fin") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha_fin, @RequestParam("reserva") Reserva reserva) throws NotExistDataException, InvalidDataException, ResourcesNotFoundException {
         reserva.setHoraDeReserva(hora_inicio);
         reserva.setFechaInicio(fecha_inicio);
         reserva.setFechaFinal(fecha_fin);
