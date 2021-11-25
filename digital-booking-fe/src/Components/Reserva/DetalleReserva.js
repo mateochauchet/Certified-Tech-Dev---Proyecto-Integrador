@@ -15,7 +15,6 @@ function DetalleReserva(props) {
     else if (puntajeP >= 2) { number = 1 }
     else if (puntajeP >= 0) { number = 0 }
 
-
     return (
         <>
 
@@ -57,9 +56,8 @@ function DetalleReserva(props) {
                                 : null}
                         </div>
                     </div>
-
                     <div className="divHr"><hr /></div>
-                    <button className="cardBtn botonReserva ">Confirmar reserva</button>
+                    <button className="cardBtn botonReserva" type= "submit" onSubmit={props.onSubmit}>Confirmar reserva</button>
                 </div>
             </div>
         </>

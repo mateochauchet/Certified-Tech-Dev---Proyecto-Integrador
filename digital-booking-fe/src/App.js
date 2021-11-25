@@ -4,12 +4,13 @@ import Template from "./Components/Template/TemplateGeneral.js";
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import ContextLoginRegistro from "./Components/Contexts/ContextLoginRegistro.js";
-import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
-import ContenedorCard from "./Components/Cards/ContenedorCard.js";
+import ContenedorBuscador from "./Components/buscador/ContenedorBuscador.js";
+import ContenedorCard from "./Components/cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
 import data from "./Components/Cards_list/dataj.json"
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer"
+import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import './App.css'
 
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
@@ -147,9 +148,15 @@ export default function App() {
               )}
             ></Route>
 
-
-
-
+            <Route
+              exact
+              path="/ReservaExitosa"
+              component={() => (
+                <Template home={false}  >
+                  <ReservaExitosa />
+                </Template>
+              )}
+            ></Route>
 
           </Switch>
         </BrowserRouter>
