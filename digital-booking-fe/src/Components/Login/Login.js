@@ -2,14 +2,14 @@ import './Login.scoped.css'
 import useForm from '../Hooks/useForm';
 import validate from './loginFormValidationRules'
 import useAuthentication from '../Hooks/useAuthentication';
-import {Link} from 'react-router-dom';
-import { useEffect, useParams } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 
 const Login = () => {
-    
+
     const MySwal = withReactContent(Swal)
 
     const { values, handleChange, handleSubmit, isSubmitting, selectedFields, errors } = useForm(login, validate);
@@ -22,10 +22,10 @@ const Login = () => {
 
     const { mensaje } = useParams();
 
-    useEffect(()=>{
-        if(mensaje === "" || mensaje === undefined )
+    useEffect(() => {
+        if (mensaje !== "" || mensaje !== undefined)
             MySwal.fire(`${mensaje}`)
-}, []);
+    }, []);
 
     return (
 
