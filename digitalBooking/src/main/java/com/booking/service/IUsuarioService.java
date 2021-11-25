@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface IUsuarioService {
 
 
-    public void insert (Usuario usuario) throws ResourcesNotFoundException , InvalidDataException;
+    public Usuario insert (Usuario usuario) throws ResourcesNotFoundException , InvalidDataException;
     public Optional<Usuario> readById(Long id) throws ResourcesNotFoundException;
     public Usuario readByEmail(String email, String password) throws ResourcesNotFoundException, NotPermissionException;
 

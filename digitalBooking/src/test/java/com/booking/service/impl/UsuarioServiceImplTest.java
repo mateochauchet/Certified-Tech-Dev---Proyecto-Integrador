@@ -1,7 +1,10 @@
 package com.booking.service.impl;
 
+import com.booking.entity.Rol;
 import com.booking.entity.Usuario;
+import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
+import com.booking.repository.IRolRepository;
 import com.booking.service.IUsuarioService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,28 +19,30 @@ class UsuarioServiceImplTest {
     @Autowired
     private IUsuarioService usuarioService;
 
+    @Autowired
+    private IRolRepository rolRepository;
 
 
 
 
-  /*  @Test
-    public void insert() throws InvalidDataException, NotExistDataException {
 
+    @Test
+    public void insert() throws InvalidDataException, ResourcesNotFoundException {
+
+        Rol rol = rolRepository.getById(1L);
 
         Usuario usuario = new Usuario();
-        usuario.setNombre("mario");
-        usuario.setApellido("gomez");
-        usuario.setEmail("mariobross@gmail.com");
-        usuario.setPassword("1234");
+        usuario.setNombre("hola");
+        usuario.setApellido("hola");
+        usuario.setEmail("hola@gmail.com");
+        usuario.setPassword("hola");
+        usuario.setRol(rol);
 
+        Usuario respuesta = usuarioService.insert(usuario);
 
+        Assertions.assertTrue(respuesta.getNombre() == (usuario.getNombre()));
 
-       Usuario respuesta = usuarioService.insert(usuario);
-
-       Assertions.assertTrue(respuesta.getNombre() == (usuario.getNombre()));
-
-
-    }*/
+    }
 
     @Test
     public void readById() throws ResourcesNotFoundException {

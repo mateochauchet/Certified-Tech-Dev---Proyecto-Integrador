@@ -19,7 +19,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     IUsuarioRepository usuarioRepository;
 
     @Override
-    public void insert(Usuario usuario) throws ResourcesNotFoundException, InvalidDataException {
+    public Usuario insert(Usuario usuario) throws ResourcesNotFoundException, InvalidDataException {
         BCryptPasswordEncoder pass = new BCryptPasswordEncoder(12);
         if(usuario.getNombre() == null || usuario.getApellido() == null || usuario.getEmail()==null || usuario.getPassword() == null || usuario.getNombre().trim() == "" || usuario.getApellido().trim() == "" || usuario.getEmail().trim() ==""|| usuario.getPassword().trim()=="")
             throw  new ResourcesNotFoundException("alguno de los campos se encuentra vacio");
@@ -30,6 +30,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
             usuario.setPassword(codificadoPass);
             usuarioRepository.save(usuario);
         }
+        return usuario;
     }
 
 
