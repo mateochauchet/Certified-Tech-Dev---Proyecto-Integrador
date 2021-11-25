@@ -13,6 +13,7 @@ const Register = () => {
     //variables
     const { values, handleChange, handleSubmit, isSubmitting, selectedFields, errors } = useForm(registration, validate);
     const [status, setStatus] = useState("")
+    const [estadoPrueba, setEstadoPrueba] = useState("")
     const [avisoFalloRegistro, setAvisoFalloRegistro] = useState("avisoNoVisible")
     const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
     const {contextUser, setContextUser} = useContext(ContextUser);
@@ -39,7 +40,9 @@ const Register = () => {
             email: values.email,
             password: values.password
         }
+        setEstadoPrueba(dataParaLogin)
     }
+
     
     // Llamado a la API con un POST, y seteo de la variable status
     async function handleClick(){
@@ -71,13 +74,13 @@ const Register = () => {
     
     // Funcion de modificacion del primer contexto, segun el valor del status. Llamada a la API para logueo
     async function modificaContextoLoginRegistro(){
-        console.log("estoy antes del post" + dataParaLogin)
+        console.log("estoy antes del post" + estadoPrueba.email)
         if(status != 201){
             setAvisoFalloRegistro("avisoVisible")
         }else{
             await fetch(endpointLogin, {
             "method": "POST",
-            "body": JSON.stringify(dataParaLogin),
+            "body": JSON.stringify(estadoPrueba),
             "headers": {
                 "content-type": "application/json"
                 }   
@@ -87,10 +90,6 @@ const Register = () => {
             })
             .then(json =>{
                 setContextLoginRegistro(json.jwt)
-                console.log(nuevoUsuarioData)
-                console.log(dataParaLogin)
-                console.log(ContextLoginRegistro)
-
             })
         }
     }
@@ -98,20 +97,19 @@ const Register = () => {
 
     // Funcion para llamar al siguiente fetch, solo luego de que se modifico el primer contexto
     useEffect(()=>{
-        if(contextLoginRegistro != ""){
-        //llamadaAlFetch()
-        console.log("ya me modifique, soy: " + contextLoginRegistro)
+        if(estadoPrueba != "" && contextLoginRegistro != ""){
+        llamadaAlFetch()
         }
-    }, [contextLoginRegistro])
+    }, [estadoPrueba, contextLoginRegistro])
 
 
     // Funcion para setear el contexto de usuario logueado
     async function llamadaAlFetch(){
-        if(dataParaLogin != ""){
-        fetch(endpointRegistro + `${dataParaLogin.email}/` + `${dataParaLogin.password}`,{
+        //if(dataParaLogin != ""){
+        fetch(endpointRegistro + `${estadoPrueba.email}/` + `${estadoPrueba.password}`,{
             "method": "GET",
             "headers": {
-                "authorization": 'Bearer '+ contextLoginRegistro.jwt,
+                "authorization": 'Bearer '+ contextLoginRegistro,
                 }   
             })
             .then(response=>{
@@ -120,13 +118,14 @@ const Register = () => {
             .then(json =>{
                 setContextUser(json)
             })
-        }
+        //}
     }
 
     // Funcion redireccion al home con usuario logueado
     useEffect(()=>{
         if(contextUser != ""){
         history.push("/home")
+        console.log(contextUser)
         }
     }, [contextUser])
     
