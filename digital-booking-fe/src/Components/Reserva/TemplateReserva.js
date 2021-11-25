@@ -1,7 +1,6 @@
-import data from '../Cards_list/data.json'
+import data from '../Cards_list/data.json';
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-
 import "./templateReserva.scoped.css"
 import { Link } from "react-router-dom";
 import Heading from "../Detalle/Heading";
@@ -20,6 +19,8 @@ function TemplateReserva(props) {
 
     const { id } = useParams()
     console.log(id)
+    let match = data.filter(producto => producto.id === id)
+    let product = match[0]
 
 
     useEffect(() => {
@@ -45,7 +46,7 @@ function TemplateReserva(props) {
     }, []);
 
     return (
-        <div>
+        <form>
             {productIdList ? (
                 <>
                     <Heading titulo={productIdList.titulo}
@@ -64,12 +65,16 @@ function TemplateReserva(props) {
                                 <DetalleReserva list={productIdList} /></div>
                         </div>
                     </div>
+                    <PoliticsContainer
+                        normas={product.politicas.normas}
+                        saludSeguridad={product.politicas.saludSeguridad}
+                        cancelacion={product.politicas.cancelacion} />
                 </>
 
             ) : <h1>Loading...</h1>
                 
             }
-        </div>
+        </form>
     );   
 }
 

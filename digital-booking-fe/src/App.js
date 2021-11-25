@@ -4,6 +4,7 @@ import Template from "./Components/Template/TemplateGeneral.js";
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import ContextLoginRegistro from "./Components/Contexts/ContextLoginRegistro.js";
+import ContextUser from "./Components/Contexts/ContextUser.js";
 import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
 import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
@@ -19,7 +20,8 @@ import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 export default function App() {
 
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
-  const [productList, setProductList] = useState([]);
+  const [contextUser, setContextUser] = useState("");
+  const [productList, setProductList] = useState([])
   const [cityList, setCityList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [filtro, setFiltro] = useState("todos");
@@ -70,6 +72,7 @@ export default function App() {
   return (
     <div id="app">
       <ContextLoginRegistro.Provider value={{ contextLoginRegistro, setContextLoginRegistro }}>
+      <ContextUser.Provider value={{ contextUser, setContextUser }}>
         <BrowserRouter>
           <Switch>
             <Route
@@ -128,6 +131,7 @@ export default function App() {
 
           </Switch>
         </BrowserRouter>
+        </ContextUser.Provider>
       </ContextLoginRegistro.Provider>
     </div>
   )
