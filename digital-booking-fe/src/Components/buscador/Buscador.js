@@ -6,56 +6,73 @@ import Select from 'react-select'
 
 import Button from "./Button";
 import DateBuscador from "./DateBuscador";
-import { useState} from "react";
+import { useState } from "react";
 
 
 
 function Buscador(props) {
 
-  const [ciudad,setCiudad] = useState([]);
-  
-  
-  
+  const [ciudad, setCiudad] = useState([]);
+  const [dateIn, setDateIn] = useState(null);
+  const [dateOut, setDateOut] = useState(null);
+
+
+
 
   let options =
-    props.list.map((c,i) => ({
-      key:{i}, value: c.city, label: (
-      <>
-      <FontAwesomeIcon icon={faMapMarkerAlt}/>
-      <span className="city">{c.nombre}</span><br />
-      <span className="country">{c.pais}</span>
-      </>
-    )
+    props.list.map((c, i) => ({
+      key: { i }, value: c.nombre, label: (
+        <>
+          <FontAwesomeIcon icon={faMapMarkerAlt} />
+          <span className="city">{c.nombre}</span><br />
+          <span className="country">{c.pais}</span>
+        </>
+      )
     })
-  );
+    );
 
-  const elegirCiudad = (value) => {
-    setCiudad(value.value)
+  const elegirCiudad = (event) => {
+    const value = event.value
+    console.log(value)
+    setCiudad(value)
   }
- 
-  return (
-    <div  className="barSearch">
-      <Select  
-        data-testid="city-selector" 
-        
-        className="searchCity" 
-        placeholder='A dónde vamos?' 
-        options= {options} 
-        onChange={elegirCiudad} 
-        
+  const elegirFecha = (startDate, endDate) => {
+    setDateIn(startDate)
+    setDateOut(endDate)
     
-    theme={(theme) => ({
-      ...theme,
-      borderRadius: 0,
-      colors: {
-        ...theme.colors,
-        
-        primary: 'white'
-      },
-    })}
-    />
-      <DateBuscador />
-      <Button data-testid="button" classN="primary" name="Buscar" cambiarCiudad={props.cambiarCiudad} ciudad={ciudad} ></Button>
+    }
+     
+  
+
+
+  return (
+    <div className="barSearch">
+      <Select
+        data-testid="city-selector"
+
+        className="searchCity"
+        placeholder='A dónde vamos?'
+        options={options}
+        onChange={elegirCiudad}
+
+
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 0,
+          colors: {
+            ...theme.colors,
+
+            primary: 'white'
+          },
+        })}
+      />
+      <DateBuscador handleChange={elegirFecha}  />
+      <Button data-testid="button" classN="primary" name="Buscar" cambiarCiudad={props.cambiarCiudad} dateIn={dateIn} dateOut={dateOut} ciudad={ciudad} ></Button>
+      {/* {(dateIn != null) && (dateOut != null) 
+      ?
+      console.log((dateIn).format('YYYY-MM-DD'), (dateOut).format('YYYY-MM-DD'))
+
+      : null} */}
     </div>
   );
 }

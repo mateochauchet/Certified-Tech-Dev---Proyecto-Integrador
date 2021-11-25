@@ -11,7 +11,6 @@ import PoliticsContainer from '../Politicas/PoliticsContainer';
 
 import ContainerMapa from "./Mapa/ContainerMapa"
 import { getProductosById } from '../../service/cardsListService';
-import ContainerCalendario from '../ReservaCalendario/ContainerCalendario';
 
 
 function ContainerDetalle() {
@@ -81,7 +80,7 @@ function ContainerDetalle() {
                         saludSeguridad={product.politicas.saludSeguridad}
                         cancelacion={product.politicas.cancelacion} />
 
-                <ContainerCalendario />        
+                      
                 </>
                 
 

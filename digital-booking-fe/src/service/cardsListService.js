@@ -30,8 +30,20 @@ export async function getProductosByCategoria (q) {
     return Array.isArray(resJson) ?  resJson :  [resJson]
 }
 
+export async function getProductosByDate (dateInicio, dateFin) {
+    const  response = await fetch(`${baseUrl}reserva/${dateInicio}/${dateFin}`);
+    if (response.status === 404) {
+        console.log('No hay productos reservados')
+        return null
+    } else {
+        const resJson = await response.json();
+        return Array.isArray(resJson) ?  resJson :  [resJson]
+    }
+
+}
+
 export async function getProductosByCiudad (q) {
-    const  response = await fetch(`${baseUrl}/ciudad/${q}`);
+    const  response = await fetch(`${baseUrl}ciudad/${q}`);
     const resJson = await response.json();
     return Array.isArray(resJson) ?  resJson :  [resJson]
 }
@@ -43,5 +55,6 @@ export default {
     getCity,
     getProductosById,
     getProductosByCategoria,
+    getProductosByDate,
     getProductosByCiudad
 }

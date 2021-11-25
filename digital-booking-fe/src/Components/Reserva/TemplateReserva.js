@@ -1,5 +1,5 @@
-import data from '../Cards_list/data.json';
-import React, { useState, useEffect } from "react";
+import data from '../Cards_list/data.json'
+import React, { useState, useEffect, useContext} from "react";
 import { useParams } from 'react-router-dom';
 import "./templateReserva.scoped.css"
 import { Link } from "react-router-dom";
@@ -9,14 +9,23 @@ import FormularioReserva from "./FormularioReserva";
 import HorarioReserva from "./HorarioReserva";
 import DetalleReserva from "./DetalleReserva";
 import { getProductosById } from '../../service/cardsListService';
+import FechaReserva from '../ReservaCalendario/FechaReserva';
+import { PostReserva } from '../../service/reserva';
+import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
 
-import ContainerCalendario from '../ReservaCalendario/ContainerCalendario';
-
+import Error from "../Hooks/Error";
 
 function TemplateReserva(props) {
 
     const [productIdList, setProductIdList] = useState(null);
-
+    const [dateIn, setDateIn] = useState(null);
+    const [dateOut, setDateOut] = useState(null);
+    const [hora, setHora] = useState(null);
+    //const [contextLoginRegistro] = useContext(ContextLoginRegistro);
+    //const [ContextUser] = useContext(ContextUser);
+    const [error, guardarError ] = useState(false);
+   
+    
     const { id } = useParams()
     console.log(id)
     let match = data.filter(producto => producto.id === id)
@@ -37,7 +46,6 @@ function TemplateReserva(props) {
                         ubicacion: resJson[0].ciudad.nombre + (' ') + resJson[0].ciudad.pais,
                         imagenes: resJson[0].imagenes[0].imagen,
                         descripcion: resJson[0].descripcion,
-
                     }
                     setProductIdList(houseData);
                 }
@@ -45,8 +53,60 @@ function TemplateReserva(props) {
         return () => ismounted = false;
     }, []);
 
+
+    
+        
+
+    
+
+    const handleChange = ( startDate, endDate) => {
+        setDateIn( startDate ) 
+        setDateOut( endDate ) 
+    } 
+
+    const horarioReserva = (event) =>{
+       const dataHora = event.target.value;
+       console.log(dataHora);
+       setHora(dataHora);
+    }
+
+    const handleSubmit = async e =>{
+        e.preventDefault();
+        let payload = {
+            fechaInicio: dateIn.format('YYYY/MM/DD'),
+            fechaFinal: dateOut.format('YYYY/MM/DD'),
+            horaDeReserva: `${hora}:00:00` ,
+            producto: {
+                id: productIdList.id
+                },
+            usuario: {
+                id: 7
+                }
+            }
+        console.log(payload)
+        
+        if(props.dataIn === "" && props.dataOut === "" && props.hora === "" ){
+          guardarError(true);
+        }else{
+           await PostReserva(payload);
+           //await PostReserva(payload, ContextLoginRegistro);
+           guardarError(true);
+        }
+    }
+
+    //cargar un componente condicionalmente 
+  let componente;
+  if(error){
+        componente = <Error mensaje= "Lamentablemente la reserva no ha podido realizarse”. Por favor, intente más tarde"/>
+  }
+//else{
+//         handleSubmit()
+//   }
+
+    
+
     return (
-        <form>
+        <div>
             {productIdList ? (
                 <>
                     <Heading titulo={productIdList.titulo}
@@ -56,13 +116,19 @@ function TemplateReserva(props) {
                             <div className="formularioReserva">
                                 <FormularioReserva /></div>
                             <div className="calendarioReserva">
-                                <ContainerCalendario /></div>
+                                <FechaReserva handleChange={handleChange} /></div>
                             <div className="horarioReserva">
-                                <HorarioReserva /></div>
+                                <HorarioReserva onChange={horarioReserva}/></div>
                         </div>
                         <div className="divDerecha">
                             <div className="cardDetalleReserva">
-                                <DetalleReserva list={productIdList} /></div>
+                                <DetalleReserva 
+                                    dataIn={dateIn} 
+                                    dataOut={dateOut}
+                                    list={productIdList} 
+                                    onClick={handleSubmit}
+                                 /></div>
+                            
                         </div>
                     </div>
                     <PoliticsContainer
@@ -74,7 +140,8 @@ function TemplateReserva(props) {
             ) : <h1>Loading...</h1>
                 
             }
-        </form>
+            
+        </div>
     );   
 }
 

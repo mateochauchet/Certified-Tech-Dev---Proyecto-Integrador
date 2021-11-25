@@ -27,11 +27,9 @@ class Fecha extends Component {
         return (moment().diff(day) > 0);
     }
     isBlocked = momentDate => {
-        const dayNumber = momentDate.format('MM/DD/YYYY');
-        return dayNumber === "11/19/2021" || dayNumber === "11/20/2021"
-            || dayNumber === "12/25/2021" || dayNumber === "12/24/2021" || dayNumber === "12/23/2021"
-        // const dayString = momentDate.format('dd');
-        // return dayString === 'Sa' || dayString ==='Su'
+        const dayNumber = momentDate.format('YYYY/MM/DD');
+        return dayNumber === "2021/11/24"  || dayNumber === "2021/11/25" || dayNumber === "2021/11/26" ||
+        dayNumber === "2021/11/27"  || dayNumber === "2021/11/28" || dayNumber === "2021/11/29" || dayNumber === "2021/11/30"
     }
     
     
