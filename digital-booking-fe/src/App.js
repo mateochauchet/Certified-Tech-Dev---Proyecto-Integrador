@@ -111,7 +111,7 @@ export default function App() {
             ></Route>
             <Route
               exact
-              path="/login"
+              path="/login/:mensaje"
               component={() => (
                 <Template home={false} direccion="/registro" nombreBoton="Crear cuenta">
                   <Login />
@@ -122,7 +122,7 @@ export default function App() {
               exact
               path="/registro"
               component={() => (
-                <Template home={false} direccion="/login" nombreBoton="Iniciar sesión">
+                <Template home={false} direccion="/login/:mensaje" nombreBoton="Iniciar sesión">
                   <Registro />
                 </Template>
               )}
@@ -132,7 +132,7 @@ export default function App() {
               exact
               path="/productos/:id"
               component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                <Template home={true} direccion="/login/:mensaje" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                   <ContainerDetalle />
                 </Template>
               )}
@@ -142,7 +142,7 @@ export default function App() {
               exact
               path="/productos/:id/reserva"
               component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                <Template home={true} direccion="/login/:mensaje" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                   <TemplateReserva />
                 </Template>
               )}

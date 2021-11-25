@@ -3,6 +3,7 @@ import useForm from '../hooks/useForm';
 import validate from './loginFormValidationRules'
 import useAuthentication from '../hooks/useAuthentication';
 import {Link} from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const Login = () => {
@@ -15,6 +16,13 @@ const Login = () => {
     function login() {
         authenticate();
     }
+
+    const { mensaje } = useParams();
+
+    useEffect(()=>{
+        if(mensaje === "" || mensaje === undefined )
+            Swal.fire(`${mensaje}`)
+}, []);
 
     return (
 
