@@ -68,11 +68,11 @@ function Buscador(props) {
       />
       <DateBuscador handleChange={elegirFecha}  />
       <Button data-testid="button" classN="primary" name="Buscar" cambiarCiudad={props.cambiarCiudad} dateIn={dateIn} dateOut={dateOut} ciudad={ciudad} ></Button>
-      {(dateIn != null) && (dateOut != null) 
+      {/* {(dateIn != null) && (dateOut != null) 
       ?
-      console.log((dateIn).format('DD/MM/YYYY'), (dateOut).format('DD/MM/YYYY'))
+      console.log((dateIn).format('YYYY-MM-DD'), (dateOut).format('YYYY-MM-DD'))
 
-      : null}
+      : null} */}
     </div>
   );
 }

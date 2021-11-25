@@ -13,7 +13,7 @@ import CardsContainer from "./Components/Cards_list/CardsContainer"
 import './App.css'
 
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
-import { getCategorias, getProductos, getCity} from './service/cardsListService';
+import { getCategorias, getProductos, getCity, getProductosByDate } from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 
 export default function App() {
@@ -22,6 +22,7 @@ export default function App() {
   const [productList, setProductList] = useState([]);
   const [cityList, setCityList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
+  const [reservedList, setReservedList] = useState("");
   const [filtro, setFiltro] = useState("todos");
 
 
@@ -37,7 +38,7 @@ export default function App() {
     async function getDataCity() {
       const productJson = await getCity()
       setCityList(productJson)
-    } 
+    }
     getDataCity()
   }, []);
 
@@ -47,18 +48,43 @@ export default function App() {
       setCategoryList(response)
     } getDataCategoria()
   }, []);
-  
+
+  // useEffect(() => {
+  //   async function getReservedProducts(dataIn, dataOut) {
+  //     if(dataIn != null && dataOut != null){
+  //       const response = await getProductosByDate(dataIn, dataOut)
+  //     setReservedList(response)
+  //     }
+  //   } 
+  //   getReservedProducts() 
+  //   console.log(`productos reservados: ${reservedList}`)
+  // }
+
+  // , []);
+
+
 
 
   const cambiarCiudad = async (value, dataIn, dataOut) => {
-    
-    console.log((value.replace(/ /g, "")).split(',')[0] )
-    setFiltro(value)
-    // (dataIn !=null) && (dataOut !=null) ?
-    // console.log((dataIn).format('DD/MM/YYYY'), (dataOut).format('DD/MM/YYYY')):null
+    //console.log((value.replace(/ /g, "")).split(',')[0] )
+
+      if(dataIn != null && dataOut != null){
+        let urlDataIn= dataIn.format('YYYY-MM-DD')
+        let urlDataOut= dataOut.format('YYYY-MM-DD')
+
+        const response = await getProductosByDate(urlDataIn, urlDataOut)
+        if (response !=null ){
+          const idResponse = response[0].id
+          setReservedList(idResponse)
+        }
+
+      }
+      setFiltro(value)
+
+    console.log(`Encontrado ProductoId: ${reservedList} en reserva.`)
   }
-    
-  
+
+
 
   const cambiarCategoria = async (categoria) => {
     console.log(categoria.replace(/ /g, ""))
