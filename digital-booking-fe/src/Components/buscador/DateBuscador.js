@@ -23,6 +23,11 @@ class DateBuscador extends Component {
          }
     }
     
+    handleDateChange = ({ startDate, endDate }) => {
+
+      this.setState({ startDate, endDate }) 
+      this.props.handleChange (startDate, endDate)
+  }
   
     render() { 
         return (
@@ -35,16 +40,13 @@ class DateBuscador extends Component {
             startDate={this.state.startDate} // momentPropTypes.momentObj or null,
             startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
             endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-            
-            
             endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-            onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+            onDatesChange={this.handleDateChange}
             focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,   
             onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
           
           />
           
-
         </Mobile>
         <Default>
           <DateRangePicker
@@ -54,7 +56,7 @@ class DateBuscador extends Component {
             startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
             endDate={this.state.endDate} // momentPropTypes.momentObj or null,
             endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-            onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+            onDatesChange={this.handleDateChange}
             focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,   
             onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
           />

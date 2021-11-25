@@ -14,7 +14,7 @@ import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import './App.css'
 
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
-import { getCategorias, getProductos, getCity, getProductosByCiudad, getProductosById } from './service/cardsListService';
+import { getCategorias, getProductos, getCity} from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 
 export default function App() {
@@ -48,24 +48,23 @@ export default function App() {
       setCategoryList(response)
     } getDataCategoria()
   }, []);
+  
 
-  // useEffect(() => {
-  //   async function getDataProductId (){
-  //      const productJson = await getProductosById()
-  //      setProductIdList(productJson)
-  //   } getDataProductId ()
-  // } ,[]);
 
-  const cambiarCiudad = async (value) => {
-    console.log(value.replace(/ /g, ""))
+  const cambiarCiudad = async (value, dataIn, dataOut) => {
+    
+    console.log((value.replace(/ /g, "")).split(',')[0] )
     setFiltro(value)
+    // (dataIn !=null) && (dataOut !=null) ?
+    // console.log((dataIn).format('DD/MM/YYYY'), (dataOut).format('DD/MM/YYYY')):null
   }
+    
+  
 
   const cambiarCategoria = async (categoria) => {
     console.log(categoria.replace(/ /g, ""))
     setFiltro(categoria)
   }
-
 
 
   return (

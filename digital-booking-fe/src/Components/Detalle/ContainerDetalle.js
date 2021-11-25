@@ -13,7 +13,6 @@ import ContainerMapa from "./Mapa/ContainerMapa"
 import { getProductosById } from '../../service/cardsListService';
 
 
-
 function ContainerDetalle() {
     const [productIdList, setProductIdList] = useState(null);
 

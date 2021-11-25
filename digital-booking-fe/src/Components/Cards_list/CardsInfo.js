@@ -44,7 +44,7 @@ function CardsInfo(props) {
 
 
       <div className="btnContainer">
-        <Link to={`/productos/${id}`}><button className="cardBtn" >Ver detalle</button></ Link>
+        <Link style={{ textDecoration: 'none' }} to={`/productos/${id}`}><button className="cardBtn" >Ver detalle</button></ Link>
       </div>
 
     </div>
