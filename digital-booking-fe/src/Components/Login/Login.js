@@ -12,7 +12,7 @@ const Login = () => {
     const { values, handleChange, handleSubmit, isSubmitting, selectedFields, errors } = useForm(login, validate);
 
     const { authenticate, validCredentials } = useAuthentication(values.email, values.password);
-
+    
     function login() {
         authenticate();
     }
