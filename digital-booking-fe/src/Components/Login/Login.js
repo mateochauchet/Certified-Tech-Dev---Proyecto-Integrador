@@ -1,18 +1,21 @@
 import './Login.scoped.css'
-import useForm from '../hooks/useForm';
+import useForm from '../Hooks/useForm';
 import validate from './loginFormValidationRules'
-import useAuthentication from '../hooks/useAuthentication';
+import useAuthentication from '../Hooks/useAuthentication';
 import {Link} from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useParams } from 'react';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 const Login = () => {
-
+    
+    const MySwal = withReactContent(Swal)
 
     const { values, handleChange, handleSubmit, isSubmitting, selectedFields, errors } = useForm(login, validate);
 
     const { authenticate, validCredentials } = useAuthentication(values.email, values.password);
-    
+
     function login() {
         authenticate();
     }
@@ -21,7 +24,7 @@ const Login = () => {
 
     useEffect(()=>{
         if(mensaje === "" || mensaje === undefined )
-            Swal.fire(`${mensaje}`)
+            MySwal.fire(`${mensaje}`)
 }, []);
 
     return (

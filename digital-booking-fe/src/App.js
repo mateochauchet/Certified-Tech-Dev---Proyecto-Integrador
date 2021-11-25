@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Template from "./Components/Template/TemplateGeneral.js";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
 import ContextLoginRegistro from "./Components/Contexts/ContextLoginRegistro.js";
-import ContenedorBuscador from "./Components/buscador/ContenedorBuscador.js";
-import ContenedorCard from "./Components/cards/ContenedorCard.js";
+import ContextUser from "./Components/Contexts/ContextUser.js";
+import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
+import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
 import data from "./Components/Cards_list/dataj.json"
 import Registro from "./Components/Register/Register.js";
@@ -20,11 +21,19 @@ import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 export default function App() {
 
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
-  const [productList, setProductList] = useState([]);
+  const [contextUser, setContextUser] = useState("");
+  const [productList, setProductList] = useState([])
   const [cityList, setCityList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [reservedList, setReservedList] = useState("");
   const [filtro, setFiltro] = useState("todos");
+
+
+ 
+  
+  
+    
+  
 
 
 
@@ -63,49 +72,56 @@ export default function App() {
 
   // , []);
 
+  useEffect(() => {
 
 
 
+
+
+
+    {console.log(`Encontrado ProductoId: ${reservedList} en reserva.`)}  
+    } , [reservedList]);
+  
+    
   const cambiarCiudad = async (value, dataIn, dataOut) => {
     //console.log((value.replace(/ /g, "")).split(',')[0] )
-
       if(dataIn != null && dataOut != null){
         let urlDataIn= dataIn.format('YYYY-MM-DD')
         let urlDataOut= dataOut.format('YYYY-MM-DD')
 
-        const response = await getProductosByDate(urlDataIn, urlDataOut)
+        let response = await getProductosByDate(urlDataIn, urlDataOut)
+        setReservedList(response)
         if (response !=null ){
           const idResponse = response[0].id
           setReservedList(idResponse)
         }
-
       }
       setFiltro(value)
-
-    console.log(`Encontrado ProductoId: ${reservedList} en reserva.`)
   }
 
-
+  
 
   const cambiarCategoria = async (categoria) => {
     console.log(categoria.replace(/ /g, ""))
     setFiltro(categoria)
   }
 
-
+  
   return (
     <div id="app">
+      
       <ContextLoginRegistro.Provider value={{ contextLoginRegistro, setContextLoginRegistro }}>
+      <ContextUser.Provider value={{ contextUser, setContextUser }}>
         <BrowserRouter>
           <Switch>
             <Route
               exact
               path="/home"
               component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                <Template home={true} direccion="/login/:mensaje" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                   <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
                   <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />
-                  <CardsContainer list={productList} filtro={filtro} />
+                  <CardsContainer list={productList} filtro={filtro} filtro2={reservedList}/>
                 </Template>
               )}
             ></Route>
@@ -160,6 +176,7 @@ export default function App() {
 
           </Switch>
         </BrowserRouter>
+        </ContextUser.Provider>
       </ContextLoginRegistro.Provider>
     </div>
   )

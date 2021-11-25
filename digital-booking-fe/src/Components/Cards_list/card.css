@@ -9,6 +9,10 @@
     font-family: 'Roboto', sans-serif;
     background-color: white;
 }
+.cardReserva{
+    background-color: grey;
+
+}
 .btnContainer{
    
     margin-top: 5px;

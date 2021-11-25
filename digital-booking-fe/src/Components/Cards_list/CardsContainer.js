@@ -3,6 +3,7 @@ import CardsList from './CardsList';
 
 import './cardsContainer.css';
 import './card.css';
+import Card from './Card';
 
 function CardsContainer(props) {
     return (
@@ -10,7 +11,8 @@ function CardsContainer(props) {
             <h2 className="titleRecomendaciones">Recomendaciones</h2>
             <div className="cardsContainer">
 
-                <CardsList list={props.list} filtro={props.filtro}/>
+                <CardsList list={props.list} filtro={props.filtro} filtro2={props.filtro2} />
+                
             </div>
         </div>
 

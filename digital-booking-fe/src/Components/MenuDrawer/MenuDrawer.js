@@ -88,7 +88,7 @@ else if (contextLoginRegistro !== ""){
             className="icon-drawer"
             icon={faTimes}
           />
-         <Avatar payload={contextLoginRegistro}/>
+         <Avatar />
       
         </div>
         <div className="container-body-drawer">

@@ -11,9 +11,9 @@ import DetalleReserva from "./DetalleReserva";
 import { getProductosById } from '../../service/cardsListService';
 import FechaReserva from '../ReservaCalendario/FechaReserva';
 import { PostReserva } from '../../service/reserva';
-import ContextLoginRegistro from "./Components/Contexts/ContextLoginRegistro.js";
-import ContextUser from "./Components/Contexts/ContextUser.js";
-import Error from "../hooks/Error";
+import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
+
+import Error from "../Hooks/Error";
 
 function TemplateReserva(props) {
 
@@ -21,52 +21,16 @@ function TemplateReserva(props) {
     const [dateIn, setDateIn] = useState(null);
     const [dateOut, setDateOut] = useState(null);
     const [hora, setHora] = useState(null);
-    const [ContextLoginRegistro] = useContext(ContextLoginRegistro);
-    const [ContextUser] = useContext(ContextUser);
+    //const [contextLoginRegistro] = useContext(ContextLoginRegistro);
+    //const [ContextUser] = useContext(ContextUser);
     const [error, guardarError ] = useState(false);
    
     
     const { id } = useParams()
     console.log(id)
+    let match = data.filter(producto => producto.id === id)
+    let product = match[0]
 
-    const payload = {
-        fechaInicio: dateIn,
-        fechaFin: dateOut, 
-        horaDeReserva: hora, 
-        producto: {
-            id: productIdList.id
-            },
-        usuario: ContextUser
-        }
-
-    const handleChange = ( startDate, endDate) => {
-        setDateIn( startDate ) 
-        setDateOut( endDate ) 
-    } 
-
-    const horarioReserva = (event) =>{
-       const dataHora = event.target.value;
-       console.log(dataHora);
-       setHora(dataHora);
-    }
-
-    const handleSubmit = async e =>{
-        e.preventDefault();
-        if(props.dataIn === "" && props.dataOut === "" && props.hora === "" ){
-          guardarError(true);
-        }else{
-           await PostReserva(payload, ContextLoginRegistro);
-           guardarError(false);
-        }
-    }
-
-    //cargar un componente condicionalmente 
-  let componente;
-  if(error){
-        componente = <Error mensaje= "Lamentablemente la reserva no ha podido realizarse”. Por favor, intente más tarde"/>
-  }else{
-        handleSubmit()
-  }
 
     useEffect(() => {
         let ismounted = true;
@@ -89,6 +53,58 @@ function TemplateReserva(props) {
         return () => ismounted = false;
     }, []);
 
+
+    
+        
+
+    
+
+    const handleChange = ( startDate, endDate) => {
+        setDateIn( startDate ) 
+        setDateOut( endDate ) 
+    } 
+
+    const horarioReserva = (event) =>{
+       const dataHora = event.target.value;
+       console.log(dataHora);
+       setHora(dataHora);
+    }
+
+    const handleSubmit = async e =>{
+        e.preventDefault();
+        let payload = {
+            fechaInicio: dateIn.format('YYYY/MM/DD'),
+            fechaFinal: dateOut.format('YYYY/MM/DD'),
+            horaDeReserva: `${hora}:00:00` ,
+            producto: {
+                id: productIdList.id
+                },
+            usuario: {
+                id: 7
+                }
+            }
+        console.log(payload)
+        
+        if(props.dataIn === "" && props.dataOut === "" && props.hora === "" ){
+          guardarError(true);
+        }else{
+           await PostReserva(payload);
+           //await PostReserva(payload, ContextLoginRegistro);
+           guardarError(true);
+        }
+    }
+
+    //cargar un componente condicionalmente 
+  let componente;
+  if(error){
+        componente = <Error mensaje= "Lamentablemente la reserva no ha podido realizarse”. Por favor, intente más tarde"/>
+  }
+//else{
+//         handleSubmit()
+//   }
+
+    
+
     return (
         <div>
             {productIdList ? (
@@ -110,11 +126,15 @@ function TemplateReserva(props) {
                                     dataIn={dateIn} 
                                     dataOut={dateOut}
                                     list={productIdList} 
-                                    onSubmit={handleSubmit}
-                                    /></div>
+                                    onClick={handleSubmit}
+                                 /></div>
+                            
                         </div>
                     </div>
-
+                    <PoliticsContainer
+                        normas={product.politicas.normas}
+                        saludSeguridad={product.politicas.saludSeguridad}
+                        cancelacion={product.politicas.cancelacion} />
                 </>
 
             ) : <h1>Loading...</h1>
