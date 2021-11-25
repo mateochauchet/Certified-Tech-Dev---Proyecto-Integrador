@@ -57,7 +57,7 @@ function DetalleReserva(props) {
                         </div>
                     </div>
                     <div className="divHr"><hr /></div>
-                    <button className="cardBtn botonReserva" type= "submit" onSubmit={props.onSubmit}>Confirmar reserva</button>
+                    <button className="cardBtn botonReserva" onClick={props.onClick}>Confirmar reserva</button>
                 </div>
             </div>
         </>

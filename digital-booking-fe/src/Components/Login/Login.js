@@ -1,7 +1,7 @@
 import './Login.scoped.css'
-import useForm from '../hooks/useForm';
+import useForm from '../Hooks/useForm';
 import validate from './loginFormValidationRules'
-import useAuthentication from '../hooks/useAuthentication';
+import useAuthentication from '../Hooks/useAuthentication';
 import {Link} from 'react-router-dom';
 
 

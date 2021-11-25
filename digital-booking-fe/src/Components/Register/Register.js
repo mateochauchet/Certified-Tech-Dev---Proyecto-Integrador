@@ -1,5 +1,5 @@
 import './Register.scoped.css'
-import useForm from "../hooks/useForm";
+import useForm from "../Hooks/useForm";
 import validate from './registerFormValidationRules';
 import {Link} from 'react-router-dom'
 
