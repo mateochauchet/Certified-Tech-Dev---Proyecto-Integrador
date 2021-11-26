@@ -60,4 +60,12 @@ public class Usuario {
         this.password = password;
         this.rol = rol;
     }
+
+    public Usuario(String nombre, String apellido, String email, String password) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.rol = null;
+    }
 }

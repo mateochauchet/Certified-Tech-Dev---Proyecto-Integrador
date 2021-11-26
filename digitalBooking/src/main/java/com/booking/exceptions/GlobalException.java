@@ -2,10 +2,12 @@ package com.booking.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.DateTimeException;
 
 @ControllerAdvice
@@ -30,6 +32,18 @@ public class GlobalException {
 
     @ExceptionHandler({NotValidImageException.class})
     public ResponseEntity<String> procesarNotValidImage(NotValidImageException exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
+
+
+
+    @ExceptionHandler({SQLIntegrityConstraintViolationException.class})
+    public ResponseEntity<String> procesarSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
+
+    @ExceptionHandler({BadCredentialsException.class})
+    public ResponseEntity<String> procesarBadCredentialsException(BadCredentialsException exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 

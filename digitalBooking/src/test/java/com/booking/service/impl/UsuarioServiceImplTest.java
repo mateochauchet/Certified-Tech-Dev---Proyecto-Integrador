@@ -23,9 +23,6 @@ class UsuarioServiceImplTest {
     private IRolRepository rolRepository;
 
 
-
-
-
     @Test
     public void insert() throws InvalidDataException, ResourcesNotFoundException {
 

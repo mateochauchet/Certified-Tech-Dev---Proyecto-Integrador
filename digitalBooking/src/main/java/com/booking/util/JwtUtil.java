@@ -1,5 +1,6 @@
 package com.booking.util;
 
+import com.booking.entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -38,9 +39,10 @@ public class JwtUtil {
                 .setExpiration(new Date(System.currentTimeMillis()+1200000*60+60*10))
                 .signWith(SignatureAlgorithm.HS256,SECRET_KEY).compact();
     }
-    public String generateToken(UserDetails userDetails){
+    public String generateToken(UserDetails userDetails, Usuario usuario){
         Map<String,Object> claims = new HashMap<>();
         claims.put("AUTORITIES",userDetails.getAuthorities());
+        claims.put("usuario", usuario);
         return createToken(claims,userDetails.getUsername());
 
     }
