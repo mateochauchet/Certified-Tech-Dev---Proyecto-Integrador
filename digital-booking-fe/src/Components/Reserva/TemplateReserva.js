@@ -12,6 +12,8 @@ import { getProductosById } from '../../service/cardsListService';
 import FechaReserva from '../ReservaCalendario/FechaReserva';
 import { PostReserva } from '../../service/reserva';
 import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
+import ContextUser from '../Contexts/ContextUser';
+
 
 import Error from "../Hooks/Error";
 
@@ -21,8 +23,8 @@ function TemplateReserva(props) {
     const [dateIn, setDateIn] = useState(null);
     const [dateOut, setDateOut] = useState(null);
     const [hora, setHora] = useState(null);
-    //const [contextLoginRegistro] = useContext(ContextLoginRegistro);
-    //const [ContextUser] = useContext(ContextUser);
+    const {contextLoginRegistro} = useContext(ContextLoginRegistro);
+    const {contextUser} = useContext(ContextUser);
     const [error, guardarError ] = useState(false);
    
     
@@ -33,6 +35,7 @@ function TemplateReserva(props) {
 
 
     useEffect(() => {
+        console.log(contextLoginRegistro);
         let ismounted = true;
         getProductosById(id)
             .then((resJson) => {
@@ -52,13 +55,7 @@ function TemplateReserva(props) {
             })
         return () => ismounted = false;
     }, []);
-
-
     
-        
-
-    
-
     const handleChange = ( startDate, endDate) => {
         setDateIn( startDate ) 
         setDateOut( endDate ) 
@@ -73,14 +70,14 @@ function TemplateReserva(props) {
     const handleSubmit = async e =>{
         e.preventDefault();
         let payload = {
+            horaDeReserva: `${hora}:00:00` ,
             fechaInicio: dateIn.format('YYYY/MM/DD'),
             fechaFinal: dateOut.format('YYYY/MM/DD'),
-            horaDeReserva: `${hora}:00:00` ,
             producto: {
                 id: productIdList.id
                 },
             usuario: {
-                id: 7
+                id: contextLoginRegistro.id
                 }
             }
         console.log(payload)
@@ -88,8 +85,7 @@ function TemplateReserva(props) {
         if(props.dataIn === "" && props.dataOut === "" && props.hora === "" ){
           guardarError(true);
         }else{
-           await PostReserva(payload);
-           //await PostReserva(payload, ContextLoginRegistro);
+           await PostReserva(payload, contextUser);
            guardarError(true);
         }
     }

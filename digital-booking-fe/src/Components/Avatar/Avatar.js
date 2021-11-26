@@ -10,12 +10,12 @@ import ContextUser from "../Contexts/ContextUser";
 export default function Avatar(props) {
 
   const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
-  const {contextUser} = useContext(ContextUser);
+  const {setContextUser} = useContext(ContextUser);
 
    function handleClick(){
 
     setContextLoginRegistro("");
-
+    setContextUser("");
   }
 
   return (
@@ -25,14 +25,14 @@ export default function Avatar(props) {
     <Link  className="link-logout" to="/home" onClick={handleClick}>  <FontAwesomeIcon className="icon-x" icon={faTimes}/> </Link>
       <div className="container-avatar-text">
         <div className="avatar">
-          <h4 className="text-avatar">{`${contextUser.nombre[0]}${contextUser.apellido[0]}`}</h4>
+          <h4 className="text-avatar">{`${contextLoginRegistro.nombre[0]}${contextLoginRegistro.apellido[0]}`}</h4>
         </div>
         <div className="text-name">
           <h4 className="saludo">
             Hola,
             <span className="name">
               <br/>
-              {`${contextUser.nombre} ${contextUser.apellido}`}
+              {`${contextLoginRegistro.nombre} ${contextLoginRegistro.apellido}`}
             </span>
           </h4>
         </div>

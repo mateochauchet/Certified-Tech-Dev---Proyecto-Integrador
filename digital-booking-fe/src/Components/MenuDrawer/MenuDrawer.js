@@ -11,14 +11,17 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import ContextoLoginRegistro from "../Contexts/ContextLoginRegistro";
 import Avatar from "../Avatar/Avatar.js"
+import ContextUser from "../Contexts/ContextUser";
 
 
 
 export default function MenuDrawer(props) {
   const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextoLoginRegistro);
+  const {setContextUser} = useContext(ContextUser);
 
   function handleClick(){
-    setContextLoginRegistro("")
+    setContextLoginRegistro("");
+    setContextUser("");
   }
 
   

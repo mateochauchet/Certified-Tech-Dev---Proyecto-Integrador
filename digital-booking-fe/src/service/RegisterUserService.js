@@ -1,6 +1,13 @@
+import { useHistory } from 'react-router-dom';
+import React, {useState} from "react";
+
+
+function RegisterUserService(){
+
+
 let endpointRegistro = "http://localhost:8080/api/usuarios";
 let endpointLogin = "http://localhost:8080/api/authenticate";
-import { useHistory } from 'react-router-dom';
+
 
 const [status, setStatus] = useState()
 const [token, setToken] = useState()
@@ -47,4 +54,5 @@ function redireccionCondicionada(){
             console.log( "no entre aun a la variable " + array.status)
         })
     }
+}
 }

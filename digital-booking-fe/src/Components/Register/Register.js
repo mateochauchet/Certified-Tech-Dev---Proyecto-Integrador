@@ -6,6 +6,7 @@ import useForm from "../Hooks/useForm";
 import validate from './registerFormValidationRules';
 import {Link} from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react';
+import { parseJwt } from "../Login/jwt.js";
 
 
 const Register = () => {
@@ -19,10 +20,9 @@ const Register = () => {
     const {contextUser, setContextUser} = useContext(ContextUser);
     const history = useHistory();
     const endpointRegistro = "http://localhost:8080/api/usuarios/";
-    const endpointLogin = "http://localhost:8080/api/usuarios/authenticate";
     let nuevoUsuarioData;
     let dataParaLogin;
-
+    
 
     //seteo de data para registro y login automatico
     let fillData = async () =>{
@@ -35,107 +35,32 @@ const Register = () => {
                 id: 1
             }
         }
-
         dataParaLogin = {
             email: values.email,
             password: values.password
         }
         setEstadoPrueba(dataParaLogin)
     }
-
-    
-    // Llamado a la API con un POST, y seteo de la variable status
-    async function handleClick(){
+ // Llamado a la API con un POST, y seteo de la variable status
+    async function registration(){
         await fillData()
-        console.log(nuevoUsuarioData)
-        console.log(dataParaLogin)
-        fetch(endpointRegistro, {
+       const response= await fetch(endpointRegistro, {
         "method": "POST",
         "body": JSON.stringify(nuevoUsuarioData),
         "headers": {
             "content-type": "application/json"
             }
         })
-        .then(response=>{
+        if(response.status === 200 || response.status === 201){
+        const data = await response.json()
             setStatus(response.status)
-        })
-    }
-
-    // Funcion para ejecutar el redireccionamiento, solo luego de que se modifico el status
-    useEffect(()=>{
-        async function getCondicion(){
-        if(status != ""){
-        console.log('estoy en el useEffect ' + status)
-        console.log("soy el dataLogin " + dataParaLogin)
-        await modificaContextoLoginRegistro()
-        }}
-        getCondicion()
-    }, [status])
-    
-    // Funcion de modificacion del primer contexto, segun el valor del status. Llamada a la API para logueo
-    async function modificaContextoLoginRegistro(){
-        console.log("estoy antes del post" + estadoPrueba.email)
-        if(status != 201){
-            setAvisoFalloRegistro("avisoVisible")
-        }else{
-            await fetch(endpointLogin, {
-            "method": "POST",
-            "body": JSON.stringify(estadoPrueba),
-            "headers": {
-                "content-type": "application/json"
-                }   
-            })
-            .then(response=>{
-                return response.json()
-            })
-            .then(json =>{
-                setContextLoginRegistro(json.jwt)
-            })
-        }
-    }
-
-
-    // Funcion para llamar al siguiente fetch, solo luego de que se modifico el primer contexto
-    useEffect(()=>{
-        if(estadoPrueba != "" && contextLoginRegistro != ""){
-        llamadaAlFetch()
-        }
-    }, [estadoPrueba, contextLoginRegistro])
-
-
-    // Funcion para setear el contexto de usuario logueado
-    async function llamadaAlFetch(){
-        //if(dataParaLogin != ""){
-        fetch(endpointRegistro + `${estadoPrueba.email}/` + `${estadoPrueba.password}`,{
-            "method": "GET",
-            "headers": {
-                "authorization": 'Bearer '+ contextLoginRegistro,
-                }   
-            })
-            .then(response=>{
-                return response.json()
-            })
-            .then(json =>{
-                setContextUser(json)
-            })
-        //}
-    }
-
-    // Funcion redireccion al home con usuario logueado
-    useEffect(()=>{
-        if(contextUser != ""){
-        history.push("/home")
-        console.log(contextUser)
-        }
-    }, [contextUser])
-    
-    
-    
-    //fin de mi codigo
-    
-
-    function registration(){
-        console.log("te registraste")
+            setContextLoginRegistro(parseJwt(data.jwt).usuario);
+            history.push('/home');
+            console.log("FUNCIONOOOOOOO")
+            console.log(data);
+            console.log(parseJwt(data.jwt).usuario);
+        }else
+        setAvisoFalloRegistro("avisoVisible")
     }
 
     return (
@@ -177,7 +102,7 @@ const Register = () => {
                     {(errors.passwordConfirmation && isSubmitting.current && (<div className="errorBox"><p className="errorDesc">{errors.passwordConfirmation}</p></div>)) || (errors.passwordConfirmation && selectedFields.includes("passwordConfirmation") && (<div className="errorBox"><p className="errorDesc">{errors.passwordConfirmation}</p></div>))}
 
                     
-                    <input type="submit" value="Crear cuenta" onClick={() =>{handleClick()}}></input>
+                    <input type="submit" value="Crear cuenta"></input>
                     <div className={avisoFalloRegistro}>Lamentablemente no ha podido registrarse. Por favor intente más tarde</div>
                 </form>
                 <p>¿Ya tienes una cuenta? <Link className="link" to='/login'>Iniciar sesión</Link></p>
