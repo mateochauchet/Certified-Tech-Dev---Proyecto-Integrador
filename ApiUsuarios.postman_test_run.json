@@ -1,0 +1,171 @@
+{
+	"id": "85a0be5c-76ee-4e4a-a772-a64e724bdc25",
+	"name": "ApiUsuarios",
+	"timestamp": "2021-11-26T22:58:02.666Z",
+	"collection_id": "3e57a1b8-99b9-489c-94ca-8fdba73a2aba",
+	"folder_id": 0,
+	"environment_id": "65c76bb9-3d58-4abe-bb51-4f255f6181f9",
+	"totalPass": 7,
+	"totalFail": 6,
+	"results": [
+		{
+			"id": "fc1996c2-ae71-4184-8d34-abd82c47420c",
+			"name": "readById",
+			"url": "http://localhost:8080/api/usuarios/4",
+			"time": 2439,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"varificar el nombre de el usuario id 4": true,
+				"verificar respuesta es un json": true,
+				"Codigo del status 404, en caos de que no exista la categoria a buscar": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"varificar el nombre de el usuario id 4": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verificar respuesta es un json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Codigo del status 404, en caos de que no exista la categoria a buscar": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				2439
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"varificar el nombre de el usuario id 4": true,
+					"verificar respuesta es un json": true,
+					"Codigo del status 404, en caos de que no exista la categoria a buscar": false
+				}
+			]
+		},
+		{
+			"id": "ae3ecfcd-1f3a-4707-aa55-1d147b0f2c96",
+			"name": "insert",
+			"url": "http://localhost:8080/api/usuarios/",
+			"time": 2884,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Successful POST request": true,
+				"Response time is less than 2000ms": false,
+				"Status code is 404, en caso de que el json tengan datos erroneos": false,
+				"Verificar en caso de que alguno de los atributos esten vacios muestre el error": false,
+				"Verificar en caso de que los caracteres de alguno de los atributos superen los permitidos, muestre el error": false
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 2000ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Status code is 404, en caso de que el json tengan datos erroneos": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que alguno de los atributos esten vacios muestre el error": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Verificar en caso de que los caracteres de alguno de los atributos superen los permitidos, muestre el error": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				2884
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Successful POST request": true,
+					"Response time is less than 2000ms": false,
+					"Status code is 404, en caso de que el json tengan datos erroneos": false,
+					"Verificar en caso de que alguno de los atributos esten vacios muestre el error": false,
+					"Verificar en caso de que los caracteres de alguno de los atributos superen los permitidos, muestre el error": false
+				}
+			]
+		},
+		{
+			"id": "e8cba201-430c-4561-affb-739dda1d4a02",
+			"name": "authenticate",
+			"url": "http://localhost:8080/api/usuarios/authenticate",
+			"time": 1198,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 403, en caso de que el json tengan datos erroneos": false,
+				"Status code is 200": true,
+				"devuelve un jwt si los datos son correctos": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403, en caso de que el json tengan datos erroneos": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"devuelve un jwt si los datos son correctos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1198
+			],
+			"allTests": [
+				{
+					"Status code is 403, en caso de que el json tengan datos erroneos": false,
+					"Status code is 200": true,
+					"devuelve un jwt si los datos son correctos": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 6521,
+	"collection": {
+		"requests": [
+			{
+				"id": "fc1996c2-ae71-4184-8d34-abd82c47420c",
+				"method": "GET"
+			},
+			{
+				"id": "ae3ecfcd-1f3a-4707-aa55-1d147b0f2c96",
+				"method": "POST"
+			},
+			{
+				"id": "e8cba201-430c-4561-affb-739dda1d4a02",
+				"method": "POST"
+			}
+		]
+	}
+}
