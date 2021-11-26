@@ -43,12 +43,13 @@ public class UsuarioController {
 
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
+            final UserDetails userDetails = userSecurityService.loadUserByUsername(authenticationRequest.getEmail());
+            final String jwt = jwtUtil.generateToken(userDetails);
+            return ResponseEntity.ok(new AuthenticationResponse((jwt)));
         }catch (BadCredentialsException e) {
             throw new Exception("Incorrect", e);
         }
-        final UserDetails userDetails = userSecurityService.loadUserByUsername(authenticationRequest.getEmail());
-        final String jwt = jwtUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new AuthenticationResponse((jwt)));
+
     };
 
     @PostMapping("/")

@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Component
 public class JwtUtil {
-    private String SECRET_KEY = "secret";
+    private String SECRET_KEY = "digitalBooking@_secretKey";
 
 
     /*
