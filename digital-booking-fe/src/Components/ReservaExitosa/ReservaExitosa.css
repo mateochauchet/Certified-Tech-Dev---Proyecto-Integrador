@@ -6,9 +6,10 @@
     width: 70%;
     text-align: center;
     box-shadow: 2px 2px 5px 1px rgb(204, 201, 201);
-    margin: auto;
+    margin: auto auto;
     padding: 8%;
     font-family: Roboto;
+    
 }
 
 .atomoCheck{

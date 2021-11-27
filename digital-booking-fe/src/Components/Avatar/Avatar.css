@@ -5,14 +5,11 @@
 }
 
 .container-avatar{
-    width: 70%;
-    height: 20vh;
     font-family: roboto;
     font-size: 15px;
-    margin-left: 30%;
-    margin-top: 0%;
-    margin-right: 60%;
-   position: absolute;
+    
+    margin-bottom: 10px;
+   
 }
 
 .container-avatar2{
@@ -20,23 +17,19 @@
 }
 
 .container-avatar-text{
-    width: 100%;
+    margin-bottom: 10px;
     display: flex;
-    height: 10vh;
-    background-color: #1DBEB4;
     flex-direction: column;
-    justify-content: flex-end;
-    margin-top: 15%;
+    align-items: flex-end;   
+    
 }
 
 .avatar{
-    width: 17%;
-    height: 7vh;
+    width: 45px;
+    height: 45px;
     background-color: white;
     border-radius: 50%;
-    margin-left: 80%;
-    position: absolute;
-    margin-bottom: 20%;
+    margin-right: 10px;
 }
 .text-avatar{
     text-align: center;
@@ -46,12 +39,14 @@
 }
 
 .text-name{
-    margin-left: 20%;
-    margin-right: 5%;
+    
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .saludo{
     color:white;
+    margin-top: 5px;
     text-align: end;
 }
 
@@ -61,52 +56,42 @@
 
 @media screen and (min-width: 768px){
     
-    .container-avatar{
-        width: 50%;
-        margin-left: 50%;
-        margin-top: 8%;
-        position: relative;
-    }
+    
     
     .container-avatar2{
         display: block;
-        width: 50%;
-        margin-bottom: 7%;
+        
+        width: 185px;
      }
 
     .icon-x{
-        position: absolute;
+    
+        margin-left: 70%;
         visibility: visible;
-        margin-left: 80%;
         font-size: 16px;
        
     }
 
-    .container-avatar-text{
-        height: 7vh;
+    .container-avatar-text{  
         flex-direction: row;
-        background-color: white;
         margin-top: 0%;
     }
 
     .avatar{
-        width: 25%;
-        height: 8vh;
+        
         background-color: #383B58;
-        margin-right: 75%;
+        margin-right: 5%;
     }
 
     .text-avatar{
         margin-top: 17%;
         color:white;
-        font-size: 23px;
+        
     }
     
     .text-name{
         margin-top: 0%;
-        margin-left: 30%;
         margin-right: 10%;
-        position: absolute;
     }
 
     .saludo{
@@ -120,67 +105,19 @@
     }
 
     .link-logout{
+        align-items: flex-end;
         text-decoration: none;
         color:#383B58;
     }
 }
 @media screen and (min-width: 1366px){
 
-    .container-avatar{
-        width: 100%;
-        height: 5vh;
-        font-size: 16px;
-        margin-left: 1%;
-        margin-top: 0%; 
-        margin-right: 0%;
-    }
-
-    .container-avatar2{
-        margin-top: 1%;
-        margin-bottom: 0%;
-        width: 30%;
-        height: 15vh;
-    }
-
     .icon-x{
         margin-left: 75%;
-    }
-
-
-    .container-avatar-text{
-        width: 100%;
-        height: 4vh;
-        justify-content: center;
-        margin-bottom: 0%;
-    }
-
-    .avatar{
-        width: 12%;
-        height: 7vh;
-        margin-right: 100%;
-        margin-top: 2%;
-        margin-bottom: 10%;
     }
 
     .text-avatar{
         text-align: center;
     }
-    
-    .text-name{
-        margin-top: 0%;
-        margin-left: 30%;
-        margin-right: 0%;
-        /* margin-bottom: 1%; */
-        /* position: relative; */
-    }
-
-    .saludo{
-        margin-top: 10%;
-    }
-    
-    .name{
-        color: #1DBEB4;
-    }
-
     
 }

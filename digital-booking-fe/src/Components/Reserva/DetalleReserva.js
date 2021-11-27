@@ -45,14 +45,14 @@ function DetalleReserva(props) {
                         <div className="divCheckInOut">
                             <h4 className="h4DetalleReserva">Check-in</h4>
                             {(props.dataIn != null) ?
-                                <h4>{(props.dataIn).format('DD/MM/YYYY')}</h4>
+                                <h4>{(props.dataIn).format('YYYY-MM-DD')}</h4>
                                 : null}
                         </div>
                         <div className="divHr"><hr /></div>
                         <div className="divCheckInOut">
                             <h4 className="h4DetalleReserva">Check-out</h4>
                             {(props.dataOut != null) ?
-                                <h4>{(props.dataOut).format('DD/MM/YYYY')}</h4>
+                                <h4>{(props.dataOut).format('YYYY-MM-DD')}</h4>
                                 : null}
                         </div>
                     </div>

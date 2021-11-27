@@ -3,9 +3,9 @@ import useForm from '../Hooks/useForm';
 import validate from './loginFormValidationRules'
 // import useAuthentication from '../Hooks/useAuthentication';
 import { Link, useParams } from 'react-router-dom';
-import { useEffect, useContext, useState} from 'react';
+import { useEffect, useContext, useState } from 'react';
 import Swal from 'sweetalert2'
-// import withReactContent from 'sweetalert2-react-content'
+import withReactContent from 'sweetalert2-react-content'
 import ContextLoginRegistro from '../Contexts/ContextLoginRegistro';
 import { parseJwt } from "./jwt";
 import { useHistory } from 'react-router-dom';
@@ -17,35 +17,43 @@ const endpointLogin = "http://localhost:8080/api/usuarios/authenticate";
 
 
 const Login = () => {
-    const {contextUser, setContextUser} = useContext(ContextUser);
+    const { contextUser, setContextUser } = useContext(ContextUser);
     const history = useHistory();
     const { values, handleChange, handleSubmit, isSubmitting, selectedFields, errors } = useForm(login, validate);
-    const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
+    const { contextLoginRegistro, setContextLoginRegistro } = useContext(ContextLoginRegistro);
     const [validCredentials, setValidCredentials] = useState(true);
+    const MySwal = withReactContent(Swal)
+    const { mensaje } = useParams();
 
-     // Funcion para setear el contexto de usuario logueado
-   async function login() {
-    const dataParaLogin = {
-        email: values.email,
-        password: values.password
-    }
-    
-       const response = await fetch (endpointLogin, {
-        "method": "POST",
-        "headers": {
-            "content-type": "application/json"
-                },
-        "body": JSON.stringify(dataParaLogin)
-         })
-         if(response.status === 200){
+    // Funcion para setear el contexto de usuario logueado
+    async function login() {
+        const dataParaLogin = {
+            email: values.email,
+            password: values.password
+        }
+
+        const response = await fetch(endpointLogin, {
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "body": JSON.stringify(dataParaLogin)
+        })
+        if (response.status === 200) {
             const jwt = await response.json();
             setContextUser(jwt.jwt);
             setContextLoginRegistro(parseJwt(jwt.jwt).usuario);
             history.push('/home')
             console.log(contextLoginRegistro);
-         }else
+        } else
             setValidCredentials(false);
     }
+
+    useEffect(() => {
+        if (mensaje !== "" && mensaje !== undefined)
+            MySwal.fire(`${mensaje}`)
+    }, []);
+
 
     return (
 
@@ -75,6 +83,6 @@ const Login = () => {
         </div>
 
     );
-    }
+}
 
 export default Login

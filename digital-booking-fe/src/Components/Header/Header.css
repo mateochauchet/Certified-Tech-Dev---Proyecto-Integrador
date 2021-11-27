@@ -10,7 +10,7 @@
 }
 .header1 {
   display: flex;
-  
+  align-items: center;
   justify-content: space-between;
   height: 95px;
   width: 100%;
@@ -19,20 +19,21 @@
   background-color: white;
   z-index: 5;
 }
+.header_logo {
+  width: 60%;
+  
+}
 .logo-eslogan {
-  width: 30%;
-  background-color: white;
+  
+  align-items: center;
   display: flex;
   gap: 10px;
   justify-content: center;
   margin-left: 5%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
-.header_logo {
-  width: 180%;
-  margin-top: 12%;
-}
+
 
 .eslogan {
   visibility: hidden;
@@ -62,19 +63,16 @@
     width: 80%;
     margin-right: 4%;
     gap: 5%;
-    margin-top: 3%;
+    
   }
 
   .logo-eslogan {
-    width: 50%;
-    margin-left: 2%;
-    margin-top: 3%;
+    
     justify-content: space-around;
   }
   .header_logo {
     width: 80%;
-    margin-top: 2%;
-    margin-left: 2%;
+    
     
   }
   
@@ -107,15 +105,16 @@
         width: 10%;
       }
       .logo-eslogan {
-        width: 40%;
-        margin-top: 2%;
+        width: 110%;
+        gap: 10%;
        justify-content: left;
-       gap: 15%;
+       
       }      
 
       .header_logo {
-        width: 230%;
+        width: 160%;
         text-align: center;
+        gap:10px
       }
 
       .container-butons{
