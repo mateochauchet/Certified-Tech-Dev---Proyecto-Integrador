@@ -1,0 +1,191 @@
+.h3DetalleReserva{
+    color: #383B58;
+    padding: 23px 0px 10px 8px;
+}
+
+.divDetalleReserva{
+    margin: 70px 20px 0px 20px;
+    background-color: white;
+    border-radius: 5pt;
+    box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.2);
+    padding-left: 0px;
+    padding-bottom: 10px;
+}
+
+.divImagenReserva{
+    width: 100%;
+    height: 40%;
+    
+}
+
+.imgDetalleReserva{
+    width: 100%;
+    height: 230px;
+}
+
+.categoriaDetalleReserva{
+    color: grey;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 10px 0px 0px 8px;
+}
+
+.tituloDetalle{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.divStarsDetalle{
+    margin: 1px 0px 8px 8px;
+}
+
+.divIconAdressReserva{
+    display: flex;
+    flex-direction: row;
+    margin: 1px 0px 8px 8px;
+}
+
+.mapIcon{
+    font-size: 1.2rem;
+    margin-right: 3px;
+}
+
+.direccionDetalleReserva{
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #383B58;
+}
+
+.divCheckInOut{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 8px 0px 8px;
+}
+
+.h4DetalleReserva{
+    color: #383B58;
+    font-size: 0.9rem;
+}
+
+hr{
+    background-color: #383b5818;
+}
+
+.primerHrReserva{
+    padding: 1.5px;
+}
+
+.divHr{
+    padding: 0px 8px;
+}
+
+.botonReserva{
+    margin: 15px 0px 0px 7px;
+}
+
+@media (min-width: 700px ) and (max-width: 1023px) {
+    .h3DetalleReserva{
+        font-size: 1.2rem;
+    }
+    
+    .divDetalleReserva{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .imgDetalleReserva{
+        border-radius: 5pt;
+        width: 95%;
+        margin: 3px 10px;
+        height: 270px;
+    }
+
+    .divDerechaDetalleReserva{
+        margin-top: 50px;
+        margin-right: 20px;
+    }
+    .primerHrReserva{
+        margin-top: 20px;
+    }
+
+    .botonReserva{
+        margin-top: 20px;
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 1024px){
+    .divDetalleReserva{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .h3DetalleReserva{
+        padding: 35px 0px 20px 9px;
+        font-size: 1.4rem;
+    }
+
+    .tituloDetalle{
+        padding-top: 5px;
+    }
+
+    .divImagenReserva{
+        height: 65%;
+    }
+    
+    .imgDetalleReserva{
+        height: 280px;
+    }
+
+    .categoriaDetalleReserva{
+        margin-top: 30px;
+        font-size: 1rem;
+    }
+    
+    .divStarsDetalle{
+        margin-top: 3px;
+        margin-bottom: 40px;
+    }
+    
+    .divIconAdressReserva{
+        margin-top: 20px;
+    }
+    
+    .mapIcon{
+        font-size: 1.8rem;
+    }
+    
+    .direccionDetalleReserva{
+        font-size: 0.9rem;
+        margin-left: 3px;
+    }
+    
+    .divCheckInOut{
+        padding-top: 25px;
+    }
+    
+    .h4DetalleReserva{
+        font-size: 1.1rem;
+    }
+    
+    hr{
+        background-color: #383b5818;
+        margin-top: 30px;
+    }
+    
+    .primerHrReserva{
+        padding: 1.5px;
+    }
+    
+    .divHr{
+        padding: 0px 8px;
+    }
+    
+    .botonReserva{
+        margin: 20px 10px 0px 18px;
+        height: 45px;
+    }
+    
+}

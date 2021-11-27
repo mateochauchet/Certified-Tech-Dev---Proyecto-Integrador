@@ -5,7 +5,7 @@ import CardsPuntaje from "../Cards_list/CardsPuntaje";
 import {Link} from 'react-router-dom'
 
 
-function Heading({titulo, categoria, location, puntaje}) {
+function Heading({titulo, categoria}) {
     
     return ( 
         <>
@@ -19,13 +19,7 @@ function Heading({titulo, categoria, location, puntaje}) {
             </div>
              
         </div>
-        <div className="heading2">
-            <div className="text-heading2">
-                <FontAwesomeIcon  icon={faMapMarkerAlt} />
-                <p>{location}</p> 
-            </div>
-            <CardsPuntaje style="cardsPuntajeRow" puntaje={puntaje} />
-        </div>
+        
         </>
      );
 }

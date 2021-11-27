@@ -9,6 +9,10 @@
     font-family: 'Roboto', sans-serif;
     background-color: white;
 }
+.cardReserva{
+    background-color: grey;
+
+}
 .btnContainer{
    
     margin-top: 5px;
@@ -136,8 +140,10 @@ div.cardsInfo p{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 
 }
+
 
 .cardBtn:hover {
     cursor: pointer;

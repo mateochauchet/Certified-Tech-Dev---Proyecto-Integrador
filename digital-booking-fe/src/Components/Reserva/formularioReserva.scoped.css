@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+}
+.h2Reserva{
+    color: #383B58;
+    margin: 0px 0px 15px 20px;
+    padding-top: 20px;
+}
+
+.divFormulario{
+    margin: 0px 20px 10px 20px;
+    background-color: white;
+    border-radius: 5pt;
+    box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+}
+.formularioReserva{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.contenedorLabelInput{
+    display: flex;
+    flex-direction: column;
+}
+
+.labelReserva{
+    margin: 5px 0px 5px 3px;
+    font-size: 0.8rem;
+    color: #383B58;
+    font-weight: 500;
+}
+
+.inputReserva{
+    margin: 0px 8px 25px 3px;
+    padding: 11px;
+    border-radius: 5pt;
+    background-color: whitesmoke;
+    border: none;
+    width: 95%;
+
+}
+
+.inputCiudadReserva{
+    background-color: white;
+    box-shadow: 0px 5px 10px -12px rgba(0, 0, 0, 0.75);
+    margin-bottom: 35px;
+}
+
+@media (min-width: 768px){
+    .divFormulario{
+        padding-right: 20px;
+    }
+    .formularioReserva{
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 20px;
+    }
+
+    .contenedorLabelInput{
+        width: 50%;
+    }
+    .labelReserva{
+        margin-top: 10px;
+    }
+}

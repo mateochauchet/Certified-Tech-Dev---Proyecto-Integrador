@@ -1,0 +1,285 @@
+[
+  {
+    "id": "1",
+    "puntaje": 9,
+    "location": "A 940m del centro",
+    "locationFull": "San Telmo, Ciudad Autónoma de Buenos Aires, Argentina",
+    "city": "San Carlos de Bariloche",
+    "coordenadas": {
+      "lng": -58.390,
+      "lat": -34.588512
+    },
+
+    "politicas": {
+      "normas": {
+        "norma1": "Checkout 10:00",
+        "norma2": "No se permiten fiestas",
+        "norma3": "No fumar"
+      },
+      "saludSeguridad": {
+        "dato1": "Se aplican las pautas del distanciamiento social y otras normas relacionadas con el coronavirus",
+        "dato2": "Detector de humo",
+        "dato3": "Depósito de seguridad"
+      },
+      "cancelacion": {
+        "preSeleccionFecha": "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
+        "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
+      }
+    }
+  },
+  {
+    "id": "2",
+    "img": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "categoria": "LOFT",
+    "categoriaTitulo": "Lofts",
+    "title": "Transylvania",
+    "puntaje": 7,
+    "description": {
+      "titulo": "Gran Loft dentro del corazón de Mendoza",
+      "text1": "Ubicada en un barrio excepcional, a 5 minutos del Parque, frente a la plaza Italia, muy cerca de la Calle Arístides (zona de bares y restaurantes) y a 10 minutos del centro de la ciudad. A una cuadra hay parada de bus turístico con el que podrás también recorrer toda la ciudad y alrededores",
+      "text2": "Transylvania, un espacio confortable tipo loft de techos altos y muy iluminada. Todo para el amplio disfrute de su estadia en este gran ambiente mendocino. Durante tu viaje, no te olvides de ir a ver jardines, como Silvestra. Estamos seguros de que disfrutarás de tu estancia en Loft Transylvania mientras descubres todo lo que Mendoza tiene para ofrecer."
+    },
+    "location": "A 560m del parque",
+    "locationFull": "Mendoza, Ciudad y Capital provincial, Argentina",
+    "city": "Buenos Aires",
+    "coordenadas": {
+      "lng": -68.849455,
+      "lat": -32.89196
+    },
+    "imagenes": [
+      {
+        "original": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1591825381767-c7137b8eda0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1591825381767-c7137b8eda0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1604629761628-5640ee399e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1604629761628-5640ee399e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1557127275-f8b5ba93e24e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1557127275-f8b5ba93e24e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1631684113153-15c584212053?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1631684113153-15c584212053?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+      }
+    ],
+    "caracteristicas": [
+      {
+        "nombre": "Apto mascotas",
+        "iconName": "dog"
+      },
+      {
+        "nombre": "Baño",
+        "iconName": "toilet"
+      },
+      {
+        "nombre": "Estacionamiento",
+        "iconName": "parking"
+      },
+      {
+        "nombre": "Wifi",
+        "iconName": "wifi"
+      },
+      {
+        "nombre": "Cocina",
+        "iconName": "utensils"
+      }
+
+      
+    ],
+    "politicas": {
+      "normas": {
+        "norma1": "Checkout 10:00",
+        "norma2": "No se permiten fiestas",
+        "norma3": "No fumar"
+      },
+      "saludSeguridad": {
+        "dato1": "Se aplican las pautas del distanciamiento social y otras normas relacionadas con el coronavirus",
+        "dato2": "Detector de humo",
+        "dato3": "Depósito de seguridad"
+      },
+      "cancelacion": {
+        "preSeleccionFecha": "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
+        "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
+      }
+    }
+  },
+  {
+    "id": "3",
+    "img": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80",
+    "categoria": "VILLA",
+    "categoriaTitulo": "Villas",
+    "title": "Los Castores",
+    "puntaje": 9,
+    "description": {
+      "titulo": "Villa completa en la exclusiva Nordelta",
+      "text1": "Perfecta mezcla de lo encantador, moderno y natural. Una villa ubicada en un barrio excepcional, a 5 minutos del Parque, muy cerca de lugares imperdibles para cenar, beber y festejar. y a 10 minutos del centro de la ciudad. A una cuadra hay parada de bus turístico con el que podrás también recorrer toda la ciudad y alrededores",
+      "text2": "Villa los Castores, un espacio confortable con un gran diseño moderno, muy iluminado y con detalles de lujo. Todo para el amplio disfrute de su estadia en este gran ambiente de Nordelta. La villa está a 4km al Club de Golf de Nordelta, donde se podrá disfrutar de una de las mejoras canchas de Golf de la Argentina. "
+    },
+    "location": "A 4km del Club de Golf",
+    "locationFull": "Los Castores, Nordelta, Ciudad Autónoma de Buenos Aires, Argentina",
+    "city": "Mendoza",
+    "coordenadas": {
+      "lng": -58.6612251,
+      "lat": -34.4074509
+    },
+    "imagenes": [
+      {
+        "original": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2670&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1601002257790-ebe0966a85ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1476&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1601002257790-ebe0966a85ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1476&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1621626802138-544f167e2c7f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1621626802138-544f167e2c7f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1630427999287-692ff825c9d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1630427999287-692ff825c9d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1472&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1472&q=80"
+      }
+    ],
+    "caracteristicas": [
+      {
+        "nombre": "Estacionamiento",
+        "iconName": "parking"
+      },
+      {
+        "nombre": "Baño",
+        "iconName": "toilet"
+      },
+      {
+        "nombre": "Cocina",
+        "iconName": "utensils"
+      },
+      {
+        "nombre": "Pileta",
+        "iconName": "swimmer"
+      },
+      {
+        "nombre": "Wifi",
+        "iconName": "wifi"
+      },
+      {
+        "nombre": "Apto mascotas",
+        "iconName": "dog"
+      }
+      
+    ],
+    "politicas": {
+      "normas": {
+        "norma1": "Checkout 10:00",
+        "norma2": "No se permiten fiestas",
+        "norma3": "No fumar"
+      },
+      "saludSeguridad": {
+        "dato1": "Se aplican las pautas del distanciamiento social y otras normas relacionadas con el coronavirus",
+        "dato2": "Detector de humo",
+        "dato3": "Depósito de seguridad"
+      },
+      "cancelacion": {
+        "preSeleccionFecha": "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
+        "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
+      }
+    }
+  },
+  {
+    "id": "4",
+    "img": "https://www.elliberal.com.ar/fotos/notas_bk/2013/10/524d7b6b90xx_messi3.jpg",
+    "categoria": "CASA",
+    "categoriaTitulo": "Casas",
+    "title": "Casa de Messi",
+    "puntaje": 6,
+    "description": {
+      "titulo": "Alójate en la exclusiva One-Zero-Eco de Messi",
+      "text1": "Para los amantes del fútbol y del buen gusto!, una vivienda premium ubicada Situada a solo 18 kilómetros del Camp Nou, la casa de Messi cuenta con un pequeño campo de fútbol, ​​una piscina, un gimnasio cubierto y un parque completo. A una cuadra, la zona turística por la que podrás disfrutar de toda la ciudad y alrededores",
+      "text2": "One-Zero-Eco es un espacio exclusivo de techos altos y muy iluminada, con vistas panorámicas a Bellamar. Todo un referente arquitectónico para las nuevas generaciones"
+    },
+    "location": "A 30m del centro",
+    "locationFull": "Castelldefels, Barcelona, Capital de la Comunidad Autónoma de Cataluña, España",
+    "city": "Cordoba",
+    "coordenadas": {
+      "lng": 1.98770,
+      "lat": 41.2817138
+    },
+    "imagenes": [
+      {
+        "original": "https://luisdegarrido.com/wp-content/uploads/2015/11/00_MESSI-ECO-HOUSE.jpg",
+        "thumbnail": "https://luisdegarrido.com/wp-content/uploads/2015/11/00_MESSI-ECO-HOUSE.jpg"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1541604193435-22287d32c2c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1541604193435-22287d32c2c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+      },
+      {
+        "original": "https://i.pinimg.com/originals/e0/73/ae/e073ae2a390c2cc9c4ae3d61e23f3ea8.jpg",
+        "thumbnail": "https://i.pinimg.com/originals/e0/73/ae/e073ae2a390c2cc9c4ae3d61e23f3ea8.jpg"
+      },
+      {
+        "original": "https://images.unsplash.com/photo-1623625434531-d130448273c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1623625434531-d130448273c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80"
+      }
+    ],
+    "caracteristicas": [
+      {
+        "nombre": "Televisor",
+        "iconName": "tv"
+      },
+      {
+        "nombre": "Estacionamiento",
+        "iconName": "parking"
+      },
+      {
+        "nombre": "Pileta",
+        "iconName": "swimmer"
+      },
+      {
+        "nombre": "Wifi",
+        "iconName": "wifi"
+      },
+      {
+        "nombre": "Apto mascotas",
+        "iconName": "dog"
+      },
+      {
+        "nombre": "Baño",
+        "iconName": "toilet"
+      },
+      {
+        "nombre": "Seguridad Privada",
+        "iconName": "lock"
+      }
+    ],
+    "politicas": {
+      "normas": {
+        "norma1": "Checkout 10:00",
+        "norma2": "No se permiten fiestas",
+        "norma3": "No fumar"
+      },
+      "saludSeguridad": {
+        "dato1": "Se aplican las pautas del distanciamiento social y otras normas relacionadas con el coronavirus.",
+        "dato2": "Detector de humo",
+        "dato3": "Depósito premium de seguridad"
+      },
+      "cancelacion": {
+        "preSeleccionFecha": "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
+        "postSeleccionFecha": "Podrás cancelar hasta una semana previa a tu reserva"
+      }
+    }
+  }
+]
