@@ -56,8 +56,6 @@
 
 @media screen and (min-width: 768px){
     
-    
-    
     .container-avatar2{
         display: block;
         
@@ -65,7 +63,7 @@
      }
 
     .icon-x{
-    
+        margin-top: 5%;
         margin-left: 70%;
         visibility: visible;
         font-size: 16px;
@@ -114,6 +112,7 @@
 
     .icon-x{
         margin-left: 75%;
+        margin-top: 5%;
     }
 
     .text-avatar{
