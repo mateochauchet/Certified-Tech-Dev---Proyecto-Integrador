@@ -22,6 +22,7 @@ const Register = () => {
     const endpointRegistro = "http://localhost:8080/api/usuarios/";
     let nuevoUsuarioData;
     let dataParaLogin;
+
     
 
     //seteo de data para registro y login automatico
@@ -52,8 +53,9 @@ const Register = () => {
             }
         })
         if(response.status === 200 || response.status === 201){
-        const data = await response.json()
+        const data = await response.json();
             setStatus(response.status)
+            setContextUser(data.jwt);
             setContextLoginRegistro(parseJwt(data.jwt).usuario);
             history.push('/home');
             console.log("FUNCIONOOOOOOO")
@@ -62,6 +64,7 @@ const Register = () => {
         }else
         setAvisoFalloRegistro("avisoVisible")
     }
+
 
     return (
         <div className="background">

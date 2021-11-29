@@ -15,7 +15,7 @@ function ContainerFechas(props) {
 
     let id = (props.id)
     function handlerReserva() {
-        if(contextUser === "" && contextLoginRegistro === "")
+        if(contextUser === '' )
             history.replace(`/login/${"El login es obligatorio, si no se encuentra registrado debe registrarse"}`);
         else
             history.replace(`/productos/${id}/reserva`);   
