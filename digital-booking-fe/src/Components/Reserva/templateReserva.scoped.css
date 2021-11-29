@@ -21,6 +21,8 @@
    padding-bottom: 20px;
 }
 
+
+
 @media (min-width: 1024px){
     .containerReserva{
         display: flex;

@@ -84,6 +84,15 @@ hr{
     margin: 15px 0px 0px 7px;
 }
 
+.avisoVisible{
+    color: red;
+    margin: 5px;
+}
+
+.avisoNoVisible{
+    display: none;
+}
+
 @media (min-width: 700px ) and (max-width: 1023px) {
     .h3DetalleReserva{
         font-size: 1.2rem;

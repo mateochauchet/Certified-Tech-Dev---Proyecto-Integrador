@@ -2,7 +2,6 @@ import data from '../Cards_list/data.json'
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from 'react-router-dom';
 import "./templateReserva.scoped.css"
-import { Link } from "react-router-dom";
 import Heading from "../Detalle/Heading";
 import PoliticsContainer from "../Politicas/PoliticsContainer";
 import FormularioReserva from "./FormularioReserva";
@@ -16,9 +15,6 @@ import ContextUser from '../Contexts/ContextUser';
 import { useHistory } from 'react-router-dom';
 
 
-import Error from "../Hooks/Error";
-
-
 function TemplateReserva(props) {
 
     const [productIdList, setProductIdList] = useState(null);
@@ -27,9 +23,9 @@ function TemplateReserva(props) {
     const [hora, setHora] = useState(null);
     const { contextLoginRegistro } = useContext(ContextLoginRegistro);
     const { contextUser } = useContext(ContextUser);
-    const [error, guardarError] = useState(false);
     const history = useHistory();
-
+    const [avisoFalloReserva, setAvisoFalloReserva] = useState("avisoNoVisible")
+    // const [errorHora, setErrorHora] = useState("errorNoVisible")
     const { id } = useParams()
     console.log(id)
     let match = data.filter(producto => producto.id === id)
@@ -81,35 +77,24 @@ function TemplateReserva(props) {
             usuario: {
                 id: contextLoginRegistro.id
             }
-
         }
         console.log(payload)
 
-        if (props.dataIn === "" && props.dataOut === "" && props.hora === "") {
-            guardarError(true);
+        if (props.dataIn === null || props.dataOut === null || props.hora === null) {
+        //    setErrorHora("errorVisible")
         } else {
             const res = await PostReserva(payload, contextUser);
             if (res === 201) {
                 console.log('Reserva Creada')
                 history.push('/reservaExitosa')
-                guardarError(false);
+            
             } else {
-                console.log("Lamentablemente la reserva no ha podido realizarse”. Por favor, intente más tarde");
-                
+                setAvisoFalloReserva("avisoVisible")
+                console.log("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde");
             }
-
         }
-
     }
-    //cargar un componente condicionalmente 
-    let componente;
-    if (error) {
-        componente = <Error mensaje="Lamentablemente la reserva no ha podido realizarse”. Por favor, intente más tarde" />
-    }
-    //else{
-    //         handleSubmit()
-    //   }
-
+  
 
 
     return (
@@ -133,12 +118,14 @@ function TemplateReserva(props) {
                                     dataIn={dateIn}
                                     dataOut={dateOut}
                                     list={productIdList}
+                                    hora={hora}
                                     onClick={handleSubmit}
+                                    avisoFalloReserva={avisoFalloReserva}
                                 /></div>
 
                         </div>
                     </div>
-                    {componente}
+                    
                     <PoliticsContainer
                         normas={product.politicas.normas}
                         saludSeguridad={product.politicas.saludSeguridad}

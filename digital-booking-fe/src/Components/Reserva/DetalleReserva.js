@@ -15,11 +15,14 @@ function DetalleReserva(props) {
     else if (puntajeP >= 2) { number = 1 }
     else if (puntajeP >= 0) { number = 0 }
 
+ 
+
     return (
         <>
 
             <div className="divDetalleReserva">
                 <div className="divIzquierdaDetalleReserva">
+               
                     <h3 className="h3DetalleReserva">Detalle de la reserva</h3>
                     <div className="divImagenReserva">
                         <img className="imgDetalleReserva" src={props.list.imagenes} />
@@ -58,7 +61,9 @@ function DetalleReserva(props) {
                     </div>
                     <div className="divHr"><hr /></div>
                     <button className="cardBtn botonReserva" onClick={props.onClick}>Confirmar reserva</button>
+                    <div className={props.avisoFalloReserva}>Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde</div>
                 </div>
+               
             </div>
         </>
     )

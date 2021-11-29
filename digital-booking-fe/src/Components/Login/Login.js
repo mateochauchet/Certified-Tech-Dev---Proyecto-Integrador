@@ -1,7 +1,6 @@
 import './Login.scoped.css'
-import useForm from '../hooks/useForm';
+import useForm from '../Hooks/useForm';
 import validate from './loginFormValidationRules'
-// import useAuthentication from '../Hooks/useAuthentication';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useContext, useState } from 'react';
 import Swal from 'sweetalert2'

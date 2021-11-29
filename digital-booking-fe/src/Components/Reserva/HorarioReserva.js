@@ -4,12 +4,15 @@ import "./horarioReserva.scoped.css";
 import {BsCheckCircle} from "react-icons/bs";
 import { symbolTypeAnnotation } from "@babel/types";
 
+
 function HorarioReserva(props){
   
+    
     return(
         <>
         <h2 className="h2HorarioReserva">Tu horario de llegada</h2>
         <div className="divHorario">
+            {/* <div className={props.errorHora}>Debe ingresar un horario estimado de llegada</div> */}
             <div className="divh5">
                 <BsCheckCircle className="tick" fill="#383B58"/>
                 <h5 className="h5HorarioReserva">Tu habitacion va a estar lista para el check-in entre las 10:00AM y las 11:00PM</h5>
