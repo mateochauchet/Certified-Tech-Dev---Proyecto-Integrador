@@ -25,7 +25,7 @@ function TemplateReserva(props) {
     const { contextUser } = useContext(ContextUser);
     const history = useHistory();
     const [avisoFalloReserva, setAvisoFalloReserva] = useState("avisoNoVisible")
-    // const [errorHora, setErrorHora] = useState("errorNoVisible")
+    // const [errorForm, setErrorForm] = useState("errorFormNoVisible")
     const { id } = useParams()
     console.log(id)
     let match = data.filter(producto => producto.id === id)
@@ -67,22 +67,18 @@ function TemplateReserva(props) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        let payload = {
-            horaDeReserva: `${hora}:00:00`,
-            fechaInicio: dateIn.format('YYYY-MM-DD'),
-            fechaFinal: dateOut.format('YYYY-MM-DD'),
-            producto: {
-                id: productIdList.id
-            },
-            usuario: {
-                id: contextLoginRegistro.id
+        if(props.dataIn != null && props.dateOut != null && props.hora != null){
+            let payload = {
+                horaDeReserva: `${hora}:00:00`,
+                fechaInicio: dateIn.format('YYYY-MM-DD'),
+                fechaFinal: dateOut.format('YYYY-MM-DD'),
+                producto: {
+                    id: productIdList.id
+                },
+                usuario: {
+                    id: contextLoginRegistro.id
+                }
             }
-        }
-        console.log(payload)
-
-        if (props.dataIn === null || props.dataOut === null || props.hora === null) {
-        //    setErrorHora("errorVisible")
-        } else {
             const res = await PostReserva(payload, contextUser);
             if (res === 201) {
                 console.log('Reserva Creada')
@@ -92,10 +88,17 @@ function TemplateReserva(props) {
                 setAvisoFalloReserva("avisoVisible")
                 console.log("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde");
             }
+        }else{
+            console.log("Necesitas llenar todos los campos");
+            // if(props.hora === null && props.dataIn != null && props.dataOut != null){
+            //     console.log("necesitas elegir una hora estimada de llegada ");
+            // }else if(props.dataIn === null && props.dataOut != null && props.hora != null){
+            //     console.log("es neceasrio elegir una fecha de check-in");
+            // }else if(props.dataOut === null && props.dataIn != null && props.hora != null){
+            //     console.log("es necesario elegir una fecha de chaek-out");
+            // }
         }
     }
-  
-
 
     return (
         <div>
@@ -138,6 +141,6 @@ function TemplateReserva(props) {
 
         </div>
     );
-}
+        }
 
 export default TemplateReserva;

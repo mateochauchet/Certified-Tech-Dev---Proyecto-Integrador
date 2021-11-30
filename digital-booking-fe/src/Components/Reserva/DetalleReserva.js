@@ -15,8 +15,6 @@ function DetalleReserva(props) {
     else if (puntajeP >= 2) { number = 1 }
     else if (puntajeP >= 0) { number = 0 }
 
- 
-
     return (
         <>
 
