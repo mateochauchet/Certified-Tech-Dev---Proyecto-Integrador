@@ -24,6 +24,11 @@ const Login = () => {
     const MySwal = withReactContent(Swal)
     const { mensaje } = useParams();
 
+    useEffect(() => {
+        if ( contextUser === '' && mensaje !== undefined)
+            MySwal.fire(`${mensaje}`)
+    }, [mensaje]);
+    
     // Funcion para setear el contexto de usuario logueado
     async function login() {
         const dataParaLogin = {
@@ -43,15 +48,12 @@ const Login = () => {
             setContextUser(jwt.jwt);
             setContextLoginRegistro(parseJwt(jwt.jwt).usuario);
             history.push('/home')
-            console.log(contextLoginRegistro);
+            console.log(contextUser);
         } else
             setValidCredentials(false);
     }
 
-    useEffect(() => {
-        if (mensaje !== "" && mensaje !== undefined)
-            MySwal.fire(`${mensaje}`)
-    }, []);
+    
 
 
     return (
