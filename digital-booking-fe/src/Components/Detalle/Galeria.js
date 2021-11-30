@@ -82,7 +82,7 @@ function Galeria({ item }) {
                     </div>
                     <div className="grid-container">
                         {item.map((imagen, i) =>
-                            <div  className={`imagen` + (i + 1)}>
+                            <div key={i} className={`imagen` + (i + 1)}>
                                 <img key={i} src={imagen.original} alt=""></img>
                             </div>)}
                         <div className="verMas">

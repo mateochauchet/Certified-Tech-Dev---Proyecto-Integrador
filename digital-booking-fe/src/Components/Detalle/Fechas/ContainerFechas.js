@@ -1,7 +1,6 @@
 import './ContainerFechas.css'
 import {useHistory} from 'react-router-dom';
 import ContextUser from "../../Contexts/ContextUser"
-import ContextLoginRegistro from "../../Contexts/ContextLoginRegistro"
 
 
 import Fecha from './Fecha';
@@ -10,12 +9,12 @@ import { useContext } from 'react';
 function ContainerFechas(props) {
 
     let history = useHistory();
-    const {contextLoginRegistro} = useContext(ContextLoginRegistro)
+
     const {contextUser} = useContext(ContextUser)
 
     let id = (props.id)
     function handlerReserva() {
-        if(contextUser === "" && contextLoginRegistro === "")
+        if(contextUser === '' )
             history.replace(`/login/${"El login es obligatorio, si no se encuentra registrado debe registrarse"}`);
         else
             history.replace(`/productos/${id}/reserva`);   

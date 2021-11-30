@@ -16,9 +16,6 @@ function Buscador(props) {
   const [dateIn, setDateIn] = useState(null);
   const [dateOut, setDateOut] = useState(null);
 
-
-
-
   let options =
     props.list.map((c, i) => ({
       key: { i }, value: c.nombre, label: (
@@ -61,18 +58,13 @@ function Buscador(props) {
           borderRadius: 0,
           colors: {
             ...theme.colors,
-
             primary: 'white'
           },
         })}
       />
       <DateBuscador handleChange={elegirFecha}  />
       <Button data-testid="button" classN="primary" name="Buscar" cambiarCiudad={props.cambiarCiudad} dateIn={dateIn} dateOut={dateOut} ciudad={ciudad} ></Button>
-      {/* {(dateIn != null) && (dateOut != null) 
-      ?
-      console.log((dateIn).format('YYYY-MM-DD'), (dateOut).format('YYYY-MM-DD'))
-
-      : null} */}
+      
     </div>
   );
 }
