@@ -6,5 +6,9 @@ export default function validate(values){
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
     errors.email = 'Dirección de correo electrónico invalida';
   }
+
+  if(!values.password){
+    errors.password="Este campo es obligatorio"
+  }
     return errors;
 }

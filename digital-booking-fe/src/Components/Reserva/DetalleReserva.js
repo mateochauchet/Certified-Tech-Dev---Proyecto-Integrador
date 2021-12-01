@@ -58,6 +58,7 @@ function DetalleReserva(props) {
                         </div>
                     </div>
                     <div className="divHr"><hr /></div>
+                    <div className={props.errorForm}>Necesitas llenar todos los campos</div>
                     <button className="cardBtn botonReserva" onClick={props.onClick}>Confirmar reserva</button>
                     <div className={props.avisoFalloReserva}>Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde</div>
                 </div>

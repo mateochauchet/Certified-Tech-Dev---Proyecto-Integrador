@@ -25,7 +25,7 @@ function TemplateReserva(props) {
     const { contextUser } = useContext(ContextUser);
     const history = useHistory();
     const [avisoFalloReserva, setAvisoFalloReserva] = useState("avisoNoVisible")
-    // const [errorForm, setErrorForm] = useState("errorFormNoVisible")
+    const [errorForm, setErrorForm] = useState("avisoFormNoVisible")
     const { id } = useParams()
     console.log(id)
     let match = data.filter(producto => producto.id === id)
@@ -89,14 +89,8 @@ function TemplateReserva(props) {
                 console.log("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde");
             }
         }else{
+            setErrorForm("avisoFormVisible")
             console.log("Necesitas llenar todos los campos");
-            // if(props.hora === null && props.dataIn != null && props.dataOut != null){
-            //     console.log("necesitas elegir una hora estimada de llegada ");
-            // }else if(props.dataIn === null && props.dataOut != null && props.hora != null){
-            //     console.log("es neceasrio elegir una fecha de check-in");
-            // }else if(props.dataOut === null && props.dataIn != null && props.hora != null){
-            //     console.log("es necesario elegir una fecha de chaek-out");
-            // }
         }
     }
 
@@ -124,6 +118,7 @@ function TemplateReserva(props) {
                                     hora={hora}
                                     onClick={handleSubmit}
                                     avisoFalloReserva={avisoFalloReserva}
+                                    errorForm={errorForm}
                                 /></div>
 
                         </div>
