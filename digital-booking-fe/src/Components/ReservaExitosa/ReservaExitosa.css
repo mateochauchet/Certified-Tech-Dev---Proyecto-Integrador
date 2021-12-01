@@ -9,6 +9,7 @@
     margin: auto auto;
     padding: 8%;
     font-family: Roboto;
+    margin-top: 10%;
     
 }
 
@@ -49,6 +50,7 @@
     .container-reservaexitosa{
         width: 60%;
         padding: 5%;
+        margin-top: 5%;
     }
     
     .mensajeAgradecimineto{

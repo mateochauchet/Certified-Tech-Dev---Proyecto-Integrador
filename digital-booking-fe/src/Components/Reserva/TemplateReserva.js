@@ -27,7 +27,6 @@ function TemplateReserva(props) {
     const [avisoFalloReserva, setAvisoFalloReserva] = useState("avisoNoVisible")
     const [errorForm, setErrorForm] = useState("avisoFormNoVisible")
     const { id } = useParams()
-    console.log(id)
     let match = data.filter(producto => producto.id === id)
     let product = match[0]
 
@@ -61,13 +60,12 @@ function TemplateReserva(props) {
 
     const horarioReserva = (event) => {
         const dataHora = event.target.value;
-        console.log(dataHora);
         setHora(dataHora);
     }
 
     const handleSubmit = async e => {
         e.preventDefault();
-        if(props.dataIn != null && props.dateOut != null && props.hora != null){
+        if(dateIn !== null && dateOut !== null && hora !== null){
             let payload = {
                 horaDeReserva: `${hora}:00:00`,
                 fechaInicio: dateIn.format('YYYY-MM-DD'),
@@ -81,18 +79,17 @@ function TemplateReserva(props) {
             }
             const res = await PostReserva(payload, contextUser);
             if (res === 201) {
-                console.log('Reserva Creada')
                 history.push('/reservaExitosa')
             
             } else {
                 setAvisoFalloReserva("avisoVisible")
-                console.log("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde");
             }
-        }else{
-            setErrorForm("avisoFormVisible")
+         }else{
+             setErrorForm("avisoFormVisible")
             console.log("Necesitas llenar todos los campos");
-        }
-    }
+         }
+     }
+    
 
     return (
         <div>
@@ -118,7 +115,7 @@ function TemplateReserva(props) {
                                     hora={hora}
                                     onClick={handleSubmit}
                                     avisoFalloReserva={avisoFalloReserva}
-                                    errorForm={errorForm}
+                                     errorForm={errorForm}
                                 /></div>
 
                         </div>

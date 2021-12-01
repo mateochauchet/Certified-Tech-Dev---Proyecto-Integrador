@@ -6,6 +6,8 @@
     --body-bg-color: #F3F1ED; 
 } 
 
+/* 414px -600px */
+
 .container-Drawer{
     position: fixed;
     top: 0;
@@ -52,7 +54,7 @@
 
 .icon-drawer{
     color: white;
-    margin-top: 5%;
+    margin-top: 4%;
     margin-left: 5%;
     height: 6vh;
     font-size: 20px;
@@ -73,7 +75,7 @@
     font-size: 18px;
     margin-right: 12px;
     justify-content: end;
-    margin-bottom: 15%;
+    margin-bottom: 7%;
 }
 
 .container-cerrarSesion{
@@ -85,7 +87,7 @@
     color: #31363F;
     text-align: end;
     margin-right: 2%;
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
 .cerrarSesion{
