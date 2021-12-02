@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import {screen, render} from '@testing-library/react'
-import Card from '../Cards/Card';
+import Card from '../../Cards/Card';
 
 test('render Title Cont-Card', () => {
     const categoriaList = {
@@ -11,6 +11,19 @@ test('render Title Cont-Card', () => {
     }
     render(<Card tituloCategoria={categoriaList.tituloCategoria}/>)
     screen.debug()
-    expect(getAllByText(title)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/titulo prueba/i));
 });
+
+test('render img Cont-Card', () => {
+    const categoriaList = {
+        tituloCategoria : 'titulo Prueba',
+        cantidad: 3
+    }
+    render(<Card cantidad={categoriaList.cantidad}/>)
+    
+    expect(screen.getAllByText(3));
+});
+
+
+
 

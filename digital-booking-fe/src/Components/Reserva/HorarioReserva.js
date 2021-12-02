@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import horaList from "./hora.json"
 import "./horarioReserva.scoped.css";
 import {BsCheckCircle} from "react-icons/bs";
-import { symbolTypeAnnotation } from "@babel/types";
+
 
 
 function HorarioReserva(props){

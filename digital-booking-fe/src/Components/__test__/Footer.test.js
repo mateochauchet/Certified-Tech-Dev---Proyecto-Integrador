@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import {screen, render} from '@testing-library/react'
 import Footer from '../Footer/Footer';
 
-test('render Title Cont-Buscador', () => {
+test('render Footer', () => {
     render(<Footer />)
     screen.debug()
     const title = screen.getByText(/© 2021 Digital Booking/i);

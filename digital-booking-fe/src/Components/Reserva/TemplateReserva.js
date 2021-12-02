@@ -67,7 +67,7 @@ function TemplateReserva(props) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        if(props.dataIn != null && props.dateOut != null && props.hora != null){
+        if(dateIn !== null && dateOut !== null && hora !== null){
             let payload = {
                 horaDeReserva: `${hora}:00:00`,
                 fechaInicio: dateIn.format('YYYY-MM-DD'),
@@ -88,16 +88,18 @@ function TemplateReserva(props) {
                 setAvisoFalloReserva("avisoVisible")
                 console.log("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde");
             }
-        }else{
-            console.log("Necesitas llenar todos los campos");
-            // if(props.hora === null && props.dataIn != null && props.dataOut != null){
-            //     console.log("necesitas elegir una hora estimada de llegada ");
-            // }else if(props.dataIn === null && props.dataOut != null && props.hora != null){
-            //     console.log("es neceasrio elegir una fecha de check-in");
-            // }else if(props.dataOut === null && props.dataIn != null && props.hora != null){
-            //     console.log("es necesario elegir una fecha de chaek-out");
-            // }
         }
+        else {
+        console.log("Necesitas llenar todos los campos");
+        }
+        //     // if(props.hora === null && props.dataIn != null && props.dataOut != null){
+        //     //     console.log("necesitas elegir una hora estimada de llegada ");
+        //     // }else if(props.dataIn === null && props.dataOut != null && props.hora != null){
+        //     //     console.log("es neceasrio elegir una fecha de check-in");
+        //     // }else if(props.dataOut === null && props.dataIn != null && props.hora != null){
+        //     //     console.log("es necesario elegir una fecha de chaek-out");
+        //     // }
+        // }
     }
 
     return (

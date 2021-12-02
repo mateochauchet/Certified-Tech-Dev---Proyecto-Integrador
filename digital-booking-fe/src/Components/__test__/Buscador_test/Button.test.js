@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import {screen, render} from '@testing-library/react'
-import Button from '../Buscador/Button';
+import Button from '../../Buscador/Button';
 
 test('render <Button />', () => {   
     const component = render(<Button />) 
@@ -15,4 +15,5 @@ test('render button name props', () => {
     const component = render(<Button name={data.name} />)
     component.getByText('test')
 });
+
 

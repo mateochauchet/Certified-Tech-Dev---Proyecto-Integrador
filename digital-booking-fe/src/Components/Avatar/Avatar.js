@@ -27,7 +27,7 @@ export default function Avatar(props) {
         </Link>
         <div className="container-avatar-text">
           <div className="avatar">
-            <h4 className="text-avatar">{`${contextLoginRegistro.nombre[0].toUpperCase()}${contextLoginRegistro.apellido[0].toUpperCase()}`}</h4>
+            <h4 className="text-avatar" >{`${contextLoginRegistro.nombre[0].toUpperCase()}${contextLoginRegistro.apellido[0].toUpperCase()}`}</h4>
           </div>
           <div className="text-name">
             <h4 className="saludo">

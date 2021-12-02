@@ -5,13 +5,7 @@ import {Link} from 'react-router-dom';
 
 function CardsInfo(props) {
 
-  //let verdetalle = (props.house.title).replace(/\s+/g, '')
   let id = (props.house.id)
-
-  // let handleClick = () => {
-  //   console.log((props.house.nombre).replace(/\s+/g, ''))
-  // }
-  
 
   return (
     <div className="cardsRight">
