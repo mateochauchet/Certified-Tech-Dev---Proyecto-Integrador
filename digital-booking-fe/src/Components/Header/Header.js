@@ -28,7 +28,7 @@ export default function Header(props) {
     <>
       <div className="header1">
         <div className="logo-eslogan">
-          <Link className="link-img" to="/home">
+          <Link className="link-img" to="/home" onClick={props.categoriaAll }>
             <img className="header_logo" src={Logo} alt="db-logo" />{" "}
           </Link>
           <div className="eslogan">

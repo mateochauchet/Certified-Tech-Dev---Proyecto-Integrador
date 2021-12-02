@@ -52,6 +52,7 @@ export default function TemplateGeneral(props) {
         nombreBoton={props.nombreBoton}
         direccion2={props.direccion2}
         nombreBoton2={props.nombreBoton2}
+        categoriaAll={props.categoriaAll}
      >
     {componente()}
        </Header>
