@@ -33,7 +33,7 @@
 }
 .text-avatar{
     text-align: center;
-    margin-top: 15%;
+    margin-top: 25%;
     color:#545776;
     font-size: 20px;
 }
@@ -56,8 +56,6 @@
 
 @media screen and (min-width: 768px){
     
-    
-    
     .container-avatar2{
         display: block;
         
@@ -65,7 +63,7 @@
      }
 
     .icon-x{
-    
+        margin-top: 5%;
         margin-left: 70%;
         visibility: visible;
         font-size: 16px;
@@ -84,7 +82,7 @@
     }
 
     .text-avatar{
-        margin-top: 17%;
+        margin-top: 23%;
         color:white;
         
     }
@@ -97,7 +95,7 @@
     .saludo{
         color:grey;
         text-align: start;
-        margin-top: 5%;
+        /* margin-top: 5%; */
     }
     
     .name{
@@ -114,10 +112,11 @@
 
     .icon-x{
         margin-left: 75%;
+        margin-top: 5%;
     }
 
     .text-avatar{
         text-align: center;
+        margin-top: 22%;
     }
-    
 }

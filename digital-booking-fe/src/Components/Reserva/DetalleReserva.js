@@ -20,6 +20,7 @@ function DetalleReserva(props) {
 
             <div className="divDetalleReserva">
                 <div className="divIzquierdaDetalleReserva">
+               
                     <h3 className="h3DetalleReserva">Detalle de la reserva</h3>
                     <div className="divImagenReserva">
                         <img className="imgDetalleReserva" src={props.list.imagenes} />
@@ -57,8 +58,11 @@ function DetalleReserva(props) {
                         </div>
                     </div>
                     <div className="divHr"><hr /></div>
+                    <div className={props.errorForm}>Necesitas llenar todos los campos</div>
                     <button className="cardBtn botonReserva" onClick={props.onClick}>Confirmar reserva</button>
+                    <div className={props.avisoFalloReserva}>Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde</div>
                 </div>
+               
             </div>
         </>
     )

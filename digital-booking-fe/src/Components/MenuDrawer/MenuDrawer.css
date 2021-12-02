@@ -6,6 +6,8 @@
     --body-bg-color: #F3F1ED; 
 } 
 
+/* 414px -600px */
+
 .container-Drawer{
     position: fixed;
     top: 0;
@@ -29,7 +31,7 @@
     color: white;
     margin-left: 75%;
     font-size: 20px;
-    margin-top: 25%;
+    margin-top: 85px;
 }
 .container-parrafos{
     text-align: left;
@@ -52,7 +54,7 @@
 
 .icon-drawer{
     color: white;
-    margin-top: 5%;
+    margin-top: 4%;
     margin-left: 5%;
     height: 6vh;
     font-size: 20px;
@@ -73,11 +75,11 @@
     font-size: 18px;
     margin-right: 12px;
     justify-content: end;
-    margin-bottom: 5%;
+    margin-bottom: 7%;
 }
 
 .container-cerrarSesion{
-    margin-top: 300px;
+    margin-top: 100%;
     
 }
 .parrafo-cerrarSesion{
@@ -85,7 +87,7 @@
     color: #31363F;
     text-align: end;
     margin-right: 2%;
-    margin-top: 35%;
+    margin-top: 4%;
 }
 
 .cerrarSesion{

@@ -49,6 +49,13 @@
     color: #b9b9b9;
 }
 
+/* .errorVisible{
+    border: red;
+    color:red;
+}
+.errorNoVisible{
+    display: none;
+} */
 
 
 @media (min-width: 768x) {

@@ -9,36 +9,40 @@ import ContextUser from "../Contexts/ContextUser";
 import { useHistory } from 'react-router-dom';
 
 export default function Avatar(props) {
-
+  
   const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
   const {setContextUser} = useContext(ContextUser);
   let admin = ()=> contextLoginRegistro.rol === 2 ? <Link to="/administracion/creaproductos"><div> Administracion </div></Link> : <div></div>
   function handleClick(){
-
     setContextLoginRegistro("");
     setContextUser("");
   }
 
   return (
-      <>
-    <div className="container-avatar">
-    <Link  className="link-logout" to="/home" onClick={handleClick}>  <FontAwesomeIcon className="icon-x" icon={faTimes}/> </Link>
-      <div className="container-avatar-text">
-        {admin}
-        <div className="avatar">
-          <h4 className="text-avatar">{`${contextLoginRegistro.nombre[0]}${contextLoginRegistro.apellido[0]}`}</h4>
-        </div>
-        <div className="text-name">
-          <h4 className="saludo">
-            Hola,
-            <span className="name">
-              <br/>
-              {`${contextLoginRegistro.nombre} ${contextLoginRegistro.apellido}`}
-            </span>
-          </h4>
+    <>
+      <div className="container-avatar">
+        <Link className="link-logout" to="/home" onClick={handleClick}>
+          {" "}
+          <FontAwesomeIcon className="icon-x" icon={faTimes} />{" "}
+        </Link>
+        <div className="container-avatar-text">
+          {admin}
+          <div className="avatar">
+            <h4 className="text-avatar">{`${contextLoginRegistro.nombre[0].toUpperCase()}${contextLoginRegistro.apellido[0].toUpperCase()}`}</h4>
+          </div>
+          <div className="text-name">
+            <h4 className="saludo">
+              Hola,
+              <span className="name">
+                <br />
+                {`${contextLoginRegistro.nombre} ${
+                  contextLoginRegistro.apellido
+                }`}
+              </span>
+            </h4>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }

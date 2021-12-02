@@ -4,8 +4,7 @@ import Logo from "./logo.png";
 import Navbar from "../Navbar/Navbar.js";
 import MenuDrawer from "../MenuDrawer/MenuDrawer.js";
 import { useState } from "react";
-import { Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export default function Header(props) {
   const [show, setShow] = useState(false);
@@ -29,9 +28,14 @@ export default function Header(props) {
     <>
       <div className="header1">
         <div className="logo-eslogan">
-        <Link className="link-img" to="/home"><img className="header_logo" src={Logo} alt="db-logo" /> </Link>
-         <div className="eslogan">
-         <Link className="link-eslogan"to="/home"> <p>Sentite como en tu hogar</p></Link>
+          <Link className="link-img" to="/home" onClick={props.categoriaAll }>
+            <img className="header_logo" src={Logo} alt="db-logo" />{" "}
+          </Link>
+          <div className="eslogan">
+            <Link className="link-eslogan" to="/home">
+              {" "}
+              <p>Sentite como en tu hogar</p>
+            </Link>
           </div>
         </div>
         <div className="components">

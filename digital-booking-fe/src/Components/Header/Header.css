@@ -20,23 +20,22 @@
   z-index: 5;
 }
 .header_logo {
-  width: 60%;
+  width: 70%;
+  margin-left: 5%;
   
 }
 .logo-eslogan {
-  
   align-items: center;
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-left: 5%;
   margin-top: 2%;
 }
-
-
-
+.link-img{
+  width: 100%;
+}
 .eslogan {
-  visibility: hidden;
+ display: none;
 }
 
 .container-butons{
@@ -44,7 +43,7 @@
 }
 
 .components{
-  width: 15%;
+  width: 10%;
 }
 
 /* tablet */
@@ -63,17 +62,13 @@
     width: 80%;
     margin-right: 4%;
     gap: 5%;
-    
   }
 
   .logo-eslogan {
-    
     justify-content: space-around;
   }
   .header_logo {
     width: 80%;
-    
-    
   }
   
 }
@@ -105,14 +100,14 @@
         width: 10%;
       }
       .logo-eslogan {
-        width: 110%;
-        gap: 10%;
+        width: 70%;
+        gap: 7%;
        justify-content: left;
-       
+       margin-left: 1%;
       }      
 
       .header_logo {
-        width: 160%;
+        width: 150%;
         text-align: center;
         gap:10px
       }
@@ -125,6 +120,4 @@
         gap: 1%;
         margin-top: 1%;
       }
-      
-    
   }

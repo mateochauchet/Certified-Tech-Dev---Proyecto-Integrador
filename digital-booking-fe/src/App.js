@@ -37,6 +37,14 @@ export default function App() {
     } getData()
   }, []);
 
+
+  const categoriaAll = async () => {
+    //let response = await getProductos();  (DESCOMENTAR EN EL CASO QUE EL FILTRO SE HAGA CON LA API)
+    setFiltro("todos")
+  }
+
+
+
   useEffect(() => {
     async function getDataCity() {
       const productJson = await getCity()
@@ -88,6 +96,7 @@ export default function App() {
     setFiltro(categoria)
   }
 
+
   
   return (
     <div id="app">
@@ -100,7 +109,7 @@ export default function App() {
               exact
               path="/home"
               component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
                   <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
                   <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />
                   <CardsContainer list={productList} filtro={filtro} filtro2={reservedList}/>
@@ -111,7 +120,7 @@ export default function App() {
               
               path={["/login/:mensaje", "/login"]}
               component={() => (
-                <Template home={false} direccion="/registro" nombreBoton="Crear cuenta">
+                <Template home={false} direccion="/registro" nombreBoton="Crear cuenta" categoriaAll={categoriaAll}>
                   <Login />
                 </Template>
               )}
@@ -120,7 +129,7 @@ export default function App() {
               exact
               path="/registro"
               component={() => (
-                <Template home={false} direccion="/login" nombreBoton="Iniciar sesión">
+                <Template home={false} direccion="/login" nombreBoton="Iniciar sesión" categoriaAll={categoriaAll}>
                   <Registro />
                 </Template>
               )}
@@ -130,7 +139,7 @@ export default function App() {
               exact
               path="/productos/:id"
               component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
                   <ContainerDetalle />
                 </Template>
               )}
@@ -140,7 +149,7 @@ export default function App() {
               exact
               path="/productos/:id/reserva"
               component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
                   <TemplateReserva />
                 </Template>
               )}
@@ -150,7 +159,7 @@ export default function App() {
               exact
               path="/reservaExitosa"
               component={() => (
-                <Template home={true}  >
+                <Template home={true} categoriaAll={categoriaAll} >
                   <ReservaExitosa />
                 </Template>
               )}
