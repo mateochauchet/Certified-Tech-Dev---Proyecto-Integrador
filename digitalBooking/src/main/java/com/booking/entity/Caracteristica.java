@@ -34,4 +34,8 @@ public class Caracteristica {
     @Column(name = "icono", length = 100)
     private String icono;
 
+    public Caracteristica(String nombre, String icono) {
+        this.nombre = nombre;
+        this.icono = icono;
+    }
 }
