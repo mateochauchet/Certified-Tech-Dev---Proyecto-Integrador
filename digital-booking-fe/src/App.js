@@ -8,7 +8,6 @@ import ContextUser from "./Components/Contexts/ContextUser.js";
 import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
 import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
-import data from "./Components/Cards_list/dataj.json"
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer"
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
@@ -32,6 +31,7 @@ export default function App() {
     async function getData() {
       const productJson = await getProductos()
       setProductList(productJson)
+      
     } getData()
   }, []);
 
@@ -46,6 +46,7 @@ export default function App() {
   useEffect(() => {
     async function getDataCity() {
       const productJson = await getCity()
+
       setCityList(productJson)
     }
     getDataCity()
