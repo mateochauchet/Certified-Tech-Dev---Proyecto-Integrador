@@ -16,9 +16,6 @@ import ContextUser from '../Contexts/ContextUser';
 import { useHistory } from 'react-router-dom';
 
 
-import Error from "../Hooks/Error";
-
-
 function TemplateReserva(props) {
 
     const [productIdList, setProductIdList] = useState(null);
@@ -86,13 +83,12 @@ function TemplateReserva(props) {
         console.log(payload)
 
         if (props.dataIn === "" && props.dataOut === "" && props.hora === "") {
-            guardarError(true);
+            console.log('hola')
         } else {
             const res = await PostReserva(payload, contextUser);
             if (res === 201) {
                 console.log('Reserva Creada')
                 history.push('/reservaExitosa')
-                guardarError(false);
             } else {
                 console.log("Lamentablemente la reserva no ha podido realizarse”. Por favor, intente más tarde");
                 
@@ -101,11 +97,8 @@ function TemplateReserva(props) {
         }
 
     }
-    //cargar un componente condicionalmente 
-    let componente;
-    if (error) {
-        componente = <Error mensaje="Lamentablemente la reserva no ha podido realizarse”. Por favor, intente más tarde" />
-    }
+    
+
     //else{
     //         handleSubmit()
     //   }
@@ -138,7 +131,6 @@ function TemplateReserva(props) {
 
                         </div>
                     </div>
-                    {componente}
                     <PoliticsContainer
                         normas={product.politicas.normas}
                         saludSeguridad={product.politicas.saludSeguridad}

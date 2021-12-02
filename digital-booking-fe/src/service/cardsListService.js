@@ -48,6 +48,12 @@ export async function getProductosByCiudad (q) {
     return Array.isArray(resJson) ?  resJson :  [resJson]
 }
 
+export async function getCaracteristicas () {
+    const  response = await fetch("http://localhost:8080/api/caracteristicas/");
+    const resJson = await response.json();
+    return Array.isArray(resJson) ?  resJson :  [resJson]
+} 
+
 
 export default {
     getProductos,
@@ -56,5 +62,6 @@ export default {
     getProductosById,
     getProductosByCategoria,
     getProductosByDate,
-    getProductosByCiudad
+    getProductosByCiudad,
+    getCaracteristicas
 }
