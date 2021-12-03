@@ -1,8 +1,21 @@
 pipeline {
   agent any
   options {
-    gitLabConnection('your-gitlab-connection-name')
+    gitLabConnection('digitalbooking')
     gitlabBuilds(builds: ['Build','Approve','Deploy'])
+    buildDiscarder(
+        logRotator(
+            // number of build logs to keep
+            numToKeepStr:'5',
+            // history to keep in days
+            daysToKeepStr: '15',
+            // artifacts are kept for days
+            artifactDaysToKeepStr: '15',
+            // number of builds have their artifacts kept
+            artifactNumToKeepStr: '1'
+        )
+    )
+
   }
   triggers {
     gitlab(
@@ -57,7 +70,11 @@ pipeline {
     }
 
   }
-
+  post{
+    cleanup{
+      cleanWs()
+    }
+  }
   environment {
     JDBC_DATABASE_URL = 'jdbc:mysql://digitalbooking.clpoxqlbhqxm.us-east-1.rds.amazonaws.com:3306/digitalbooking'
     JDBC_DATABASE_USERNAME = 'admin'
