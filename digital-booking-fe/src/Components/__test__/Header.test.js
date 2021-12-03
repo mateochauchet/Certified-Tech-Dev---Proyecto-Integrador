@@ -14,13 +14,13 @@ test('render Header slogan', () => {
         <BrowserRouter history={history} >
             <Route path="/home" >
                 <Header >
-                    <MenuDrawer direccion={'/home'} />
+                    <MenuDrawer nombreBoton={'nombreBoton'} direccion={'/home'} />
                     </Header>
             </Route>
         </BrowserRouter>)
 
         screen.debug()
-    screen.queryByText(/Sentite como en tu hogar/i);
+        compHeader.queryByText(/Sentite como en tu hogar/i);
     expect(compHeader.container).toBeInTheDocument();
 
 });

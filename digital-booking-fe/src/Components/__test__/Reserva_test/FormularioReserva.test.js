@@ -11,11 +11,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 test('render <FormularioReserva />', () => {
     const data = {
         nombre: 'nombreTest',
-        apellido: 'apellidoTest'
+        apellido: 'apellidoTest',
+        email: 'pruebaEmail'
     }
     const compForm = render(
 
-        <ContextLoginRegistro.Provider value={data} >
+        <ContextLoginRegistro.Consumer value={data} >
 
             <Router history={history}>
                 <Route path="/home" >
@@ -23,7 +24,7 @@ test('render <FormularioReserva />', () => {
                 </Route>
             </Router>
 
-        </ContextLoginRegistro.Provider>
+        </ContextLoginRegistro.Consumer>
     )
     expect(compForm.container).toBeInTheDocument();
     screen.debug()
@@ -36,26 +37,32 @@ test('render <FormularioReserva />', () => {
 test(' texto en componente Form', () => {
     const data = {
         nombre: 'nombreTest',
-        apellido: 'apellidoTest'
+        apellido: 'apellidoTest',
+        email: 'pruebaEmail'
     }
-    const compForm = render(
-        <ContextLoginRegistro.Provider value={data} >
+    const compForm =render(
+        <ContextLoginRegistro.Consumer value={data} >
             <Router history={history}>
                 <Route path="/home" >
                     <FormularioReserva value={data.nombre} />
                 </Route>
             </Router>
-        </ContextLoginRegistro.Provider>
+        </ContextLoginRegistro.Consumer>
     )
 
 
     compForm.queryByText(/ nombreTest /i);
+    screen.debug();
 });
 
 test(' indicaciones en Form', () => {
-    
+    const data = {
+        nombre: 'nombreTest',
+        apellido: 'apellidoTest',
+        email: 'pruebaEmail'
+    }
     const compForm = render(
-        <ContextLoginRegistro.Provider value={''} >
+        <ContextLoginRegistro.Provider value={data} >
             <Router history={history}>
                 <Route path="/home" >
                     <FormularioReserva  />
@@ -63,6 +70,6 @@ test(' indicaciones en Form', () => {
             </Router>
         </ContextLoginRegistro.Provider>
     )
-    compForm.queryByText(/ Completa tus datos /i);
+    compForm.queryByText(/Completa tus datos/i);
 });
 
