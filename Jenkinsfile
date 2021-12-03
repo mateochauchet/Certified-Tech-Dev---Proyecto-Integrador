@@ -1,58 +1,58 @@
 pipeline {
   agent any
-  script {
-    properties([
-      gitLabConnection('digitalbooking'),
-      pipelineTriggers([
-      [
-        $class: 'GitLabPushTrigger',
-        triggerOnPush: true,
-        triggerOnMergeRequest: false,
-        triggerOpenMergeRequestOnPush: "never",
-        triggerOnNoteRequest: true,
-        noteRegex: "Jenkins please retry a build",
-        skipWorkInProgressMergeRequest: true,
-        secretToken: '5fbec3c6b4a1018ab960e542720958f8',
-        ciSkip: false,
-        setBuildDescription: true,
-        addNoteOnMergeRequest: true,
-        addCiMessage: true,
-        addVoteOnMergeRequest: true,
-        acceptMergeRequestOnSuccess: false,
-        branchFilterType: "NameBasedFilter",
-        includeBranchesSpec: "",
-        excludeBranchesSpec: "",
-              ]
-            ])
-          ])
-        }
+  options {
+    gitLabConnection('your-gitlab-connection-name')
+    gitlabBuilds(builds: ['Build','Approve','Deploy'])
+  }
+  triggers {
+    gitlab(
+      triggerOnPush: true,
+      triggerOnMergeRequest: false, 
+      triggerOpenMergeRequestOnPush: "never",
+      triggerOnNoteRequest: false,
+      noteRegex: "Jenkins please retry a build",
+      skipWorkInProgressMergeRequest: true,
+      ciSkip: false,
+      setBuildDescription: true,
+      addNoteOnMergeRequest: true,
+      addCiMessage: true,
+      addVoteOnMergeRequest: true,
+      acceptMergeRequestOnSuccess: false,
+      branchFilterType: "NameBasedFilter",
+      includeBranchesSpec: "",
+      excludeBranchesSpec: "",
+      pendingBuildName: "Jenkins",
+      cancelPendingBuildsOnUpdate: false,
+      secretToken: "5fbec3c6b4a1018ab960e542720958f8")
+  }
   stages {
     stage('Build') {
-      steps {
-
-
-        dir(path: 'digitalBooking') {
-          withMaven(maven: 'maven3') {
-            sh 'mvn clean install'
+      gitlabCommitStatus("Build") {
+        steps{
+          dir(path: 'digitalBooking') {
+            withMaven(maven: 'maven3') {
+              sh 'mvn clean install'
+            }
           }
-
         }
-
       }
     }
 
     stage('Approve') {
-      steps {
-        input 'Deploy last build to development environment'
+      gitlabCommitStatus("Approve") {
+        steps{
+          input 'Deploy last build to development environment'
+        }
       }
     }
 
     stage('Deploy') {
-      steps {
-        script {
-          ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '--become', installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml'
+      gitlabCommitStatus("Deploy") {
+        steps{
+          script {
+            ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '--become', installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml'
+          }
         }
-
       }
     }
 
