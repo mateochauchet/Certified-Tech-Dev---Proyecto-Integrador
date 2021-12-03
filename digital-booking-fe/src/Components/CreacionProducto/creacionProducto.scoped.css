@@ -1,0 +1,222 @@
+*{
+    box-sizing: border-box;
+}
+
+
+input:focus, textarea:focus, select:focus{
+    border: solid #1DBEB4 1px;
+    outline: none;
+}
+
+
+option{
+    border-bottom: solid #1DBEB4;
+}
+
+.contenedor, .h2CreacionProducto{
+    background-color:#383b5818;
+}
+
+.h2CreacionProducto{
+    color: #383B58;
+    padding: 20px 0px 15px 10px;
+}
+
+.h3CreacionProducto, .h4CreacionProducto{
+    color: #383B58;
+    margin: 0px 0px 15px 10px;
+    padding-top: 20px;
+}
+
+.h3CreacionProducto, .h4CreacionProducto{
+    margin-left: 0px;
+}
+
+.divFormulario{
+    margin: 0px 0px 10px 0px;
+    background-color: white;
+    box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+}
+
+.formularioCreacionProducto{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.contenedorLabelInput{
+    display: flex;
+    flex-direction: column;
+}
+
+.labelCreacionProducto{
+    margin: 5px 0px 5px 3px;
+    font-size: 0.8rem;
+    color: #383B58;
+    font-weight: 500;
+}
+
+.inputCreacionProducto{
+    margin: 0px 8px 25px 3px;
+    padding: 11px;
+    border-radius: 4pt;
+    border: none;
+    width: 95%;
+    background-color: white;
+    border: solid 2px whitesmoke;
+    box-shadow: 0px 5px 10px -7px rgba(0, 0, 0, 0.25);
+    color: #bbbbbb;
+    margin-bottom: 35px;
+}
+
+
+hr{
+    background-color: #1DBEB4;
+    width: 10px;
+}
+.inputTextarea{
+    height: 180px;
+}
+
+
+.contenedorSeccionAtributos{
+    background-color: #fefefd;
+    margin: 10px 0px;
+    padding: 15px 0px;
+    font-size: 1.2rem;
+}
+
+.labelAtributos{
+    color: #383B58;
+}
+
+.checkboxes{
+    height: 19px;
+    width: 21px;
+}
+
+.contenedorSeccionImagenes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorInputImagenes{
+    width: 80%;
+    padding-top: 25px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: 'Selecccione algunas imagenes';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+
+  .custom-file-input:hover::before {
+    border-color: black;
+  }
+ 
+
+.contenedorBoton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonCreacionProducto{
+    width: 80%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+@media (min-width: 768px){
+    .h2CreacionProducto{
+        padding-left: 5vw;
+        padding-bottom: 20px;
+        padding-top: 30px;
+    }
+
+    .contenedor{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .divFormulario{
+        width: 90vw;
+        border-radius: 5pt;
+    }
+    
+    .primerBloqueInputs{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 20px;
+    }
+
+    .contenedorLabelInput{
+        width: 50%;
+    }
+
+    .contenedorSeccionAtributos{
+        background-color: whitesmoke;
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .contenedorPoliticas{
+        width: 95%;
+        margin-left: 1.3vw;
+        border-radius: 5pt;
+        border: solid 2px whitesmoke;
+        box-shadow: 0px 5px 10px -7px rgba(0, 0, 0, 0.25);
+        padding: 20px;
+    }
+
+    .botonCreacionProducto{
+        width: 40%;
+    }
+}
+
+@media (min-width: 1024px){
+    .contenedorInputsAtributos{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .duplaLabelInput{
+        width: 45vw;
+    }
+
+    .contenedorPoliticas{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .contenedorPoliticas > div{
+        width: 30vw;
+    }
+
+}
