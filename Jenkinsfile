@@ -57,6 +57,11 @@ pipeline {
     }
 
   }
+  post{
+    cleanup{
+      cleanWs()
+    }
+  }
   environment {
     JDBC_DATABASE_URL = 'jdbc:mysql://digitalbooking.clpoxqlbhqxm.us-east-1.rds.amazonaws.com:3306/digitalbooking'
     JDBC_DATABASE_USERNAME = 'admin'
