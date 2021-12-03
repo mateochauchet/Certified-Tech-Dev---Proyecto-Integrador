@@ -1,39 +1,50 @@
 pipeline {
   agent any
+  options {
+    gitLabConnection('digitalbooking')
+    gitlabBuilds(builds: ['Build','Optimized build','Approve','Deploy'])
+    buildDiscarder(
+        logRotator(
+            // number of build logs to keep
+            numToKeepStr:'5',
+            // history to keep in days
+            daysToKeepStr: '15',
+            // artifacts are kept for days
+            artifactDaysToKeepStr: '15',
+            // number of builds have their artifacts kept
+            artifactNumToKeepStr: '1'
+        )
+    )
+  }
+  triggers {
+    gitlab(
+      triggerOnPush: true,
+      triggerOnMergeRequest: false, 
+      triggerOpenMergeRequestOnPush: "never",
+      triggerOnNoteRequest: false,
+      noteRegex: "Jenkins please retry a build",
+      skipWorkInProgressMergeRequest: true,
+      ciSkip: false,
+      setBuildDescription: true,
+      addNoteOnMergeRequest: true,
+      addCiMessage: true,
+      addVoteOnMergeRequest: true,
+      acceptMergeRequestOnSuccess: false,
+      branchFilterType: "NameBasedFilter",
+      includeBranchesSpec: "",
+      excludeBranchesSpec: "",
+      pendingBuildName: "Jenkins",
+      cancelPendingBuildsOnUpdate: false,
+      secretToken: "5fbec3c6b4a1018ab960e542720958f8")
+  }
   stages {
     stage('Build') {
       steps {
-        script {
-          properties([
-            gitLabConnection('digitalbooking'),
-            pipelineTriggers([
-              [
-                $class: 'GitLabPushTrigger',
-                triggerOnPush: true,
-                triggerOnMergeRequest: false,
-                triggerOpenMergeRequestOnPush: "never",
-                triggerOnNoteRequest: true,
-                noteRegex: "Jenkins please retry a build",
-                skipWorkInProgressMergeRequest: true,
-                secretToken: '5fbec3c6b4a1018ab960e542720958f8',
-                ciSkip: false,
-                setBuildDescription: true,
-                addNoteOnMergeRequest: true,
-                addCiMessage: true,
-                addVoteOnMergeRequest: true,
-                acceptMergeRequestOnSuccess: false,
-                branchFilterType: "NameBasedFilter",
-                includeBranchesSpec: "release/qat",
-                excludeBranchesSpec: "",
-              ]
-            ])
-          ])
+        gitlabCommitStatus("Approve"){
+          dir(path: 'digital-booking-fe') {
+            sh 'npm install'
+          }
         }
-
-        dir(path: 'digital-booking-fe') {
-          sh 'npm install'
-        }
-
       }
     }
 
@@ -48,28 +59,36 @@ pipeline {
 
       }
       steps {
-        dir(path: 'digital-booking-fe') {
-          sh 'npm run build'
+        gitlabCommitStatus("Approve"){
+          dir(path: 'digital-booking-fe') {
+            sh 'npm run build'
+          }
         }
-
       }
     }
 
     stage('Approve') {
       steps {
-        input 'Deploy build to S3 bucket'
+        gitlabCommitStatus("Approve"){
+          input 'Deploy build to S3 bucket'
+        }
       }
     }
 
     stage('Deploy') {
       steps {
-        script {
-          ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '-b', installation: 'ansible', playbook: 'digitalBookingPlaybook.yml'
+        gitlabCommitStatus("Approve"){
+          script {
+            ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '-b', installation: 'ansible', playbook: 'digitalBookingPlaybook.yml'
+          }
         }
-
       }
     }
-
+  }
+  post{
+    cleanup{
+      cleanWs()
+    }
   }
   tools {
     nodejs 'node17'
