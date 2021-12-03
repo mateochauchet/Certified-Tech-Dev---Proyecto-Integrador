@@ -3,6 +3,18 @@ pipeline {
   options {
     gitLabConnection('your-gitlab-connection-name')
     gitlabBuilds(builds: ['Build','Approve','Deploy'])
+    buildDiscarder(
+        logRotator(
+            // number of build logs to keep
+            numToKeepStr:'5',
+            // history to keep in days
+            daysToKeepStr: '15',
+            // artifacts are kept for days
+            artifactDaysToKeepStr: '15',
+            // number of builds have their artifacts kept
+            artifactNumToKeepStr: '1'
+        )
+    )
   }
   triggers {
     gitlab(
