@@ -12,10 +12,11 @@ import data from "./Components/Cards_list/dataj.json"
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer"
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
+import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
 import './App.css'
 
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
-import { getCategorias, getProductos, getCity, getProductosByDate } from './service/cardsListService';
+import { getCategorias, getProductos, getCity, getProductosByDate, getCaracteristicas } from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
   const [productList, setProductList] = useState([])
   const [cityList, setCityList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
+  const [listaCaracteristicas, setListaCaracteristicas] = useState([])
   const [reservedList, setReservedList] = useState("");
   const [filtro, setFiltro] = useState("todos");
 
@@ -56,6 +58,13 @@ export default function App() {
       const response = await getCategorias()
       setCategoryList(response)
     } getDataCategoria()
+  }, []);
+
+  useEffect(() => {
+    async function getDataCaracteristicas() {
+      const productJson = await getCaracteristicas()
+      setListaCaracteristicas(productJson)
+    } getDataCaracteristicas()
   }, []);
 
 
@@ -152,6 +161,16 @@ export default function App() {
               component={() => (
                 <Template home={true} categoriaAll={categoriaAll} >
                   <ReservaExitosa />
+                </Template>
+              )}
+            ></Route>
+
+            <Route
+              exact
+              path="/administracion/creaproductos"
+              component={() => (
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                  <CreacionProducto categorias={categoryList} listaCiudades={cityList} caracteristicas={listaCaracteristicas}/>
                 </Template>
               )}
             ></Route>

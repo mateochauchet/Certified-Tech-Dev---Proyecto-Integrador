@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
 import ContextUser from "../Contexts/ContextUser";
+import { useHistory } from 'react-router-dom';
 
 export default function Avatar(props) {
-  const { contextLoginRegistro, setContextLoginRegistro } = useContext(
-    ContextLoginRegistro
-  );
-  const { setContextUser } = useContext(ContextUser);
-
-  function handleClick() {
+  
+  const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
+  const {setContextUser} = useContext(ContextUser);
+  let admin = ()=> contextLoginRegistro.rol === 2 ? <Link to="/administracion/creaproductos"><div> Administracion </div></Link> : <div></div>
+  function handleClick(){
     setContextLoginRegistro("");
     setContextUser("");
   }
@@ -26,6 +26,7 @@ export default function Avatar(props) {
           <FontAwesomeIcon className="icon-x" icon={faTimes} />{" "}
         </Link>
         <div className="container-avatar-text">
+          {admin}
           <div className="avatar">
             <h4 className="text-avatar">{`${contextLoginRegistro.nombre[0].toUpperCase()}${contextLoginRegistro.apellido[0].toUpperCase()}`}</h4>
           </div>
