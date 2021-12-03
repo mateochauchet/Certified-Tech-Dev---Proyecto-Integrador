@@ -23,7 +23,17 @@ describe("Render <Botones />", () => {
         )
     })
 
-    test('render container Botones', () => {   
+    test('render container Botones', () => {  
+        const data = {nombre: 'tituloBoton'}
+        const history = createMemoryHistory('/home');
+        compBotones = render(
+            <Router history={history}>
+                <Route path="/home" >
+                    <Botones nombreBoton={data.nombre}>
+                    <Link to={'/home'}> {'tituloBoton'}  </Link></Botones>
+                </Route>    
+            </Router>
+        ) 
         expect(compBotones.container).toBeInTheDocument();
         
     })

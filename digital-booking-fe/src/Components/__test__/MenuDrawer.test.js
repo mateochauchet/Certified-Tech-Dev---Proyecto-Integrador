@@ -5,46 +5,52 @@ import MenuDrawer from '../MenuDrawer/MenuDrawer'
 import {createMemoryHistory} from 'history'
 import ContextLoginRegistro from "../../Components/Contexts/ContextLoginRegistro";
 import { Route } from 'react-router-dom'
-
+import Avatar from '../Avatar/Avatar'
 import { BrowserRouter as Router } from "react-router-dom";
 
 describe("Render <MenuDrawer />", () => {
     let compMenuDrawer;
     let data;
 
-    beforeEach(() => {
-       
-        
-
+      
+   
+    test('render component <MenuDrawer />', () => {
         const history = createMemoryHistory('/home');
         compMenuDrawer = render(
-        
             <ContextLoginRegistro.Provider value={""} >
             
                     <Router history={history}>
                         <Route path="/home" >
-                            <MenuDrawer direccion="/login" />
+                            <MenuDrawer >
+                            <Avatar /> </MenuDrawer >
                         </Route>
                     </Router>
                 
             </ContextLoginRegistro.Provider>
         )
-    })
-    test('render component <MenuDrawer />', () => {
         screen.debug()
         console.log(compMenuDrawer)
         expect(compMenuDrawer.container).toBeInTheDocument();
 
     });
-    test('render cierre sesion', () => {
-        
-        compMenuDrawer.queryByText('¿Desea cerrar sesión?');
+    
 
-    });
+    
     test('render MENU', () => {
-        
+        const history = createMemoryHistory('/home');
+        compMenuDrawer = render(
+            <ContextLoginRegistro.Provider value={""} >
+            
+                    <Router history={history}>
+                        <Route path="/home" >
+                            <MenuDrawer />
+                        </Route>
+                    </Router>
+                
+            </ContextLoginRegistro.Provider>
+        )
         compMenuDrawer.queryByText('MENÚ');
 
     });
     
-});
+})

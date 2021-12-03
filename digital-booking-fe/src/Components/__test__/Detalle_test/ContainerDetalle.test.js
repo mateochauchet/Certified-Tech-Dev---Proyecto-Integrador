@@ -87,4 +87,16 @@ jest.mock('mapbox-gl/dist/mapbox-gl', () => ({
             compContainerDetalle.queryByText(8);
             })
 
+            test('render test', () => {   
     
+                const component = render(
+                    <Router history={history}>
+                    <Route path="/productos/1" >
+                        <ContainerDetalle />
+                    </Route>
+                </Router>) 
+                expect(component.container).toBeInTheDocument();
+            })
+
+
+
