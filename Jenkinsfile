@@ -1,5 +1,4 @@
 pipeline {
-  
   agent any
   options {
     gitLabConnection('your-gitlab-connection-name')
