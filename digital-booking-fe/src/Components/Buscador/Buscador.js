@@ -12,7 +12,7 @@ import { useState } from "react";
 
 function Buscador(props) {
 
-  const [ciudad, setCiudad] = useState([]);
+  const [ciudad, setCiudad] = useState('');
   const [dateIn, setDateIn] = useState(null);
   const [dateOut, setDateOut] = useState(null);
   
@@ -53,26 +53,19 @@ function Buscador(props) {
 
 
   return (
+    
     <div className="barSearch">
       <Select
-      backspaceRemoves={true}
-        data-testid="city-selector"
-        
-        onMenuClose={ciudad}
-        openOnFocus={true}
+      
         autoload={false}
         className="searchCity"
-        
-        
-        isClearable
+        isClearable={false}
         isSearchable
         placeholder='A dónde vamos?'
         options={options}
         onChange={elegirCiudad}
         
         
-        
-
         theme={(theme) => ({
           ...theme,
           borderRadius: 0,

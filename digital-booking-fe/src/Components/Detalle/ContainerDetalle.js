@@ -8,9 +8,10 @@ import Descripcion from './Descripcion';
 import Caracteristicas from './Caracteristicas';
 import ContainerFechas from './Fechas/ContainerFechas';
 import PoliticsContainer from '../Politicas/PoliticsContainer';
-
+import SkeletonDetalle from '../SkeletonDetalle';
 import ContainerMapa from "./Mapa/ContainerMapa"
 import { getProductosById } from '../../service/cardsListService';
+import SekeletonDetalle from '../SkeletonDetalle';
 
 
 function ContainerDetalle() {
@@ -84,7 +85,7 @@ function ContainerDetalle() {
                 </>
                 
 
-            ) : <h1>Loading...</h1>
+            ) : <SekeletonDetalle />
             }
 
 

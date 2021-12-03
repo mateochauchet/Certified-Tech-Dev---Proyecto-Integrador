@@ -16,6 +16,7 @@ import './App.css'
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import { getCategorias, getProductos, getCity, getProductosByDate } from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
+import SekeletonDetalle from "./Components/SkeletonDetalle.js";
 
 export default function App() {
 
@@ -153,6 +154,16 @@ export default function App() {
               component={() => (
                 <Template home={true} categoriaAll={categoriaAll} >
                   <ReservaExitosa />
+                </Template>
+              )}
+            ></Route>
+
+          <Route
+              exact
+              path="/prueba"
+              component={() => (
+                <Template home={true} categoriaAll={categoriaAll} >
+                  <SekeletonDetalle />
                 </Template>
               )}
             ></Route>
