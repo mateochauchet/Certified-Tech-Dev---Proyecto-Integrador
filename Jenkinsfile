@@ -27,8 +27,8 @@ pipeline {
   }
   stages {
     stage('Build') {
-      gitlabCommitStatus("Build") {
-        steps{
+      steps{
+        gitlabCommitStatus("Build"){
           dir(path: 'digitalBooking') {
             withMaven(maven: 'maven3') {
               sh 'mvn clean install'
@@ -39,16 +39,16 @@ pipeline {
     }
 
     stage('Approve') {
-      gitlabCommitStatus("Approve") {
-        steps{
+      steps{
+        gitlabCommitStatus("Approve"){
           input 'Deploy last build to development environment'
         }
       }
     }
 
     stage('Deploy') {
-      gitlabCommitStatus("Deploy") {
-        steps{
+      steps{
+        gitlabCommitStatus("Deploy"){
           script {
             ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '--become', installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml'
           }
