@@ -8,13 +8,15 @@ import ContextUser from "./Components/Contexts/ContextUser.js";
 import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
 import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
+import data from "./Components/Cards_list/dataj.json";
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
 import Favoritos from "./Components/MisFavoritos/Favoritos"
 import './App.css'
-
+import SkeletonCategorias from "./Skeleton/SkeletonCategorias";
+import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto.js";
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import {
   getCategorias,
@@ -40,10 +42,11 @@ export default function App() {
 
   useEffect(() => {
     async function getData() {
-      const productJson = await getProductos()
-      setProductList(productJson)
-      
-    } getData()
+      const productJson = await getProductos();
+      setProductList(productJson);
+    }
+    getData();
+
   }, []);
 
   const categoriaAll = async () => {
@@ -53,9 +56,8 @@ export default function App() {
 
   useEffect(() => {
     async function getDataCity() {
-      const productJson = await getCity()
-
-      setCityList(productJson)
+      const productJson = await getCity();
+      setCityList(productJson);
     }
     getDataCity();
   }, []);
@@ -208,6 +210,17 @@ export default function App() {
               component={() => (
                 <Template home={true} categoriaAll={categoriaAll} >
                   <SekeletonReserva />
+                </Template>
+              )}
+            ></Route>
+            <Route
+              exact
+              path="/prueba1"
+              component={() => (
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
+                  <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
+                  <SkeletonCategorias/>
+                  <SkeletonCardsProducto/>
                 </Template>
               )}
             ></Route>
