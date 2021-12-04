@@ -53,6 +53,38 @@ public class Producto {
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad", nullable = false)
     private Ciudad ciudad;
 
+    @Column(name="nombre", length = 1000)
+    @Size(max = 1000)
+    @Getter
+    @Setter
+    private String norma;
+
+    @Column(name="salud_seguridad", length = 1000)
+    @Size(max = 1000)
+    @Getter
+    @Setter
+    private String saludSeguridad;
+
+    @Column(name="cancelacion", length = 1000)
+    @Size(max = 1000)
+    @Getter
+    @Setter
+    private String cancelacion;
+
+    @Column(name="latitud", length = 200)
+    @Size(max = 200)
+    @NotNull
+    @Getter
+    @Setter
+    private String latitud;
+
+    @Column(name="longitud", length = 200)
+    @Size(max = 200)
+    @NotNull
+    @Getter
+    @Setter
+    private String longitud;
+
     @Getter
     @Setter
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "producto")

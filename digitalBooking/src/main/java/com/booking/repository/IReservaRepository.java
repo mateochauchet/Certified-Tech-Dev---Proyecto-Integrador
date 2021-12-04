@@ -12,5 +12,8 @@ public interface IReservaRepository extends JpaRepository<Reserva, Long> {
     @Query("FROM Reserva r where r.producto.id = ?1")
     List<Reserva> getReservationsByIdProduct(Long idProducto);
 
+    @Query("FROM Reserva r where r.usuario.id = ?1")
+    List<Reserva> getReservationsByIdUsuario(Long idProducto);
+
 
 }

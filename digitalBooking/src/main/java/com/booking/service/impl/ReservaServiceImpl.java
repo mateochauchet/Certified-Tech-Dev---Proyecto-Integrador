@@ -2,6 +2,7 @@ package com.booking.service.impl;
 
 import com.booking.entity.Reserva;
 import com.booking.exceptions.InvalidDataException;
+import com.booking.exceptions.NotPermissionException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IReservaRepository;
 import com.booking.service.IProductoService;
@@ -34,6 +35,16 @@ public class ReservaServiceImpl implements IReservaService {
         List<Reserva> respuesta = reservaRepository.getReservationsByIdProduct(idProducto);
         if(respuesta.size() == 0)
             throw  new ResourcesNotFoundException("No se encontraron reservas para el producto con Id: " + idProducto);
+        return respuesta;
+    }
+
+    @Override
+    public List<Reserva> getReservationsByIdUsuario(Long idUsuario, String password) throws ResourcesNotFoundException, NotPermissionException {
+        List<Reserva> respuesta = reservaRepository.getReservationsByIdUsuario(idUsuario);
+        if(respuesta.size() == 0)
+            throw  new ResourcesNotFoundException("No se encontraron reservas para el producto con Id: " + idUsuario);
+        if(!respuesta.get(0).getUsuario().getPassword().equals(password))
+            throw  new NotPermissionException("No pueder ver las reservas de otro usuario");
         return respuesta;
     }
 }

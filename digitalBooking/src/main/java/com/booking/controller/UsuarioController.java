@@ -65,12 +65,9 @@ public class UsuarioController {
     @PostMapping("/")
     public ResponseEntity<?> insert(@RequestBody Usuario usuario) throws ResourcesNotFoundException, InvalidDataException, BadCredentialsException, SQLIntegrityConstraintViolationException {
         try {
-            Rol rol =  rolRepository.findById(1L).get();
-            usuario.setRol(rol);
-            Usuario usuario2 = usuarioService.insert(usuario);
-            final UserDetails userDetails = userSecurityService.loadUserByUsername(usuario2.getEmail());
-            usuario2.setRol(null);
-            final String jwt = jwtUtil.generateToken(userDetails,usuario2);
+            usuarioService.insert(usuario);
+            final UserDetails userDetails = userSecurityService.loadUserByUsername(usuario.getEmail());
+            final String jwt = jwtUtil.generateToken(userDetails,usuario);
             return new ResponseEntity<>(new AuthenticationResponse((jwt)), HttpStatus.CREATED);
         }catch (BadCredentialsException e) {
             throw new BadCredentialsException("Las credenciales ingresadas no son correctas");
