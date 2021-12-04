@@ -14,6 +14,7 @@ import java.util.Optional;
 public interface IProductoService {
 
     Producto insert(Producto producto,  List<MultipartFile> files) throws InvalidDataException,  ResourcesNotFoundException, IOException;
+    Producto update(Producto producto,  List<MultipartFile> files) throws InvalidDataException,  ResourcesNotFoundException, IOException;
     List<Producto> readAll();
     Optional<Producto> readOne(Long id) throws ResourcesNotFoundException;
     List<Producto> getProductsByCategory(String titulo) throws ResourcesNotFoundException;

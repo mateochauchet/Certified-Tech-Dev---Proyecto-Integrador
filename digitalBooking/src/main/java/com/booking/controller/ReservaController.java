@@ -15,6 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -30,7 +31,9 @@ public class ReservaController {
     @GetMapping("/{password}/{id}")
     @PreAuthorize("hasRole('ROLE_CLIENT')")
     public ResponseEntity<List<Reserva>> getReservationsByIdUsuario(@PathVariable("password")String password,@PathVariable("id") Long id) throws ResourcesNotFoundException, NotPermissionException {
-        return new ResponseEntity<>(reservaService.getReservationsByIdUsuario(id,password), HttpStatus.OK);
+        byte[] decodedBytes = Base64.getDecoder().decode(password);
+        String password2 = new String(decodedBytes);
+        return new ResponseEntity<>(reservaService.getReservationsByIdUsuario(id,password2), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

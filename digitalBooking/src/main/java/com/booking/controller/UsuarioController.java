@@ -53,7 +53,6 @@ public class UsuarioController {
             Usuario usuario = usuarioService.readByEmail(authenticationRequest.getEmail(),authenticationRequest.getPassword());
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
             final UserDetails userDetails = userSecurityService.loadUserByUsername(authenticationRequest.getEmail());
-            usuario.setRol(null);
             final String jwt = jwtUtil.generateToken(userDetails,usuario);
             return ResponseEntity.ok(new AuthenticationResponse((jwt)));
         }catch (BadCredentialsException e) {

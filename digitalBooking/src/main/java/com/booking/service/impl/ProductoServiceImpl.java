@@ -60,6 +60,11 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
+    public Producto update(Producto producto, List<MultipartFile> files) throws InvalidDataException, ResourcesNotFoundException, IOException {
+        return null;
+    }
+
+    @Override
     public List<Producto> readAll(){
         return productoRepository.findAll();
     }

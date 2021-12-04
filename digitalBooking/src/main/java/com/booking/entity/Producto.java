@@ -43,7 +43,7 @@ public class Producto {
 
 
 
-    @Column(name="nombre", length = 1000)
+    @Column(name="norma", length = 1000)
     @Size(max = 1000)
     @Getter
     @Setter
