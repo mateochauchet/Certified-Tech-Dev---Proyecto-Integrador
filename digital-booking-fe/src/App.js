@@ -19,6 +19,7 @@ import './App.css'
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import { getCategorias, getProductos, getCity, getProductosByDate, getCaracteristicas } from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
+import MisReservas from "./Components/MisReservas/MisReservas.js";
 
 export default function App() {
 
@@ -162,6 +163,15 @@ export default function App() {
               component={() => (
                 <Template home={true} categoriaAll={categoriaAll} >
                   <ReservaExitosa />
+                </Template>
+              )}
+            ></Route>
+              <Route
+              exact
+              path="/MisReservas"
+              component={() => (
+                <Template home={true} categoriaAll={categoriaAll} >
+                  <MisReservas />
                 </Template>
               )}
             ></Route>

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,100&display=swap');
+
+.container-mensaje{
+    background-color: #FFFFFF;
+    border-radius: 2%;
+    width: 70%;
+    text-align: center;
+    box-shadow: 2px 2px 5px 1px rgb(204, 201, 201);
+    margin: auto;
+    padding: 8%;
+    font-family: Roboto;
+}
+
+.icon-calendar{
+    color:#1DBEB4;
+    font-size: 60px;
+    text-align: center;
+}
+
+.mensajeSinReserva{
+    color:#383B58;
+    font-size:125%;
+    margin-top: 5%;
+    background-color: #FFFFFF;
+}
+
+.button-ok{
+    background-color: #1DBEB4;
+    color:white;
+    border: #1DBEB4 solid 1px;
+    border-radius: 5px;
+    width:  40vw;
+    height: 6vh;
+    text-align: center;
+    font-size: 110%;
+    font-family: Roboto;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+@media screen and (min-width: 768px){
+    .container-mensaje{
+        width: 60%;
+        padding: 5%;
+    }
+    
+    .mensajeSinReserva{
+        font-size:130%;
+       
+    }
+    .button-ok{
+        width:  25vw;
+        height: 6vh;
+        font-size: 100%;
+        margin-top: 3%;
+    }    
+
+}
+
+@media screen and (min-width: 1280px){
+
+    .container-mensaje{
+        width: 40%;
+        padding: 3%;
+    }
+    
+    .mensajeSinReserva{
+        font-size:130%;
+        margin-top: 5%;
+    }
+
+    .button-ok{
+        width:  15vw;
+        height: 6vh;
+        font-size: 100%;
+    }  
+}
+
