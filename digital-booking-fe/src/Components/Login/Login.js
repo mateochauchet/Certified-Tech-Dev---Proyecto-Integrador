@@ -45,10 +45,12 @@ const Login = () => {
         })
         if (response.status === 200) {
             const jwt = await response.json();
+            console.log(parseJwt(jwt.jwt).usuario);
             setContextUser(jwt.jwt);
             setContextLoginRegistro(parseJwt(jwt.jwt).usuario);
-            history.push('/home')
             console.log(contextUser);
+            history.push('/home')
+            
         } else
             setValidCredentials(false);
     }

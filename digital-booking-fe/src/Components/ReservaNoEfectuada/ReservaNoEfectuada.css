@@ -9,6 +9,7 @@
     margin: auto;
     padding: 8%;
     font-family: Roboto;
+    margin-top: 15%;
 }
 
 .icon-calendar{
@@ -42,6 +43,7 @@
     .container-mensaje{
         width: 60%;
         padding: 5%;
+        margin-top: 10%;
     }
     
     .mensajeSinReserva{
@@ -62,6 +64,7 @@
     .container-mensaje{
         width: 40%;
         padding: 3%;
+        margin-top: 7%;
     }
     
     .mensajeSinReserva{

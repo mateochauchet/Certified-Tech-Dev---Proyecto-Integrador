@@ -1,15 +1,16 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Template from "./Components/Template/TemplateGeneral.js";
-import { useState, useEffect} from "react";
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import ContextLoginRegistro from "./Components/Contexts/ContextLoginRegistro.js";
 import ContextUser from "./Components/Contexts/ContextUser.js";
 import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
 import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
+import data from "./Components/Cards_list/dataj.json";
 import Registro from "./Components/Register/Register.js";
-import CardsContainer from "./Components/Cards_list/CardsContainer"
+import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
 import Favoritos from "./Components/MisFavoritos/Favoritos"
@@ -17,92 +18,93 @@ import './App.css'
 import SkeletonCategorias from "./Skeleton/SkeletonCategorias";
 import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto.js";
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
-import { getCategorias, getProductos, getCity, getProductosByDate, getCaracteristicas } from './service/cardsListService';
+import {
+  getCategorias,
+  getProductos,
+  getCity,
+  getProductosByDate,
+  getCaracteristicas,
+} from "./service/cardsListService";
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 import SekeletonReserva from "./Skeleton/SkeletonReserva";
 import MisReservas from "./Components/MisReservas/MisReservas.js";
+import ReservaNoEfectuada from "./Components/ReservaNoEfectuada/ReservaNoEfectuada.js"
 
 export default function App() {
-
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
   const [contextUser, setContextUser] = useState("");
-  const [productList, setProductList] = useState([])
+  const [productList, setProductList] = useState([]);
   const [cityList, setCityList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
-  const [listaCaracteristicas, setListaCaracteristicas] = useState([])
+  const [listaCaracteristicas, setListaCaracteristicas] = useState([]);
   const [reservedList, setReservedList] = useState("");
   const [filtro, setFiltro] = useState("todos");
 
   useEffect(() => {
     async function getData() {
-      const productJson = await getProductos()
-      setProductList(productJson)
-      
-    } getData()
-  }, []);
+      const productJson = await getProductos();
+      setProductList(productJson);
+    }
+    getData();
 
+  }, []);
 
   const categoriaAll = async () => {
     //let response = await getProductos();  (DESCOMENTAR EN EL CASO QUE EL FILTRO SE HAGA CON LA API)
-    setFiltro("todos")
-  }
-
-
+    setFiltro("todos");
+  };
 
   useEffect(() => {
     async function getDataCity() {
-      const productJson = await getCity()
-
-      setCityList(productJson)
+      const productJson = await getCity();
+      setCityList(productJson);
     }
-    getDataCity()
+    getDataCity();
   }, []);
 
   useEffect(() => {
     async function getDataCategoria() {
-      const response = await getCategorias()
-      setCategoryList(response)
-    } getDataCategoria()
+      const response = await getCategorias();
+      setCategoryList(response);
+    }
+    getDataCategoria();
   }, []);
 
   useEffect(() => {
     async function getDataCaracteristicas() {
-      const productJson = await getCaracteristicas()
-      setListaCaracteristicas(productJson)
-    } getDataCaracteristicas()
+      const productJson = await getCaracteristicas();
+      setListaCaracteristicas(productJson);
+    }
+    getDataCaracteristicas();
   }, []);
 
-
   useEffect(() => {
+    {
+      console.log(`Encontrado ProductoId: ${reservedList} en reserva.`);
+    }
+  }, [reservedList]);
 
-    {console.log(`Encontrado ProductoId: ${reservedList} en reserva.`)}  
-    } , [reservedList]);
-  
   const cambiarCiudad = async (value, dataIn, dataOut) => {
     //console.log((value.replace(/ /g, "")).split(',')[0] )
-      if(dataIn != null && dataOut != null){
-        let urlDataIn= dataIn.format('YYYY-MM-DD')
-        let urlDataOut= dataOut.format('YYYY-MM-DD')
+    if (dataIn != null && dataOut != null) {
+      let urlDataIn = dataIn.format("YYYY-MM-DD");
+      let urlDataOut = dataOut.format("YYYY-MM-DD");
 
-        let response = await getProductosByDate(urlDataIn, urlDataOut)
-        setReservedList(response)
-        if (response !=null ){
-          const idResponse = response[0].id
-          setReservedList(idResponse)
-        }
+      let response = await getProductosByDate(urlDataIn, urlDataOut);
+      setReservedList(response);
+      if (response != null) {
+        const idResponse = response[0].id;
+        setReservedList(idResponse);
       }
-      setFiltro(value)
-  }
-
-  
+    }
+    setFiltro(value);
+  };
 
   const cambiarCategoria = async (categoria) => {
-    console.log(categoria.replace(/ /g, ""))
-    setFiltro(categoria)
-  }
+    console.log(categoria.replace(/ /g, ""));
+    setFiltro(categoria);
+  };
 
-
-  
   return (
     <div id="app">
       
@@ -170,14 +172,18 @@ export default function App() {
               )}
             ></Route>
               <Route
-              exact
-              path="/MisReservas"
-              component={() => (
-                <Template home={true} categoriaAll={categoriaAll} >
-                  <MisReservas />
-                </Template>
-              )}
-            ></Route>
+                exact
+                path="/misReservas"
+                component={() => (
+                  <Template home={true} categoriaAll={categoriaAll}>
+                    <MisReservas 
+                        list={productList}
+                        filtro={filtro}
+                        filtro2={reservedList}
+                    />
+                  </Template>
+                )}
+              ></Route>
 
             <Route
               exact
@@ -224,5 +230,5 @@ export default function App() {
         </ContextUser.Provider>
       </ContextLoginRegistro.Provider>
     </div>
-  )
+  );
 }

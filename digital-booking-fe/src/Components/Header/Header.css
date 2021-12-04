@@ -28,7 +28,7 @@
   align-items: center;
   display: flex;
   gap: 10px;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 2%;
 }
 .link-img{
@@ -119,5 +119,35 @@
         margin-right: 2%;
         gap: 1%;
         margin-top: 1%;
+      }
+
+      .rolUsuario{
+        display: flex;
+        flex-direction: row;
+        width: 15%;
+        text-align: end;
+        padding-top: 2%;
+      }
+      .admin{
+      font-size: 18px;
+      width: 80%;
+      margin: -11px;
+      text-align: end;
+      padding-top: 5%;
+      font-weight: 900;
+  
+      
+      }
+      .linkAdmin{
+        text-decoration: none;
+        color:#383b58;
+        font-weight: bold;
+        width: 100%;
+      }
+      .icon-line{
+        color:#1dbeb4;
+        font-size: 2.3rem;
+        padding-bottom: 2%;
+        width: 20%;
       }
   }
