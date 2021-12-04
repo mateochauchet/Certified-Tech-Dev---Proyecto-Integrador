@@ -8,7 +8,6 @@ import ContextUser from "./Components/Contexts/ContextUser.js";
 import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
 import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
-import data from "./Components/Cards_list/dataj.json"
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer"
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
@@ -19,6 +18,7 @@ import './App.css'
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import { getCategorias, getProductos, getCity, getProductosByDate, getCaracteristicas } from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
+import SekeletonReserva from "./Skeleton/SkeletonReserva";
 import MisReservas from "./Components/MisReservas/MisReservas.js";
 
 export default function App() {
@@ -36,6 +36,7 @@ export default function App() {
     async function getData() {
       const productJson = await getProductos()
       setProductList(productJson)
+      
     } getData()
   }, []);
 
@@ -50,6 +51,7 @@ export default function App() {
   useEffect(() => {
     async function getDataCity() {
       const productJson = await getCity()
+
       setCityList(productJson)
     }
     getDataCity()
@@ -191,6 +193,16 @@ export default function App() {
               component={() => (
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                   <Favoritos productos={productList} filtro={filtro} filtro2={reservedList}/>
+                </Template>
+              )}
+            ></Route>
+
+          <Route
+              exact
+              path="/prueba"
+              component={() => (
+                <Template home={true} categoriaAll={categoriaAll} >
+                  <SekeletonReserva />
                 </Template>
               )}
             ></Route>

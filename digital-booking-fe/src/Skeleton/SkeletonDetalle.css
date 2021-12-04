@@ -1,0 +1,169 @@
+.Sheading{
+    height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Stext-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    width: 100%;
+}
+.Sheading2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.text{
+    width:80%
+}
+.text-titulo {
+    width: 60%;
+    height: 25px;
+    margin: 0.3rem;
+  }
+  .text-titulo2 {
+    width: 60%;
+    height: 30px;
+    margin: 0.8rem;
+  }
+  .text-categoria {
+    width: 30%;
+    height: 10px;
+    margin: 0.3rem;
+  }
+  .text-categoria2 {
+    width: 95%;
+    height: 500px;
+    margin: 0.3rem;
+  }
+  .text-categoria2 {
+    width: 95%;
+    height: 500px;
+    margin: 0.3rem;
+  }
+  .contenedor {
+      display: flex;
+      margin:10px;   
+  }
+  .contenedor-text{
+    display: flex;
+    flex-direction: column;
+  }
+  .skeleton {
+    animation: loadingAnimation 1.5s infinite;
+  }
+  .skeleton2 {
+    animation: loadingAnimation 1.5s infinite;
+  }
+  .ScardsPuntaje {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.Scontainer{
+    display: block;
+}
+
+.Simage-gallery-slide {
+    -webkit-box-shadow: inset 0px 20px 7px -10px rgba(0,0,0,0.24); 
+    box-shadow: inset 0px 20px 7px -10px rgba(0, 0, 0, 0.034);
+    height: 200px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+  }
+
+/* tablet */
+@media screen and (min-width: 768px) {
+  .Simage-gallery-slide {
+    height: 280px;  
+  }
+  .text-categoria2 {
+    width: 95%;
+    height: 150px;
+    margin: 0.3rem;
+  }
+  .text-titulo3 {
+    width: 40%;
+    height: 30px;
+    margin-top: 3rem;
+  }
+  .SSimage-gallery-slide {
+    height: 280px; 
+    margin-top: 20px; 
+  }
+}
+
+/* desktop */
+@media screen and (min-width: 1200px){
+  .text-categoria {
+    width: 10%;
+    height: 15px;
+  }
+  .text-titulo {
+    width: 35%;
+    height: 25px;
+  }
+  .Simage-gallery-slide {
+    display: grid;
+    width: 94%;
+    height: 400px;
+    margin: auto auto;
+    margin-top: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 10px;
+    border-radius: 2%;
+    grid-template-areas:
+      "simagen1 simagen1 simagen2 simagen3"
+      "simagen1 simagen1 simagen4 simagen5";
+  }
+  .skeleton2 {
+    animation: loadingAnimation 3;
+  }
+  .simagen1, .simagen2, .simagen3, .simagen4, .simagen5{
+    height: 100%;
+    border-radius: 12px;
+  }
+  .simagen1 {
+    grid-area: simagen1;
+    display: flex;
+  }
+  .simagen2 {
+    grid-area: simagen2;
+    display: flex;
+  }
+  .simagen3 {
+    grid-area: simagen3;
+    display: flex;
+  }
+  .simagen4 {
+    display: flex;
+    grid-area: simagen4;
+  }
+  .simagen5 {
+    display: flex;
+    grid-area: simagen5;
+    position: relative;
+  }
+}  
+
+  @keyframes loadingAnimation {
+    0% {
+      background: white;
+    }
+    50% {
+      background: rgba(159, 159, 159, 0.18);
+    }
+    100% {
+      background: white;
+    }
+  }
+

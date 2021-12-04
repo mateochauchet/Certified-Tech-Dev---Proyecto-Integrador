@@ -31,11 +31,11 @@ function CardsInfo(props) {
 
         <div className="cardsLocation">
           <FontAwesomeIcon icon={faMapMarkerAlt} />
-          <p>{props.house.location} <span>- VER EN MAPA </span> </p>
+          <span><p>{props.house.ciudad.nombre} </p></span> 
         </div>
 
         <div className="cardsIcons">
-          <FontAwesomeIcon icon={faWifi} />
+          {(props.house.caracteristicas).map((item => <FontAwesomeIcon icon={item.icono} /> ))}
         </div>
         <div className="cardsDescription">
           <p>{props.house.descripcion}</p>

@@ -1,7 +1,7 @@
 import "./buscador.css";
 import './Select.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faBullseye, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import Select from 'react-select'
 
 import Button from "./Button";
@@ -12,9 +12,12 @@ import { useState } from "react";
 
 function Buscador(props) {
 
-  const [ciudad, setCiudad] = useState([]);
+  const [ciudad, setCiudad] = useState('');
   const [dateIn, setDateIn] = useState(null);
   const [dateOut, setDateOut] = useState(null);
+  
+ 
+  
 
   let options =
     props.list.map((c, i) => ({
@@ -28,10 +31,16 @@ function Buscador(props) {
     })
     );
 
+
+    
+
   const elegirCiudad = (event) => {
+    
     const value = event.value
     console.log(value)
     setCiudad(value)
+    
+    
   }
   const elegirFecha = (startDate, endDate) => {
     setDateIn(startDate)
@@ -39,20 +48,24 @@ function Buscador(props) {
     
     }
      
-  
+   
+    
 
 
   return (
+    
     <div className="barSearch">
       <Select
-        data-testid="city-selector"
-
+      
+        autoload={false}
         className="searchCity"
+        isClearable={false}
+        isSearchable
         placeholder='A dónde vamos?'
         options={options}
         onChange={elegirCiudad}
-
-
+        
+        
         theme={(theme) => ({
           ...theme,
           borderRadius: 0,
