@@ -9,6 +9,10 @@
    padding-bottom: 10px;
    
 }
+.cardsIcons{
+   display: flex;
+   gap:10px;
+}
 .titleRecomendaciones{
    text-align: start;
    color: white;

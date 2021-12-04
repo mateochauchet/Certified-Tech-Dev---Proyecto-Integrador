@@ -16,7 +16,7 @@ import './App.css'
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import { getCategorias, getProductos, getCity, getProductosByDate } from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
-import SekeletonDetalle from "./Components/SkeletonDetalle.js";
+import SekeletonReserva from "./Skeleton/SkeletonReserva";
 
 export default function App() {
 
@@ -163,7 +163,7 @@ export default function App() {
               path="/prueba"
               component={() => (
                 <Template home={true} categoriaAll={categoriaAll} >
-                  <SekeletonDetalle />
+                  <SekeletonReserva />
                 </Template>
               )}
             ></Route>

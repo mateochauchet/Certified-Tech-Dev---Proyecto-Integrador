@@ -8,10 +8,10 @@ import Descripcion from './Descripcion';
 import Caracteristicas from './Caracteristicas';
 import ContainerFechas from './Fechas/ContainerFechas';
 import PoliticsContainer from '../Politicas/PoliticsContainer';
-import SkeletonDetalle from '../SkeletonDetalle';
+import SkeletonDetalle from '../../Skeleton/SkeletonDetalle';
 import ContainerMapa from "./Mapa/ContainerMapa"
 import { getProductosById } from '../../service/cardsListService';
-import SekeletonDetalle from '../SkeletonDetalle';
+import SekeletonDetalle from '../../Skeleton/SkeletonDetalle';
 
 
 function ContainerDetalle() {
