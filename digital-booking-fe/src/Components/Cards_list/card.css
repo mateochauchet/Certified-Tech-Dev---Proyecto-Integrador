@@ -35,15 +35,17 @@
 
 div .corazon {
     position: absolute;
-    
-    width: 15px;
-    height: 15px;
     color: white;
-    
-    top: 14px;
+    width: 15px;
+    top: 10px;
     right: 14px;
-    
+    font-size: 1.4rem;
 }
+
+#changeColor{
+    color: red;
+}
+
 .cardsRight {
     display: flex;
     flex-direction: column;
