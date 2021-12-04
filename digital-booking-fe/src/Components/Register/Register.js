@@ -31,10 +31,7 @@ const Register = () => {
             nombre: values.nombre,
             apellido: values.apellido,
             email: values.email,
-            password: values.password,
-            rol: {
-                id: 1
-            }
+            password: values.password
         }
         dataParaLogin = {
             email: values.email,

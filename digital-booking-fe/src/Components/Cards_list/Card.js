@@ -1,17 +1,18 @@
-import React , {Component} from 'react';
+import React , {Component, useState} from 'react';
 import CardsImg from './CardsImg';
 import CardsInfo from './CardsInfo';
 
-class Card extends Component {
-	
-
-  render() {
-      
-    return <div className="card">
-      <CardsImg house={this.props.house}/>
-      <CardsInfo house={this.props.house}/>
-    </div>;
+function Card(props){
+  
+  function prueba(dato){
+    console.log("soy el estado " + dato)
   }
+	return(
+     <div className="card">
+      <CardsImg house={props.house}/>
+      <CardsInfo house={props.house}/>
+    </div>
+  )
 }
 
 export default Card;

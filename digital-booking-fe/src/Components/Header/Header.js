@@ -12,6 +12,7 @@ export default function Header(props) {
     setShow(!show);
   };
   let menu;
+  
   if (show) {
     menu = (
       <MenuDrawer

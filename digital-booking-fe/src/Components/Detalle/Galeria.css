@@ -49,7 +49,7 @@
   display: none;
 }
 /* tablet */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .image-gallery-slide {
     height: 280px;
     object-fit: none;
@@ -58,7 +58,15 @@
   .image-gallery-image{
     object-fit: cover !important;
   }
+
+  .image-gallery-index{
+    height: 30px;
+  }
+
+  
 }
+
+
 
 
 /* desktop */

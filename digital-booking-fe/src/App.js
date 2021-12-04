@@ -11,12 +11,15 @@ import Login from "./Components/Login/Login.js";
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer"
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
+import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
+import Favoritos from "./Components/MisFavoritos/Favoritos"
 import './App.css'
 
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
-import { getCategorias, getProductos, getCity, getProductosByDate } from './service/cardsListService';
+import { getCategorias, getProductos, getCity, getProductosByDate, getCaracteristicas } from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 import SekeletonReserva from "./Skeleton/SkeletonReserva";
+import MisReservas from "./Components/MisReservas/MisReservas.js";
 
 export default function App() {
 
@@ -25,6 +28,7 @@ export default function App() {
   const [productList, setProductList] = useState([])
   const [cityList, setCityList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
+  const [listaCaracteristicas, setListaCaracteristicas] = useState([])
   const [reservedList, setReservedList] = useState("");
   const [filtro, setFiltro] = useState("todos");
 
@@ -58,6 +62,13 @@ export default function App() {
       const response = await getCategorias()
       setCategoryList(response)
     } getDataCategoria()
+  }, []);
+
+  useEffect(() => {
+    async function getDataCaracteristicas() {
+      const productJson = await getCaracteristicas()
+      setListaCaracteristicas(productJson)
+    } getDataCaracteristicas()
   }, []);
 
 
@@ -105,7 +116,7 @@ export default function App() {
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
                   <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
                   <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />
-                  <CardsContainer list={productList} filtro={filtro} filtro2={reservedList}/>
+                  <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>
                 </Template>
               )}
             ></Route>
@@ -154,6 +165,34 @@ export default function App() {
               component={() => (
                 <Template home={true} categoriaAll={categoriaAll} >
                   <ReservaExitosa />
+                </Template>
+              )}
+            ></Route>
+              <Route
+              exact
+              path="/MisReservas"
+              component={() => (
+                <Template home={true} categoriaAll={categoriaAll} >
+                  <MisReservas />
+                </Template>
+              )}
+            ></Route>
+
+            <Route
+              exact
+              path="/administracion/creaproductos"
+              component={() => (
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                  <CreacionProducto categorias={categoryList} listaCiudades={cityList} caracteristicas={listaCaracteristicas}/>
+                </Template>
+              )}
+            ></Route>
+            <Route
+              exact
+              path="/misfavoritos"
+              component={() => (
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                  <Favoritos productos={productList} filtro={filtro} filtro2={reservedList}/>
                 </Template>
               )}
             ></Route>

@@ -21,6 +21,27 @@
    margin-bottom: 10px
  }
 
+ .error{
+    margin-top: 15px;
+    color: white;  
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+ }
+
+ .errorMessage{
+   font-family: 'Roboto', sans-serif;
+  
+ }
+
+ .cryIcon{
+    color: white;
+    margin-bottom: 7px;
+    font-size: 35px;
+    
+ }
+ 
+
 @media screen and (min-width: 768px ) {
    
    .Container-Recomendaciones{
@@ -32,5 +53,12 @@
       color: #383B58;
       text-align: start;
    }   
+
+   .error{
+      color: #383B58;
+   }
+   .cryIcon{
+      color: #383B58;
+   }
    
 }
