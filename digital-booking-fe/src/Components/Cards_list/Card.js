@@ -1,17 +1,26 @@
-import React , {Component} from 'react';
-import CardsImg from './CardsImg';
-import CardsInfo from './CardsInfo';
+import React  from "react";
+import { useLocation } from "react-router-dom";
+import CardsImg from "./CardsImg";
+import CardsInfo from "./CardsInfo";
+import CardReserva from "../MisReservas/CardReserva.js";
 
-class Card extends Component {
-	
+export default function Card(props) {
 
-  render() {
-      
-    return <div className="card">
-      <CardsImg house={this.props.house}/>
-      <CardsInfo house={this.props.house}/>
-    </div>;
+  let location = useLocation();
+
+  const renderReserva = () =>{
+
+    if(location === "/misReservas"){
+    return <CardReserva/>
+    }
+    
   }
-}
 
-export default Card;
+  return (
+    <div className="card">
+      {renderReserva}
+      <CardsImg house={props.house} />
+      <CardsInfo house={props.house} />
+    </div>
+  );
+}

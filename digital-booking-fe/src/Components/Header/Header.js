@@ -3,8 +3,11 @@ import "./Header.css";
 import Logo from "./logo.png";
 import Navbar from "../Navbar/Navbar.js";
 import MenuDrawer from "../MenuDrawer/MenuDrawer.js";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGripLinesVertical} from "@fortawesome/free-solid-svg-icons";
 
 export default function Header(props) {
   const [show, setShow] = useState(false);
@@ -24,6 +27,15 @@ export default function Header(props) {
       />
     );
   }
+  const {contextLoginRegistro} = useContext(ContextLoginRegistro);
+  let rolUsuario = ()=> {
+    if(contextLoginRegistro.rol === null){
+     return <Link className="linkAdmin" to="/misReservas"><div className="admin"> Mis Reservas |</div></Link>
+    }else if(contextLoginRegistro.rol === 2){
+    return <Link className="linkAdmin" to="/administracion/creaproductos"><div className="admin"> Administracion |</div></Link>
+    }
+  }
+ 
   return (
     <>
       <div className="header1">
@@ -37,6 +49,9 @@ export default function Header(props) {
               <p>Sentite como en tu hogar</p>
             </Link>
           </div>
+        </div>
+        <div className="rolUsuario">
+        {rolUsuario()}
         </div>
         <div className="components">
           <Navbar e={toggleModal} />

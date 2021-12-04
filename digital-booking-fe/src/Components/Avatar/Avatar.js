@@ -12,7 +12,7 @@ export default function Avatar(props) {
   
   const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
   const {setContextUser} = useContext(ContextUser);
-  let admin = ()=> contextLoginRegistro.rol === 2 ? <Link to="/administracion/creaproductos"><div> Administracion </div></Link> : <div></div>
+  let admin = ()=> contextLoginRegistro.rol === null ?<Link to="/administracion/creaproductos"><div> Administracion </div></Link> : <div></div>
   function handleClick(){
     setContextLoginRegistro("");
     setContextUser("");
@@ -26,7 +26,6 @@ export default function Avatar(props) {
           <FontAwesomeIcon className="icon-x" icon={faTimes} />{" "}
         </Link>
         <div className="container-avatar-text">
-          {admin}
           <div className="avatar">
             <h4 className="text-avatar">{`${contextLoginRegistro.nombre[0].toUpperCase()}${contextLoginRegistro.apellido[0].toUpperCase()}`}</h4>
           </div>

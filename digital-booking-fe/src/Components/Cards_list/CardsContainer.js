@@ -1,9 +1,7 @@
 import CardsList from './CardsList';
-
-
 import './cardsContainer.css';
 import './card.css';
-import Card from './Card';
+
 
 function CardsContainer(props) {
     return (
