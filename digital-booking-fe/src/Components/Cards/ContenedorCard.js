@@ -1,9 +1,11 @@
 import './card1.css'
 import Card from './Card.js'
+import SkeletonCategorias from "../../Skeleton/SkeletonCategorias"
 
 function ContenedorCard(props) {
-    return ( 
+    return (
         <>
+      
         <h2 className="titleCont">Buscar por tipo de Alojamiento</h2>
         <section className="contenedorCard"> 
         
@@ -16,6 +18,7 @@ function ContenedorCard(props) {
          />
         )}
         </section>
+        
         </>
      );
 }

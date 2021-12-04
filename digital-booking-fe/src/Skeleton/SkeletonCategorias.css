@@ -1,0 +1,36 @@
+.sH2{
+    margin-left: 5%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 320px;
+    height: 40px;
+}
+
+.sContenedorCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.sCards{
+    margin: 5px;
+    justify-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 310px;
+    height: 246px;
+}
+
+@media (min-width: 768px){
+    .sContenedorCard {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap:30px;
+      justify-content: center;
+    }
+}

@@ -4,9 +4,6 @@ import CardsInfo from './CardsInfo';
 
 function Card(props){
   
-  function prueba(dato){
-    console.log("soy el estado " + dato)
-  }
 	return(
      <div className="card">
       <CardsImg house={props.house}/>

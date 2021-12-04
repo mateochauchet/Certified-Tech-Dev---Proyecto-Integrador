@@ -14,7 +14,8 @@ import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
 import Favoritos from "./Components/MisFavoritos/Favoritos"
 import './App.css'
-
+import SkeletonCategorias from "./Skeleton/SkeletonCategorias";
+import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto.js";
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import { getCategorias, getProductos, getCity, getProductosByDate, getCaracteristicas } from './service/cardsListService';
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
@@ -203,6 +204,17 @@ export default function App() {
               component={() => (
                 <Template home={true} categoriaAll={categoriaAll} >
                   <SekeletonReserva />
+                </Template>
+              )}
+            ></Route>
+            <Route
+              exact
+              path="/prueba1"
+              component={() => (
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
+                  <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
+                  <SkeletonCategorias/>
+                  <SkeletonCardsProducto/>
                 </Template>
               )}
             ></Route>
