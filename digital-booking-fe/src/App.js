@@ -13,6 +13,7 @@ import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer"
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
+import Favoritos from "./Components/MisFavoritos/Favoritos"
 import './App.css'
 
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
@@ -112,7 +113,7 @@ export default function App() {
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
                   <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
                   <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />
-                  <CardsContainer list={productList} filtro={filtro} filtro2={reservedList}/>
+                  <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>
                 </Template>
               )}
             ></Route>
@@ -171,6 +172,15 @@ export default function App() {
               component={() => (
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
                   <CreacionProducto categorias={categoryList} listaCiudades={cityList} caracteristicas={listaCaracteristicas}/>
+                </Template>
+              )}
+            ></Route>
+            <Route
+              exact
+              path="/misfavoritos"
+              component={() => (
+                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
+                  <Favoritos productos={productList} filtro={filtro} filtro2={reservedList}/>
                 </Template>
               )}
             ></Route>

@@ -178,6 +178,10 @@ hr{
         width: 50%;
     }
 
+    .latitudLongitud{
+        width: 25%;
+    }
+
     .contenedorSeccionAtributos{
         background-color: whitesmoke;
         margin: 10px;
