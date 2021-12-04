@@ -29,7 +29,7 @@ public class ReservaController {
 
     @GetMapping("/{password}/{id}")
     @PreAuthorize("hasRole('ROLE_CLIENT')")
-    public ResponseEntity<List<Reserva>> getReservationsByIdProduct(@PathVariable("password")String password,@PathVariable("id") Long id) throws ResourcesNotFoundException, NotPermissionException {
+    public ResponseEntity<List<Reserva>> getReservationsByIdUsuario(@PathVariable("password")String password,@PathVariable("id") Long id) throws ResourcesNotFoundException, NotPermissionException {
         return new ResponseEntity<>(reservaService.getReservationsByIdUsuario(id,password), HttpStatus.OK);
     }
 
