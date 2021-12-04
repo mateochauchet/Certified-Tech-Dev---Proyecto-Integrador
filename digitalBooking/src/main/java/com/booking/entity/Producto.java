@@ -41,17 +41,7 @@ public class Producto {
     @Column(name="puntaje", length = 10)
     private Integer puntaje;
 
-    @Getter
-    @Setter
-    @ManyToOne
-    @JoinColumn(name="id_categoria",  nullable = false)
-    private Categoria categoria;
 
-    @Getter
-    @Setter
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad", nullable = false)
-    private Ciudad ciudad;
 
     @Column(name="nombre", length = 1000)
     @Size(max = 1000)
@@ -87,6 +77,18 @@ public class Producto {
 
     @Getter
     @Setter
+    @ManyToOne
+    @JoinColumn(name="id_categoria",  nullable = false)
+    private Categoria categoria;
+
+    @Getter
+    @Setter
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad", nullable = false)
+    private Ciudad ciudad;
+
+    @Getter
+    @Setter
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "producto")
     @JsonIgnoreProperties({"producto"})
     private Set<Imagen> imagenes = new HashSet<>();
@@ -101,9 +103,14 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas;
 
-    public Producto(String nombre, String descripcion, Integer puntaje,  Categoria categoria, Ciudad ciudad) {
+    public Producto(String nombre, String descripcion, String norma, String saludSeguridad, String cancelacion, String latitud, String longitud, Integer puntaje,  Categoria categoria, Ciudad ciudad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.norma = norma;
+        this.saludSeguridad= saludSeguridad;
+        this.cancelacion = cancelacion;
+        this.latitud = latitud;
+        this.longitud = longitud;
         this.categoria = categoria;
         this.ciudad = ciudad;
        this.imagenes = null;

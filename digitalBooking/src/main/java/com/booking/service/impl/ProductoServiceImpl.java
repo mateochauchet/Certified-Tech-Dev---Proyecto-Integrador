@@ -39,7 +39,7 @@ public class ProductoServiceImpl implements IProductoService {
         else if(producto.getDescripcion().trim().length()>250 || producto.getNombre().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 250 caracteres)\n o el nombre (no puede ser mayor a 50 caracteres) ");
 
-        Producto producto2 = productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getPuntaje(), producto.getCategoria(),producto.getCiudad()));
+        Producto producto2 = productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getNorma(),producto.getSaludSeguridad(),producto.getCancelacion(), producto.getLatitud(), producto.getLongitud(),  producto.getPuntaje(), producto.getCategoria(),producto.getCiudad()));
         if(files != null && !files.isEmpty() && files.size() > 0) {
             for(int i = 0; i<files.size(); i++){
                 if(!FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("jpg") || !FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("png"))
@@ -86,7 +86,7 @@ public class ProductoServiceImpl implements IProductoService {
 
         List<Producto> productosPorCiudad =  productoRepository.getProductsByCity(nombre);
         if (productosPorCiudad.size() == 0){
-            throw new ResourcesNotFoundException("los productos de la ciudad" + nombre + " no existen");
+            throw new ResourcesNotFoundException("los productos de la ciudad " + nombre + " no existen");
         }
         return productosPorCiudad;
     }
