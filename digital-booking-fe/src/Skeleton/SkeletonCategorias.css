@@ -34,3 +34,11 @@
       justify-content: center;
     }
 }
+
+@media (min-width: 1200px){
+    .sContenedorCard {
+      width: 100%; 
+      flex-wrap: nowrap;
+      gap:10px;
+    }
+}

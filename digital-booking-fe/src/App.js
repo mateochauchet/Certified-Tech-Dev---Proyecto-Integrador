@@ -8,7 +8,6 @@ import ContextUser from "./Components/Contexts/ContextUser.js";
 import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
 import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
-import data from "./Components/Cards_list/dataj.json";
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
@@ -33,9 +32,9 @@ import ReservaNoEfectuada from "./Components/ReservaNoEfectuada/ReservaNoEfectua
 export default function App() {
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
   const [contextUser, setContextUser] = useState("");
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState(null);
   const [cityList, setCityList] = useState([]);
-  const [categoryList, setCategoryList] = useState([]);
+  const [categoryList, setCategoryList] = useState(null);
   const [listaCaracteristicas, setListaCaracteristicas] = useState([]);
   const [reservedList, setReservedList] = useState("");
   const [filtro, setFiltro] = useState("todos");
@@ -118,8 +117,10 @@ export default function App() {
               component={() => (
                 <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
                   <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
-                  <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />
-                  <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>
+                  {categoryList ? (
+                  <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} /> ):<SkeletonCategorias/>}
+                  {productList ? (
+                  <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>):<SkeletonCardsProducto/>}
                 </Template>
               )}
             ></Route>
