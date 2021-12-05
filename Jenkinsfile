@@ -77,7 +77,7 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh '''git archive --format=tar origin/infraestructura:backEnd-Deployment/ | tar xf -
+        sh '''git archive --format=tar origin/infraestructura:frontEnd-Deployment/ | tar xf -
 '''
         gitlabCommitStatus("Approve"){
           script {
