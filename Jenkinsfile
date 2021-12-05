@@ -27,7 +27,7 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh 'git remove -v'
+        sh 'git remote -v'
         gitlabCommitStatus(name: 'Deploy') {
           script {
             ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '--become', installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml'
