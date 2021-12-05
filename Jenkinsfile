@@ -77,6 +77,8 @@ pipeline {
 
     stage('Deploy') {
       steps {
+        sh '''git archive --format=tar origin/infraestructura:backEnd-Deployment/ | tar xf -
+'''
         gitlabCommitStatus("Approve"){
           script {
             ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '-b', installation: 'ansible', playbook: 'digitalBookingPlaybook.yml'
