@@ -27,7 +27,7 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh 'sh "git status"'
+        sh 'git archive --format=tar infraestructura:backEnd-Deployment/ | tar xf -'
         gitlabCommitStatus(name: 'Deploy') {
           script {
             ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '--become', installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml'
