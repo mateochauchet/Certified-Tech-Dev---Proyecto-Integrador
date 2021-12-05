@@ -1,5 +1,0 @@
-plugin: aws_ec2
-keyed_groups:
-  - key: tags['aws:autoscaling:groupName']
-filters:
- "tag:aws:autoscaling:groupName" : "digitalbookingBE-API-ASGT"
