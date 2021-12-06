@@ -20,8 +20,8 @@ function CreacionProducto(props){
     const [normasPropiedad, setNormasPropiedad] = useState("")
     const [sysPropiedad, setSySPropiedad] = useState("")
     const [politicasPropiedad, setPoliticasPropiedad] = useState("")
+    const [grupoAtributos, setGrupoAtributos] = useState([]);
 
-    const [files, setFiles] = useState()
     let optionsCategorias =
         props.categorias.map((categoria) => {
             return(
@@ -40,51 +40,67 @@ function CreacionProducto(props){
           )
     })
 
+    //const [clase, setClase] = useState();
+    useEffect(()=>{
+        setGrupoAtributos(grupoAtributos)
+    }, [grupoAtributos])
+
     let nombreAtributos =
         props.caracteristicas.map((caracteristica)=>{
            
             return(
                 <>
-                    <label className="labelAtributos" name={caracteristica.nombre}><input type="checkbox" value={caracteristica.nombre} onChange={(e)=>e.target.checked} className="checkboxes"></input> {caracteristica.nombre}</label><br/>
+                    <label className="labelAtributos"><input type="checkbox" name={caracteristica.nombre} value={caracteristica.nombre}
+                    onChange={(e)=>{
+                        if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
+                            setGrupoAtributos([...grupoAtributos, e.target.value])
+                            console.log(grupoAtributos)
+                        }else if(e.target.checked == false){
+                            grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
+                            console.log(grupoAtributos)
+                            }
+                        }} className="checkboxes"></input> {caracteristica.nombre}</label><br/>
                 </>
             )
         })
-
+    
     //FUNCIONES
-
+    
     const onFileChange = (e) => {
         if(e.target && e.target.files){
+            //console.log(e.target.files)
             formData.append("files", e.target.files)
         }
     }
 
     const sendData = (e) =>{
         e.preventDefault()
+
+        
         formData.append("nombre", nombrePropiedad)
         formData.append("categoria", categoriaPropiedad)
+        formData.append("ciudad", ciudadPropiedad)
         formData.append("latitud", latitudPropiedad)
         formData.append("longitud", longitudPropiedad)
-        formData.append("ciudad", ciudadPropiedad)
         formData.append("descripcion", descripcionPropiedad)
+        formData.append("atributos", grupoAtributos)
         formData.append("normas", normasPropiedad)
         formData.append("saludSeguridad", sysPropiedad)
         formData.append("politicas", politicasPropiedad)
-
-        console.log(nombrePropiedad, categoriaPropiedad, latitudPropiedad, longitudPropiedad, ciudadPropiedad, descripcionPropiedad, normasPropiedad, sysPropiedad, politicasPropiedad)
-        console.log(formData)
+        console.log(formData.get("files"));
     }
 
     return(
         <>
         <Heading titulo="Administracion"/>
         <h2 className="h2CreacionProducto">Crear propiedad</h2>
-        <div className="contenedor">
-            <div className="divFormulario">
-                <form className="formularioCreacionProducto">
+        <div className="contenedorPadreProducto">
+            <div className="divContenedorFormularioProducto">
+                <form onSubmit={sendData} className="formularioCreacionProducto">
                     <div className="primerBloqueInputs">
                         <div className="contenedorLabelInput">
                             <label className="labelCreacionProducto" name="nombreProducto">Nombre de la propiedad</label>
-                            <input className="inputCreacionProducto" type="text" onChange={(e)=>setNombrePropiedad(e.target.value)} required></input>
+                            <input className="inputCreacionProducto claseEncontrada" type="text" onChange={(e)=>setNombrePropiedad(e.target.value)} required></input>
                         </div>
 
                         <div className="contenedorLabelInput">
@@ -152,12 +168,9 @@ function CreacionProducto(props){
                                 <input className="inputCreacionProducto custom-file-input" type="file" onChange={onFileChange} required multiple ></input>    
                             </div>
                         </div>
-                        <p>
-                            {files}
-                        </p>
                     </div>
                     <div className="contenedorBoton">
-                    <button className="cardBtn botonCreacionProducto" onClick={sendData}>Crear Producto</button>
+                    <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
                     </div>
                 </form>
             </div>
