@@ -88,11 +88,12 @@ function CreacionProducto(props){
                 latitud: latitudPropiedad,
                 longitud: longitudPropiedad,
                 descripcion: descripcionPropiedad,
+                puntaje: 4,
                 caracteristicas: {
                     nombre: grupoAtributos
                 },
                 norma: normasPropiedad,
-                salud_seguridad: sysPropiedad,
+                saludSeguridad: sysPropiedad,
                 cancelacion: cancelacionPropiedad
             }
         )
