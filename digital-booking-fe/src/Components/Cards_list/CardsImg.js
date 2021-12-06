@@ -5,7 +5,7 @@ import ContextHeart from "../Contexts/ContextHeart";
 
 function CardsImg (props) {
     const [heartId, setHeartId] = useState(
-       console.log( window.localStorage.getItem("heartValue"))
+    //    console.log( window.localStorage.getItem("heartValue"))
     );
     //const {contextHeart, setContextHeart} = useContext(ContextHeart);
     const clickHeart = () => {

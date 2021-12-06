@@ -46,9 +46,11 @@ const Login = () => {
         if (response.status === 200) {
             const jwt = await response.json();
             console.log(parseJwt(jwt.jwt).usuario);
+            console.log(jwt.jwt);
             setContextUser(jwt.jwt);
             setContextLoginRegistro(parseJwt(jwt.jwt).usuario);
-            console.log(contextUser);
+            console.log(contextLoginRegistro);
+           
             history.push('/home')
             
         } else

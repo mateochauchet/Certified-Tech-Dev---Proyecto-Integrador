@@ -44,7 +44,7 @@ form * {
     font-size: 12px;
 }
 
-input {
+input, select{
     margin-bottom: 1.2vh;
     margin-top: 1.2vh;
     height: 40px;

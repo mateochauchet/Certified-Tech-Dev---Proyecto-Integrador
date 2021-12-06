@@ -24,6 +24,13 @@ export default function MenuDrawer(props) {
     setContextUser("");
   }
 
+  const redirectAnfOrClient = ()=>{
+    if(contextLoginRegistro.rol.id === 1){
+      return <p><Link className="link-parrafos" to="/misReservas">Mis Reservas</Link></p>
+     }else if(contextLoginRegistro.rol.id === 2){
+      return <p><Link className="link-parrafos" to="/administracion/creaproductos">Mis productos</Link></p>
+     }
+  }
   
   let componente =
   ()=>{
@@ -95,6 +102,10 @@ else if (contextLoginRegistro !== ""){
       
         </div>
         <div className="container-body-drawer">
+        <div className="container-parrafos">
+            {redirectAnfOrClient()}
+            <br /> <hr /> <br />
+          </div>
           <div className="container-cerrarSesion">
             <p className="parrafo-cerrarSesion">¿Desea <span className="cerrarSesion" onClick={handleClick} >cerrar sesión</span>?</p>
         <hr/>

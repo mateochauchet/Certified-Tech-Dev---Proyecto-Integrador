@@ -8,7 +8,7 @@ import Descripcion from './Descripcion';
 import Caracteristicas from './Caracteristicas';
 import ContainerFechas from './Fechas/ContainerFechas';
 import PoliticsContainer from '../Politicas/PoliticsContainer';
-import SkeletonDetalle from '../../Skeleton/SkeletonDetalle';
+
 import ContainerMapa from "./Mapa/ContainerMapa"
 import { getProductosById } from '../../service/cardsListService';
 import SekeletonDetalle from '../../Skeleton/SkeletonDetalle';

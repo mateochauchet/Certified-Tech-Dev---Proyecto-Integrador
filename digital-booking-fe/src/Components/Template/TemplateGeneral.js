@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
 import ContextUser from "../Contexts/ContextUser";
 import Avatar from "../Avatar/Avatar.js";
@@ -9,9 +9,12 @@ import Botones from "../Botones/Botones.js";
 import { v4 as uuidv4 } from "uuid";
 
 
+
 export default function TemplateGeneral(props) {
   const { contextLoginRegistro } = useContext(ContextLoginRegistro);
   const { contextUser } = useContext(ContextUser);
+
+
   let componente = () => {
     if (contextLoginRegistro === "" && props.home) {
       return ( 
@@ -37,10 +40,8 @@ export default function TemplateGeneral(props) {
     } else if(contextLoginRegistro!=="" && props.home){
      return(  
      <div className="container-avatar2">
-     <Avatar payload={contextLoginRegistro} />
+     <Avatar payload={contextLoginRegistro}/>
       </div>)
-   
-     
     }
   };
 

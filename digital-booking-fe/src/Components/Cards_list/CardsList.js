@@ -21,9 +21,6 @@ function CardsList(props) {
       listaFiltrada.map((house) => <Card key={house.id} house={house} />)
 
       }
-
-
-      {console.log(listaFiltrada.length)}
       </>
     )
   }
