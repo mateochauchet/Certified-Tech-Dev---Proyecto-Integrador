@@ -107,6 +107,7 @@ const Register = () => {
                     
                     <label htmlFor="rol">Rol de usuario</label>
                     <select id="rol" name="rol" value={values.rol || ''} onChange={handleChange} className={errors.rol && selectedFields.includes("rol") ? "inputError" : undefined}>
+                        <option value="¿Que tipo de usuario queres ser?">¿Que tipo de usuario queres ser?</option>
                         <option value="1">Cliente</option>
                         <option value="2">Anfitrión</option>
                     </select>

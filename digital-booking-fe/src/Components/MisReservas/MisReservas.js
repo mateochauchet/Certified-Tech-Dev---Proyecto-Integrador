@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./MisReservas.css";
+import "./MisReservas.scoped.css";
 import Heading from "../Detalle/Heading.js";
 import { getReservationsByIdUsuario } from "../../service/misReservasService.js";
 import ContextLoginRegistro from "../Contexts/ContextLoginRegistro.js";
@@ -23,9 +23,12 @@ export default function MisReservas() {
           setDataReserva(resJson);
         }
       }
-    );
+    ).catch(()=>{
+      setDataReserva([])
+    })
     return () => (ismounted = false);
   }, []);
+
 
   return (
     <>
@@ -41,6 +44,7 @@ export default function MisReservas() {
                 hora={reserva.horaDeReserva}
               />
               <Card key={reserva.producto.id} house={reserva.producto} />
+             
             </>
           ))}
         </div>
