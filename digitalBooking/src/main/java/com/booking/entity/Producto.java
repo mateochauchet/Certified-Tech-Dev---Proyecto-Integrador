@@ -42,7 +42,6 @@ public class Producto {
     private Integer puntaje;
 
 
-
     @Column(name="norma", length = 1000)
     @Size(max = 1000)
     @Getter

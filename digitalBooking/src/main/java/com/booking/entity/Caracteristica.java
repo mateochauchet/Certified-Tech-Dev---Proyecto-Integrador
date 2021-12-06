@@ -30,7 +30,6 @@ public class Caracteristica {
     @Getter
     @Setter
     @Size(max = 100)
-    @NotNull
     @Column(name = "icono", length = 100)
     private String icono;
 

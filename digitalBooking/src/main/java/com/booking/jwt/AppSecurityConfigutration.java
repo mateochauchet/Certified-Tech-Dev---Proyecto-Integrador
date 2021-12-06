@@ -72,7 +72,10 @@ public class AppSecurityConfigutration extends WebSecurityConfigurerAdapter{
             return new BCryptPasswordEncoder(12);
         }
 
-    }
+
+
+
+}
 
 
 

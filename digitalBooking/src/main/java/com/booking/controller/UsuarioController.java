@@ -22,6 +22,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @Controller
@@ -44,6 +46,7 @@ public class UsuarioController {
 
     @Autowired
     private JwtUtil jwtUtil;
+
 
 
     @PostMapping("/authenticate")
