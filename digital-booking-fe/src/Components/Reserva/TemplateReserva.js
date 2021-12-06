@@ -7,17 +7,21 @@ import PoliticsContainer from "../Politicas/PoliticsContainer";
 import FormularioReserva from "./FormularioReserva";
 import HorarioReserva from "./HorarioReserva";
 import DetalleReserva from "./DetalleReserva";
-import { getProductosById } from '../../service/cardsListService';
+import { getProductosById, getReservasByIdProduct } from '../../service/cardsListService';
 import FechaReserva from '../ReservaCalendario/FechaReserva';
 import { PostReserva } from '../../service/reserva';
 import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
 import ContextUser from '../Contexts/ContextUser';
 import { useHistory } from 'react-router-dom';
-
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
 
 function TemplateReserva(props) {
-
+    
+    const moment = extendMoment(Moment);
+    
     const [productIdList, setProductIdList] = useState(null);
+    const [reserva, setReserva] = useState(null);
     const [dateIn, setDateIn] = useState(null);
     const [dateOut, setDateOut] = useState(null);
     const [hora, setHora] = useState(null);
@@ -30,9 +34,9 @@ function TemplateReserva(props) {
     let match = data.filter(producto => producto.id === id)
     let product = match[0]
 
+        
 
     useEffect(() => {
-        
         let ismounted = true;
         getProductosById(id)
             .then((resJson) => {
@@ -50,14 +54,40 @@ function TemplateReserva(props) {
                     setProductIdList(houseData);
                 }
             })
+
+
         return () => ismounted = false;
     }, []);
+
+    useEffect(() => {
+        getReservasByIdProduct(id)
+            .then((resJson) => {
+                
+                
+                (resJson.map((r)=>{
+                   
+                    const range = moment.range(r.fechaInicio, r.fechaFinal)
+                    let reservedDays =(Array.from(range.by('day')).map(x => x.format('YYYY-MM-DD')))
+                    console.log(reservedDays)
+                }))
+                
+                
+            })
+    }, []);
+   
+    
+      
+        
+  
+
 
     const handleChange = (startDate, endDate) => {
         setDateIn(startDate)
         setDateOut(endDate)
     }
+   
 
+    
     const horarioReserva = (event) => {
         const dataHora = event.target.value;
         setHora(dataHora);
@@ -65,7 +95,7 @@ function TemplateReserva(props) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        if(dateIn !== null && dateOut !== null && hora !== null){
+        if (dateIn !== null && dateOut !== null && hora !== null) {
             let payload = {
                 horaDeReserva: `${hora}:00:00`,
                 fechaInicio: dateIn.format('YYYY-MM-DD'),
@@ -80,16 +110,16 @@ function TemplateReserva(props) {
             const res = await PostReserva(payload, contextUser);
             if (res === 201) {
                 history.push('/reservaExitosa')
-            
+
             } else {
                 setAvisoFalloReserva("avisoVisible")
             }
-         }else{
-             setErrorForm("avisoFormVisible")
+        } else {
+            setErrorForm("avisoFormVisible")
             console.log("Necesitas llenar todos los campos");
-         }
-     }
-    
+        }
+    }
+
 
     return (
         <div>
@@ -102,7 +132,7 @@ function TemplateReserva(props) {
                             <div className="formularioReserva">
                                 <FormularioReserva /></div>
                             <div className="calendarioReserva">
-                                <FechaReserva handleChange={handleChange} /></div>
+                                <FechaReserva handleChange={handleChange} reserva={reserva}  /></div>
                             <div className="horarioReserva">
                                 <HorarioReserva onChange={horarioReserva} /></div>
                         </div>
@@ -115,12 +145,12 @@ function TemplateReserva(props) {
                                     hora={hora}
                                     onClick={handleSubmit}
                                     avisoFalloReserva={avisoFalloReserva}
-                                     errorForm={errorForm}
+                                    errorForm={errorForm}
                                 /></div>
 
                         </div>
                     </div>
-                    
+
                     <PoliticsContainer
                         normas={product.politicas.normas}
                         saludSeguridad={product.politicas.saludSeguridad}
@@ -133,6 +163,6 @@ function TemplateReserva(props) {
 
         </div>
     );
-        }
+}
 
 export default TemplateReserva;
