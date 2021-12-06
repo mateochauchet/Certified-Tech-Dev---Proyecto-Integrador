@@ -41,7 +41,7 @@ public class ProductoServiceImpl implements IProductoService {
         Producto producto2 = productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getNorma(),producto.getSaludSeguridad(),producto.getCancelacion(), producto.getLatitud(), producto.getLongitud(),  producto.getPuntaje(), producto.getCategoria(),producto.getCiudad()));
         if(files != null && !files.isEmpty() && files.size() > 0) {
             for(int i = 0; i<files.size(); i++){
-                if(!FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("jpg") || !FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("png"))
+                if(!FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("jpg") && !FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("png"))
                     productoRepository.delete(producto2);
                     throw new InvalidDataException("no es valido la imagen a subir, debe ser en formato jpg o png ");
             }
