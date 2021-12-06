@@ -23,6 +23,11 @@ export async function getProductosById (id) {
     const resJson = await response.json();
     return Array.isArray(resJson) ?  resJson :  [resJson]
 }
+export async function getReservasByIdProduct (id) {
+    const  response = await fetch(`http://localhost:8080/api/reserva/${id}`);
+    const resJson = await response.json();
+    return Array.isArray(resJson) ?  resJson :  [resJson]
+}
 
 export async function getProductosByCategoria (q) {
     const  response = await fetch(`${baseUrl}/categoria/${q}`);
@@ -63,5 +68,6 @@ export default {
     getProductosByCategoria,
     getProductosByDate,
     getProductosByCiudad,
-    getCaracteristicas
+    getCaracteristicas,
+    getReservasByIdProduct
 }
