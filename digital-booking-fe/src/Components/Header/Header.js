@@ -30,7 +30,7 @@ export default function Header(props) {
   }
   const {contextLoginRegistro} = useContext(ContextLoginRegistro);
   let rolUsuario = ()=> {
-    if(contextLoginRegistro.rol === null){
+    if(contextLoginRegistro.rol === 1){
      return <Link className="linkAdmin" to="/misReservas"><div className="admin"> Mis Reservas |</div></Link>
     }else if(contextLoginRegistro.rol === 2){
     return <Link className="linkAdmin" to="/administracion/creaproductos"><div className="admin"> Administracion |</div></Link>

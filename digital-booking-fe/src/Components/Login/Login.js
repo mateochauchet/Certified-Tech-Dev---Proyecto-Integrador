@@ -29,6 +29,10 @@ const Login = () => {
             MySwal.fire(`${mensaje}`)
     }, [mensaje]);
     
+    useEffect(() => {
+        console.log(contextLoginRegistro.id)
+    }, [contextLoginRegistro]);
+    
     // Funcion para setear el contexto de usuario logueado
     async function login() {
         const dataParaLogin = {
@@ -49,6 +53,7 @@ const Login = () => {
             setContextUser(jwt.jwt);
             setContextLoginRegistro(parseJwt(jwt.jwt).usuario);
             console.log(contextUser);
+            
             history.push('/home')
             
         } else
@@ -59,7 +64,8 @@ const Login = () => {
 
 
     return (
-
+        <>
+        
         <div className="background">
 
 
@@ -82,8 +88,9 @@ const Login = () => {
                 <p>¿Aún no tenes cuenta? <Link className="link" to='/registro'>Registrate</Link></p>
             </div>
         </div>
-
+</>
     );
+    
 }
 
 export default Login

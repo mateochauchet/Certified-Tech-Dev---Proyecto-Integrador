@@ -25,7 +25,7 @@ import {
   getCaracteristicas,
 } from "./service/cardsListService";
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
-import SekeletonReserva from "./Skeleton/SkeletonReserva";
+
 import MisReservas from "./Components/MisReservas/MisReservas.js";
 import ReservaNoEfectuada from "./Components/ReservaNoEfectuada/ReservaNoEfectuada.js"
 
@@ -205,26 +205,7 @@ export default function App() {
               )}
             ></Route>
 
-          <Route
-              exact
-              path="/prueba"
-              component={() => (
-                <Template home={true} categoriaAll={categoriaAll} >
-                  <SekeletonReserva />
-                </Template>
-              )}
-            ></Route>
-            <Route
-              exact
-              path="/prueba1"
-              component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
-                  <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
-                  <SkeletonCategorias/>
-                  <SkeletonCardsProducto/>
-                </Template>
-              )}
-            ></Route>
+          
 
           </Switch>
         </BrowserRouter>

@@ -22,7 +22,6 @@ function ContainerDetalle() {
     let match = data.filter(producto => producto.id === id)
     let product = match[0]
 
-
     useEffect(() => {
         let ismounted = true;
         getProductosById(id)
