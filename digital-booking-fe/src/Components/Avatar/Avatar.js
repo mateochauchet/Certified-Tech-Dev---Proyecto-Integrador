@@ -3,10 +3,11 @@ import "./Avatar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
 import ContextUser from "../Contexts/ContextUser";
 import { useHistory } from 'react-router-dom';
+
 
 export default function Avatar(props) {
   
@@ -20,14 +21,14 @@ export default function Avatar(props) {
 
   return (
     <>
-      <div className="container-avatar">
+      <div className="container-avatar" >
         <Link className="link-logout" to="/home" onClick={handleClick}>
           {" "}
           <FontAwesomeIcon className="icon-x" icon={faTimes} />{" "}
         </Link>
         <div className="container-avatar-text">
           <div className="avatar">
-            <h4 className="text-avatar">{`${contextLoginRegistro.nombre[0].toUpperCase()}${contextLoginRegistro.apellido[0].toUpperCase()}`}</h4>
+            <h4 className="text-avatar" >{`${contextLoginRegistro.nombre[0].toUpperCase()}${contextLoginRegistro.apellido[0].toUpperCase()}`}</h4>
           </div>
           <div className="text-name">
             <h4 className="saludo">
@@ -42,6 +43,7 @@ export default function Avatar(props) {
           </div>
         </div>
       </div>
+   
     </>
   );
 }

@@ -105,6 +105,13 @@ const Register = () => {
                     {(errors.passwordConfirmation && isSubmitting.current && (<div className="errorBox"><p className="errorDesc">{errors.passwordConfirmation}</p></div>)) || (errors.passwordConfirmation && selectedFields.includes("passwordConfirmation") && (<div className="errorBox"><p className="errorDesc">{errors.passwordConfirmation}</p></div>))}
 
                     
+                    <label htmlFor="rol">Rol de usuario</label>
+                    <select id="rol" name="rol" value={values.rol || ''} onChange={handleChange} className={errors.rol && selectedFields.includes("rol") ? "inputError" : undefined}>
+                        <option value="1">Cliente</option>
+                        <option value="2">Anfitrión</option>
+                    </select>
+
+
                     <input type="submit" value="Crear cuenta"></input>
                     <div className={avisoFalloRegistro}>Lamentablemente no ha podido registrarse. Por favor intente más tarde</div>
                 </form>

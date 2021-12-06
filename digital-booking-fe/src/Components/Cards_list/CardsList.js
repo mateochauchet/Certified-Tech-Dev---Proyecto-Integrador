@@ -18,8 +18,6 @@ function CardsList(props) {
       <ErrorMessage/> :
       listaFiltrada.map((house) => <Card key={house.id} house={house} />)
       }
-
-      {console.log(listaFiltrada.length)}
       </>
     )
   }

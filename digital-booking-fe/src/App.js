@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Template from "./Components/Template/TemplateGeneral.js";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import ContextLoginRegistro from "./Components/Contexts/ContextLoginRegistro.js";
 import ContextUser from "./Components/Contexts/ContextUser.js";
 import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
@@ -12,10 +11,8 @@ import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
-import Favoritos from "./Components/MisFavoritos/Favoritos"
-import './App.css'
-import SkeletonCategorias from "./Skeleton/SkeletonCategorias";
-import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto.js";
+// import Favoritos from "./Components/MisFavoritos/Favoritos";
+import "./App.css";
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import {
   getCategorias,
@@ -25,9 +22,9 @@ import {
   getCaracteristicas,
 } from "./service/cardsListService";
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
-
 import MisReservas from "./Components/MisReservas/MisReservas.js";
-import ReservaNoEfectuada from "./Components/ReservaNoEfectuada/ReservaNoEfectuada.js"
+import ReservaNoEfectuada from "./Components/ReservaNoEfectuada/ReservaNoEfectuada.js";
+
 
 export default function App() {
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
@@ -45,11 +42,10 @@ export default function App() {
       setProductList(productJson);
     }
     getData();
-
   }, []);
 
   const categoriaAll = async () => {
-    //let response = await getProductos();  (DESCOMENTAR EN EL CASO QUE EL FILTRO SE HAGA CON LA API)
+    // let response = await getProductos();  (DESCOMENTAR EN EL CASO QUE EL FILTRO SE HAGA CON LA API)
     setFiltro("todos");
   };
 
@@ -106,109 +102,140 @@ export default function App() {
 
   return (
     <div id="app">
-      
-      <ContextLoginRegistro.Provider value={{ contextLoginRegistro, setContextLoginRegistro }}>
-      <ContextUser.Provider value={{ contextUser, setContextUser }}>
-        <BrowserRouter>
-          <Switch>
-            <Route
-              exact
-              path="/home"
-              component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
-                  <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
-                  {categoryList ? (
-                  <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} /> ):<SkeletonCategorias/>}
-                  {productList ? (
-                  <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>):<SkeletonCardsProducto/>}
-                </Template>
-              )}
-            ></Route>
-            <Route
-              
-              path={["/login/:mensaje", "/login"]}
-              component={() => (
-                <Template home={false} direccion="/registro" nombreBoton="Crear cuenta" categoriaAll={categoriaAll}>
-                  <Login />
-                </Template>
-              )}
-            ></Route>
-            <Route
-              exact
-              path="/registro"
-              component={() => (
-                <Template home={false} direccion="/login" nombreBoton="Iniciar sesión" categoriaAll={categoriaAll}>
-                  <Registro />
-                </Template>
-              )}
-            ></Route>
+      <ContextLoginRegistro.Provider
+        value={{ contextLoginRegistro, setContextLoginRegistro }}
+      >
+        <ContextUser.Provider value={{ contextUser, setContextUser }}>
+          <BrowserRouter>
+            <Switch>
+              <Route
+                exact
+                path="/home"
+                component={() => (
+                  <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
+                    <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
+                    {categoryList ? (
+                    <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} /> ):<SkeletonCategorias/>}
+                    {productList ? (
+                    <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>):<SkeletonCardsProducto/>}
+                  </Template>
+                )}
+                  
+                
+              />
 
-            <Route
-              exact
-              path="/productos/:id"
-              component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
-                  <ContainerDetalle />
-                </Template>
-              )}
-            ></Route>
+              <Route
+                path={["/login/:mensaje", "/login"]}
+                component={() => (
+                  <Template
+                    home={false}
+                    direccion="/registro"
+                    nombreBoton="Crear cuenta"
+                    categoriaAll={categoriaAll}
+                  >
+                    <Login />
+                  </Template>
+                )}
+              />
+              <Route
+                exact
+                path="/registro"
+                component={() => (
+                  <Template
+                    home={false}
+                    direccion="/login"
+                    nombreBoton="Iniciar sesión"
+                    categoriaAll={categoriaAll}
+                  >
+                    <Registro />
+                  </Template>
+                )}
+              />
 
-            <Route
-              exact
-              path="/productos/:id/reserva"
-              component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
-                  <TemplateReserva />
-                </Template>
-              )}
-            ></Route>
+              <Route
+                exact
+                path="/productos/:id"
+                component={() => (
+                  <Template
+                    home={true}
+                    direccion="/login"
+                    nombreBoton="Iniciar sesión"
+                    direccion2="/registro"
+                    nombreBoton2="Crear cuenta"
+                    categoriaAll={categoriaAll}
+                  >
+                    <ContainerDetalle />
+                  </Template>
+                )}
+              />
 
-            <Route
-              exact
-              path="/reservaExitosa"
-              component={() => (
-                <Template home={true} categoriaAll={categoriaAll} >
-                  <ReservaExitosa />
-                </Template>
-              )}
-            ></Route>
+              <Route
+                exact
+                path="/productos/:id/reserva"
+                component={() => (
+                  <Template
+                    home={true}
+                    direccion="/login"
+                    nombreBoton="Iniciar sesión"
+                    direccion2="/registro"
+                    nombreBoton2="Crear cuenta"
+                    categoriaAll={categoriaAll}
+                  >
+                    <TemplateReserva />
+                  </Template>
+                )}
+              />
+
+              <Route
+                exact
+                path="/reservaExitosa"
+                component={() => (
+                  <Template home={true} categoriaAll={categoriaAll}>
+                    <ReservaExitosa />
+                  </Template>
+                )}
+              />
               <Route
                 exact
                 path="/misReservas"
                 component={() => (
                   <Template home={true} categoriaAll={categoriaAll}>
-                    <MisReservas 
-                        list={productList}
-                        filtro={filtro}
-                        filtro2={reservedList}
+                    <MisReservas />
+                  </Template>
+                )}
+              />
+
+              <Route
+                exact
+                path="/reservaNoEfectuada"
+                component={() => (
+                  <Template home={true} categoriaAll={categoriaAll}>
+                    <ReservaNoEfectuada />
+                  </Template>
+                )}
+              />
+
+              <Route
+                exact
+                path="/administracion/creaproductos"
+                component={() => (
+                  <Template
+                    home={true}
+                    direccion="/login"
+                    nombreBoton="Iniciar sesión"
+                    direccion2="/registro"
+                    nombreBoton2="Crear cuenta"
+                  >
+                    <CreacionProducto
+                      categorias={categoryList}
+                      listaCiudades={cityList}
+                      caracteristicas={listaCaracteristicas}
                     />
                   </Template>
                 )}
-              ></Route>
-
-            <Route
-              exact
-              path="/administracion/creaproductos"
-              component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
-                  <CreacionProducto categorias={categoryList} listaCiudades={cityList} caracteristicas={listaCaracteristicas}/>
-                </Template>
-              )}
-            ></Route>
-            <Route
-              exact
-              path="/misfavoritos"
-              component={() => (
-                <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta">
-                  <Favoritos productos={productList} filtro={filtro} filtro2={reservedList}/>
-                </Template>
-              )}
-            ></Route>
-
-          
-
-          </Switch>
-        </BrowserRouter>
+              />
+            </Switch>
+          </BrowserRouter>
         </ContextUser.Provider>
       </ContextLoginRegistro.Provider>
     </div>
