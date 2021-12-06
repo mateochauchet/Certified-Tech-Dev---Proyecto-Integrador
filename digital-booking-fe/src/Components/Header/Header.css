@@ -46,10 +46,6 @@
   width: 10%;
 }
 
-.rolUsuario{
-  display: none;
-}
-
 /* tablet */
 @media screen and (min-width: 768px) {
 
@@ -73,22 +69,6 @@
   }
   .header_logo {
     width: 80%;
-  }
-
-  .rolUsuario{
-    display: inline-flex;
-    align-self: center;
-  }
-
-  .linkAdmin{
-    text-decoration: none;
-    padding: 25px 7px;
-    font-size: 1.4rem;
-    color: #545776;
-  }
-
-  .admin{
-    margin-top: 15px;
   }
   
 }
@@ -139,30 +119,6 @@
         margin-right: 2%;
         gap: 1%;
         margin-top: 1%;
-      }
-
-      .rolUsuario{
-        display: flex;
-        flex-direction: row;
-        width: 15%;
-        text-align: end;
-        padding-top: 2%;
-      }
-      .admin{
-      font-size: 18px;
-      width: 80%;
-      margin: -11px;
-      text-align: end;
-      padding-top: 5%;
-      font-weight: 900;
-  
-      
-      }
-      .linkAdmin{
-        text-decoration: none;
-        color:#383b58;
-        font-weight: bold;
-        width: 100%;
       }
       .icon-line{
         color:#1dbeb4;

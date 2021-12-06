@@ -7,18 +7,22 @@ import { useContext, useState } from "react";
 import ContextLoginRegistro from "../Contexts/ContextLoginRegistro";
 import ContextUser from "../Contexts/ContextUser";
 import { useHistory } from 'react-router-dom';
-
+import PerfilUsuario from "../InfoUsuario/PerfilUsuario"
 
 export default function Avatar(props) {
   
   const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
   const {setContextUser} = useContext(ContextUser);
-  let admin = ()=> contextLoginRegistro.rol === null ?<Link to="/administracion/creaproductos"><div> Administracion </div></Link> : <div></div>
+  const [ isActive, setIsActive] = useState(false)
+
   function handleClick(){
     setContextLoginRegistro("");
     setContextUser("");
   }
 
+  const showProfile = () =>{
+    setIsActive(!isActive)
+  }
   return (
     <>
       <div className="container-avatar" >
@@ -27,7 +31,7 @@ export default function Avatar(props) {
           <FontAwesomeIcon className="icon-x" icon={faTimes} />{" "}
         </Link>
         <div className="container-avatar-text">
-          <div className="avatar">
+          <div className="avatar" onClick={showProfile}>
             <h4 className="text-avatar" >{`${contextLoginRegistro.nombre[0].toUpperCase()}${contextLoginRegistro.apellido[0].toUpperCase()}`}</h4>
           </div>
           <div className="text-name">
@@ -42,6 +46,9 @@ export default function Avatar(props) {
             </h4>
           </div>
         </div>
+      </div>
+      <div className={isActive ? "contenedorPerfilUsuario" : "contenedorNoVisible"}>
+        <PerfilUsuario/>
       </div>
    
     </>
