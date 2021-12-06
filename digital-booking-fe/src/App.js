@@ -2,21 +2,17 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Template from "./Components/Template/TemplateGeneral.js";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import ContextLoginRegistro from "./Components/Contexts/ContextLoginRegistro.js";
 import ContextUser from "./Components/Contexts/ContextUser.js";
 import ContenedorBuscador from "./Components/Buscador/ContenedorBuscador.js";
 import ContenedorCard from "./Components/Cards/ContenedorCard.js";
 import Login from "./Components/Login/Login.js";
-
 import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
-import Favoritos from "./Components/MisFavoritos/Favoritos";
+// import Favoritos from "./Components/MisFavoritos/Favoritos";
 import "./App.css";
-import SkeletonCategorias from "./Skeleton/SkeletonCategorias";
-import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto.js";
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import {
   getCategorias,
@@ -26,7 +22,6 @@ import {
   getCaracteristicas,
 } from "./service/cardsListService";
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
-import SekeletonReserva from "./Skeleton/SkeletonReserva";
 import MisReservas from "./Components/MisReservas/MisReservas.js";
 import ReservaNoEfectuada from "./Components/ReservaNoEfectuada/ReservaNoEfectuada.js";
 
