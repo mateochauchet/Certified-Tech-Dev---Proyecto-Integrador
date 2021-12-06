@@ -9,9 +9,7 @@ function CardsList(props) {
 
 
     return (
-      
-      
-      
+
       <>
       {props.filtro === "todos" ? 
       props.list.map((house) => <Card key={house.id} house={house} />) : 
@@ -19,7 +17,6 @@ function CardsList(props) {
       listaFiltrada.length === 0 ? 
       <ErrorMessage/> :
       listaFiltrada.map((house) => <Card key={house.id} house={house} />)
-
       }
       </>
     )

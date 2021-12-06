@@ -13,7 +13,7 @@ export default function Botones(props) {
   }, [direccion, nombreBoton]);
   return (
       <button className="btn">
-      <Link  className="btn-link" to={direccion}>{nombreBoton}</Link>
+        <Link  className="btn-link" to={direccion}>{nombreBoton}</Link>
       </button>
      
     

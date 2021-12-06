@@ -40,7 +40,11 @@
     background-color: whitesmoke;
     border: none;
     width: 95%;
+}
 
+.inputReserva:focus{
+    border: solid #1DBEB4 1px;
+    outline: none;
 }
 
 .inputCiudadReserva{

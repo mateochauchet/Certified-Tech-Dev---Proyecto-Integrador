@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,100&display=swap');
 
+button{
+    cursor: pointer;
+}
 .btn{
-    width: 25%;
     height: 40px;
+    width: 20%;
     background-color: white;
     color:#1DBEB4;
     font-family: roboto;
@@ -16,14 +19,19 @@
 .btn-link{
     text-decoration: none;
     color:#1DBEB4;
+    padding: 15px 10px;
 }
 
-@media screen and (min-width: 1366px){
+@media screen and (min-width: 1050px){
 
     .btn{
         margin-right: 2%;
         height: 5vh;
         font-size: 15px;
+    }
+
+    .btn-link{
+        padding: 10px 20px;
     }
    
 }

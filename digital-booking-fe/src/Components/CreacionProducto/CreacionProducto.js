@@ -10,7 +10,7 @@ function CreacionProducto(props){
 
     let formData = new FormData();
 
-
+    const endpointPostProducto = "http://localhost:8080/api/productos/";
     const [nombrePropiedad, setNombrePropiedad] = useState("")
     const [categoriaPropiedad, setCategoriaPropiedad] = useState("Seleccione una categoria")
     const [latitudPropiedad, setLatitudPropiedad] = useState("")
@@ -19,14 +19,14 @@ function CreacionProducto(props){
     const [descripcionPropiedad, setDescripcionPropiedad] = useState("")
     const [normasPropiedad, setNormasPropiedad] = useState("")
     const [sysPropiedad, setSySPropiedad] = useState("")
-    const [politicasPropiedad, setPoliticasPropiedad] = useState("")
+    const [cancelacionPropiedad, setCancelacionPropiedad] = useState("")
+    const [grupoAtributos, setGrupoAtributos] = useState([]);
 
-    const [files, setFiles] = useState()
     let optionsCategorias =
         props.categorias.map((categoria) => {
             return(
                 <>
-                <option>{categoria.titulo}</option>
+                <option value={categoria.id}>{categoria.titulo}</option>
                 </>
             )
         })
@@ -35,56 +35,98 @@ function CreacionProducto(props){
     props.listaCiudades.map((ciudad) => {
           return(
               <>
-              <option>{ciudad.nombre}</option>
+              <option value={ciudad.id}>{ciudad.nombre}</option>
               </>
           )
     })
+
+    //const [clase, setClase] = useState();
+    useEffect(()=>{
+        setGrupoAtributos(grupoAtributos)
+    }, [grupoAtributos])
 
     let nombreAtributos =
         props.caracteristicas.map((caracteristica)=>{
            
             return(
                 <>
-                    <label className="labelAtributos" name={caracteristica.nombre}><input type="checkbox" value={caracteristica.nombre} onChange={(e)=>e.target.checked} className="checkboxes"></input> {caracteristica.nombre}</label><br/>
+                    <label className="labelAtributos"><input type="checkbox" name={caracteristica.nombre} value={caracteristica.nombre}
+                    onChange={(e)=>{
+                        if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
+                            setGrupoAtributos([...grupoAtributos, e.target.value])
+                            console.log(grupoAtributos)
+                        }else if(e.target.checked == false){
+                            grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
+                            console.log(grupoAtributos)
+                            }
+                        }} className="checkboxes"></input> {caracteristica.nombre}</label><br/>
                 </>
             )
         })
 
+    const [ producto, setProducto] = useState()
+    
     //FUNCIONES
-
+    
     const onFileChange = (e) => {
         if(e.target && e.target.files){
-            formData.append("files", e.target.files)
+            //console.log(e.target.files)
+            formData.append("imagenes", e.target.files)
         }
     }
 
-    const sendData = (e) =>{
-        e.preventDefault()
-        formData.append("nombre", nombrePropiedad)
-        formData.append("categoria", categoriaPropiedad)
-        formData.append("latitud", latitudPropiedad)
-        formData.append("longitud", longitudPropiedad)
-        formData.append("ciudad", ciudadPropiedad)
-        formData.append("descripcion", descripcionPropiedad)
-        formData.append("normas", normasPropiedad)
-        formData.append("saludSeguridad", sysPropiedad)
-        formData.append("politicas", politicasPropiedad)
+    const fillData = () =>{
+        setProducto(
+            {
+                nombre: nombrePropiedad,
+                categoria: {
+                    id: categoriaPropiedad
+                },
+                ciudad: {
+                    id: ciudadPropiedad
+                },
+                latitud: latitudPropiedad,
+                longitud: longitudPropiedad,
+                descripcion: descripcionPropiedad,
+                puntaje: 4,
+                caracteristicas: {
+                    nombre: grupoAtributos
+                },
+                norma: normasPropiedad,
+                saludSeguridad: sysPropiedad,
+                cancelacion: cancelacionPropiedad
+            }
+        )
+        formData.append("producto", producto)
+    }
 
-        console.log(nombrePropiedad, categoriaPropiedad, latitudPropiedad, longitudPropiedad, ciudadPropiedad, descripcionPropiedad, normasPropiedad, sysPropiedad, politicasPropiedad)
-        console.log(formData)
+    async function sendData(e){
+        e.preventDefault()
+        await fillData()
+        const response= await fetch(endpointPostProducto, {
+        "method": "POST",
+        "body": JSON.stringify(formData),
+        "headers": {
+            "content-type": "application/json"
+            }
+        })
+        if(response.status === 200){
+            //const data = await response.json();
+            console.log("Producto creado")
+        }
     }
 
     return(
         <>
         <Heading titulo="Administracion"/>
         <h2 className="h2CreacionProducto">Crear propiedad</h2>
-        <div className="contenedor">
-            <div className="divFormulario">
-                <form className="formularioCreacionProducto">
+        <div className="contenedorPadreProducto">
+            <div className="divContenedorFormularioProducto">
+                <form onSubmit={sendData} className="formularioCreacionProducto">
                     <div className="primerBloqueInputs">
                         <div className="contenedorLabelInput">
                             <label className="labelCreacionProducto" name="nombreProducto">Nombre de la propiedad</label>
-                            <input className="inputCreacionProducto" type="text" onChange={(e)=>setNombrePropiedad(e.target.value)} required></input>
+                            <input className="inputCreacionProducto claseEncontrada" type="text" onChange={(e)=>setNombrePropiedad(e.target.value)} required></input>
                         </div>
 
                         <div className="contenedorLabelInput">
@@ -141,7 +183,7 @@ function CreacionProducto(props){
                             <div>
                                 <h4 className="h4CreacionProducto">Politicas de cancelacion</h4>
                                 <label className="labelCreacionProducto" name="politicasProducto">Descripcion</label>
-                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setPoliticasPropiedad(e.target.value)} required></textarea>
+                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setCancelacionPropiedad(e.target.value)} required></textarea>
                             </div>
                         </div>
                     </div>
@@ -152,12 +194,9 @@ function CreacionProducto(props){
                                 <input className="inputCreacionProducto custom-file-input" type="file" onChange={onFileChange} required multiple ></input>    
                             </div>
                         </div>
-                        <p>
-                            {files}
-                        </p>
                     </div>
                     <div className="contenedorBoton">
-                    <button className="cardBtn botonCreacionProducto" onClick={sendData}>Crear Producto</button>
+                    <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
                     </div>
                 </form>
             </div>

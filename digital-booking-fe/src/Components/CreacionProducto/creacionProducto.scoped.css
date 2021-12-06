@@ -13,7 +13,7 @@ option{
     border-bottom: solid #1DBEB4;
 }
 
-.contenedor, .h2CreacionProducto{
+.contenedorPadreProducto, .h2CreacionProducto{
     background-color:#383b5818;
 }
 
@@ -32,7 +32,7 @@ option{
     margin-left: 0px;
 }
 
-.divFormulario{
+.divContenedorFormularioProducto{
     margin: 0px 0px 10px 0px;
     background-color: white;
     box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.2);
@@ -155,14 +155,14 @@ hr{
         padding-top: 30px;
     }
 
-    .contenedor{
+    .contenedorPadreProducto{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .divFormulario{
+    .divContenedorFormularioProducto{
         width: 90vw;
         border-radius: 5pt;
     }

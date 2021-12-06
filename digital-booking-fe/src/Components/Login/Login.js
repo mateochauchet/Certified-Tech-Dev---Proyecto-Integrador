@@ -29,6 +29,10 @@ const Login = () => {
             MySwal.fire(`${mensaje}`)
     }, [mensaje]);
     
+    useEffect(() => {
+        console.log(contextLoginRegistro.id)
+    }, [contextLoginRegistro]);
+    
     // Funcion para setear el contexto de usuario logueado
     async function login() {
         const dataParaLogin = {
@@ -61,7 +65,8 @@ const Login = () => {
 
 
     return (
-
+        <>
+        
         <div className="background">
 
 
@@ -77,15 +82,16 @@ const Login = () => {
                     <input type="password" id="password" name="password" value={values.password || ''} onChange={handleChange} className={errors.password && selectedFields.includes("password") ? "inputError" : undefined }></input>
                     {(errors.password && isSubmitting.current && (<div className="errorBox"><p className="errorDesc">{errors.password}</p></div>)) || (errors.password && selectedFields.includes("password") && (<div className="errorBox"><p className="errorDesc">{errors.password}</p></div>))}
 
-                    <input type="submit" value="Ingresar"></input>
+                    <input type="submit" value="Ingresar" className="botonSubmit"></input>
                     {(validCredentials === false && (<div className="errorBox"><p className="errorDesc">Por favor, vuelva a intentarlo sus credenciales son inválidas</p></div>))}
 
                 </form>
                 <p>¿Aún no tenes cuenta? <Link className="link" to='/registro'>Registrate</Link></p>
             </div>
         </div>
-
+</>
     );
+    
 }
 
 export default Login

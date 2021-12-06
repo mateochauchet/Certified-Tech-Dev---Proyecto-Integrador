@@ -46,10 +46,6 @@
   width: 10%;
 }
 
-.rolUsuario{
-  display: none;
-}
-
 /* tablet */
 @media screen and (min-width: 768px) {
 
@@ -73,22 +69,6 @@
   }
   .header_logo {
     width: 80%;
-  }
-
-  .rolUsuario{
-    display: inline-flex;
-    align-self: center;
-  }
-
-  .linkAdmin{
-    text-decoration: none;
-    padding: 25px 7px;
-    font-size: 1.4rem;
-    color: #545776;
-  }
-
-  .admin{
-    margin-top: 15px;
   }
   
 }

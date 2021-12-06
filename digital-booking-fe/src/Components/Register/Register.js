@@ -107,13 +107,13 @@ const Register = () => {
                     
                     <label htmlFor="rol">Rol de usuario</label>
                     <select id="rol" name="rol" value={values.rol || ''} onChange={handleChange} className={errors.rol && selectedFields.includes("rol") ? "inputError" : undefined}>
-                        <option value="¿Que tipo de usuario queres ser?">¿Que tipo de usuario queres ser?</option>
+                        <option value="¿Que tipo de usuario queres ser">¿Qué tipo de usuario querés ser?</option>
                         <option value="1">Cliente</option>
                         <option value="2">Anfitrión</option>
                     </select>
 
 
-                    <input type="submit" value="Crear cuenta"></input>
+                    <input type="submit" value="Crear cuenta" className="botonSubmit"></input>
                     <div className={avisoFalloRegistro}>Lamentablemente no ha podido registrarse. Por favor intente más tarde</div>
                 </form>
                 <p>¿Ya tienes una cuenta? <Link className="link" to='/login'>Iniciar sesión</Link></p>

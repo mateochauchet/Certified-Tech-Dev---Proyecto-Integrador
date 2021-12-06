@@ -11,6 +11,8 @@ import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
+import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto"
+import SkeletonCategorias from "./Skeleton/SkeletonCategorias"
 // import Favoritos from "./Components/MisFavoritos/Favoritos";
 import "./App.css";
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
@@ -29,9 +31,9 @@ import ReservaNoEfectuada from "./Components/ReservaNoEfectuada/ReservaNoEfectua
 export default function App() {
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
   const [contextUser, setContextUser] = useState("");
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState(null);
   const [cityList, setCityList] = useState([]);
-  const [categoryList, setCategoryList] = useState([]);
+  const [categoryList, setCategoryList] = useState(null);
   const [listaCaracteristicas, setListaCaracteristicas] = useState([]);
   const [reservedList, setReservedList] = useState("");
   const [filtro, setFiltro] = useState("todos");
@@ -112,31 +114,18 @@ export default function App() {
                 exact
                 path="/home"
                 component={() => (
-                  <Template
-                    home={true}
-                    direccion="/login"
-                    nombreBoton="Iniciar sesión"
-                    direccion2="/registro"
-                    nombreBoton2="Crear cuenta"
-                    categoriaAll={categoriaAll}
-                  >
-                    <ContenedorBuscador
-                      list={cityList}
-                      cambiarCiudad={cambiarCiudad}
-                    />
-                    <ContenedorCard
-                      categorias={categoryList}
-                      cambiarCategoria={cambiarCategoria}
-                    />
-                    <CardsContainer
-                      list={productList}
-                      filtro={filtro}
-                      filtro2={reservedList}
-                      tituloComponente="Recomendaciones"
-                    />
+                  <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
+                    <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
+                    {categoryList ? (
+                    <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} /> ):<SkeletonCategorias/>}
+                    {productList ? (
+                    <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>):<SkeletonCardsProducto/>}
                   </Template>
                 )}
+                  
+                
               />
+
               <Route
                 path={["/login/:mensaje", "/login"]}
                 component={() => (

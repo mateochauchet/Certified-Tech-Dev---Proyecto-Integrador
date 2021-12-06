@@ -49,6 +49,11 @@
     color: #b9b9b9;
 }
 
+.selectHorario:focus{
+    border: solid #1DBEB4 1px;
+    outline: none;
+}
+
 /* .errorVisible{
     border: red;
     color:red;
