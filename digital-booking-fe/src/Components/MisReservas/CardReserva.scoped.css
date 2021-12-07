@@ -43,7 +43,7 @@ padding-bottom: 2%;
 
 @media screen and (min-width: 768px ) {
     .containerReserva{
-        width: 95%;
+        width: 94%;
         border-radius: 8px;
         margin-left: 2%;
         }
@@ -62,11 +62,9 @@ padding-bottom: 2%;
 }
 
 @media screen and (min-width: 1000px ) {
-    /* .containerReserva{
-     margin-left: 70%;
-     width: 10%;
-     border-radius: 8px;
-     
-    } */
+    .containerReserva{
+     width: 88%; 
+    }
+
 
 }
