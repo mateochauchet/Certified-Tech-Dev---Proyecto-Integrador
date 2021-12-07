@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext} from "react";
 import Heading from "../Detalle/Heading";
 import "./creacionProducto.scoped.css";
 import Axios from "axios";
+import ContextUser from "../Contexts/ContextUser";
 
 
 
@@ -21,6 +22,8 @@ function CreacionProducto(props){
     const [sysPropiedad, setSySPropiedad] = useState("")
     const [cancelacionPropiedad, setCancelacionPropiedad] = useState("")
     const [grupoAtributos, setGrupoAtributos] = useState([]);
+    const {contextUser} = useContext(ContextUser);
+    let producto;
 
     let optionsCategorias =
         props.categorias.map((categoria) => {
@@ -45,6 +48,7 @@ function CreacionProducto(props){
         setGrupoAtributos(grupoAtributos)
     }, [grupoAtributos])
 
+
     let nombreAtributos =
         props.caracteristicas.map((caracteristica)=>{
            
@@ -54,7 +58,8 @@ function CreacionProducto(props){
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
                             setGrupoAtributos([...grupoAtributos, e.target.value])
-                            console.log(grupoAtributos)
+                            console.log(grupoAtributos);
+                            //console.log(createObject);
                         }else if(e.target.checked == false){
                             grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
                             console.log(grupoAtributos)
@@ -64,19 +69,23 @@ function CreacionProducto(props){
             )
         })
 
-    const [ producto, setProducto] = useState()
     
     //FUNCIONES
     
+    const createObjectAtributos = grupoAtributos.map((atributo)=>
+        ({nombre: atributo})
+    )
+
     const onFileChange = (e) => {
         if(e.target && e.target.files){
-            //console.log(e.target.files)
-            formData.append("imagenes", e.target.files)
+            console.log(e.target.files)
+            formData.append("imagenes", e.target.files[0])
+            console.log("hols")
         }
     }
 
     const fillData = () =>{
-        setProducto(
+        producto = 
             {
                 nombre: nombrePropiedad,
                 categoria: {
@@ -88,33 +97,35 @@ function CreacionProducto(props){
                 latitud: latitudPropiedad,
                 longitud: longitudPropiedad,
                 descripcion: descripcionPropiedad,
-                puntaje: 4,
-                caracteristicas: {
-                    nombre: grupoAtributos
-                },
+                puntaje: 7,
+                caracteristicas: createObjectAtributos,
                 norma: normasPropiedad,
                 saludSeguridad: sysPropiedad,
                 cancelacion: cancelacionPropiedad
             }
-        )
-        formData.append("producto", producto)
+        formData.append("producto", JSON.stringify(producto))
     }
 
     async function sendData(e){
         e.preventDefault()
         await fillData()
-        const response= await fetch(endpointPostProducto, {
+        console.log(producto)
+        const response = await fetch(endpointPostProducto, {
         "method": "POST",
-        "body": JSON.stringify(formData),
+        "body": formData,
         "headers": {
-            "content-type": "application/json"
-            }
+            "Authorization": "Bearer " + contextUser,
+            /*"accept": "application/json",*/
+            //"boundary": "ebf9f03029db4c2799ae16b5428b06bd"
+        }
         })
         if(response.status === 200){
             //const data = await response.json();
             console.log("Producto creado")
         }
     }
+
+
 
     return(
         <>
@@ -196,7 +207,7 @@ function CreacionProducto(props){
                         </div>
                     </div>
                     <div className="contenedorBoton">
-                    <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
+                    <button className="cardBtn botonCreacionProducto" >Crear verga</button>
                     </div>
                 </form>
             </div>
