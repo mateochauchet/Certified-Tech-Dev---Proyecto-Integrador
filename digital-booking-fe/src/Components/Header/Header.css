@@ -120,6 +120,33 @@
         gap: 1%;
         margin-top: 1%;
       }
+
+      .rolUsuario{
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        width: 15%;
+        /* text-align: end; */
+        margin-right: 2%;
+        padding-top: 2%;
+        margin-bottom: 1%;
+      }
+      .admin{
+      font-size: 12px;
+      width: 80%;
+      margin: -11px;
+      text-align: end;
+      padding-top: 5%;
+      font-weight: 900;
+  
+      
+      }
+      .linkAdmin{
+        text-decoration: none;
+        color:#383b58;
+        font-weight: bold;
+        width: 100%;
+      }
       .icon-line{
         color:#1dbeb4;
         font-size: 2.3rem;

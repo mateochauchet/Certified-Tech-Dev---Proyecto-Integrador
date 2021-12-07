@@ -3,17 +3,19 @@
 .containerReserva{
 color: #383B58;
 background-color: #383b581e;
-/* background-color: white; */
 padding-left: 16px;
-box-shadow: 0px 2px 5px #383b581e;
-border-top-left-radius: 8px;
-border-top-right-radius: 8px;
+box-shadow: 0px 1px 3px #101010;
+border-radius: 8px;
+width: 90%;
+margin-left: 2.5%;
+margin-top: 5%;
+
 }
 
 .containerInfo{
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
 }
 h2{
     margin-bottom: 15px;
@@ -21,7 +23,9 @@ h2{
     font-weight: 500;
 }
 .horario{
-    width: 50%;
+    padding-top: 1%;
+    margin-bottom: 1%;
+    
 }
 
 span{
@@ -29,7 +33,7 @@ span{
 }
 
 .infoFechas{
-width: 50%;
+width: 90%;
 display: flex;
 flex-direction: column;
 padding-right: 16px;
@@ -39,39 +43,28 @@ padding-bottom: 2%;
 
 @media screen and (min-width: 768px ) {
     .containerReserva{
-        color: #383B58;
-        background-color: #383b581e;
-        /* background-color: white; */
-        padding-left: 16px;
-        box-shadow: 0px 2px 5px #383b581e;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+        width: 94%;
+        border-radius: 8px;
+        margin-left: 2%;
         }
-        
+
         .containerInfo{
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            flex-direction: row;
+            width: 100%;
         }
-        h2{
-            margin-bottom: 15px;
-            padding-top: 2%;
-            font-weight: 500;
-        }
-        .horario{
-            width: 50%;
-        }
-        
-        span{
-            font-weight: 100;
-        }
-        
+
         .infoFechas{
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        padding-right: 16px;
-        gap: 5px;
-        padding-bottom: 2%;
+            width: 50%;
+            flex-direction: column;
+            padding-left: 16px;
         }
+}
+
+@media screen and (min-width: 1000px ) {
+    .containerReserva{
+     width: 88%; 
+    }
+
+
 }
