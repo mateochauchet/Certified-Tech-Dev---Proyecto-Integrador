@@ -1,7 +1,9 @@
 package com.booking.controller;
 
+import com.booking.entity.Categoria;
 import com.booking.entity.Producto;
 import com.booking.exceptions.InvalidDataException;
+import com.booking.exceptions.NotValidImageException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.IProductoService;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -23,6 +25,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.zip.DataFormatException;
 
 @Controller
@@ -69,6 +72,8 @@ public class ProductoController {
         LocalDate fecha_fin2 = LocalDate.parse(fecha_fin, DateTimeFormatter.ofPattern( "yyy-MM-dd"));
         return  new ResponseEntity<>(productoService.getProductsOfReservaByDate(fecha_inicio2,fecha_fin2),HttpStatus.OK);
     }
+
+
 
 
 

@@ -1,6 +1,8 @@
 package com.booking.service.impl;
 
+import com.booking.entity.Rol;
 import com.booking.entity.Usuario;
+import com.booking.repository.IRolRepository;
 import com.booking.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -19,38 +22,39 @@ import java.util.Set;
 public class UserSecurityService implements UserDetailsService {
 
     private final IUsuarioRepository usuarioRepository;
+    private final IRolRepository rolRepository;
 
     @Autowired
-    public UserSecurityService(IUsuarioRepository usuarioRepository) {
+    public UserSecurityService(IUsuarioRepository usuarioRepository, IRolRepository rolRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.rolRepository = rolRepository;
 
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        Set<GrantedAuthority> autorizacionC = new HashSet<>();
-        Set<GrantedAuthority> autorizacionA = new HashSet<>();
-
-        GrantedAuthority autorizacionCliente = new SimpleGrantedAuthority("ROLE_CLIENT");
-        GrantedAuthority autorizacionAdmin = new SimpleGrantedAuthority("ROLE_ADMIN");
-
-        autorizacionC.add(autorizacionCliente);
-        autorizacionA.add(autorizacionAdmin);
-
+        Set<GrantedAuthority> autorizacion = new HashSet<>();
+        List<Rol> roles = rolRepository.findAll();
         Optional<Usuario> usuario = usuarioRepository.findByEmail(s);
-
-
-        if(usuario.get().getRol().getId() == 1){
+        if(usuario.isPresent()){
+            GrantedAuthority autorizacionUsuario = new SimpleGrantedAuthority(obtenerRol(usuario.get().getRol().getId(),roles).getNombre());
+            autorizacion.add(autorizacionUsuario);
             return new User(usuario.get().getEmail(),usuario.get().getPassword(),true,true,
-                    true,true,autorizacionC);
+                    true,true,autorizacion);
+
         }
-        else if(usuario.get().getRol().getId() == 2){
-            return new User(usuario.get().getEmail(),usuario.get().getPassword(),true,true,
-                    true,true,autorizacionA);
-        }else
+        else
             throw new UsernameNotFoundException("no se encontro al usuario con email: ");
+    }
 
+    private Rol obtenerRol(Long id, List<Rol> roles){
+        Rol rol2 = null;
+        for (Rol rol: roles) {
+            if(rol.getId() == id)
+                rol2 =  rol;
+        }
+        return  rol2;
     }
 
 }

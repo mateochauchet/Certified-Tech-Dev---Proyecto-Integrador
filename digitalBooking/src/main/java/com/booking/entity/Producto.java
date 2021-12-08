@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -74,27 +75,37 @@ public class Producto {
     @Setter
     private String longitud;
 
+    @Column(name="titulo_descripcion", length = 1000)
+    @Size(max = 1000)
+    @NotNull
+    @Getter
+    @Setter
+    private String titulo_descripcion;
+
     @Getter
     @Setter
     @ManyToOne
+    @NotNull
     @JoinColumn(name="id_categoria",  nullable = false)
     private Categoria categoria;
 
     @Getter
     @Setter
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad", nullable = false)
     private Ciudad ciudad;
 
     @Getter
     @Setter
+    @NotNull
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "producto")
     @JsonIgnoreProperties({"producto"})
     private Set<Imagen> imagenes = new HashSet<>();
 
     @Getter
     @Setter
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "productos_caracteristica",
             joinColumns = @JoinColumn(name = "id_producto"),
@@ -102,7 +113,7 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas;
 
-    public Producto(String nombre, String descripcion, String norma, String saludSeguridad, String cancelacion, String latitud, String longitud, Integer puntaje,  Categoria categoria, Ciudad ciudad) {
+    public Producto(String nombre, String descripcion, String norma, String saludSeguridad, String cancelacion, String latitud, String longitud, Integer puntaje, String titulo_descripcion,   Categoria categoria, Ciudad ciudad , Set<Caracteristica> caracteristicas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.norma = norma;
@@ -112,9 +123,10 @@ public class Producto {
         this.longitud = longitud;
         this.categoria = categoria;
         this.ciudad = ciudad;
-       this.imagenes = null;
-        this.caracteristicas = null;
+        this.imagenes = null;
         this.puntaje = puntaje;
+        this.titulo_descripcion = titulo_descripcion;
+        this.caracteristicas = caracteristicas;
     }
 
 

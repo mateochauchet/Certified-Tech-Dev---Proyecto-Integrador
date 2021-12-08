@@ -34,11 +34,11 @@ public class ProductoServiceImpl implements IProductoService {
         Set<Imagen> imagenes = new HashSet<>();
         categoriaService.readOne(producto.getCategoria().getId()).get();
         ciudadService.readOne(producto.getCiudad().getId()).get();
-        if(producto.getDescripcion() == null || producto.getNombre() ==null || producto.getPuntaje() == null || producto.getNombre().trim() == "" || producto.getDescripcion().trim() == "")
-            throw  new ResourcesNotFoundException("el campo del nombre o el campo de la descripcion se encuentra vacio o la categoria seleccionada no existe");
+        if(producto.getDescripcion() == null || producto.getNombre() ==null || producto.getPuntaje() == null || producto.getTitulo_descripcion() == null|| producto.getCaracteristicas() == null || producto.getNombre().trim() == "" || producto.getDescripcion().trim() == "" ||  producto.getTitulo_descripcion().trim() == "" || producto.getCaracteristicas().size() == 0)
+            throw  new ResourcesNotFoundException("el campo del nombre o el campo de la descripcion o el campo del titulo de la descripcion  se encuentra vacio o las caracteristicas o no se seleccionaron caracteristicas");
         else if(producto.getDescripcion().trim().length()>250 || producto.getNombre().trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 250 caracteres)\n o el nombre (no puede ser mayor a 50 caracteres) ");
-        Producto producto2 = productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getNorma(),producto.getSaludSeguridad(),producto.getCancelacion(), producto.getLatitud(), producto.getLongitud(),  producto.getPuntaje(), producto.getCategoria(),producto.getCiudad()));
+        Producto producto2 = productoRepository.save(new Producto(producto.getNombre(),producto.getDescripcion(), producto.getNorma(),producto.getSaludSeguridad(),producto.getCancelacion(), producto.getLatitud(), producto.getLongitud(),  producto.getPuntaje(), producto.getTitulo_descripcion(),producto.getCategoria(),producto.getCiudad(), producto.getCaracteristicas()));
         if(files != null && !files.isEmpty() && files.size() > 0) {
             for(int i = 0; i<files.size(); i++){
                 if((!FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("jpg") && !FilenameUtils.getExtension(files.get(i).getOriginalFilename()).equalsIgnoreCase("png"))){
@@ -48,23 +48,24 @@ public class ProductoServiceImpl implements IProductoService {
 
             }
             for(int i = 0; i<files.size(); i++){
-                String imagen = storageService.uploadFile(files.get(i),"/productos/");
+                String imagen = storageService.uploadFile(files.get(i),"productos/");
                 Imagen imagen2 = new Imagen();
                 imagen2.setImagen(imagen);
                 imagen2.setProducto(producto2);
                 imagen2.setTitulo("imagen " + i+1);
                 imagenes.add(imagen2);
             }
+        }else{
+            productoRepository.deleteById(producto2.getId());
+            throw  new ResourcesNotFoundException("No se puede guardar un producto que no contenga ninguna imagen");
         }
+
         producto2.setCaracteristicas(producto.getCaracteristicas());
         producto2.setImagenes(imagenes);
         return productoRepository.save(producto2);
     }
 
-    @Override
-    public Producto update(Producto producto, List<MultipartFile> files) throws InvalidDataException, ResourcesNotFoundException, IOException {
-        return null;
-    }
+
 
     @Override
     public List<Producto> readAll(){

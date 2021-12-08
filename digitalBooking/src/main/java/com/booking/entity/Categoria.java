@@ -23,7 +23,6 @@ public class Categoria {
 
 
     @Id
-    @NotNull
     @Column(name="id_categoria")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
@@ -45,6 +44,7 @@ public class Categoria {
 
     @Getter
     @Setter
+    @NotNull
     @Column(name="url_imagen", length = 100)
     private String imagen;
 

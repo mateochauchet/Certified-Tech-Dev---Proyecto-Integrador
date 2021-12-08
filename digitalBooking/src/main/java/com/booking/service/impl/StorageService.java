@@ -23,9 +23,17 @@ public class StorageService {
     public String uploadFile(MultipartFile file,String directorio) throws IOException {
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
         File fileObj = convertMultipartFileToFile(file);
-        s3Client.putObject(new PutObjectRequest(bucketName, directorio +uuid+file.getName(), fileObj));
-        String  fileURL = s3Client.getUrl(bucketName, directorio +uuid+ file.getName()).toExternalForm();
+        s3Client.putObject(new PutObjectRequest(bucketName, directorio + uuid + file.getName() + ".jpg", fileObj));
+        String  fileURL = s3Client.getUrl(bucketName, directorio +uuid+ file.getName() + ".jpg").toExternalForm() ;
         fileObj.delete();
+        return fileURL;
+    }
+
+    public String uploadFile2(File file,String directorio) throws IOException {
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        s3Client.putObject(new PutObjectRequest(bucketName, directorio + uuid + file.getName() + ".jpg", file));
+        String  fileURL = s3Client.getUrl(bucketName, directorio +uuid+ file.getName() + ".jpg").toExternalForm() ;
+        file.delete();
         return fileURL;
     }
 
