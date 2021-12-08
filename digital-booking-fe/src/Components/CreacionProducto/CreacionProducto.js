@@ -23,6 +23,7 @@ function CreacionProducto(props){
     const [inputUrl, setInputUrl] = useState([{ url: "" }]);
     const [grupoAtributos, setGrupoAtributos] = useState([]);
     const {contextUser} = useContext(ContextUser);
+    const [falloCrearProducto, setFalloCrearProducto] = useState("falloNoVisible")
     const history = useHistory();
     let producto;
 
@@ -118,6 +119,9 @@ function CreacionProducto(props){
         if(response.status === 200){
             history.push('/creacionExitosa')
             console.log("Producto creado");
+        }else{
+            setFalloCrearProducto("falloVisible")
+            console.log("Lamentablemente el producto no ha podido crearse. Por favor intente más tarde");
         }
     }
 
@@ -202,7 +206,7 @@ function CreacionProducto(props){
                             </div>
                         </div>
                     </div>
-                   
+                    <div className={falloCrearProducto}>Lamentablemente el producto no ha podido crearse. Por favor intente más tarde</div>
                     <div className="contenedorBoton">
                         <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
                     </div>
