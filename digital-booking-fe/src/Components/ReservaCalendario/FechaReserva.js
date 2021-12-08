@@ -4,6 +4,10 @@ import { DayPickerRangeController, CalendarDay } from 'react-dates';
 import 'react-dates/initialize';
 import React, { Component } from "react";
 import moment from 'moment';
+
+import isBeforeDay from 'react-dates/lib/utils/isBeforeDay';
+import isAfterDay from 'react-dates/lib/utils/isAfterDay';
+
 import {
     HORIZONTAL_ORIENTATION,
     VERTICAL_ORIENTATION,
@@ -39,12 +43,8 @@ class FechaReserva extends Component {
     isOutsideRange(day) {
         return (moment().diff(day) > 0);
     }
-    isBlocked = momentDate => {
-        const dayNumber = momentDate.format('YYYY-MM-DD');
-        return dayNumber === this.props.reserva  
-    }
 
-    
+   
     
     render() {
         return (
@@ -55,7 +55,8 @@ class FechaReserva extends Component {
 
                         numberOfMonths={1}
                         isOutsideRange={this.isOutsideRange}
-                        isDayBlocked={this.isBlocked}
+                        isDayBlocked={this.props.isBlocked}
+                        disabledDays={this.props.disabledDays}
                         hideKeyboardShortcutsPanel={true}
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
@@ -69,7 +70,8 @@ class FechaReserva extends Component {
                     <DayPickerRangeController
                         numberOfMonths={2}
                         isOutsideRange={this.isOutsideRange}
-                        isDayBlocked={this.isBlocked}
+                        isDayBlocked={this.props.isBlocked}
+                        disabledDays={this.props.disabledDays}
                         enableOutsideDays={false}
                         hideKeyboardShortcutsPanel={true}
                         startDate={this.state.startDate} // momentPropTypes.momentObj or null,

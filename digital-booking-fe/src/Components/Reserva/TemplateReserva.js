@@ -15,13 +15,15 @@ import ContextUser from '../Contexts/ContextUser';
 import { useHistory } from 'react-router-dom';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
+import { DayPicker } from 'react-dates';
+import SkeletonReserva from '../../Skeleton/SkeletonReserva'
+import SkeletonDetalle from '../../Skeleton/SkeletonDetalle'
 
 function TemplateReserva(props) {
-    
+
     const moment = extendMoment(Moment);
-    
     const [productIdList, setProductIdList] = useState(null);
-    const [reserva, setReserva] = useState(null);
+    const [reservas, setReservas] = useState([]);
     const [dateIn, setDateIn] = useState(null);
     const [dateOut, setDateOut] = useState(null);
     const [hora, setHora] = useState(null);
@@ -34,8 +36,8 @@ function TemplateReserva(props) {
     let match = data.filter(producto => producto.id === id)
     let product = match[0]
 
-        
 
+   
     useEffect(() => {
         let ismounted = true;
         getProductosById(id)
@@ -60,39 +62,35 @@ function TemplateReserva(props) {
                 }
             })
 
-
         return () => ismounted = false;
     }, []);
 
     useEffect(() => {
         getReservasByIdProduct(id)
+       
             .then((resJson) => {
                 
-                
-                (resJson.map((r)=>{
-                   
+                let arrayT = (resJson.map((r) => {
+                    let reservedDays;
                     const range = moment.range(r.fechaInicio, r.fechaFinal)
-                    let reservedDays =(Array.from(range.by('day')).map(x => x.format('YYYY-MM-DD')))
-                    console.log(reservedDays)
-                }))
-                
-                
-            })
-    }, []);
-   
-    
-      
-        
-  
-
+                    reservedDays = (Array.from(range.by('day')).map(x =>  (x.format('YYYY-MM-DD') )))
+                    return reservedDays
+                } ));
+                let nuevo = arrayT.flat();
+                setReservas(nuevo);
+            } )
+    }, []); 
 
     const handleChange = (startDate, endDate) => {
         setDateIn(startDate)
         setDateOut(endDate)
     }
-   
 
-    
+    const handleReserva = (momentDate) => {
+        const dayNumber = momentDate.format('YYYY-MM-DD')
+        return reservas.includes(dayNumber)
+    }
+
     const horarioReserva = (event) => {
         const dataHora = event.target.value;
         setHora(dataHora);
@@ -121,7 +119,7 @@ function TemplateReserva(props) {
             }
         } else {
             setErrorForm("avisoFormVisible")
-            console.log("Necesitas llenar todos los campos");
+            
         }
     }
 
@@ -137,7 +135,7 @@ function TemplateReserva(props) {
                             <div className="formularioReserva">
                                 <FormularioReserva /></div>
                             <div className="calendarioReserva">
-                                <FechaReserva handleChange={handleChange} reserva={reserva}  /></div>
+                                <FechaReserva handleChange={handleChange} isBlocked={handleReserva} /></div>
                             <div className="horarioReserva">
                                 <HorarioReserva onChange={horarioReserva} /></div>
                         </div>
@@ -152,7 +150,6 @@ function TemplateReserva(props) {
                                     avisoFalloReserva={avisoFalloReserva}
                                     errorForm={errorForm}
                                 /></div>
-
                         </div>
                     </div>
 
@@ -162,7 +159,7 @@ function TemplateReserva(props) {
                         cancelacion={productIdList.cancelacion} />
                 </>
 
-            ) : <h1>Loading...</h1>
+            ) : <SkeletonReserva />
 
             }
 

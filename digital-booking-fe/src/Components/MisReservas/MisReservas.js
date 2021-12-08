@@ -7,6 +7,7 @@ import ContextUser from "../Contexts/ContextUser.js";
 import CardReserva from "./CardReserva";
 import Card from "../Cards_list/Card";
 import ReservaNoEfectuada from "../ReservaNoEfectuada/ReservaNoEfectuada"
+import { BsFillEmojiNeutralFill } from "react-icons/bs";
 
 export default function MisReservas() {
   const { contextLoginRegistro } = useContext(ContextLoginRegistro);
@@ -25,7 +26,7 @@ export default function MisReservas() {
           }
         }
       ).catch(() => {
-        setDataReserva([true])
+        setDataReserva(null)
       })
 
     return () => (ismounted = false);
