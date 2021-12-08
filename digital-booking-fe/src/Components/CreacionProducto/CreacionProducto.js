@@ -9,6 +9,7 @@ function CreacionProducto(props){
     //VARIABLES
 
     let formData = new FormData();
+    const [uploadFiles, setUploadFiles] = useState(false);
 
 
     const [nombrePropiedad, setNombrePropiedad] = useState("")
@@ -68,8 +69,12 @@ function CreacionProducto(props){
     
     const onFileChange = (e) => {
         if(e.target && e.target.files){
-            //console.log(e.target.files)
-            formData.append("files", e.target.files)
+            let reader = new FileReader();
+            reader.onload = (e2)=>{
+                setUploadFiles(true)
+                formData.append("files", e2.target.files)
+            }
+            reader.readAsDataURL(e.target.files);   
         }
     }
 
@@ -169,9 +174,13 @@ function CreacionProducto(props){
                             </div>
                         </div>
                     </div>
-                    <div className="contenedorBoton">
-                    <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
-                    </div>
+                    {
+                        uploadFiles? (<div className="contenedorBoton">
+                        <button className="cardBtn botonCreacionProducto" disabled>Crear Producto</button>
+                        </div>):(<div className="contenedorBoton">
+                        <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
+                        </div>)
+                    }
                 </form>
             </div>
         </div>
