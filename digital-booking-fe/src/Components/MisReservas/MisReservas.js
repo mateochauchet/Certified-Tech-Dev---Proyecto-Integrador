@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./MisReservas.css";
+import "./MisReservas.scoped.css";
 import Heading from "../Detalle/Heading.js";
 import { getReservationsByIdUsuario } from "../../service/misReservasService.js";
 import ContextLoginRegistro from "../Contexts/ContextLoginRegistro.js";
@@ -20,6 +20,7 @@ export default function MisReservas() {
       .then(
         (resJson) => {
           if (ismounted) {
+            console.log(resJson);
             setDataReserva(resJson);
           }
         }
@@ -30,32 +31,42 @@ export default function MisReservas() {
     return () => (ismounted = false);
   }, []);
 
-  function mapeo(dataReserva) {
+  function mapeo() {
     return (
-      dataReserva.map((reserva, index) => {
+      
+      dataReserva.map((reserva, index) => (
       <>
+      <div className="containerCard">
+        <div className="cardReserva">
         <CardReserva
           key={index}
           checkIn={reserva.fechaInicio}
           checkOut={reserva.fechaFinal}
           hora={reserva.horaDeReserva}
         />
+        </div>
+        <div className="cardInfo">
         <Card key={reserva.producto.id} house={reserva.producto} />
+        </div>
+        </div>
       </>
-    })
+    )
   )
-}
+    )}
 
 return (
   <>
     <div>
       <Heading titulo="Mis Reservas" />
     </div>
-    {
-        dataReserva ?
+    {dataReserva?(
           dataReserva[0] === true ? <ReservaNoEfectuada /> :
-          mapeo(dataReserva)
-        :
+            <>
+            {mapeo()}
+            </>
+            )
+      :
+      
         <h1>Loading...</h1>
     }
   </>

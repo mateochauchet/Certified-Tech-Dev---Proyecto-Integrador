@@ -1,0 +1,59 @@
+@media screen and (min-width: 768px) {
+
+.contenedorPerfilUsuario{
+    position: absolute;
+    background-color: white;
+    border-radius: 6pt;
+    border: grey solid 1px;
+    height: fit-content;
+    width: 200px;
+}
+
+.avatar{
+    margin: 7px 0px;
+}
+
+.linkAdmin{
+    text-decoration: none;
+    padding: 3px 20px;
+    font-size: 0.9em;
+    color: #545776;
+    border: #ccc solid 1px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+    border-radius: 15px;
+  }
+
+.linkAdmin:hover{
+    background-color: #ccc;
+    padding: 7px 24px;
+    font-size: 1rem;
+    transition: 400ms;
+}
+
+  .admin{
+    margin: 5px 0px;
+    padding: 8px;
+    width: fit-content;
+  }
+
+.line{
+    margin-bottom: -10px;
+}
+
+.divNombreApellidoUsuario{
+    margin: 3px 0px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.divMailUsuario{
+    margin: 3px 0px;
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+
+}
+
+@media screen and (min-width: 1280px){
+   
+}

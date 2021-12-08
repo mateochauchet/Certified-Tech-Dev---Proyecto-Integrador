@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext} from "react";
 import Heading from "../Detalle/Heading";
 import "./creacionProducto.scoped.css";
 import Axios from "axios";
+import ContextUser from "../Contexts/ContextUser";
 
 
 
@@ -11,7 +12,7 @@ function CreacionProducto(props){
     let formData = new FormData();
     const [uploadFiles, setUploadFiles] = useState(false);
 
-
+    const endpointPostProducto = "http://localhost:8080/api/productos/";
     const [nombrePropiedad, setNombrePropiedad] = useState("")
     const [categoriaPropiedad, setCategoriaPropiedad] = useState("Seleccione una categoria")
     const [latitudPropiedad, setLatitudPropiedad] = useState("")
@@ -20,14 +21,16 @@ function CreacionProducto(props){
     const [descripcionPropiedad, setDescripcionPropiedad] = useState("")
     const [normasPropiedad, setNormasPropiedad] = useState("")
     const [sysPropiedad, setSySPropiedad] = useState("")
-    const [politicasPropiedad, setPoliticasPropiedad] = useState("")
+    const [cancelacionPropiedad, setCancelacionPropiedad] = useState("")
     const [grupoAtributos, setGrupoAtributos] = useState([]);
+    const {contextUser} = useContext(ContextUser);
+    let producto;
 
     let optionsCategorias =
         props.categorias.map((categoria) => {
             return(
                 <>
-                <option>{categoria.titulo}</option>
+                <option value={categoria.id}>{categoria.titulo}</option>
                 </>
             )
         })
@@ -36,7 +39,7 @@ function CreacionProducto(props){
     props.listaCiudades.map((ciudad) => {
           return(
               <>
-              <option>{ciudad.nombre}</option>
+              <option value={ciudad.id}>{ciudad.nombre}</option>
               </>
           )
     })
@@ -45,6 +48,7 @@ function CreacionProducto(props){
     useEffect(()=>{
         setGrupoAtributos(grupoAtributos)
     }, [grupoAtributos])
+
 
     let nombreAtributos =
         props.caracteristicas.map((caracteristica)=>{
@@ -55,7 +59,8 @@ function CreacionProducto(props){
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
                             setGrupoAtributos([...grupoAtributos, e.target.value])
-                            console.log(grupoAtributos)
+                            console.log(grupoAtributos);
+                            //console.log(createObject);
                         }else if(e.target.checked == false){
                             grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
                             console.log(grupoAtributos)
@@ -64,36 +69,67 @@ function CreacionProducto(props){
                 </>
             )
         })
+
     
     //FUNCIONES
     
+    const createObjectAtributos = grupoAtributos.map((atributo)=>
+        ({nombre: atributo})
+    )
+
     const onFileChange = (e) => {
         if(e.target && e.target.files){
             let reader = new FileReader();
             reader.onload = (e2)=>{
                 setUploadFiles(true)
-                formData.append("files", e2.target.files)
+                formData.append("imagenes", e2.target.files)
             }
             reader.readAsDataURL(e.target.files);   
         }
     }
 
-    const sendData = (e) =>{
-        e.preventDefault()
-
-        
-        formData.append("nombre", nombrePropiedad)
-        formData.append("categoria", categoriaPropiedad)
-        formData.append("ciudad", ciudadPropiedad)
-        formData.append("latitud", latitudPropiedad)
-        formData.append("longitud", longitudPropiedad)
-        formData.append("descripcion", descripcionPropiedad)
-        formData.append("atributos", grupoAtributos)
-        formData.append("normas", normasPropiedad)
-        formData.append("saludSeguridad", sysPropiedad)
-        formData.append("politicas", politicasPropiedad)
-        console.log(formData.get("files"));
+    const fillData = () =>{
+        producto = 
+            {
+                nombre: nombrePropiedad,
+                categoria: {
+                    id: categoriaPropiedad
+                },
+                ciudad: {
+                    id: ciudadPropiedad
+                },
+                latitud: latitudPropiedad,
+                longitud: longitudPropiedad,
+                descripcion: descripcionPropiedad,
+                puntaje: 7,
+                caracteristicas: createObjectAtributos,
+                norma: normasPropiedad,
+                saludSeguridad: sysPropiedad,
+                cancelacion: cancelacionPropiedad
+            }
+        formData.append("producto", JSON.stringify(producto))
     }
+
+    async function sendData(e){
+        e.preventDefault()
+        await fillData()
+        console.log(producto)
+        const response = await fetch(endpointPostProducto, {
+        "method": "POST",
+        "body": formData,
+        "headers": {
+            "Authorization": "Bearer " + contextUser,
+            /*"accept": "application/json",*/
+            //"boundary": "ebf9f03029db4c2799ae16b5428b06bd"
+        }
+        })
+        if(response.status === 200){
+            //const data = await response.json();
+            console.log("Producto creado")
+        }
+    }
+
+
 
     return(
         <>
@@ -162,7 +198,7 @@ function CreacionProducto(props){
                             <div>
                                 <h4 className="h4CreacionProducto">Politicas de cancelacion</h4>
                                 <label className="labelCreacionProducto" name="politicasProducto">Descripcion</label>
-                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setPoliticasPropiedad(e.target.value)} required></textarea>
+                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setCancelacionPropiedad(e.target.value)} required></textarea>
                             </div>
                         </div>
                     </div>

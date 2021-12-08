@@ -50,6 +50,11 @@ function TemplateReserva(props) {
                         ubicacion: resJson[0].ciudad.nombre + (' ') + resJson[0].ciudad.pais,
                         imagenes: resJson[0].imagenes[0].imagen,
                         descripcion: resJson[0].descripcion,
+                        longitud: resJson[0].longitud,
+                        latitud: resJson[0].latitud,
+                        norma: resJson[0].norma,
+                        saludSeguridad: resJson[0].saludSeguridad,
+                        cancelacion: resJson[0].cancelacion
                     }
                     setProductIdList(houseData);
                 }
@@ -152,9 +157,9 @@ function TemplateReserva(props) {
                     </div>
 
                     <PoliticsContainer
-                        normas={product.politicas.normas}
-                        saludSeguridad={product.politicas.saludSeguridad}
-                        cancelacion={product.politicas.cancelacion} />
+                        normas={productIdList.norma}
+                        saludSeguridad={productIdList.saludSeguridad}
+                        cancelacion={productIdList.cancelacion} />
                 </>
 
             ) : <h1>Loading...</h1>
