@@ -10,8 +10,6 @@ function CreacionProducto(props){
     //VARIABLES
 
     let formData = new FormData();
-    const [uploadFiles, setUploadFiles] = useState(false);
-
     const endpointPostProducto = "http://localhost:8080/api/productos/";
     const [nombrePropiedad, setNombrePropiedad] = useState("")
     const [categoriaPropiedad, setCategoriaPropiedad] = useState("Seleccione una categoria")
@@ -59,8 +57,6 @@ function CreacionProducto(props){
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
                             setGrupoAtributos([...grupoAtributos, e.target.value])
-                            console.log(grupoAtributos);
-                            //console.log(createObject);
                         }else if(e.target.checked == false){
                             grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
                             console.log(grupoAtributos)
@@ -70,7 +66,6 @@ function CreacionProducto(props){
             )
         })
 
-    
     //FUNCIONES
     
     const createObjectAtributos = grupoAtributos.map((atributo)=>
@@ -78,15 +73,14 @@ function CreacionProducto(props){
     )
 
     const onFileChange = (e) => {
-        if(e.target && e.target.files){
-            let reader = new FileReader();
-            reader.onload = (e2)=>{
-                setUploadFiles(true)
-                formData.append("imagenes", e2.target.files)
+        if(e.target && e.target.files){   
+            for (let index = 0; index < e.target.files.length; index++){
+                formData.append('imagenes', e.target.files[index])           
             }
-            reader.readAsDataURL(e.target.files);   
-        }
+        }                    
+           
     }
+    
 
     const fillData = () =>{
         producto = 
@@ -113,19 +107,15 @@ function CreacionProducto(props){
     async function sendData(e){
         e.preventDefault()
         await fillData()
-        console.log(producto)
         const response = await fetch(endpointPostProducto, {
         "method": "POST",
         "body": formData,
         "headers": {
             "Authorization": "Bearer " + contextUser,
-            /*"accept": "application/json",*/
-            //"boundary": "ebf9f03029db4c2799ae16b5428b06bd"
         }
         })
         if(response.status === 200){
-            //const data = await response.json();
-            console.log("Producto creado")
+            console.log("Producto creado");
         }
     }
 
@@ -137,7 +127,7 @@ function CreacionProducto(props){
         <h2 className="h2CreacionProducto">Crear propiedad</h2>
         <div className="contenedorPadreProducto">
             <div className="divContenedorFormularioProducto">
-                <form onSubmit={sendData} className="formularioCreacionProducto">
+                <form onSubmit={sendData} className="formularioCreacionProducto" encType="multipart/form-data">
                     <div className="primerBloqueInputs">
                         <div className="contenedorLabelInput">
                             <label className="labelCreacionProducto" name="nombreProducto">Nombre de la propiedad</label>
@@ -210,13 +200,11 @@ function CreacionProducto(props){
                             </div>
                         </div>
                     </div>
-                    {
-                        uploadFiles? (<div className="contenedorBoton">
-                        <button className="cardBtn botonCreacionProducto" disabled>Crear Producto</button>
-                        </div>):(<div className="contenedorBoton">
+                   
+                    <div className="contenedorBoton">
                         <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
-                        </div>)
-                    }
+                    </div>
+                    
                 </form>
             </div>
         </div>
