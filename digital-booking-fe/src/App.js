@@ -230,7 +230,7 @@ export default function App() {
                     direccion2="/registro"
                     nombreBoton2="Crear cuenta"
                   >
-                    <CreacionProductoParalelo
+                    <CreacionProducto
                       categorias={categoryList}
                       listaCiudades={cityList}
                       caracteristicas={listaCaracteristicas}

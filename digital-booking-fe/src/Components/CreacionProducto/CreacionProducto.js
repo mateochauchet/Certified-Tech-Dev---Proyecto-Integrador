@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useContext} from "react";
 import Heading from "../Detalle/Heading";
 import "./creacionProducto.scoped.css";
-import Axios from "axios";
 import ContextUser from "../Contexts/ContextUser";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 function CreacionProducto(props){
     //VARIABLES
 
     let formData = new FormData();
-
     const endpointPostProducto = "http://localhost:8080/api/productos/";
     const [nombrePropiedad, setNombrePropiedad] = useState("")
     const [categoriaPropiedad, setCategoriaPropiedad] = useState("Seleccione una categoria")
@@ -21,6 +19,7 @@ function CreacionProducto(props){
     const [normasPropiedad, setNormasPropiedad] = useState("")
     const [sysPropiedad, setSySPropiedad] = useState("")
     const [cancelacionPropiedad, setCancelacionPropiedad] = useState("")
+    const [inputUrl, setInputUrl] = useState([{ url: "" }]);
     const [grupoAtributos, setGrupoAtributos] = useState([]);
     const {contextUser} = useContext(ContextUser);
     let producto;
@@ -43,10 +42,12 @@ function CreacionProducto(props){
           )
     })
 
-    //const [clase, setClase] = useState();
     useEffect(()=>{
-        setGrupoAtributos(grupoAtributos)
-    }, [grupoAtributos])
+        if(inputUrl){
+        setInputUrl(inputUrl)
+        console.log(inputUrl)
+        }
+    }, [inputUrl])
 
 
     let nombreAtributos =
@@ -54,12 +55,11 @@ function CreacionProducto(props){
            
             return(
                 <>
+                <FontAwesomeIcon icon={caracteristica.icono} />
                     <label className="labelAtributos"><input type="checkbox" name={caracteristica.nombre} value={caracteristica.nombre}
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
-                            setGrupoAtributos([...grupoAtributos, e.target.value])
-                            console.log(grupoAtributos);
-                            //console.log(createObject);
+                            setGrupoAtributos([...grupoAtributos, {nombre: e.target.value, icono: caracteristica.icono}])
                         }else if(e.target.checked == false){
                             grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
                             console.log(grupoAtributos)
@@ -69,20 +69,17 @@ function CreacionProducto(props){
             )
         })
 
-    
     //FUNCIONES
-    
-    const createObjectAtributos = grupoAtributos.map((atributo)=>
-        ({nombre: atributo})
-    )
 
     const onFileChange = (e) => {
-        if(e.target && e.target.files){
-            console.log(e.target.files)
-            formData.append("imagenes", e.target.files[0])
-            console.log("hols")
-        }
+        if(e.target && e.target.files){   
+            for (let index = 0; index < e.target.files.length; index++){
+                formData.append('imagenes', e.target.files[index])           
+            }
+        }                    
+           
     }
+    
 
     const fillData = () =>{
         producto = 
@@ -98,7 +95,7 @@ function CreacionProducto(props){
                 longitud: longitudPropiedad,
                 descripcion: descripcionPropiedad,
                 puntaje: 7,
-                caracteristicas: createObjectAtributos,
+                caracteristicas: grupoAtributos,
                 norma: normasPropiedad,
                 saludSeguridad: sysPropiedad,
                 cancelacion: cancelacionPropiedad
@@ -109,19 +106,15 @@ function CreacionProducto(props){
     async function sendData(e){
         e.preventDefault()
         await fillData()
-        console.log(producto)
         const response = await fetch(endpointPostProducto, {
         "method": "POST",
         "body": formData,
         "headers": {
             "Authorization": "Bearer " + contextUser,
-            /*"accept": "application/json",*/
-            //"boundary": "ebf9f03029db4c2799ae16b5428b06bd"
         }
         })
         if(response.status === 200){
-            //const data = await response.json();
-            console.log("Producto creado")
+            console.log("Producto creado");
         }
     }
 
@@ -133,15 +126,15 @@ function CreacionProducto(props){
         <h2 className="h2CreacionProducto">Crear propiedad</h2>
         <div className="contenedorPadreProducto">
             <div className="divContenedorFormularioProducto">
-                <form onSubmit={sendData} className="formularioCreacionProducto">
+                <form onSubmit={sendData} className="formularioCreacionProducto" encType="multipart/form-data">
                     <div className="primerBloqueInputs">
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" name="nombreProducto">Nombre de la propiedad</label>
-                            <input className="inputCreacionProducto claseEncontrada" type="text" onChange={(e)=>setNombrePropiedad(e.target.value)} required></input>
+                            <label className="labelCreacionProducto" htmlFor="nombreProducto">Nombre de la propiedad</label>
+                            <input className="inputCreacionProducto claseEncontrada" name="nombreProducto" type="text" onChange={(e)=>setNombrePropiedad(e.target.value)} required></input>
                         </div>
 
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" name="categoriaPropiedad">Categoria</label>
+                            <label className="labelCreacionProducto" >Categoria</label>
                             <select className="inputCreacionProducto" value={categoriaPropiedad} onChange={(e)=>setCategoriaPropiedad(e.target.value)} required>
                                 <option selected>Seleccione una categoria</option>
                                 {optionsCategorias}
@@ -149,7 +142,7 @@ function CreacionProducto(props){
                         </div>
 
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" name="ciudadProducto">Ciudad</label>
+                            <label className="labelCreacionProducto">Ciudad</label>
                             <select className="inputCreacionProducto" value={ciudadPropiedad} onChange={(e)=>setCiudadPropiedad(e.target.value)} required>
                                 <option selected>Seleccione una ciudad</option>
                                 {optionsCiudades}
@@ -157,18 +150,18 @@ function CreacionProducto(props){
                         </div>
 
                         <div className="contenedorLabelInput latitudLongitud">
-                            <label className="labelCreacionProducto" name="direccionProducto">Latitud</label>
-                            <input className="inputCreacionProducto" type="text" required onChange={(e)=>setLatitudPropiedad(e.target.value)}></input>
+                            <label className="labelCreacionProducto" htmlFor="latitudProducto">Latitud</label>
+                            <input className="inputCreacionProducto" name="latitudProducto" type="number" required onChange={(e)=>setLatitudPropiedad(e.target.value)}></input>
                         </div>
 
                         <div className="contenedorLabelInput latitudLongitud">
-                            <label className="labelCreacionProducto" name="direccionProducto">Longitud</label>
-                            <input className="inputCreacionProducto" type="text" required onChange={(e)=>setLongitudPropiedad(e.target.value)}></input>
+                            <label className="labelCreacionProducto" htmlFor="longitudProducto">Longitud</label>
+                            <input className="inputCreacionProducto" name="longitudProducto" type="number" required onChange={(e)=>setLongitudPropiedad(e.target.value)}></input>
                         </div>
                     </div>
                     <div>
-                        <label className="labelCreacionProducto" namw="descripcionProducto">Descripcion</label>
-                        <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setDescripcionPropiedad(e.target.value)} placeholder="Escriba aqui" required></textarea>
+                        <label className="labelCreacionProducto" htmlFor="descripcionProducto">Descripcion</label>
+                        <textarea className="inputCreacionProducto inputTextarea" name="descripcionProducto" onChange={(e)=>setDescripcionPropiedad(e.target.value)} placeholder="Escriba aqui" required></textarea>
                     </div>
 
                     <div>
@@ -183,18 +176,18 @@ function CreacionProducto(props){
                         <div className="contenedorPoliticas">
                             <div>
                                 <h4 className="h4CreacionProducto">Normas de la casa</h4>
-                                <label className="labelCreacionProducto" name="normasProducto">Descripcion</label>
-                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setNormasPropiedad(e.target.value)} required></textarea>
+                                <label className="labelCreacionProducto" htmlFor="normasProducto">Descripcion</label>
+                                <textarea className="inputCreacionProducto inputTextarea" name="normasProducto" onChange={(e)=>setNormasPropiedad(e.target.value)} required></textarea>
                             </div>
                             <div>
                                 <h4 className="h4CreacionProducto">Salud y seguridad</h4>
-                                <label className="labelCreacionProducto" name="seguridadProducto">Descripcion</label>
-                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setSySPropiedad(e.target.value)} required></textarea>
+                                <label className="labelCreacionProducto" htmlFor="seguridadProducto">Descripcion</label>
+                                <textarea className="inputCreacionProducto inputTextarea" name="seguridadProducto" onChange={(e)=>setSySPropiedad(e.target.value)} required></textarea>
                             </div>
                             <div>
                                 <h4 className="h4CreacionProducto">Politicas de cancelacion</h4>
-                                <label className="labelCreacionProducto" name="politicasProducto">Descripcion</label>
-                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setCancelacionPropiedad(e.target.value)} required></textarea>
+                                <label className="labelCreacionProducto" htmlFor="cancelacionProducto">Descripcion</label>
+                                <textarea className="inputCreacionProducto inputTextarea" htmlFor="cancelacionProducto" onChange={(e)=>setCancelacionPropiedad(e.target.value)} required></textarea>
                             </div>
                         </div>
                     </div>
@@ -206,9 +199,11 @@ function CreacionProducto(props){
                             </div>
                         </div>
                     </div>
+                   
                     <div className="contenedorBoton">
-                    <button className="cardBtn botonCreacionProducto" >Crear producto</button>
+                        <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
                     </div>
+                    
                 </form>
             </div>
         </div>
