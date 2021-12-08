@@ -117,13 +117,25 @@ export default function App() {
                   <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
                     <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
                     {categoryList ? (
-                    <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} /> ):<SkeletonCategorias/>}
+                      <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />) : <SkeletonCategorias />}
                     {productList ? (
-                    <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>):<SkeletonCardsProducto/>}
+                      <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones" />) : <SkeletonCardsProducto />}
                   </Template>
                 )}
-                  
-                
+              />
+
+              <Route
+                exact
+                path="/"
+                component={() => (
+                  <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
+                    <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
+                    {categoryList ? (
+                      <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />) : <SkeletonCategorias />}
+                    {productList ? (
+                      <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones" />) : <SkeletonCardsProducto />}
+                  </Template>
+                )}
               />
 
               <Route

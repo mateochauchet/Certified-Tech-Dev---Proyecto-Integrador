@@ -4,7 +4,7 @@ function Cancellation({cancelacion}){
     return(
         
             <div>
-                <p>{cancelacion.preSeleccionFecha}</p>
+                <p>{cancelacion}</p>
             </div>
         )
     

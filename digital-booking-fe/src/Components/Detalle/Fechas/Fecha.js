@@ -19,7 +19,6 @@ class Fecha extends Component {
         this.state = {
             startDate: null,
             endDate: null,
-            
         }
     }
     

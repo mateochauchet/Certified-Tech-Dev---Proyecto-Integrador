@@ -19,8 +19,7 @@ function ContainerDetalle() {
 
     const { id } = useParams()
     console.log(id)
-    let match = data.filter(producto => producto.id === id)
-    let product = match[0]
+
 
     useEffect(() => {
         let ismounted = true;
@@ -32,10 +31,17 @@ function ContainerDetalle() {
                         id: resJson[0].id,
                         titulo: resJson[0].nombre,
                         categoria: resJson[0].categoria.titulo,
-                        ubicacion: resJson[0].ciudad.nombre,
+                        ubicacion: resJson[0].ciudad.nombre + ' - ' +resJson[0].ciudad.pais,
+                        location: resJson[0].nombre + ', ' + resJson[0].ciudad.nombre + ' - ' +resJson[0].ciudad.pais,
                         puntaje: resJson[0].puntaje,
                         imagenes: resJson[0].imagenes,
+                       tituloDescripcion: resJson[0].titulo_descripcion,
                         descripcion: resJson[0].descripcion,
+                        longitud: resJson[0].longitud,
+                        latitud: resJson[0].latitud,
+                        norma: resJson[0].norma,
+                        saludSeguridad: resJson[0].saludSeguridad,
+                        cancelacion: resJson[0].cancelacion,
                         caracteristicas: resJson[0].caracteristicas
 
                     }
@@ -48,41 +54,42 @@ function ContainerDetalle() {
 
     return (
         <>
-            {console.log(productIdList)}
 
             {productIdList ? (
                 <>
                     < Heading
                         titulo={productIdList.titulo}
-                        categoria={productIdList.categoria}/>
-                    <Heading2    
+                        categoria={productIdList.categoria} />
+                    <Heading2
                         location={productIdList.ubicacion}
                         puntaje={productIdList.puntaje} />
 
-                    < Galeria item={product.imagenes} />
-                    {console.log(productIdList.imagenes)}
+                    < Galeria item={
+                        (productIdList.imagenes).map((value) => (
+                        { original: value.imagen, thumbnail: value.imagen }))
+                        }
+                    />
+
                     < Descripcion
-                        titulo={product.description.titulo}
+                        titulo={productIdList.tituloDescripcion}
                         line1={productIdList.descripcion}
                     />
 
                     <Caracteristicas list={productIdList.caracteristicas} />
-                    <ContainerFechas id={productIdList.id}/>
+                    <ContainerFechas id={productIdList.id} />
 
                     <ContainerMapa
-                        location={product.locationFull}
-                        lng={product.coordenadas.lng}
-                        lat={product.coordenadas.lat}
-                        loc={product.description.titulo} />
+                        location={productIdList.location}
+                        lng={productIdList.longitud}
+                        lat={productIdList.latitud}
+                         />
 
                     <PoliticsContainer
-                        normas={product.politicas.normas}
-                        saludSeguridad={product.politicas.saludSeguridad}
-                        cancelacion={product.politicas.cancelacion} />
-
-                      
+                        normas={productIdList.norma}
+                        saludSeguridad={productIdList.saludSeguridad}
+                        cancelacion={productIdList.cancelacion} />
                 </>
-                
+
 
             ) : <SekeletonDetalle />
             }

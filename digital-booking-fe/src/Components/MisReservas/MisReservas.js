@@ -7,6 +7,7 @@ import ContextUser from "../Contexts/ContextUser.js";
 import CardReserva from "./CardReserva";
 import Card from "../Cards_list/Card";
 import ReservaNoEfectuada from "../ReservaNoEfectuada/ReservaNoEfectuada"
+import { BsFillEmojiNeutralFill } from "react-icons/bs";
 
 export default function MisReservas() {
   const { contextLoginRegistro } = useContext(ContextLoginRegistro);
@@ -24,27 +25,27 @@ export default function MisReservas() {
           }
         }
       ).catch(() => {
-        setDataReserva([true])
+        setDataReserva(null)
       })
 
     return () => (ismounted = false);
   }, []);
 
-  function mapeo(dataReserva) {
-    return (
-      dataReserva.map((reserva, index) => {
-      <>
-        <CardReserva
-          key={index}
-          checkIn={reserva.fechaInicio}
-          checkOut={reserva.fechaFinal}
-          hora={reserva.horaDeReserva}
-        />
-        <Card key={reserva.producto.id} house={reserva.producto} />
-      </>
-    })
-  )
-}
+//   function mapeo(dataReserva) {
+//     return (
+//       dataReserva.map((reserva, index) => {
+//       <>
+//         <CardReserva
+//           key={index}
+//           checkIn={reserva.fechaInicio}
+//           checkOut={reserva.fechaFinal}
+//           hora={reserva.horaDeReserva}
+//         />
+//         <Card key={reserva.producto.id} house={reserva.producto} />
+//       </>
+//     })
+//   )
+// }
 
 return (
   <>
@@ -52,11 +53,19 @@ return (
       <Heading titulo="Mis Reservas" />
     </div>
     {
-        dataReserva ?
-          dataReserva[0] === true ? <ReservaNoEfectuada /> :
-          mapeo(dataReserva)
+        dataReserva ? (
+          dataReserva !== [] ?  
+          
+          console.log(dataReserva)
+          :<ReservaNoEfectuada />
+
+
+        )
+          
+
         :
-        <h1>Loading...</h1>
+        <ReservaNoEfectuada />
+        //<h1>Loading...</h1>
     }
   </>
 );
