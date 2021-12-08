@@ -1,4 +1,3 @@
-import data from '../Cards_list/data.json'
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from 'react-router-dom';
 import "./templateReserva.scoped.css"
@@ -33,8 +32,7 @@ function TemplateReserva(props) {
     const [avisoFalloReserva, setAvisoFalloReserva] = useState("avisoNoVisible")
     const [errorForm, setErrorForm] = useState("avisoFormNoVisible")
     const { id } = useParams()
-    let match = data.filter(producto => producto.id === id)
-    let product = match[0]
+    
 
 
    

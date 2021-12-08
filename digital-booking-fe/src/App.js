@@ -11,7 +11,6 @@ import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
-import CreacionProductoParalelo from "./Components/CreacionProducto/CreacionProductoParalelo";
 import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto";
 import SkeletonCategorias from "./Skeleton/SkeletonCategorias";
 import "./App.css";
