@@ -98,7 +98,7 @@ hr{
 
 .contenedorSeccionImagenes{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     align-items: center;
@@ -107,6 +107,17 @@ hr{
 .contenedorInputImagenes{
     width: 80%;
     padding-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.addFilesIcon{
+    margin-right: 15px;
+    padding-top: 20px;
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .custom-file-input::-webkit-file-upload-button {
@@ -146,7 +157,10 @@ hr{
     margin-bottom: 20px;
 }
 
-
+.divInputAndButtons{
+    display: flex;
+    width: 100%;
+}
 
 @media (min-width: 768px){
     .h2CreacionProducto{
@@ -223,4 +237,7 @@ hr{
         width: 30vw;
     }
 
+    .inputCreacionProducto{
+        width: 90%;
+    }
 }

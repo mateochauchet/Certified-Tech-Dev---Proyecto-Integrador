@@ -11,6 +11,7 @@ import Registro from "./Components/Register/Register.js";
 import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
+import CreacionProductoParalelo from "./Components/CreacionProducto/CreacionProductoParalelo";
 import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto"
 import SkeletonCategorias from "./Skeleton/SkeletonCategorias"
 // import Favoritos from "./Components/MisFavoritos/Favoritos";
@@ -229,7 +230,7 @@ export default function App() {
                     direccion2="/registro"
                     nombreBoton2="Crear cuenta"
                   >
-                    <CreacionProducto
+                    <CreacionProductoParalelo
                       categorias={categoryList}
                       listaCiudades={cityList}
                       caracteristicas={listaCaracteristicas}

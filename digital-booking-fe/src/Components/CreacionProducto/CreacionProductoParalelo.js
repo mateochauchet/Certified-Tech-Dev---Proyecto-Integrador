@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext} from "react";
 import Heading from "../Detalle/Heading";
 import "./creacionProducto.scoped.css";
-import Axios from "axios";
 import ContextUser from "../Contexts/ContextUser";
+import {BsFillPlusSquareFill} from "react-icons/bs";
+import {RiDeleteBin5Fill} from "react-icons/ri";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
-function CreacionProducto(props){
+function CreacionProductoParalelo(props){
     //VARIABLES
 
     let formData = new FormData();
@@ -21,6 +23,7 @@ function CreacionProducto(props){
     const [normasPropiedad, setNormasPropiedad] = useState("")
     const [sysPropiedad, setSySPropiedad] = useState("")
     const [cancelacionPropiedad, setCancelacionPropiedad] = useState("")
+    const [inputUrl, setInputUrl] = useState([{ url: "" }]);
     const [grupoAtributos, setGrupoAtributos] = useState([]);
     const {contextUser} = useContext(ContextUser);
     let producto;
@@ -43,23 +46,26 @@ function CreacionProducto(props){
           )
     })
 
-    //const [clase, setClase] = useState();
+    
     useEffect(()=>{
-        setGrupoAtributos(grupoAtributos)
-    }, [grupoAtributos])
-
+        if(inputUrl){
+        setInputUrl(inputUrl)
+        console.log(inputUrl)
+        }
+    }, [inputUrl])
 
     let nombreAtributos =
         props.caracteristicas.map((caracteristica)=>{
            
             return(
                 <>
-                    <label className="labelAtributos"><input type="checkbox" name={caracteristica.nombre} value={caracteristica.nombre}
+                <FontAwesomeIcon icon={caracteristica.icono} />
+                    <label className="labelAtributos">
+                        <input type="checkbox" name={caracteristica.nombre} value={caracteristica.nombre}
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
-                            setGrupoAtributos([...grupoAtributos, e.target.value])
+                            setGrupoAtributos([...grupoAtributos, {nombre: e.target.value, icono: caracteristica.icono}])
                             console.log(grupoAtributos);
-                            //console.log(createObject);
                         }else if(e.target.checked == false){
                             grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
                             console.log(grupoAtributos)
@@ -71,10 +77,26 @@ function CreacionProducto(props){
 
     
     //FUNCIONES
-    
-    const createObjectAtributos = grupoAtributos.map((atributo)=>
-        ({nombre: atributo})
-    )
+
+    /*const createObjectAtributos = grupoAtributos.map((atributo)=>
+    ({nombre: atributo.nombre, icono: atributo.icono}))*/
+    const handleInputChange = (e, index) => {
+        const { name, value } = e.target;
+        const url = [...inputUrl];
+        url[index][name] = value;
+        setInputUrl(url);
+    };
+
+    const handleRemoveClick = (index) => {
+        const url = [...inputUrl];
+        url.splice(index, 1);
+        setInputUrl(url);
+    };
+
+    const handleAddClick = (e) => {
+        e.preventDefault();
+        setInputUrl([...inputUrl, { url: ""}]);
+    };
 
     const onFileChange = (e) => {
         if(e.target && e.target.files){
@@ -98,7 +120,7 @@ function CreacionProducto(props){
                 longitud: longitudPropiedad,
                 descripcion: descripcionPropiedad,
                 puntaje: 7,
-                caracteristicas: createObjectAtributos,
+                caracteristicas: grupoAtributos,
                 norma: normasPropiedad,
                 saludSeguridad: sysPropiedad,
                 cancelacion: cancelacionPropiedad
@@ -201,14 +223,28 @@ function CreacionProducto(props){
                     <div>
                         <h3 className="h3CreacionProducto">Cargar imagenes</h3>
                         <div className="contenedorSeccionAtributos contenedorSeccionImagenes">
-                            <div className="contenedorInputImagenes">
-                                <input className="inputCreacionProducto custom-file-input" type="file" onChange={onFileChange} required multiple ></input>    
-                            </div>
+                            {inputUrl.map((x, i) => {
+                                return(
+                                <>
+                                <div className="divInputAndButtons">
+                                    <div className="contenedorInputImagenes">
+                                        <input id="url" name="url" className="inputCreacionProducto" type="text" placeholder="Escriba la URL" 
+                                        onChange={e => handleInputChange(e, i)} value= {x.url} required ></input>    
+                                    </div>
+                                    {inputUrl.length !== 1 && <div onClick={() => handleRemoveClick(i)} className="addFilesIcon">
+                                        <RiDeleteBin5Fill size="2.9rem" fill="#1DBEB4"/></div>}
+                                    {inputUrl.length - 1 === i && <div onClick={handleAddClick} className="addFilesIcon">
+                                        <BsFillPlusSquareFill size="2.7rem" fill="#1DBEB4"/></div>}
+                                </div>
+                                </>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="contenedorBoton">
-                    <button className="cardBtn botonCreacionProducto" >Crear producto</button>
+                    <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
                     </div>
+                    <div style={{ marginTop: 20 }}>{JSON.stringify(inputUrl)}</div>
                 </form>
             </div>
         </div>
@@ -216,4 +252,4 @@ function CreacionProducto(props){
     )
 }
 
-export default CreacionProducto;
+export default CreacionProductoParalelo;
