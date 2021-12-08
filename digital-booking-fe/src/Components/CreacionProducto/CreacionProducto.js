@@ -207,7 +207,7 @@ function CreacionProducto(props){
                         </div>
                     </div>
                     <div className="contenedorBoton">
-                    <button className="cardBtn botonCreacionProducto" >Crear verga</button>
+                    <button className="cardBtn botonCreacionProducto" >Crear </button>
                     </div>
                 </form>
             </div>

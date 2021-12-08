@@ -13,7 +13,6 @@ import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
 import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto"
 import SkeletonCategorias from "./Skeleton/SkeletonCategorias"
-// import Favoritos from "./Components/MisFavoritos/Favoritos";
 import "./App.css";
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import {
@@ -48,7 +47,7 @@ export default function App() {
   }, []);
 
   const categoriaAll = async () => {
-    // let response = await getProductos();  (DESCOMENTAR EN EL CASO QUE EL FILTRO SE HAGA CON LA API)
+    // let response = await getProductos();  
     setFiltro("todos");
   };
 
