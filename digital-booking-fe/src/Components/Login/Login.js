@@ -82,7 +82,7 @@ const Login = () => {
                     <input type="password" id="password" name="password" value={values.password || ''} onChange={handleChange} className={errors.password && selectedFields.includes("password") ? "inputError" : undefined }></input>
                     {(errors.password && isSubmitting.current && (<div className="errorBox"><p className="errorDesc">{errors.password}</p></div>)) || (errors.password && selectedFields.includes("password") && (<div className="errorBox"><p className="errorDesc">{errors.password}</p></div>))}
 
-                    <input type="submit" value="Ingresar"></input>
+                    <input type="submit" value="Ingresar" className="botonSubmit"></input>
                     {(validCredentials === false && (<div className="errorBox"><p className="errorDesc">Por favor, vuelva a intentarlo sus credenciales son inválidas</p></div>))}
 
                 </form>

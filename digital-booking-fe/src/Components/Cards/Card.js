@@ -1,4 +1,4 @@
-
+import React from "react"
 
 function Card({tituloCategoria, cantidad, img, cambiarCategoria}) {
     return ( 

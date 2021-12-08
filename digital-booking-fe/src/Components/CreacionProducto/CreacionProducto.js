@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext} from "react";
 import Heading from "../Detalle/Heading";
 import "./creacionProducto.scoped.css";
-import Axios from "axios";
-
+import ContextUser from "../Contexts/ContextUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useHistory } from 'react-router-dom';
 
 
 function CreacionProducto(props){
     //VARIABLES
 
     let formData = new FormData();
-
-
+    const endpointPostProducto = "http://localhost:8080/api/productos/";
     const [nombrePropiedad, setNombrePropiedad] = useState("")
     const [categoriaPropiedad, setCategoriaPropiedad] = useState("Seleccione una categoria")
     const [latitudPropiedad, setLatitudPropiedad] = useState("")
@@ -19,14 +19,18 @@ function CreacionProducto(props){
     const [descripcionPropiedad, setDescripcionPropiedad] = useState("")
     const [normasPropiedad, setNormasPropiedad] = useState("")
     const [sysPropiedad, setSySPropiedad] = useState("")
-    const [politicasPropiedad, setPoliticasPropiedad] = useState("")
+    const [cancelacionPropiedad, setCancelacionPropiedad] = useState("")
+    const [inputUrl, setInputUrl] = useState([{ url: "" }]);
     const [grupoAtributos, setGrupoAtributos] = useState([]);
+    const {contextUser} = useContext(ContextUser);
+    const history = useHistory();
+    let producto;
 
     let optionsCategorias =
         props.categorias.map((categoria) => {
             return(
                 <>
-                <option>{categoria.titulo}</option>
+                <option value={categoria.id}>{categoria.titulo}</option>
                 </>
             )
         })
@@ -35,26 +39,29 @@ function CreacionProducto(props){
     props.listaCiudades.map((ciudad) => {
           return(
               <>
-              <option>{ciudad.nombre}</option>
+              <option value={ciudad.id}>{ciudad.nombre}</option>
               </>
           )
     })
 
-    //const [clase, setClase] = useState();
     useEffect(()=>{
-        setGrupoAtributos(grupoAtributos)
-    }, [grupoAtributos])
+        if(inputUrl){
+        setInputUrl(inputUrl)
+        console.log(inputUrl)
+        }
+    }, [inputUrl])
+
 
     let nombreAtributos =
         props.caracteristicas.map((caracteristica)=>{
            
             return(
                 <>
+                <FontAwesomeIcon icon={caracteristica.icono} />
                     <label className="labelAtributos"><input type="checkbox" name={caracteristica.nombre} value={caracteristica.nombre}
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
-                            setGrupoAtributos([...grupoAtributos, e.target.value])
-                            console.log(grupoAtributos)
+                            setGrupoAtributos([...grupoAtributos, {nombre: e.target.value, icono: caracteristica.icono}])
                         }else if(e.target.checked == false){
                             grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
                             console.log(grupoAtributos)
@@ -63,32 +70,58 @@ function CreacionProducto(props){
                 </>
             )
         })
-    
+
     //FUNCIONES
-    
+
     const onFileChange = (e) => {
-        if(e.target && e.target.files){
-            //console.log(e.target.files)
-            formData.append("files", e.target.files)
+        if(e.target && e.target.files){   
+            for (let index = 0; index < e.target.files.length; index++){
+                formData.append('imagenes', e.target.files[index])           
+            }
+        }                    
+           
+    }
+    
+
+    const fillData = () =>{
+        producto = 
+            {
+                nombre: nombrePropiedad,
+                categoria: {
+                    id: categoriaPropiedad
+                },
+                ciudad: {
+                    id: ciudadPropiedad
+                },
+                latitud: latitudPropiedad,
+                longitud: longitudPropiedad,
+                descripcion: descripcionPropiedad,
+                puntaje: 7,
+                caracteristicas: grupoAtributos,
+                norma: normasPropiedad,
+                saludSeguridad: sysPropiedad,
+                cancelacion: cancelacionPropiedad
+            }
+        formData.append("producto", JSON.stringify(producto))
+    }
+
+    async function sendData(e){
+        e.preventDefault()
+        await fillData()
+        const response = await fetch(endpointPostProducto, {
+        "method": "POST",
+        "body": formData,
+        "headers": {
+            "Authorization": "Bearer " + contextUser,
+        }
+        })
+        if(response.status === 200){
+            history.push('/creacionExitosa')
+            console.log("Producto creado");
         }
     }
 
-    const sendData = (e) =>{
-        e.preventDefault()
 
-        
-        formData.append("nombre", nombrePropiedad)
-        formData.append("categoria", categoriaPropiedad)
-        formData.append("ciudad", ciudadPropiedad)
-        formData.append("latitud", latitudPropiedad)
-        formData.append("longitud", longitudPropiedad)
-        formData.append("descripcion", descripcionPropiedad)
-        formData.append("atributos", grupoAtributos)
-        formData.append("normas", normasPropiedad)
-        formData.append("saludSeguridad", sysPropiedad)
-        formData.append("politicas", politicasPropiedad)
-        console.log(formData.get("files"));
-    }
 
     return(
         <>
@@ -96,15 +129,15 @@ function CreacionProducto(props){
         <h2 className="h2CreacionProducto">Crear propiedad</h2>
         <div className="contenedorPadreProducto">
             <div className="divContenedorFormularioProducto">
-                <form onSubmit={sendData} className="formularioCreacionProducto">
+                <form onSubmit={sendData} className="formularioCreacionProducto" encType="multipart/form-data">
                     <div className="primerBloqueInputs">
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" name="nombreProducto">Nombre de la propiedad</label>
-                            <input className="inputCreacionProducto claseEncontrada" type="text" onChange={(e)=>setNombrePropiedad(e.target.value)} required></input>
+                            <label className="labelCreacionProducto" htmlFor="nombreProducto">Nombre de la propiedad</label>
+                            <input className="inputCreacionProducto claseEncontrada" name="nombreProducto" type="text" onChange={(e)=>setNombrePropiedad(e.target.value)} required></input>
                         </div>
 
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" name="categoriaPropiedad">Categoria</label>
+                            <label className="labelCreacionProducto" >Categoria</label>
                             <select className="inputCreacionProducto" value={categoriaPropiedad} onChange={(e)=>setCategoriaPropiedad(e.target.value)} required>
                                 <option selected>Seleccione una categoria</option>
                                 {optionsCategorias}
@@ -112,7 +145,7 @@ function CreacionProducto(props){
                         </div>
 
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" name="ciudadProducto">Ciudad</label>
+                            <label className="labelCreacionProducto">Ciudad</label>
                             <select className="inputCreacionProducto" value={ciudadPropiedad} onChange={(e)=>setCiudadPropiedad(e.target.value)} required>
                                 <option selected>Seleccione una ciudad</option>
                                 {optionsCiudades}
@@ -120,18 +153,18 @@ function CreacionProducto(props){
                         </div>
 
                         <div className="contenedorLabelInput latitudLongitud">
-                            <label className="labelCreacionProducto" name="direccionProducto">Latitud</label>
-                            <input className="inputCreacionProducto" type="text" required onChange={(e)=>setLatitudPropiedad(e.target.value)}></input>
+                            <label className="labelCreacionProducto" htmlFor="latitudProducto">Latitud</label>
+                            <input className="inputCreacionProducto" name="latitudProducto" type="number" required onChange={(e)=>setLatitudPropiedad(e.target.value)}></input>
                         </div>
 
                         <div className="contenedorLabelInput latitudLongitud">
-                            <label className="labelCreacionProducto" name="direccionProducto">Longitud</label>
-                            <input className="inputCreacionProducto" type="text" required onChange={(e)=>setLongitudPropiedad(e.target.value)}></input>
+                            <label className="labelCreacionProducto" htmlFor="longitudProducto">Longitud</label>
+                            <input className="inputCreacionProducto" name="longitudProducto" type="number" required onChange={(e)=>setLongitudPropiedad(e.target.value)}></input>
                         </div>
                     </div>
                     <div>
-                        <label className="labelCreacionProducto" namw="descripcionProducto">Descripcion</label>
-                        <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setDescripcionPropiedad(e.target.value)} placeholder="Escriba aqui" required></textarea>
+                        <label className="labelCreacionProducto" htmlFor="descripcionProducto">Descripcion</label>
+                        <textarea className="inputCreacionProducto inputTextarea" name="descripcionProducto" onChange={(e)=>setDescripcionPropiedad(e.target.value)} placeholder="Escriba aqui" required></textarea>
                     </div>
 
                     <div>
@@ -146,18 +179,18 @@ function CreacionProducto(props){
                         <div className="contenedorPoliticas">
                             <div>
                                 <h4 className="h4CreacionProducto">Normas de la casa</h4>
-                                <label className="labelCreacionProducto" name="normasProducto">Descripcion</label>
-                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setNormasPropiedad(e.target.value)} required></textarea>
+                                <label className="labelCreacionProducto" htmlFor="normasProducto">Descripcion</label>
+                                <textarea className="inputCreacionProducto inputTextarea" name="normasProducto" onChange={(e)=>setNormasPropiedad(e.target.value)} required></textarea>
                             </div>
                             <div>
                                 <h4 className="h4CreacionProducto">Salud y seguridad</h4>
-                                <label className="labelCreacionProducto" name="seguridadProducto">Descripcion</label>
-                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setSySPropiedad(e.target.value)} required></textarea>
+                                <label className="labelCreacionProducto" htmlFor="seguridadProducto">Descripcion</label>
+                                <textarea className="inputCreacionProducto inputTextarea" name="seguridadProducto" onChange={(e)=>setSySPropiedad(e.target.value)} required></textarea>
                             </div>
                             <div>
                                 <h4 className="h4CreacionProducto">Politicas de cancelacion</h4>
-                                <label className="labelCreacionProducto" name="politicasProducto">Descripcion</label>
-                                <textarea className="inputCreacionProducto inputTextarea" onChange={(e)=>setPoliticasPropiedad(e.target.value)} required></textarea>
+                                <label className="labelCreacionProducto" htmlFor="cancelacionProducto">Descripcion</label>
+                                <textarea className="inputCreacionProducto inputTextarea" htmlFor="cancelacionProducto" onChange={(e)=>setCancelacionPropiedad(e.target.value)} required></textarea>
                             </div>
                         </div>
                     </div>
@@ -169,9 +202,11 @@ function CreacionProducto(props){
                             </div>
                         </div>
                     </div>
+                   
                     <div className="contenedorBoton">
-                    <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
+                        <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
                     </div>
+                    
                 </form>
             </div>
         </div>

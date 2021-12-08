@@ -43,7 +43,6 @@ function ContainerDetalle() {
                         saludSeguridad: resJson[0].saludSeguridad,
                         cancelacion: resJson[0].cancelacion,
                         caracteristicas: resJson[0].caracteristicas
-
                     }
                     setProductIdList(houseData);
                 }
