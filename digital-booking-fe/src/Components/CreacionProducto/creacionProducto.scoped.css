@@ -58,7 +58,7 @@ option{
 }
 
 .inputCreacionProducto{
-    margin: 0px 8px 25px 3px;
+    margin: 0px 8px 20px 3px;
     padding: 11px;
     border-radius: 4pt;
     border: none;
@@ -160,6 +160,11 @@ hr{
 .divInputAndButtons{
     display: flex;
     width: 100%;
+}
+
+.errorDesc{
+    color: red;
+    font-size: 0.6rem;
 }
 
 @media (min-width: 768px){

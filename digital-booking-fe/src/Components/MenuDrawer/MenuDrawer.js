@@ -28,7 +28,7 @@ export default function MenuDrawer(props) {
     if(contextLoginRegistro.rol.id === 1){
       return <p><Link className="link-parrafos" to="/misReservas">Mis Reservas</Link></p>
      }else if(contextLoginRegistro.rol.id === 2){
-      return <p><Link className="link-parrafos" to="/administracion/creaproductos">Mis productos</Link></p>
+      return <p><Link className="link-parrafos" to="/administracion/creaproductos">Agrega una propiedad</Link></p>
      }
   }
   

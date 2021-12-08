@@ -3,6 +3,7 @@ import Heading from "../Detalle/Heading";
 import "./creacionProducto.scoped.css";
 import ContextUser from "../Contexts/ContextUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useHistory } from 'react-router-dom';
 
 
 function CreacionProducto(props){
@@ -22,6 +23,7 @@ function CreacionProducto(props){
     const [inputUrl, setInputUrl] = useState([{ url: "" }]);
     const [grupoAtributos, setGrupoAtributos] = useState([]);
     const {contextUser} = useContext(ContextUser);
+    const history = useHistory();
     let producto;
 
     let optionsCategorias =
@@ -113,7 +115,9 @@ function CreacionProducto(props){
             "Authorization": "Bearer " + contextUser,
         }
         })
+        
         if(response.status === 200){
+            history.push('/creacionExitosa')
             console.log("Producto creado");
         }
     }
