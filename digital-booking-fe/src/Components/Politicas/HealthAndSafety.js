@@ -5,7 +5,7 @@ function HealthAndSafety({saludSeguridad}){
         
             <div>
                 <p>{saludSeguridad}</p>
-              
+                
             </div>
         )
     

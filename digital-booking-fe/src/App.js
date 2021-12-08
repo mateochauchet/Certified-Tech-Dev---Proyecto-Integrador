@@ -12,9 +12,8 @@ import CardsContainer from "./Components/Cards_list/CardsContainer";
 import ReservaExitosa from "./Components/ReservaExitosa/ReservaExitosa";
 import CreacionProducto from "./Components/CreacionProducto/CreacionProducto";
 import CreacionProductoParalelo from "./Components/CreacionProducto/CreacionProductoParalelo";
-import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto"
-import SkeletonCategorias from "./Skeleton/SkeletonCategorias"
-// import Favoritos from "./Components/MisFavoritos/Favoritos";
+import SkeletonCardsProducto from "./Skeleton/SkeletonCardsProducto";
+import SkeletonCategorias from "./Skeleton/SkeletonCategorias";
 import "./App.css";
 import ContainerDetalle from "./Components/Detalle/ContainerDetalle.js";
 import {
@@ -27,8 +26,7 @@ import {
 import TemplateReserva from "./Components/Reserva/TemplateReserva.js";
 import MisReservas from "./Components/MisReservas/MisReservas.js";
 import ReservaNoEfectuada from "./Components/ReservaNoEfectuada/ReservaNoEfectuada.js";
-
-
+import CreacionExitosa from "./Components/CreacionExitosa/CreacionExitosa.js"
 
 export default function App() {
   const [contextLoginRegistro, setContextLoginRegistro] = useState("");
@@ -49,7 +47,7 @@ export default function App() {
   }, []);
 
   const categoriaAll = async () => {
-    // let response = await getProductos();  (DESCOMENTAR EN EL CASO QUE EL FILTRO SE HAGA CON LA API)
+    // let response = await getProductos();
     setFiltro("todos");
   };
 
@@ -116,16 +114,38 @@ export default function App() {
                 exact
                 path="/home"
                 component={() => (
+                  <Template
+                    home={true}
+                    direccion="/login"
+                    nombreBoton="Iniciar sesión"
+                    direccion2="/registro"
+                    nombreBoton2="Crear cuenta"
+                    categoriaAll={categoriaAll}
+                  >
+                    <ContenedorBuscador
+                      list={cityList}
+                      cambiarCiudad={cambiarCiudad}
+                    />
+                    {categoryList ? (
+                      <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />) : <SkeletonCategorias />}
+                    {productList ? (
+                      <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones" />) : <SkeletonCardsProducto />}
+                  </Template>
+                )}
+              />
+
+              <Route
+                exact
+                path="/"
+                component={() => (
                   <Template home={true} direccion="/login" nombreBoton="Iniciar sesión" direccion2="/registro" nombreBoton2="Crear cuenta" categoriaAll={categoriaAll}>
                     <ContenedorBuscador list={cityList} cambiarCiudad={cambiarCiudad} />
                     {categoryList ? (
-                    <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} /> ):<SkeletonCategorias/>}
+                      <ContenedorCard categorias={categoryList} cambiarCategoria={cambiarCategoria} />) : <SkeletonCategorias />}
                     {productList ? (
-                    <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones"/>):<SkeletonCardsProducto/>}
+                      <CardsContainer list={productList} filtro={filtro} filtro2={reservedList} tituloComponente="Recomendaciones" />) : <SkeletonCardsProducto />}
                   </Template>
                 )}
-                  
-                
               />
 
               <Route
@@ -235,6 +255,16 @@ export default function App() {
                       listaCiudades={cityList}
                       caracteristicas={listaCaracteristicas}
                     />
+                  </Template>
+                )}
+              />
+
+              <Route
+                exact
+                path="/creacionExitosa"
+                component={() => (
+                  <Template home={true} categoriaAll={categoriaAll}>
+                    <CreacionExitosa />
                   </Template>
                 )}
               />

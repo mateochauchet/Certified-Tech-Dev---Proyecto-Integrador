@@ -24,7 +24,7 @@ function Galeria({ item }) {
     const handleClick = () => {
         setShow(!show);
     };
-
+   
     let gallery;
     if (show) {
 

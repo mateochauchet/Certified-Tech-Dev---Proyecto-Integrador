@@ -19,8 +19,7 @@ function ContainerDetalle() {
 
     const { id } = useParams()
     console.log(id)
-    let match = data.filter(producto => producto.id === id)
-    let product = match[0]
+
 
     useEffect(() => {
         let ismounted = true;
@@ -36,6 +35,7 @@ function ContainerDetalle() {
                         location: resJson[0].nombre + ', ' + resJson[0].ciudad.nombre + ' - ' +resJson[0].ciudad.pais,
                         puntaje: resJson[0].puntaje,
                         imagenes: resJson[0].imagenes,
+                       tituloDescripcion: resJson[0].titulo_descripcion,
                         descripcion: resJson[0].descripcion,
                         longitud: resJson[0].longitud,
                         latitud: resJson[0].latitud,
@@ -53,40 +53,42 @@ function ContainerDetalle() {
 
     return (
         <>
-            {console.log(productIdList)}
 
             {productIdList ? (
                 <>
                     < Heading
                         titulo={productIdList.titulo}
-                        categoria={productIdList.categoria}/>
-                    <Heading2    
+                        categoria={productIdList.categoria} />
+                    <Heading2
                         location={productIdList.ubicacion}
                         puntaje={productIdList.puntaje} />
 
-                    < Galeria item={(productIdList.imagenes).map((value) => (
-                        { original: value.imagen, thumbnail: value.imagen }))} />
+                    < Galeria item={
+                        (productIdList.imagenes).map((value) => (
+                        { original: value.imagen, thumbnail: value.imagen }))
+                        }
+                    />
+
                     < Descripcion
-                        titulo={product.description.titulo}
+                        titulo={productIdList.tituloDescripcion}
                         line1={productIdList.descripcion}
                     />
 
                     <Caracteristicas list={productIdList.caracteristicas} />
-                    <ContainerFechas id={productIdList.id}/>
+                    <ContainerFechas id={productIdList.id} />
 
                     <ContainerMapa
                         location={productIdList.location}
                         lng={productIdList.longitud}
-                        lat={productIdList.latitud} />
+                        lat={productIdList.latitud}
+                         />
 
                     <PoliticsContainer
                         normas={productIdList.norma}
                         saludSeguridad={productIdList.saludSeguridad}
                         cancelacion={productIdList.cancelacion} />
-
-                      
                 </>
-                
+
 
             ) : <SekeletonDetalle />
             }

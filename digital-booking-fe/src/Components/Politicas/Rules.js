@@ -5,6 +5,7 @@ function Rules({normas}){
     return(
             <div className="text">
                 <p>{normas}</p>
+                
             </div>
     )
 }
