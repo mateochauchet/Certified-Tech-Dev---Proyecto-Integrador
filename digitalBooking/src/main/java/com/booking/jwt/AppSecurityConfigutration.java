@@ -43,6 +43,7 @@ public class AppSecurityConfigutration extends WebSecurityConfigurerAdapter{
                     .authorizeRequests()
                     .antMatchers(HttpMethod.POST,"/api/usuarios/authenticate").permitAll()
                     .antMatchers(HttpMethod.GET,"/api/reserva/{id}").permitAll()
+                    .antMatchers(HttpMethod.POST,"/api/productos/" ).permitAll()
                     .antMatchers(HttpMethod.POST,"/api/categorias/" ).permitAll()
                     .antMatchers("/api/categorias/{id}","/api/categorias/" ).permitAll()
                     .antMatchers("/api/ciudad/").permitAll()

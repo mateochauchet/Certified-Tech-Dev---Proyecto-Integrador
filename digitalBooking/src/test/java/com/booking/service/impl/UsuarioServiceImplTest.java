@@ -25,20 +25,15 @@ class UsuarioServiceImplTest {
 
     @Test
     public void insert() throws InvalidDataException, ResourcesNotFoundException {
-
         Rol rol = rolRepository.getById(1L);
-
         Usuario usuario = new Usuario();
         usuario.setNombre("hola");
         usuario.setApellido("hola");
-        usuario.setEmail("hola@gmail.com");
+        usuario.setEmail("holaPepito@gmail.com");
         usuario.setPassword("hola");
         usuario.setRol(rol);
-
         Usuario respuesta = usuarioService.insert(usuario);
-
         Assertions.assertTrue(respuesta.getNombre() == (usuario.getNombre()));
-
     }
 
     @Test

@@ -39,9 +39,8 @@ public class CategoriaServiceImpl implements ICategoriaService {
     @Override
     public Categoria insert(String titulo, String descripcion, MultipartFile file) throws InvalidDataException, ResourcesNotFoundException, NotValidImageException, IOException {
         Categoria categoria = new Categoria();
-
-        if(descripcion == null || titulo ==null || titulo.trim() == "" || descripcion.trim() == "")
-             throw  new ResourcesNotFoundException("el campo del titulo o el campo de la descripcion se encuentra vacio");
+        if(descripcion == null || titulo ==null || titulo.trim() == "" || descripcion.trim() == "" || file.isEmpty() || file == null)
+             throw  new ResourcesNotFoundException("el campo del titulo o el campo de la descripcion o la imagen se encuentra vacio");
 
         else if(descripcion.trim().length()>100 || titulo.trim().length()>50)
             throw new InvalidDataException("no es valida la cantidad de caracteres que tiene la descripcion (no puede ser mayor a 100 caracteres)\n o el titulo (no puede ser mayor a 50 caracteres) ");
@@ -52,9 +51,6 @@ public class CategoriaServiceImpl implements ICategoriaService {
             else
                 categoria.setImagen(storageService.uploadFile(file,"categorias/"));
         }
-        else
-            throw new ResourcesNotFoundException("Es obligatorio ingresar una imagen");
-
         categoria.setTitulo(titulo.trim());
         categoria.setDescripcion(descripcion.trim());
         return categoriaRepository.save(categoria);

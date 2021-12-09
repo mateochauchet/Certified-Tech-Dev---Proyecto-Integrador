@@ -2,6 +2,7 @@ package com.booking.service.impl;
 import com.booking.entity.Ciudad;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
+import com.booking.repository.ICiudadRepository;
 import com.booking.service.ICiudadService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,8 @@ class CiudadServiceImplTest {
 
     @Autowired
     private ICiudadService ciudadService;
+    @Autowired
+    private ICiudadRepository ciudadRepository;
 
     @Test
     public void readAll(){
@@ -28,6 +31,7 @@ class CiudadServiceImplTest {
         ciudad.setPais("Colombia");
         Ciudad respuesta = ciudadService.insert(ciudad);
         Assertions.assertTrue(respuesta.getNombre() == ciudad.getNombre() && respuesta.getPais() == ciudad.getPais());
+        ciudadRepository.deleteById(respuesta.getId());
     }
 
     @Test
