@@ -39,7 +39,7 @@ public class ProductoController {
     private IProductoService productoService;
 
     @PostMapping("/")
-    //@PreAuthorize("hasRole('ROLE_CLIENT') || hasRole('ROLE_ANFITRION')")
+    @PreAuthorize("hasRole('ROLE_CLIENT') || hasRole('ROLE_ANFITRION')")
     public ResponseEntity<Producto> insert(@RequestParam(value="imagenes") List<MultipartFile> files,@RequestParam(value="producto") String producto) throws JsonProcessingException , InvalidDataException, ResourcesNotFoundException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         Producto producto2 = mapper.readValue(producto, Producto.class);

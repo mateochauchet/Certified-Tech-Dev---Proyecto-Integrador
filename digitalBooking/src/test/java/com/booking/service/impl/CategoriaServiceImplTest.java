@@ -5,6 +5,7 @@ import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.NotValidImageException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.service.ICategoriaService;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -84,6 +85,7 @@ class CategoriaServiceImplTest {
         FileInputStream input = new FileInputStream(file);
         MultipartFile imagen = new MockMultipartFile("dfdf.png",
                 file.getName(), "multipart/form-data", IOUtils.toByteArray(input));
+        System.out.println(FilenameUtils.getExtension(imagen.getOriginalFilename()));
         Categoria categoria2 = new Categoria();
         categoria2.setTitulo("Categoria prueba");
         categoria2.setDescripcion("descripcion");

@@ -42,7 +42,7 @@ public class ReservaController {
     }
 
     @PostMapping("/")
-    @PreAuthorize("hasRole('ROLE_CLIENT')")
+    @PreAuthorize("hasRole('ROLE_CLIENT') || hasRole('ROLE_ANFITRION')")
     public ResponseEntity<Reserva> insert(@RequestBody Reserva reserva) throws ResourcesNotFoundException, InvalidDataException {
         return new ResponseEntity<>(reservaService.insert(reserva),HttpStatus.CREATED);
     }

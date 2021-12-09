@@ -5,6 +5,7 @@ import com.booking.entity.Usuario;
 import com.booking.exceptions.InvalidDataException;
 import com.booking.exceptions.ResourcesNotFoundException;
 import com.booking.repository.IRolRepository;
+import com.booking.repository.IUsuarioRepository;
 import com.booking.service.IUsuarioService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,9 @@ class UsuarioServiceImplTest {
     private IUsuarioService usuarioService;
 
     @Autowired
+    private IUsuarioRepository usuarioRepository;
+
+    @Autowired
     private IRolRepository rolRepository;
 
 
@@ -29,11 +33,12 @@ class UsuarioServiceImplTest {
         Usuario usuario = new Usuario();
         usuario.setNombre("hola");
         usuario.setApellido("hola");
-        usuario.setEmail("holaPepito@gmail.com");
+        usuario.setEmail("holaPepito45@gmail.com");
         usuario.setPassword("hola");
         usuario.setRol(rol);
         Usuario respuesta = usuarioService.insert(usuario);
         Assertions.assertTrue(respuesta.getNombre() == (usuario.getNombre()));
+        usuarioRepository.deleteById(respuesta.getId());
     }
 
     @Test
@@ -45,7 +50,7 @@ class UsuarioServiceImplTest {
 
     @Test
     public void readByIdFailt() throws ResourcesNotFoundException {
-        Long id = 104L;
+        Long id = 10000L;
         Assertions.assertThrows(ResourcesNotFoundException.class, ()->usuarioService.readById(id));
 
     }
