@@ -4,11 +4,10 @@ import { AiFillDatabase } from "react-icons/ai";
 const useForm = validateInfo =>{
     const [values, setValues] = useState({
         nombreProducto: "",
-        //categoriaProducto: "Seleccione una categoria",
-        //ciudadProducto: "Seleccione una ciudad",
         latitudProducto: "",
         longitudProducto: "",
         descripcionProducto: "",
+        tituloDescripcion: "",
         normasProducto: "",
         seguridadProducto: "",
         cancelacionProducto: ""

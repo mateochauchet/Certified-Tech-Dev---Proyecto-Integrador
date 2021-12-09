@@ -57,8 +57,6 @@ option{
     font-weight: 500;
 }
 
-
-
 .inputCreacionProducto{
     margin: 0px 8px 20px 3px;
     padding: 11px;
@@ -166,7 +164,9 @@ hr{
 
 .errorDesc{
     color: red;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+    padding-left: 5px;
+    font-weight: 500;
 }
 
 .falloVisible{
@@ -231,6 +231,16 @@ hr{
     .botonCreacionProducto{
         width: 40%;
     }
+
+    .contenedorDescripcion{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 20px;
+    }
+    .labelDescripcion{
+        width: 100%;
+    }
 }
 
 @media (min-width: 1024px){
@@ -257,4 +267,5 @@ hr{
     .inputCreacionProducto{
         width: 90%;
     }
+
 }

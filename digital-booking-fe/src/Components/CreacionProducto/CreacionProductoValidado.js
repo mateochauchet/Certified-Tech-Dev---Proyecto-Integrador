@@ -3,6 +3,7 @@ import Heading from "../Detalle/Heading";
 import "./creacionProducto.scoped.css";
 import ContextUser from "../Contexts/ContextUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useHistory } from 'react-router-dom';
 import useForm from "./useForm";
 import validateInfo from "./validateInfo";
 
@@ -12,20 +13,14 @@ function CreacionProductoValidado(props){
 
     let formData = new FormData();
     const {handleChange, values, handleSubmit, errors} = useForm(validateInfo);
-    console.log(values)
     const endpointPostProducto = "http://localhost:8080/api/productos/";
-    //const [nombrePropiedad, setNombrePropiedad] = useState("")
     const [categoriaPropiedad, setCategoriaPropiedad] = useState("Seleccione una categoria")
-    //const [latitudPropiedad, setLatitudPropiedad] = useState("")
-    //const [longitudPropiedad, setLongitudPropiedad] = useState("")
     const [ciudadPropiedad, setCiudadPropiedad] = useState("")
-    //const [descripcionPropiedad, setDescripcionPropiedad] = useState("")
-    //const [normasPropiedad, setNormasPropiedad] = useState("")
-    //const [sysPropiedad, setSySPropiedad] = useState("")
-    //const [cancelacionPropiedad, setCancelacionPropiedad] = useState("")
-    //const [inputUrl, setInputUrl] = useState([{ url: "" }]);
+    const [inputUrl, setInputUrl] = useState([{ url: "" }]);
     const [grupoAtributos, setGrupoAtributos] = useState([]);
     const {contextUser} = useContext(ContextUser);
+    const [falloCrearProducto, setFalloCrearProducto] = useState("falloNoVisible")
+    const history = useHistory();
     let producto;
 
     let optionsCategorias =
@@ -46,6 +41,13 @@ function CreacionProductoValidado(props){
           )
     })
 
+    useEffect(()=>{
+        if(inputUrl){
+        setInputUrl(inputUrl)
+        console.log(inputUrl)
+        }
+    }, [inputUrl])
+
 
     let nombreAtributos =
         props.caracteristicas.map((caracteristica)=>{
@@ -53,10 +55,10 @@ function CreacionProductoValidado(props){
             return(
                 <>
                 <FontAwesomeIcon icon={caracteristica.icono} />
-                    <label className="labelAtributos"><input type="checkbox" name={caracteristica.nombre} value={caracteristica.nombre}
+                    <label className="labelAtributos"><input type="checkbox" name={caracteristica.id} value={caracteristica.id}
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
-                            setGrupoAtributos([...grupoAtributos, {nombre: e.target.value, icono: caracteristica.icono}])
+                            setGrupoAtributos([...grupoAtributos, {id: caracteristica.id}])
                         }else if(e.target.checked == false){
                             grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
                             console.log(grupoAtributos)
@@ -91,13 +93,14 @@ function CreacionProductoValidado(props){
                 latitud: values.latitudProducto,
                 longitud: values.longitudProducto,
                 descripcion: values.descripcionProducto,
+                titulo_descripcion: values.tituloDescripcion,
                 puntaje: 7,
                 caracteristicas: grupoAtributos,
                 norma: values.normasProducto,
                 saludSeguridad: values.seguridadProducto,
                 cancelacion: values.cancelacionProducto
             }
-        //formData.append("producto", JSON.stringify(producto))
+        formData.append("producto", JSON.stringify(producto))
     }
 
     async function sendData(e){
@@ -110,12 +113,17 @@ function CreacionProductoValidado(props){
             "Authorization": "Bearer " + contextUser,
         }
         })
+        
         if(response.status === 200){
+            history.push('/creacionExitosa')
             console.log("Producto creado");
+        }else{
+            setFalloCrearProducto("falloVisible")
+            console.log("Lamentablemente el producto no ha podido crearse. Por favor intente más tarde");
         }
     }
 
-    //sendData
+
 
     return(
         <>
@@ -123,25 +131,23 @@ function CreacionProductoValidado(props){
         <h2 className="h2CreacionProducto">Crear propiedad</h2>
         <div className="contenedorPadreProducto">
             <div className="divContenedorFormularioProducto">
-                <form /*onSubmit={sendData}*/ onSubmit={handleSubmit} noValidate className="formularioCreacionProducto" encType="multipart/form-data">
+                <form /*onSubmit={sendData}*/ noValidate onSubmit={handleSubmit} className="formularioCreacionProducto" encType="multipart/form-data">
                     <div className="primerBloqueInputs">
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" htmlFor="nombreProducto">Nombre de la propiedad</label>
+                        <label className="labelCreacionProducto" htmlFor="nombreProducto">Nombre de la propiedad</label>
                             {errors.nombreProducto && <p className="errorDesc">{errors.nombreProducto}</p>}
                             <input className="inputCreacionProducto claseEncontrada" value={values.nombreProducto} name="nombreProducto" type="text" onChange={handleChange} /*onChange={(e)=>setNombrePropiedad(e.target.value)}*/ required></input>
                         </div>
-
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" htmlFor="categoriaProducto">Categoria</label>
-                            <select className="inputCreacionProducto" value={values.categoriaProducto} onChange={handleChange} onChange={(e)=>setCategoriaPropiedad(e.target.value)} required>
+                            <label className="labelCreacionProducto" >Categoria</label>
+                            <select className="inputCreacionProducto" value={categoriaPropiedad} onChange={(e)=>setCategoriaPropiedad(e.target.value)} required>
                                 <option selected>Seleccione una categoria</option>
                                 {optionsCategorias}
                             </select>
                         </div>
-
                         <div className="contenedorLabelInput">
-                            <label className="labelCreacionProducto" htmlFor="categoriaProducto">Ciudad</label>
-                            <select className="inputCreacionProducto" onChange={(e)=>setCiudadPropiedad(e.target.value)} required>
+                            <label className="labelCreacionProducto">Ciudad</label>
+                            <select className="inputCreacionProducto" value={ciudadPropiedad} onChange={(e)=>setCiudadPropiedad(e.target.value)} required>
                                 <option selected>Seleccione una ciudad</option>
                                 {optionsCiudades}
                             </select>
@@ -159,7 +165,12 @@ function CreacionProductoValidado(props){
                             <input className="inputCreacionProducto" value={values.longitudProducto} name="longitudProducto" type="number" required onChange={handleChange} /*onChange={(e)=>setLongitudPropiedad(e.target.value)}*/></input>
                         </div>
                     </div>
-                    <div>
+                    <div className="contenedorDescripcion">
+                        <label className="labelCreacionProducto" htmlFor="tituloDescripcionProducto">Titulo de Descripcion</label>
+                        {errors.tituloDescripcion && <p className="errorDesc">{errors.tituloDescripcion}</p>}
+                        <input className="inputCreacionProducto" value={values.tituloDescripcion} onChange={handleChange}name="tituloDescripcionProducto" /*onChange={(e)=>setTituloDescripcion(e.target.value)}*/ required></input>
+                    </div>
+                    <div className="contenedorDescripcion">
                         <label className="labelCreacionProducto" htmlFor="descripcionProducto">Descripcion</label>
                         {errors.descripcionProducto && <p className="errorDesc">{errors.descripcionProducto}</p>}
                         <textarea className="inputCreacionProducto inputTextarea" value={values.descripcionProducto} name="descripcionProducto" onChange={handleChange} /*onChange={(e)=>setDescripcionPropiedad(e.target.value)}*/ placeholder="Escriba aqui" required></textarea>
@@ -203,7 +214,7 @@ function CreacionProductoValidado(props){
                             </div>
                         </div>
                     </div>
-                   
+                    <div className={falloCrearProducto}>Lamentablemente el producto no ha podido crearse. Por favor intente más tarde</div>
                     <div className="contenedorBoton">
                         <button className="cardBtn botonCreacionProducto" >Crear Producto</button>
                     </div>
