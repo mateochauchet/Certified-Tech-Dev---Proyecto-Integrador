@@ -47,7 +47,9 @@ export default function App() {
   }, []);
 
   const categoriaAll = async () => {
-    // let response = await getProductos();
+    let response = await getProductos();
+    setProductList(response);
+    console.log(response)
     setFiltro("todos");
   };
 
@@ -264,7 +266,7 @@ export default function App() {
                 path="/creacionExitosa"
                 component={() => (
                   <Template home={true} categoriaAll={categoriaAll}>
-                    <CreacionExitosa />
+                    <CreacionExitosa categoriaAll={categoriaAll}/>
                   </Template>
                 )}
               />
