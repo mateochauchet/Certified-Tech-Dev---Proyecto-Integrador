@@ -12,7 +12,7 @@ import ContextUser from '../Contexts/ContextUser';
 
 
 
-const endpointLogin = "http://localhost:8080/api/usuarios/authenticate";
+const endpointLogin = "https://digitalbooking.ga/api/usuarios/authenticate";
 
 
 const Login = () => {

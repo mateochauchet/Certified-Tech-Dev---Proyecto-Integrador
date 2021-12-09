@@ -3,7 +3,7 @@ export async function getReservationsByIdUsuario(contextLoginRegistro, contextUs
 
      let codificado = btoa(contextLoginRegistro.password)
     const response = await fetch(
-      `http://localhost:8080/api/reserva/${codificado}/${contextLoginRegistro.id}`,{
+      `https://digitalbooking.ga/api/reserva/${codificado}/${contextLoginRegistro.id}`,{
           method: 'GET',
           headers: {
               'Content-type': 'application/json',

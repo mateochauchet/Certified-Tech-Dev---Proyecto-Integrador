@@ -13,7 +13,7 @@ function CreacionProductoValidado(props){
 
     let formData = new FormData();
     const {handleChange, values, handleSubmit, errors} = useForm(validateInfo);
-    const endpointPostProducto = "http://localhost:8080/api/productos/";
+    const endpointPostProducto = "https://digitalbooking.ga/api/productos/";
     const [categoriaPropiedad, setCategoriaPropiedad] = useState("Seleccione una categoria")
     const [ciudadPropiedad, setCiudadPropiedad] = useState("")
     const [inputUrl, setInputUrl] = useState([{ url: "" }]);
@@ -103,8 +103,14 @@ function CreacionProductoValidado(props){
         formData.append("producto", JSON.stringify(producto))
     }
 
+    
+
+    
     async function sendData(e){
         e.preventDefault()
+        handleSubmit(e)
+        console.log(errors)
+        if (errors === {}){
         await fillData()
         const response = await fetch(endpointPostProducto, {
         "method": "POST",
@@ -112,7 +118,7 @@ function CreacionProductoValidado(props){
         "headers": {
             "Authorization": "Bearer " + contextUser,
         }
-        })
+        }) 
         
         if(response.status === 200){
             history.push('/creacionExitosa')
@@ -121,7 +127,7 @@ function CreacionProductoValidado(props){
             setFalloCrearProducto("falloVisible")
             console.log("Lamentablemente el producto no ha podido crearse. Por favor intente más tarde");
         }
-    }
+    }}
 
 
 
@@ -131,7 +137,7 @@ function CreacionProductoValidado(props){
         <h2 className="h2CreacionProducto">Crear propiedad</h2>
         <div className="contenedorPadreProducto">
             <div className="divContenedorFormularioProducto">
-                <form /*onSubmit={sendData}*/ noValidate onSubmit={handleSubmit} className="formularioCreacionProducto" encType="multipart/form-data">
+                <form onSubmit={sendData} noValidate className="formularioCreacionProducto" encType="multipart/form-data">
                     <div className="primerBloqueInputs">
                         <div className="contenedorLabelInput">
                         <label className="labelCreacionProducto" htmlFor="nombreProducto">Nombre de la propiedad</label>
@@ -168,7 +174,7 @@ function CreacionProductoValidado(props){
                     <div className="contenedorDescripcion">
                         <label className="labelCreacionProducto" htmlFor="tituloDescripcionProducto">Titulo de Descripcion</label>
                         {errors.tituloDescripcion && <p className="errorDesc">{errors.tituloDescripcion}</p>}
-                        <input className="inputCreacionProducto" value={values.tituloDescripcion} onChange={handleChange}name="tituloDescripcionProducto" /*onChange={(e)=>setTituloDescripcion(e.target.value)}*/ required></input>
+                        <input className="inputCreacionProducto" value={values.tituloDescripcion} onChange={handleChange}name="tituloDescripcion" /*onChange={(e)=>setTituloDescripcion(e.target.value)}*/ required></input>
                     </div>
                     <div className="contenedorDescripcion">
                         <label className="labelCreacionProducto" htmlFor="descripcionProducto">Descripcion</label>

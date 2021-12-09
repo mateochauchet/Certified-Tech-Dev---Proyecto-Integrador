@@ -6,8 +6,9 @@
     width: 70%;
     text-align: center;
     box-shadow: 2px 2px 5px 1px rgb(204, 201, 201);
-    margin: auto;
+    margin: 0 auto;
     padding: 8%;
+    margin-top: 20%;
     font-family: Roboto;
 }
 
@@ -58,6 +59,7 @@
     .container-creacionExitosa{
         width: 40%;
         padding: 3%;
+        margin-top: 10%;
     }
     
     .mensajeExito{

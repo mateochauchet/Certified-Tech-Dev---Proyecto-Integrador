@@ -19,7 +19,7 @@ const Register = () => {
     const {contextLoginRegistro, setContextLoginRegistro} = useContext(ContextLoginRegistro);
     const {contextUser, setContextUser} = useContext(ContextUser);
     const history = useHistory();
-    const endpointRegistro = "http://localhost:8080/api/usuarios/";
+    const endpointRegistro = "https://digitalbooking.ga/api/usuarios/";
     let nuevoUsuarioData;
     let dataParaLogin;
 

@@ -3,7 +3,7 @@ import React, { useState} from "react";
 
 
 
-let endpointReserva = "http://localhost:8080/api/reserva/";
+let endpointReserva = "https://digitalbooking.ga/api/reserva/";
 
 
 export async function PostReserva (payload, contextUser) {

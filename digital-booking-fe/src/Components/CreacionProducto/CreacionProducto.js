@@ -10,7 +10,7 @@ function CreacionProducto(props){
     //VARIABLES
 
     let formData = new FormData();
-    const endpointPostProducto = "http://localhost:8080/api/productos/";
+    const endpointPostProducto = "https://digitalbooking.ga/api/productos/";
     const [nombrePropiedad, setNombrePropiedad] = useState("")
     const [categoriaPropiedad, setCategoriaPropiedad] = useState("Seleccione una categoria")
     const [latitudPropiedad, setLatitudPropiedad] = useState("")
