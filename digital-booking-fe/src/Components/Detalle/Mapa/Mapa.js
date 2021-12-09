@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from '!mapbox-gl';
 
 
 import './Mapa.css'
