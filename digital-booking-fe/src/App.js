@@ -217,7 +217,7 @@ export default function App() {
                 path="/reservaExitosa"
                 component={() => (
                   <Template home={true} categoriaAll={categoriaAll}>
-                    <ReservaExitosa />
+                    <ReservaExitosa categoriaAll={categoriaAll}/>
                   </Template>
                 )}
               />
@@ -226,17 +226,7 @@ export default function App() {
                 path="/misReservas"
                 component={() => (
                   <Template home={true} categoriaAll={categoriaAll}>
-                    <MisReservas />
-                  </Template>
-                )}
-              />
-
-              <Route
-                exact
-                path="/reservaNoEfectuada"
-                component={() => (
-                  <Template home={true} categoriaAll={categoriaAll}>
-                    <ReservaNoEfectuada />
+                    <MisReservas categoriaAll={categoriaAll}/>
                   </Template>
                 )}
               />

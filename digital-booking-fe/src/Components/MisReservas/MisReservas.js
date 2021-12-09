@@ -9,7 +9,7 @@ import Card from "../Cards_list/Card";
 import ReservaNoEfectuada from "../ReservaNoEfectuada/ReservaNoEfectuada"
 import { BsFillEmojiNeutralFill } from "react-icons/bs";
 
-export default function MisReservas() {
+export default function MisReservas(props) {
   const { contextLoginRegistro } = useContext(ContextLoginRegistro);
   const { contextUser } = useContext(ContextUser);
   const [dataReserva, setDataReserva] = useState(null);
@@ -26,7 +26,7 @@ export default function MisReservas() {
           }
         }
       ).catch(() => {
-        setDataReserva(null)
+        setDataReserva([true])
       })
 
     return () => (ismounted = false);
@@ -61,14 +61,14 @@ return (
       <Heading titulo="Mis Reservas" />
     </div>
     {dataReserva?(
-          dataReserva[0] === true ? <ReservaNoEfectuada /> :
+          dataReserva[0] === true ? <ReservaNoEfectuada categoriaAll={props.categoriaAll}/> :
             <>
             {mapeo()}
             </>
             )
       :
       
-        <h1>Loading...</h1>
+        null
     }
   </>
 );

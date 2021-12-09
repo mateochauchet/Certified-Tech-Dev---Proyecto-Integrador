@@ -5,12 +5,12 @@ import { faCalendarTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link} from "react-router-dom";
 
 
-export default function ReservaNoEfectuada(){
+export default function ReservaNoEfectuada(props){
     return(
         <div className="container-mensaje">
              <FontAwesomeIcon className="icon-calendar" icon={faCalendarTimes} />
             <h2 className="mensajeSinReserva">Aún no has efectuado ninguna reserva!</h2>
-           <Link to="/home"><button className="button-ok">OK</button></Link>
+           <Link to="/home"><button className="button-ok" onClick={props.categoriaAll} >OK</button></Link>
         </div>
     )
 }
