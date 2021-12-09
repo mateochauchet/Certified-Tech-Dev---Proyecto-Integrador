@@ -266,7 +266,7 @@ export default function App() {
                 path="/creacionExitosa"
                 component={() => (
                   <Template home={true} categoriaAll={categoriaAll}>
-                    <CreacionExitosa />
+                    <CreacionExitosa categoriaAll={categoriaAll}/>
                   </Template>
                 )}
               />
