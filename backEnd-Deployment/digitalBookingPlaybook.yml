@@ -10,4 +10,6 @@
         dest: /home/ubuntu/
     - name: Execute jar file
       shell: sudo -E java -jar digitalBooking-0.0.1-SNAPSHOT.jar &
+    - name: test
+      shell: sudo -E java -jar digitalBooking-0.0.1-SNAPSHOT.jar
 ...
