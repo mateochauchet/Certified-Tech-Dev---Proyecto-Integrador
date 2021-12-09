@@ -9,7 +9,5 @@
         src: "{{ lookup('env','JENKINS_HOME') | default('/var/lib/jenkins',true)}}/jobs/digitalbooking/branches/back-end/builds/{{ lookup('env','BUILD_NUMBER') | default('23',true) }}/archive/com/booking/digitalBooking/0.0.1-SNAPSHOT/digitalBooking-0.0.1-SNAPSHOT.jar"
         dest: /home/ubuntu/
     - name: Execute jar file
-      shell: sudo --preserve-env java -jar digitalBooking-0.0.1-SNAPSHOT.jar &
-    - name: test
-      shell: sudo --preserve-env java -jar digitalBooking-0.0.1-SNAPSHOT.jar
+      shell: sudo -E java -jar /home/ubuntu/digitalBooking-0.0.1-SNAPSHOT.jar &
 ...
