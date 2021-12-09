@@ -136,7 +136,7 @@ function CreacionProducto(props){
         <h2 className="h2CreacionProducto">Crear propiedad</h2>
         <div className="contenedorPadreProducto">
             <div className="divContenedorFormularioProducto">
-                <form onSubmit={sendData} className="formularioCreacionProducto" encType="multipart/form-data">
+                <form noValidate onSubmit={sendData} className="formularioCreacionProducto" encType="multipart/form-data">
                     <div className="primerBloqueInputs">
                         <div className="contenedorLabelInput">
                             <label className="labelCreacionProducto" htmlFor="nombreProducto">Nombre de la propiedad</label>
