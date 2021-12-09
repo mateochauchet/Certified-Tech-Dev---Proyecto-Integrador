@@ -17,6 +17,7 @@ function CreacionProducto(props){
     const [longitudPropiedad, setLongitudPropiedad] = useState("")
     const [ciudadPropiedad, setCiudadPropiedad] = useState("")
     const [descripcionPropiedad, setDescripcionPropiedad] = useState("")
+    const [tituloDescripcion, setTituloDescripcion] = useState("")
     const [normasPropiedad, setNormasPropiedad] = useState("")
     const [sysPropiedad, setSySPropiedad] = useState("")
     const [cancelacionPropiedad, setCancelacionPropiedad] = useState("")
@@ -59,10 +60,10 @@ function CreacionProducto(props){
             return(
                 <>
                 <FontAwesomeIcon icon={caracteristica.icono} />
-                    <label className="labelAtributos"><input type="checkbox" name={caracteristica.nombre} value={caracteristica.nombre}
+                    <label className="labelAtributos"><input type="checkbox" name={caracteristica.id} value={caracteristica.id}
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
-                            setGrupoAtributos([...grupoAtributos, {nombre: e.target.value, icono: caracteristica.icono}])
+                            setGrupoAtributos([...grupoAtributos, {id: caracteristica.id}])
                         }else if(e.target.checked == false){
                             grupoAtributos.splice((grupoAtributos.indexOf(e.target.name)), 1)
                             console.log(grupoAtributos)
@@ -96,6 +97,7 @@ function CreacionProducto(props){
                 },
                 latitud: latitudPropiedad,
                 longitud: longitudPropiedad,
+                titulo_descripcion: tituloDescripcion,
                 descripcion: descripcionPropiedad,
                 puntaje: 7,
                 caracteristicas: grupoAtributos,
@@ -167,8 +169,24 @@ function CreacionProducto(props){
                             <input className="inputCreacionProducto" name="longitudProducto" type="number" required onChange={(e)=>setLongitudPropiedad(e.target.value)}></input>
                         </div>
                     </div>
+                    <div className="contenedorLabelInput descripcion">
+
+                        <div>
+                            <label className="contenedorLabelInput latitudLongitud" htmlFor="tituloDescripcionProducto">Titulo de Descripcion</label>
+                            <textarea className="inputCreacionProducto" name="tituloDescripcionProducto" onChange={(e)=>setTituloDescripcion(e.target.value)} placeholder="Escriba aqui" required></textarea>
+                        </div>
+                        <div>
+                            <label className="contenedorLabelInput latitudLongitud" htmlFor="descripcionProducto">Descripcion</label>
+                            <textarea className="inputCreacionProducto inputTextarea" name="descripcionProducto" onChange={(e)=>setDescripcionPropiedad(e.target.value)} placeholder="Escriba aqui" required></textarea>
+                        </div>
+                    
+                    </div>
                     <div>
-                        <label className="labelCreacionProducto" htmlFor="descripcionProducto">Descripcion</label>
+                        <label className="contenedorLabelInput latitudLongitud" htmlFor="tituloDescripcionProducto">Titulo de Descripcion</label>
+                        <textarea className="inputCreacionProducto" name="tituloDescripcionProducto" onChange={(e)=>setTituloDescripcion(e.target.value)} placeholder="Escriba aqui" required></textarea>
+                    </div>
+                    <div>
+                        <label className="contenedorLabelInput latitudLongitud" htmlFor="descripcionProducto">Descripcion</label>
                         <textarea className="inputCreacionProducto inputTextarea" name="descripcionProducto" onChange={(e)=>setDescripcionPropiedad(e.target.value)} placeholder="Escriba aqui" required></textarea>
                     </div>
 

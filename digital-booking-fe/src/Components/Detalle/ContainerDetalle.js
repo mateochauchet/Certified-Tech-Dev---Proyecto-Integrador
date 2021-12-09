@@ -1,4 +1,4 @@
-import data from '../Cards_list/data.json'
+
 import Heading from './Heading';
 import Heading2 from './Heading2'
 import { useState, useEffect, useCallback } from "react";
