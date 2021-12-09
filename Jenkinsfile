@@ -31,7 +31,7 @@ pipeline {
 '''
         gitlabCommitStatus(name: 'Deploy') {
           script {
-            ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, extras: '--become', installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml'
+            ansiblePlaybook credentialsId: 'digitalBookingDeployment', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'digitalBookingPlaybook.yml'
           }
 
         }
