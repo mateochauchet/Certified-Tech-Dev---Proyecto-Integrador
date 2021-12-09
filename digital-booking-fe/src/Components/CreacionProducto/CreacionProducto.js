@@ -59,7 +59,7 @@ function CreacionProducto(props){
            
             return(
                 <>
-                <FontAwesomeIcon icon={caracteristica.icono} />
+                <FontAwesomeIcon icon={caracteristica.icono} className="iconosAtributos" />
                     <label className="labelAtributos"><input type="checkbox" name={caracteristica.id} value={caracteristica.id}
                     onChange={(e)=>{
                         if(e.target.checked && (grupoAtributos.indexOf(e.target.name)== -1)){
@@ -169,24 +169,12 @@ function CreacionProducto(props){
                             <input className="inputCreacionProducto" name="longitudProducto" type="number" required onChange={(e)=>setLongitudPropiedad(e.target.value)}></input>
                         </div>
                     </div>
-                    <div className="contenedorLabelInput descripcion">
-
-                        <div>
-                            <label className="contenedorLabelInput latitudLongitud" htmlFor="tituloDescripcionProducto">Titulo de Descripcion</label>
-                            <textarea className="inputCreacionProducto" name="tituloDescripcionProducto" onChange={(e)=>setTituloDescripcion(e.target.value)} placeholder="Escriba aqui" required></textarea>
-                        </div>
-                        <div>
-                            <label className="contenedorLabelInput latitudLongitud" htmlFor="descripcionProducto">Descripcion</label>
-                            <textarea className="inputCreacionProducto inputTextarea" name="descripcionProducto" onChange={(e)=>setDescripcionPropiedad(e.target.value)} placeholder="Escriba aqui" required></textarea>
-                        </div>
-                    
+                    <div className="contenedorDescripcion">
+                        <label className="labelCreacionProducto" htmlFor="tituloDescripcionProducto">Titulo de Descripcion</label>
+                        <input className="inputCreacionProducto" name="tituloDescripcionProducto" onChange={(e)=>setTituloDescripcion(e.target.value)} required></input>
                     </div>
-                    <div>
-                        <label className="contenedorLabelInput latitudLongitud" htmlFor="tituloDescripcionProducto">Titulo de Descripcion</label>
-                        <textarea className="inputCreacionProducto" name="tituloDescripcionProducto" onChange={(e)=>setTituloDescripcion(e.target.value)} placeholder="Escriba aqui" required></textarea>
-                    </div>
-                    <div>
-                        <label className="contenedorLabelInput latitudLongitud" htmlFor="descripcionProducto">Descripcion</label>
+                    <div className="contenedorDescripcion">
+                        <label className="labelCreacionProducto labelDescripcion" htmlFor="descripcionProducto">Descripcion</label>
                         <textarea className="inputCreacionProducto inputTextarea" name="descripcionProducto" onChange={(e)=>setDescripcionPropiedad(e.target.value)} placeholder="Escriba aqui" required></textarea>
                     </div>
 

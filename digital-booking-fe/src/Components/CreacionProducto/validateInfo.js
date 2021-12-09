@@ -18,6 +18,10 @@ export default function validateInfo(values){
         errors.longitudProducto = "La longitud debe estar entre 90 y -90"
     }
 
+    if(!values.tituloDescripcion.trim()){
+        errors.tituloDescripcion = "Debe completar este campo"
+    }
+
     if(!values.descripcionProducto.trim()){
         errors.descripcionProducto = "Agregue una descripcion a su producto"
     }
