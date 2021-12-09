@@ -61,9 +61,12 @@ padding-bottom: 2%;
         }
 }
 
-@media screen and (min-width: 1200px ) {
+@media screen and (min-width: 1300px ) {
     .containerReserva{
-     width: 94%; 
+     width: 63%; 
+    }
+    .cardInfo{
+        width: 85%;
     }
 
 
