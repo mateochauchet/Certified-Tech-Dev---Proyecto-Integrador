@@ -45,8 +45,14 @@ function Buscador(props) {
   const elegirFecha = (startDate, endDate) => {
     setDateIn(startDate)
     setDateOut(endDate)
-    
+
     }
+    const elegirFecha = (startDate, endDate) => {
+      setDateIn(startDate)
+      setDateOut(endDate)
+      
+      }
+  
      
    
     

@@ -6,7 +6,7 @@ import ContextUser from '../Contexts/ContextUser';
 
 function FormularioReserva(){
     const { contextLoginRegistro } = useContext(ContextLoginRegistro);
-    const { contextUser } = useContext(ContextUser);
+   
 
     return(
         <>
