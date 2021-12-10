@@ -32,8 +32,6 @@ function Buscador(props) {
     );
 
 
-    
-
   const elegirCiudad = (event) => {
     
     const value = event.value
@@ -47,16 +45,8 @@ function Buscador(props) {
     setDateOut(endDate)
 
     }
-    const elegirFecha = (startDate, endDate) => {
-      setDateIn(startDate)
-      setDateOut(endDate)
-      
-      }
   
-     
-   
-    
-
+  
 
   return (
     
